@@ -43,6 +43,16 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://guiabebes-xlauyfmx.manus.space"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+                >
+                  Guia Alimentar ↗
+                </a>
+              </li>
             </ul>
           </div>
 

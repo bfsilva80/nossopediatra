@@ -295,6 +295,30 @@ export default function Article() {
               </ul>
             </div>
 
+            {/* Guia Alimentar CTA - only for introducao-alimentar article */}
+            {slug === "introducao-alimentar" && (
+              <div className="bg-accent/5 border border-accent/20 p-6 md:p-8 rounded-xl mb-10">
+                <div className="flex flex-col md:flex-row md:items-center gap-5">
+                  <div className="flex-1">
+                    <span className="text-3xl mb-3 block">🥑</span>
+                    <h3 className="text-xl mb-2">Guia Interativo de Introdução Alimentar</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Quer um guia prático e interativo? Acesse nosso Guia Completo com cronograma por idade, receitas e dicas passo a passo.
+                    </p>
+                  </div>
+                  <a
+                    href="https://guiabebes-xlauyfmx.manus.space"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary !bg-accent hover:!bg-accent/90 whitespace-nowrap inline-flex items-center gap-2"
+                  >
+                    Acessar Guia
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            )}
+
             {/* Disclaimer */}
             <div className="bg-muted/50 p-5 rounded-lg mb-6">
               <p className="text-muted-foreground text-sm flex items-start gap-2">

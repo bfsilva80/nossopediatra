@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Clock, ArrowRight } from "lucide-react";
+import { Clock, ArrowRight, ExternalLink } from "lucide-react";
 
 const ARTICLES = [
   {
@@ -124,6 +124,53 @@ export default function Library() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Guia Alimentar Destaque */}
+      <section className="section-spacing bg-card border-t border-border">
+        <div className="container max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <a
+              href="https://guiabebes-xlauyfmx.manus.space"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-base p-6 md:p-8 block hover:shadow-lg transition-all duration-300 group border-accent/30"
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
+                    <span className="text-3xl">🥑</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="inline-block px-2.5 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full uppercase tracking-wider font-sans">
+                      Guia Interativo
+                    </span>
+                    <ExternalLink className="w-3.5 h-3.5 text-accent" />
+                  </div>
+                  <h3 className="text-lg md:text-xl mb-2 group-hover:text-accent transition-colors leading-snug">
+                    Guia Completo de Introdução Alimentar para Bebês
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Cronograma por idade, receitas, sinais de prontidão e tudo que você precisa para começar com segurança e confiança.
+                  </p>
+                </div>
+                <div className="flex-shrink-0">
+                  <span className="btn-primary !bg-accent hover:!bg-accent/90 text-sm inline-flex items-center gap-1.5">
+                    Acessar Guia
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </div>
+            </a>
+          </motion.div>
         </div>
       </section>
 

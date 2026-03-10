@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
@@ -8,6 +8,8 @@ const NAV_LINKS = [
   { href: "/biblioteca", label: "Biblioteca" },
   { href: "/consultas", label: "Consultas" },
 ];
+
+const GUIA_ALIMENTAR_URL = "https://guiabebes-xlauyfmx.manus.space";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,6 +69,15 @@ export default function Navigation() {
               )}
             </Link>
           ))}
+          <a
+            href={GUIA_ALIMENTAR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-accent hover:text-foreground transition-colors relative py-1 inline-flex items-center gap-1"
+          >
+            Guia Alimentar
+            <ExternalLink className="w-3 h-3" />
+          </a>
           <Link href="/contato" className="btn-primary text-sm !py-2 !px-5">
             Agendar
           </Link>
@@ -106,6 +117,15 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href={GUIA_ALIMENTAR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block py-3 px-3 rounded-lg text-sm font-medium text-accent hover:text-foreground hover:bg-muted/50 transition-colors flex items-center gap-1.5"
+              >
+                Guia Alimentar
+                <ExternalLink className="w-3 h-3" />
+              </a>
               <div className="pt-2">
                 <Link href="/contato" className="btn-primary w-full text-center text-sm block">
                   Agendar Consulta

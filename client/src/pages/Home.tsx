@@ -313,6 +313,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Guia Alimentar Destaque */}
+      <section className="section-spacing bg-card border-t border-border">
+        <div className="container max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            custom={0}
+          >
+            <a
+              href="https://guiabebes-xlauyfmx.manus.space"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+            >
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-accent/10 via-primary/5 to-secondary/10 border border-accent/20 p-8 md:p-12 hover:shadow-xl transition-all duration-500">
+                <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/15 text-accent text-xs font-semibold rounded-full uppercase tracking-wider font-sans">
+                    Ferramenta Interativa
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+                <div className="max-w-xl">
+                  <span className="text-4xl mb-4 block">🥑</span>
+                  <h2 className="text-2xl md:text-3xl mb-3 group-hover:text-accent transition-colors">
+                    Guia de Introdução Alimentar
+                  </h2>
+                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
+                    Guia interativo completo para pais: cronograma por idade, receitas, sinais de prontidão e tudo que você precisa para começar a introdução alimentar com segurança.
+                  </p>
+                  <span className="btn-primary !bg-accent hover:!bg-accent/90 inline-flex items-center gap-2">
+                    Acessar Guia Completo
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/5 rounded-full" />
+                <div className="absolute -top-4 right-1/3 w-20 h-20 bg-secondary/5 rounded-full" />
+              </div>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="section-spacing bg-primary text-white">
         <div className="container max-w-2xl text-center">
