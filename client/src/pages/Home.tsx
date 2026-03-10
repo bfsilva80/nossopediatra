@@ -339,13 +339,13 @@ export default function Home() {
                 <div className="max-w-xl">
                   <span className="text-4xl mb-4 block">🥑</span>
                   <h2 className="text-2xl md:text-3xl mb-3 group-hover:text-accent transition-colors">
-                    Guia de Introdução Alimentar
+                    E Quando Chega a Hora da 1ª Papinha?
                   </h2>
                   <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
-                    Guia interativo completo para pais: cronograma por idade, receitas, sinais de prontidão e tudo que você precisa para começar a introdução alimentar com segurança.
+                    Seu bebê já está pronto? Descubra no nosso guia interativo: o que oferecer primeiro, o que evitar, e os erros que quase todo pai comete sem saber.
                   </p>
                   <span className="btn-primary !bg-accent hover:!bg-accent/90 inline-flex items-center gap-2">
-                    Acessar Guia Completo
+                    Descobrir Agora
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>

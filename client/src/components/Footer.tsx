@@ -50,7 +50,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
                 >
-                  Guia Alimentar ↗
+                  1ª Papinha? ↗
                 </a>
               </li>
             </ul>

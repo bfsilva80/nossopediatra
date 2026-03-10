@@ -75,7 +75,7 @@ export default function Navigation() {
             rel="noopener noreferrer"
             className="text-sm font-medium text-accent hover:text-foreground transition-colors relative py-1 inline-flex items-center gap-1"
           >
-            Guia Alimentar
+            1ª Papinha?
             <ExternalLink className="w-3 h-3" />
           </a>
           <Link href="/contato" className="btn-primary text-sm !py-2 !px-5">
@@ -123,7 +123,7 @@ export default function Navigation() {
                 rel="noopener noreferrer"
                 className="block py-3 px-3 rounded-lg text-sm font-medium text-accent hover:text-foreground hover:bg-muted/50 transition-colors flex items-center gap-1.5"
               >
-                Guia Alimentar
+                1ª Papinha?
                 <ExternalLink className="w-3 h-3" />
               </a>
               <div className="pt-2">

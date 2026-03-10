@@ -156,10 +156,10 @@ export default function Library() {
                     <ExternalLink className="w-3.5 h-3.5 text-accent" />
                   </div>
                   <h3 className="text-lg md:text-xl mb-2 group-hover:text-accent transition-colors leading-snug">
-                    Guia Completo de Introdução Alimentar para Bebês
+                    1ª Papinha? O Guia que Todo Pai Queria Ter Recebido Antes
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Cronograma por idade, receitas, sinais de prontidão e tudo que você precisa para começar com segurança e confiança.
+                    O que oferecer, o que evitar, e os erros mais comuns que ninguém te conta. Guia interativo com cronograma por idade.
                   </p>
                 </div>
                 <div className="flex-shrink-0">

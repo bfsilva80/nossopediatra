@@ -301,9 +301,9 @@ export default function Article() {
                 <div className="flex flex-col md:flex-row md:items-center gap-5">
                   <div className="flex-1">
                     <span className="text-3xl mb-3 block">🥑</span>
-                    <h3 className="text-xl mb-2">Guia Interativo de Introdução Alimentar</h3>
+                    <h3 className="text-xl mb-2">E Agora, o Que Colocar no Prato?</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                      Quer um guia prático e interativo? Acesse nosso Guia Completo com cronograma por idade, receitas e dicas passo a passo.
+                      Descubra no nosso guia interativo: cronograma por idade, receitas testadas e os erros que quase todo pai comete sem saber.
                     </p>
                   </div>
                   <a
@@ -312,7 +312,7 @@ export default function Article() {
                     rel="noopener noreferrer"
                     className="btn-primary !bg-accent hover:!bg-accent/90 whitespace-nowrap inline-flex items-center gap-2"
                   >
-                    Acessar Guia
+                    Quero Descobrir
                     <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
