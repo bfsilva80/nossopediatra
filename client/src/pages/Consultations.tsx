@@ -1,59 +1,52 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import {
-  ClipboardCheck,
-  MessageSquare,
-  UserCheck,
-  HeartHandshake,
-  Star,
-  ArrowRight,
-  Stethoscope,
-  FileText,
-  Clock,
-} from "lucide-react";
+import { Star, ArrowRight, Sparkles, Heart, Stethoscope, FileText, Clock } from "lucide-react";
 
-const CONSULTATION_BG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_hero-6mn9vcHYs2XbweyVPQR6Vx.webp";
+const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
+const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_doctor_illustration-RQPad3Sx25q8JyDV3G8fm6.webp";
 
 const STEPS = [
   {
-    icon: ClipboardCheck,
+    emoji: "📋",
+    color: "bg-pastel-pink/30",
     title: "Avaliação Completa",
-    description:
-      "Histórico detalhado, exame físico minucioso e investigação cuidadosa dos sintomas. Cada detalhe importa.",
+    description: "Histórico detalhado, exame físico minucioso e investigação cuidadosa dos sintomas.",
   },
   {
-    icon: MessageSquare,
+    emoji: "💬",
+    color: "bg-pastel-blue/30",
     title: "Explicação Clara",
-    description:
-      "Você entenderá o raciocínio clínico por trás de cada recomendação. Medicina que explica, não apenas prescreve.",
+    description: "Você entenderá o raciocínio clínico por trás de cada recomendação.",
   },
   {
-    icon: UserCheck,
+    emoji: "🎯",
+    color: "bg-pastel-mint/30",
     title: "Plano Personalizado",
-    description:
-      "Estratégia de manejo adaptada às necessidades específicas do seu filho e à realidade da sua família.",
+    description: "Estratégia adaptada às necessidades do seu filho e à realidade da sua família.",
   },
   {
-    icon: HeartHandshake,
+    emoji: "🤝",
+    color: "bg-pastel-yellow/30",
     title: "Acompanhamento",
-    description:
-      "Suporte contínuo e ajustes conforme necessário. Você não estará sozinho nessa jornada.",
+    description: "Suporte contínuo e ajustes conforme necessário. Você não estará sozinho.",
   },
 ];
 
 const TESTIMONIALS = [
   {
     name: "Maria Silva",
-    text: "Finalmente entendi o que estava acontecendo com meu filho. O Dr. Bruno explicou tudo com clareza e paciência, e o tratamento funcionou! Recomendo de olhos fechados.",
+    text: "Finalmente entendi o que estava acontecendo com meu filho. O Dr. Bruno explicou tudo com clareza e paciência, e o tratamento funcionou!",
+    emoji: "💛",
   },
   {
     name: "João Santos",
-    text: "Consultei vários pediatras antes. Aqui consegui respostas reais e um plano que realmente funciona. A diferença está na escuta atenta e no conhecimento especializado.",
+    text: "Consultei vários pediatras antes. Aqui consegui respostas reais e um plano que realmente funciona. A diferença está na escuta atenta.",
+    emoji: "⭐",
   },
   {
     name: "Ana Costa",
-    text: "A empatia e profissionalismo fizeram toda a diferença. Minha filha melhorou muito e estou muito grata. Finalmente encontrei um médico que ouve e explica.",
+    text: "A empatia e profissionalismo fizeram toda a diferença. Minha filha melhorou muito. Finalmente encontrei um médico que ouve e explica.",
+    emoji: "🌟",
   },
 ];
 
@@ -70,59 +63,85 @@ export default function Consultations() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${CONSULTATION_BG}')` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/55" />
-        </div>
-        <div className="relative z-10 container text-center text-white max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="text-sm uppercase tracking-[0.2em] text-white/80 mb-3 block font-sans font-medium">
-              Atendimento Especializado
-            </span>
-            <h1 className="mb-4 text-white">Consultas Especializadas</h1>
-            <p className="text-lg md:text-xl text-white/85 font-sans">
-              Atendimento focado em gastroenterologia pediátrica, com escuta atenta e ciência de verdade
-            </p>
-          </motion.div>
+      <section
+        className="relative min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden"
+        style={{
+          backgroundImage: `url('${PATTERN_BG}')`,
+          backgroundSize: '400px',
+          backgroundRepeat: 'repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-pastel-pink/50 via-white/70 to-pastel-mint/40" />
+        {/* Floating decorations */}
+        <div className="absolute top-16 left-[8%] text-3xl animate-float opacity-40 pointer-events-none">🩺</div>
+        <div className="absolute top-20 right-[12%] text-2xl animate-float-slow opacity-30 pointer-events-none">💛</div>
+        <div className="absolute bottom-16 left-[15%] text-2xl animate-wiggle opacity-30 pointer-events-none">⭐</div>
+
+        <div className="relative z-10 container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="max-w-lg"
+            >
+              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 border-2 border-pastel-pink/30">
+                <Sparkles className="w-4 h-4 text-salmon" />
+                <span className="text-sm font-bold text-foreground/80 font-display">Atendimento Especializado</span>
+              </div>
+              <h1 className="mb-4">Consultas <span className="text-salmon">Especializadas</span></h1>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                Atendimento focado em gastroenterologia pediátrica, com escuta atenta e ciência de verdade
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="hidden lg:flex justify-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <div className="relative">
+                <div className="w-56 h-64 rounded-[2rem] overflow-hidden border-4 border-white shadow-xl rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <img src={DOCTOR_IMG} alt="Dr. Bruno" className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="absolute -top-3 -left-3 w-10 h-10 bg-pastel-yellow rounded-full opacity-60 animate-pulse-soft" />
+                <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-pastel-mint rounded-2xl opacity-50 animate-float-slow" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="section-spacing bg-background">
+      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left Column - O que Esperar */}
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
               custom={0}
             >
-              <h2 className="mb-8">O que Esperar</h2>
-              <div className="space-y-6">
+              <h2 className="mb-8">O que <span className="text-salmon">Esperar</span></h2>
+              <div className="space-y-5">
                 {STEPS.map((step, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex gap-4"
+                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-pastel-peach/20 hover:border-pastel-pink/30 transition-all duration-300 hover:shadow-md group"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUp}
                     custom={idx + 1}
                   >
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <step.icon className="w-6 h-6 text-primary" />
+                    <div className={`w-14 h-14 ${step.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
+                      {step.emoji}
                     </div>
                     <div>
-                      <h4 className="font-sans font-semibold text-foreground mb-1">
+                      <h4 className="font-display font-bold text-foreground mb-1">
                         {step.title}
                       </h4>
                       <p className="text-muted-foreground text-sm leading-relaxed">
@@ -138,16 +157,16 @@ export default function Consultations() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
               custom={1}
             >
-              <h2 className="mb-8">Informações Práticas</h2>
+              <h2 className="mb-8">Informações <span className="text-mint-dark">Práticas</span></h2>
               <div className="card-base p-6 md:p-8 space-y-6">
                 {/* Quando Procurar */}
                 <div>
-                  <h4 className="font-sans font-semibold text-foreground mb-3 flex items-center gap-2">
-                    <Stethoscope className="w-5 h-5 text-primary" />
+                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
+                    <Stethoscope className="w-5 h-5 text-salmon" />
                     Quando Procurar
                   </h4>
                   <ul className="space-y-2 text-muted-foreground text-sm">
@@ -159,16 +178,16 @@ export default function Consultations() {
                       "Dificuldades na alimentação ou ganho de peso",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-primary mt-0.5">•</span>
+                        <span className="text-salmon mt-0.5">•</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="border-t border-border pt-6">
-                  <h4 className="font-sans font-semibold text-foreground mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-primary" />
+                <div className="border-t-2 border-pastel-pink/15 pt-6">
+                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-mint-dark" />
                     O que Levar
                   </h4>
                   <ul className="space-y-2 text-muted-foreground text-sm">
@@ -180,25 +199,25 @@ export default function Consultations() {
                       "Anotações de sintomas observados",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-accent font-bold mt-0.5">✓</span>
+                        <span className="text-mint-dark font-bold mt-0.5">✓</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="border-t border-border pt-6">
-                  <h4 className="font-sans font-semibold text-foreground mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-primary" />
+                <div className="border-t-2 border-pastel-pink/15 pt-6">
+                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-salmon" />
                     Duração
                   </h4>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-primary/5 p-4 rounded-lg text-center">
-                      <p className="text-2xl font-display font-bold text-primary">60</p>
+                    <div className="bg-pastel-pink/15 p-4 rounded-2xl text-center">
+                      <p className="text-2xl font-display font-bold text-salmon">60</p>
                       <p className="text-xs text-muted-foreground mt-1">min — Primeira consulta</p>
                     </div>
-                    <div className="bg-secondary/10 p-4 rounded-lg text-center">
-                      <p className="text-2xl font-display font-bold text-secondary">30-45</p>
+                    <div className="bg-pastel-mint/15 p-4 rounded-2xl text-center">
+                      <p className="text-2xl font-display font-bold text-mint-dark">30-45</p>
                       <p className="text-xs text-muted-foreground mt-1">min — Acompanhamento</p>
                     </div>
                   </div>
@@ -210,7 +229,7 @@ export default function Consultations() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-spacing bg-card border-t border-border">
+      <section className="section-spacing bg-white">
         <div className="container">
           <motion.div
             className="text-center mb-12"
@@ -220,7 +239,7 @@ export default function Consultations() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-4">O que Pais Dizem</h2>
+            <h2 className="mb-4">O que Pais <span className="text-salmon">Dizem</span></h2>
             <p className="text-muted-foreground text-lg">
               Depoimentos de famílias que confiaram no Nosso Pediatra
             </p>
@@ -230,7 +249,7 @@ export default function Consultations() {
             {TESTIMONIALS.map((testimonial, idx) => (
               <motion.div
                 key={idx}
-                className="card-base p-6 md:p-7"
+                className="card-base p-6 md:p-7 border-t-4 border-pastel-pink"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
@@ -239,22 +258,17 @@ export default function Consultations() {
               >
                 <div className="flex items-center gap-0.5 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 text-yellow-400 fill-yellow-400"
-                    />
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-5 italic leading-relaxed text-sm">
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold text-sm">
-                      {testimonial.name.charAt(0)}
-                    </span>
+                  <div className="w-10 h-10 bg-pastel-pink/30 rounded-2xl flex items-center justify-center text-lg">
+                    {testimonial.emoji}
                   </div>
-                  <p className="font-semibold text-foreground text-sm font-sans">
+                  <p className="font-bold text-foreground text-sm font-display">
                     {testimonial.name}
                   </p>
                 </div>
@@ -265,8 +279,17 @@ export default function Consultations() {
       </section>
 
       {/* CTA */}
-      <section className="section-spacing bg-primary text-white">
-        <div className="container max-w-2xl text-center">
+      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'oklch(0.75 0.10 25)' }}>
+        <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
+          <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
+            <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
+          </svg>
+        </div>
+
+        <div className="absolute top-16 left-[10%] text-2xl animate-float opacity-15">💛</div>
+        <div className="absolute bottom-12 right-[8%] text-xl animate-float-slow opacity-15">⭐</div>
+
+        <div className="container max-w-2xl text-center relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -274,8 +297,9 @@ export default function Consultations() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="text-white mb-4">Pronto para Agendar?</h2>
-            <p className="text-lg mb-8 text-white/85 font-sans">
+            <Heart className="w-10 h-10 text-white/40 mx-auto mb-4 animate-pulse-soft" />
+            <h2 className="!text-white mb-4">Pronto para Agendar?</h2>
+            <p className="text-lg mb-8 text-white/85 font-display">
               Escolha a forma mais conveniente para você
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -283,7 +307,7 @@ export default function Consultations() {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-secondary !bg-white !text-salmon"
               >
                 💬 WhatsApp
               </a>

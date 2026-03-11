@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { AlertTriangle, Lightbulb, Info, ArrowRight } from "lucide-react";
+import { AlertTriangle, Lightbulb, Info, ArrowRight, Sparkles } from "lucide-react";
+
+const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 
 const SYMPTOMS = [
   {
     id: "barriga-inchada",
     name: "Barriga Inchada",
     fullName: "Barriga Inchada / Distensão Abdominal",
-    emoji: "🫘",
+    emoji: "🫧",
+    color: "from-pastel-pink/40 to-pastel-peach/30",
+    borderColor: "border-pastel-pink",
     description: "Quando a barriguinha fica inchada, dura ou desconfortável",
     whatIs:
       "A distensão abdominal é o aumento do volume da barriga do bebê ou da criança. Pode ser causada por acúmulo de gases, retenção de fezes ou até mesmo por engolir ar durante a alimentação. Na maioria das vezes é benigna, mas merece atenção quando acompanhada de outros sintomas.",
@@ -36,6 +39,8 @@ const SYMPTOMS = [
     name: "Refluxo",
     fullName: "Refluxo / Regurgitação",
     emoji: "🔄",
+    color: "from-pastel-blue/40 to-pastel-mint/30",
+    borderColor: "border-pastel-blue",
     description: "Quando o alimento volta pela boca após alimentação",
     whatIs:
       "O refluxo gastroesofágico é o retorno do conteúdo gástrico para o esôfago e, às vezes, até a boca. Em bebês, é muito comum nos primeiros meses de vida devido à imaturidade do esfíncter esofágico inferior. A maioria melhora naturalmente até os 12-18 meses.",
@@ -62,7 +67,9 @@ const SYMPTOMS = [
     id: "intestino-preso",
     name: "Intestino Preso",
     fullName: "Intestino Preso / Constipação",
-    emoji: "💪",
+    emoji: "🧱",
+    color: "from-pastel-yellow/40 to-pastel-peach/30",
+    borderColor: "border-pastel-yellow",
     description: "Quando a criança tem dificuldade para evacuar ou fezes muito duras",
     whatIs:
       "A constipação intestinal é caracterizada pela dificuldade em evacuar, fezes endurecidas ou intervalos prolongados entre as evacuações. É muito comum durante a introdução alimentar e no período de desfralde. O manejo adequado evita complicações como fissuras anais.",
@@ -89,7 +96,9 @@ const SYMPTOMS = [
     id: "fezes-diferentes",
     name: "Fezes Diferentes",
     fullName: "Fezes Diferentes / Alteração de Padrão",
-    emoji: "💩",
+    emoji: "🔍",
+    color: "from-pastel-mint/40 to-pastel-blue/30",
+    borderColor: "border-pastel-mint",
     description: "Quando as fezes mudam de cor, consistência ou frequência",
     whatIs:
       "Mudanças no padrão das fezes são muito comuns em crianças e nem sempre indicam doença. A cor, consistência e frequência variam conforme a idade, alimentação e estado de saúde. Conhecer o padrão normal do seu filho é o primeiro passo para identificar alterações relevantes.",
@@ -117,6 +126,8 @@ const SYMPTOMS = [
     name: "Dor Abdominal",
     fullName: "Dor Abdominal / Cólica",
     emoji: "😣",
+    color: "from-pastel-peach/40 to-pastel-pink/30",
+    borderColor: "border-pastel-peach",
     description: "Quando a criança apresenta choro persistente e desconforto abdominal",
     whatIs:
       "A dor abdominal é uma das queixas mais comuns na pediatria. Em bebês, manifesta-se como choro intenso e flexão das pernas. Em crianças maiores, pode ser localizada ou difusa. As causas variam desde cólicas funcionais benignas até condições que necessitam investigação.",
@@ -148,17 +159,31 @@ export default function SymptomAtlas() {
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="section-spacing bg-card border-b border-border">
-        <div className="container max-w-3xl text-center">
+      <section
+        className="section-spacing relative overflow-hidden"
+        style={{
+          backgroundImage: `url('${PATTERN_BG}')`,
+          backgroundSize: '400px',
+          backgroundRepeat: 'repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80" />
+        {/* Floating decorations */}
+        <div className="absolute top-10 left-[8%] text-3xl animate-float opacity-40 pointer-events-none">🩺</div>
+        <div className="absolute top-16 right-[12%] text-2xl animate-float-slow opacity-30 pointer-events-none">⭐</div>
+        <div className="absolute bottom-8 left-[15%] text-2xl animate-wiggle opacity-30 pointer-events-none">💛</div>
+
+        <div className="container max-w-3xl text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 block font-sans">
-              Ferramenta Interativa
-            </span>
-            <h1 className="mb-4">Atlas de Sintomas</h1>
+            <div className="inline-flex items-center gap-2 bg-pastel-mint/40 rounded-full px-4 py-1.5 mb-4">
+              <Sparkles className="w-4 h-4 text-mint-dark" />
+              <span className="text-sm font-bold text-mint-dark font-display">Ferramenta Interativa</span>
+            </div>
+            <h1 className="mb-4">Atlas de <span className="text-salmon">Sintomas</span></h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Pais pesquisam sintomas, não diagnósticos. Explore cada um para entender melhor o que pode estar acontecendo com seu filho.
             </p>
@@ -167,25 +192,32 @@ export default function SymptomAtlas() {
       </section>
 
       {/* Main Content */}
-      <section className="section-spacing bg-background">
+      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
         <div className="container">
-          {/* Symptom Selector */}
+          {/* Symptom Selector - Playful rounded cards */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mb-12">
-            {SYMPTOMS.map((symptom) => (
-              <button
+            {SYMPTOMS.map((symptom, idx) => (
+              <motion.button
                 key={symptom.id}
                 onClick={() => setSelectedId(symptom.id)}
-                className={`p-4 rounded-xl transition-all duration-200 border-2 text-center ${
+                className={`p-4 md:p-5 rounded-2xl transition-all duration-300 border-3 text-center group ${
                   selectedId === symptom.id
-                    ? "bg-primary text-white border-primary shadow-md shadow-primary/20"
-                    : "bg-card text-foreground border-border hover:border-primary/50 hover:shadow-sm"
+                    ? `bg-gradient-to-br ${symptom.color} ${symptom.borderColor} shadow-lg`
+                    : "bg-white border-pastel-peach/30 hover:border-pastel-pink/50 hover:shadow-md"
                 }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.08, duration: 0.4 }}
+                whileHover={{ scale: 1.03, rotate: selectedId === symptom.id ? 0 : 1 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <div className="text-3xl mb-2">{symptom.emoji}</div>
-                <div className="text-sm font-semibold font-sans leading-tight">
+                <div className={`text-3xl md:text-4xl mb-2 transition-transform duration-300 ${selectedId === symptom.id ? 'scale-110' : 'group-hover:scale-105'}`}>
+                  {symptom.emoji}
+                </div>
+                <div className="text-sm font-bold font-display leading-tight text-foreground">
                   {symptom.name}
                 </div>
-              </button>
+              </motion.button>
             ))}
           </div>
 
@@ -193,16 +225,19 @@ export default function SymptomAtlas() {
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedId}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="card-base p-6 md:p-10 lg:p-12"
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35 }}
+              className="card-base p-6 md:p-10 lg:p-12 border-t-4"
+              style={{ borderTopColor: 'oklch(0.75 0.10 25)' }}
             >
               {/* Title */}
               <div className="mb-10">
                 <div className="flex items-center gap-4 mb-3">
-                  <span className="text-4xl md:text-5xl">{selectedSymptom.emoji}</span>
+                  <div className={`w-16 h-16 bg-gradient-to-br ${selectedSymptom.color} rounded-2xl flex items-center justify-center text-4xl rotate-[-3deg]`}>
+                    {selectedSymptom.emoji}
+                  </div>
                   <div>
                     <h2 className="text-2xl md:text-3xl">{selectedSymptom.fullName}</h2>
                     <p className="text-muted-foreground mt-1">{selectedSymptom.description}</p>
@@ -212,9 +247,9 @@ export default function SymptomAtlas() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 {/* O que é */}
-                <div>
+                <div className="bg-pastel-blue/10 rounded-2xl p-6">
                   <h3 className="text-xl mb-4 flex items-center gap-2">
-                    <Info className="w-5 h-5 text-primary" />
+                    <Info className="w-5 h-5 text-salmon" />
                     O que é?
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -223,12 +258,12 @@ export default function SymptomAtlas() {
                 </div>
 
                 {/* Causas Comuns */}
-                <div>
+                <div className="bg-pastel-peach/15 rounded-2xl p-6">
                   <h3 className="text-xl mb-4">Causas Comuns</h3>
                   <ul className="space-y-2.5">
                     {selectedSymptom.commonCauses.map((cause, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                        <span className="w-2 h-2 bg-salmon rounded-full mt-2 flex-shrink-0" />
                         <span className="text-muted-foreground">{cause}</span>
                       </li>
                     ))}
@@ -237,8 +272,8 @@ export default function SymptomAtlas() {
               </div>
 
               {/* Quando é Urgente */}
-              <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-6">
-                <h3 className="text-xl mb-4 text-red-700 flex items-center gap-2">
+              <div className="bg-red-50/80 border-l-4 border-red-400 p-6 rounded-2xl mb-6">
+                <h3 className="text-xl mb-4 text-red-700 flex items-center gap-2 font-display">
                   <AlertTriangle className="w-5 h-5" />
                   Quando Procurar Emergência?
                 </h3>
@@ -253,24 +288,24 @@ export default function SymptomAtlas() {
               </div>
 
               {/* Dicas Práticas */}
-              <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg mb-8">
-                <h3 className="text-xl mb-4 text-green-700 flex items-center gap-2">
+              <div className="bg-pastel-mint/20 border-l-4 border-pastel-mint p-6 rounded-2xl mb-8">
+                <h3 className="text-xl mb-4 text-mint-dark flex items-center gap-2 font-display">
                   <Lightbulb className="w-5 h-5" />
                   Dicas Práticas
                 </h3>
                 <ul className="space-y-2">
                   {selectedSymptom.tips.map((tip, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <span className="text-green-600 font-bold mt-0.5">✓</span>
-                      <span className="text-green-800">{tip}</span>
+                      <span className="text-mint-dark font-bold mt-0.5">✓</span>
+                      <span className="text-foreground/80">{tip}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* CTA */}
-              <div className="pt-6 border-t border-border text-center">
-                <p className="text-muted-foreground mb-4">
+              <div className="pt-6 border-t-2 border-pastel-pink/20 text-center">
+                <p className="text-muted-foreground mb-4 font-display">
                   Quer entender melhor este sintoma com um especialista?
                 </p>
                 <a
@@ -289,11 +324,11 @@ export default function SymptomAtlas() {
       </section>
 
       {/* Educational Note */}
-      <section className="section-spacing bg-card border-t border-border">
+      <section className="section-spacing bg-white">
         <div className="container max-w-2xl">
-          <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
-            <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
-              <Info className="w-5 h-5 text-primary" />
+          <div className="bg-pastel-blue/15 border-l-4 border-pastel-blue p-6 rounded-2xl">
+            <h3 className="font-bold text-foreground mb-2 flex items-center gap-2 font-display">
+              <Info className="w-5 h-5 text-salmon" />
               Informação Educativa
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">

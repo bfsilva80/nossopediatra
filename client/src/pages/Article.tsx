@@ -1,12 +1,13 @@
 import { useRoute, Link } from "wouter";
 import { motion } from "framer-motion";
-import { Clock, User, ArrowLeft, ArrowRight, AlertTriangle, BookOpen } from "lucide-react";
+import { Clock, User, ArrowLeft, ArrowRight, AlertTriangle, BookOpen, Sparkles } from "lucide-react";
 
 interface ArticleData {
   slug: string;
   title: string;
   category: string;
   readTime: string;
+  emoji: string;
   intro: string;
   sections: { title: string; content: string }[];
   whenToSeek: string[];
@@ -19,6 +20,7 @@ const ARTICLES: Record<string, ArticleData> = {
     title: "Refluxo em Bebê: Quando é Normal, Quando é Problema",
     category: "Refluxo",
     readTime: "8 min",
+    emoji: "🍼",
     intro:
       "O refluxo é uma das queixas mais frequentes nos consultórios de gastropediatria. Quase todos os bebês regurgitam nos primeiros meses de vida, e a grande maioria não precisa de tratamento. Mas como saber quando o refluxo deixa de ser fisiológico e passa a ser doença? Neste artigo, vamos entender juntos o raciocínio clínico que guia essa avaliação.",
     sections: [
@@ -52,6 +54,7 @@ const ARTICLES: Record<string, ArticleData> = {
     title: "APLV (Alergia à Proteína do Leite de Vaca): Sinais e Manejo",
     category: "Alergias",
     readTime: "10 min",
+    emoji: "🥛",
     intro:
       "A Alergia à Proteína do Leite de Vaca (APLV) é a alergia alimentar mais comum na infância, afetando cerca de 2-3% dos bebês. É também uma das mais confusas para os pais, porque os sintomas podem ser sutis e se sobrepor a outras condições. Vamos desmistificar essa alergia com ciência e clareza.",
     sections: [
@@ -85,6 +88,7 @@ const ARTICLES: Record<string, ArticleData> = {
     title: "Constipação Infantil: Além do Laxante",
     category: "Constipação",
     readTime: "9 min",
+    emoji: "💪",
     intro:
       "A constipação intestinal é uma das queixas mais comuns na pediatria, responsável por até 25% das consultas em gastropediatria. Muitos pais recorrem a laxantes como primeira solução, mas entender as causas é fundamental para um tratamento eficaz e duradouro. Vamos além da receita e entender o que realmente está acontecendo.",
     sections: [
@@ -118,6 +122,7 @@ const ARTICLES: Record<string, ArticleData> = {
     title: "Introdução Alimentar: Guia Completo para Pais",
     category: "Alimentação",
     readTime: "12 min",
+    emoji: "🥑",
     intro:
       "A introdução alimentar é um marco no desenvolvimento do bebê e uma das fases que mais gera ansiedade nos pais. Quando começar? O que oferecer primeiro? BLW ou papinha? Neste guia, vamos navegar juntos por esse momento com base nas evidências científicas mais atuais e muito bom senso.",
     sections: [
@@ -151,13 +156,14 @@ const ARTICLES: Record<string, ArticleData> = {
     title: "Cocô de Criança: Tudo que Você Precisa Saber",
     category: "Desenvolvimento",
     readTime: "7 min",
+    emoji: "🔍",
     intro:
       "Vamos falar sobre cocô? Sem tabu e com ciência. As fezes do seu filho são uma janela para a saúde digestiva, e aprender a \"ler\" o que elas dizem pode ajudar você a identificar problemas precocemente e evitar preocupações desnecessárias.",
     sections: [
       {
         title: "O que é Normal em Cada Fase",
         content:
-          "Nos primeiros dias, o mecônio (fezes escuras e pegajosas) é completamente normal. Bebês em aleitamento materno exclusivo têm fezes amarelo-douradas, pastosas e com odor suave — podem evacuar várias vezes ao dia ou passar até 7 dias sem evacuar (ambos normais, desde que as fezes sejam macias). Bebês em fórmula tendem a ter fezes mais firmes, esverdeadas ou amarronzadas. Com a introdução alimentar, as fezes mudam de cor, consistência e odor conforme os novos alimentos — e isso é esperado.",
+          "Nos primeiros dias, o mecônio (fezes escuras e pegajosas) é completamente normal. Bebês em aleitamento materno exclusivo têm fezes amarelo-douradas, pastosas e com odor suave — podem evacuar várias vezes ao dia ou passar até 7 dias sem evacuar, ambos normais. Bebês em fórmula tendem a ter fezes mais firmes e esverdeadas. Com a introdução alimentar, as fezes mudam significativamente: ficam mais consistentes, com cor e odor mais fortes.",
       },
       {
         title: "Cores e o que Significam",
@@ -181,13 +187,15 @@ const ARTICLES: Record<string, ArticleData> = {
   },
 };
 
-const ALL_ARTICLES_META: Record<string, { title: string; category: string }> = {
-  "refluxo-bebe": { title: "Refluxo em Bebê", category: "Refluxo" },
-  "aplv-guia-completo": { title: "APLV: Sinais e Manejo", category: "Alergias" },
-  "constipacao-infantil": { title: "Constipação Infantil", category: "Constipação" },
-  "introducao-alimentar": { title: "Introdução Alimentar", category: "Alimentação" },
-  "coco-crianca": { title: "Cocô de Criança", category: "Desenvolvimento" },
+const ALL_ARTICLES_META: Record<string, { title: string; category: string; emoji: string }> = {
+  "refluxo-bebe": { title: "Refluxo em Bebê", category: "Refluxo", emoji: "🍼" },
+  "aplv-guia-completo": { title: "APLV: Sinais e Manejo", category: "Alergias", emoji: "🥛" },
+  "constipacao-infantil": { title: "Constipação Infantil", category: "Constipação", emoji: "💪" },
+  "introducao-alimentar": { title: "Introdução Alimentar", category: "Alimentação", emoji: "🥑" },
+  "coco-crianca": { title: "Cocô de Criança", category: "Desenvolvimento", emoji: "🔍" },
 };
+
+const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 
 export default function Article() {
   const [, params] = useRoute("/artigo/:slug");
@@ -196,8 +204,9 @@ export default function Article() {
 
   if (!article) {
     return (
-      <div className="section-spacing bg-background">
+      <div className="section-spacing bg-white">
         <div className="container max-w-3xl text-center">
+          <div className="text-6xl mb-6">📖</div>
           <h1 className="mb-4">Artigo não encontrado</h1>
           <p className="text-muted-foreground mb-8">
             O artigo que você procura não está disponível.
@@ -213,38 +222,47 @@ export default function Article() {
   return (
     <div className="w-full">
       {/* Article Header */}
-      <section className="section-spacing bg-card border-b border-border">
-        <div className="container max-w-3xl">
+      <section
+        className="section-spacing relative overflow-hidden"
+        style={{
+          backgroundImage: `url('${PATTERN_BG}')`,
+          backgroundSize: '400px',
+          backgroundRepeat: 'repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/85" />
+        <div className="absolute top-10 right-[10%] text-4xl animate-float opacity-30 pointer-events-none">{article.emoji}</div>
+
+        <div className="container max-w-3xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {/* Breadcrumb */}
             <Link
               href="/biblioteca"
-              className="text-primary font-semibold text-sm mb-6 inline-flex items-center gap-1 hover:underline font-sans"
+              className="text-salmon font-bold text-sm mb-6 inline-flex items-center gap-1 hover:underline font-display"
             >
               <ArrowLeft className="w-4 h-4" />
               Voltar para Biblioteca
             </Link>
 
             <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full uppercase tracking-wider font-sans">
+              <span className="inline-block px-3 py-1 bg-pastel-pink/30 text-salmon text-xs font-bold rounded-full uppercase tracking-wider font-display">
                 {article.category}
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] mb-6 leading-tight">
               {article.title}
             </h1>
 
-            <div className="flex items-center gap-4 text-muted-foreground text-sm font-sans">
+            <div className="flex items-center gap-4 text-muted-foreground text-sm font-display">
               <span className="flex items-center gap-1.5">
                 <User className="w-4 h-4" />
                 Dr. Bruno
               </span>
-              <span className="text-border">|</span>
+              <span className="text-pastel-peach">|</span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
                 {article.readTime} de leitura
@@ -255,7 +273,7 @@ export default function Article() {
       </section>
 
       {/* Article Content */}
-      <section className="section-spacing bg-background">
+      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
         <div className="container max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -263,7 +281,7 @@ export default function Article() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {/* Introduction */}
-            <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg mb-10">
+            <div className="bg-pastel-blue/15 border-l-4 border-pastel-blue p-6 rounded-2xl mb-10">
               <p className="text-foreground leading-relaxed text-lg">
                 {article.intro}
               </p>
@@ -280,8 +298,8 @@ export default function Article() {
             ))}
 
             {/* When to Seek */}
-            <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-10">
-              <h3 className="text-xl mb-4 text-red-700 flex items-center gap-2">
+            <div className="bg-red-50/80 border-l-4 border-red-400 p-6 rounded-2xl mb-10">
+              <h3 className="text-xl mb-4 text-red-700 flex items-center gap-2 font-display">
                 <AlertTriangle className="w-5 h-5" />
                 Quando Procurar o Pediatra
               </h3>
@@ -297,10 +315,14 @@ export default function Article() {
 
             {/* Guia Alimentar CTA - only for introducao-alimentar article */}
             {slug === "introducao-alimentar" && (
-              <div className="bg-accent/5 border border-accent/20 p-6 md:p-8 rounded-xl mb-10">
-                <div className="flex flex-col md:flex-row md:items-center gap-5">
+              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-pastel-mint/40 via-pastel-yellow/20 to-pastel-peach/30 border-3 border-pastel-mint/30 p-6 md:p-8 mb-10">
+                <div className="absolute top-4 right-6 text-2xl animate-float opacity-50">🥑</div>
+                <div className="flex flex-col md:flex-row md:items-center gap-5 relative z-10">
                   <div className="flex-1">
-                    <span className="text-3xl mb-3 block">🥑</span>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 rounded-full mb-3">
+                      <Sparkles className="w-3 h-3 text-mint-dark" />
+                      <span className="text-xs font-bold text-mint-dark font-display uppercase tracking-wider">Guia Interativo</span>
+                    </div>
                     <h3 className="text-xl mb-2">E Agora, o Que Colocar no Prato?</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       Descubra no nosso guia interativo: cronograma por idade, receitas testadas e os erros que quase todo pai comete sem saber.
@@ -310,7 +332,7 @@ export default function Article() {
                     href="https://guiabebes-xlauyfmx.manus.space"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary !bg-accent hover:!bg-accent/90 whitespace-nowrap inline-flex items-center gap-2"
+                    className="btn-secondary whitespace-nowrap inline-flex items-center gap-2"
                   >
                     Quero Descobrir
                     <ArrowRight className="w-4 h-4" />
@@ -320,9 +342,9 @@ export default function Article() {
             )}
 
             {/* Disclaimer */}
-            <div className="bg-muted/50 p-5 rounded-lg mb-6">
+            <div className="bg-pastel-peach/15 p-5 rounded-2xl mb-6">
               <p className="text-muted-foreground text-sm flex items-start gap-2">
-                <BookOpen className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <BookOpen className="w-4 h-4 mt-0.5 flex-shrink-0 text-salmon" />
                 Este artigo é informativo e educativo. Não substitui avaliação médica profissional. Sempre consulte um pediatra para diagnóstico e tratamento adequado.
               </p>
             </div>
@@ -331,9 +353,9 @@ export default function Article() {
       </section>
 
       {/* Related Articles */}
-      <section className="section-spacing bg-card border-t border-border">
+      <section className="section-spacing bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-2xl md:text-3xl mb-8 text-center">Artigos Relacionados</h2>
+          <h2 className="text-2xl md:text-3xl mb-8 text-center">Artigos <span className="text-salmon">Relacionados</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {article.relatedSlugs.map((relSlug) => {
               const meta = ALL_ARTICLES_META[relSlug];
@@ -342,15 +364,18 @@ export default function Article() {
                 <Link
                   key={relSlug}
                   href={`/artigo/${relSlug}`}
-                  className="card-base p-5 hover:shadow-lg transition-all duration-300 group block"
+                  className="card-base p-5 group block border-t-4 border-pastel-pink"
                 >
-                  <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase tracking-wider font-sans">
-                    {meta.category}
-                  </span>
-                  <h3 className="text-lg mt-3 mb-2 group-hover:text-primary transition-colors">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl">{meta.emoji}</span>
+                    <span className="text-xs font-bold text-salmon bg-pastel-pink/20 px-2 py-0.5 rounded-full uppercase tracking-wider font-display">
+                      {meta.category}
+                    </span>
+                  </div>
+                  <h3 className="text-lg mb-2 group-hover:text-salmon transition-colors">
                     {meta.title}
                   </h3>
-                  <span className="text-primary font-semibold text-sm inline-flex items-center gap-1 font-sans">
+                  <span className="text-salmon font-bold text-sm inline-flex items-center gap-1 font-display">
                     Ler artigo
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -362,17 +387,22 @@ export default function Article() {
       </section>
 
       {/* CTA */}
-      <section className="section-spacing bg-primary text-white">
-        <div className="container max-w-2xl text-center">
-          <h2 className="text-white mb-4">Quer Conversar com um Especialista?</h2>
-          <p className="text-lg mb-8 text-white/85 font-sans">
+      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'oklch(0.75 0.10 25)' }}>
+        <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
+          <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
+            <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
+          </svg>
+        </div>
+        <div className="container max-w-2xl text-center relative z-10">
+          <h2 className="!text-white mb-4">Quer Conversar com um Especialista?</h2>
+          <p className="text-lg mb-8 text-white/85 font-display">
             Agende uma consulta para discussão personalizada sobre o caso do seu filho
           </p>
           <a
             href="https://wa.me/5511999999999"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary"
+            className="btn-secondary !bg-white !text-salmon"
           >
             Agendar Consulta
           </a>

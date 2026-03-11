@@ -1,48 +1,49 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Microscope, Target, Heart, ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
+import InstagramGallery from "@/components/InstagramGallery";
 
-const HERO_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/hero_consultorio-4WcHmd2FZMZP4G9aYDcNQU.webp";
-const ATLAS_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/atlas_header-k6BwF2Q8RLyB6Npdd2f76H.webp";
+/* ── Asset URLs (CDN, lifecycle-tied) ── */
+const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
+const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
+const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_doctor_illustration-RQPad3Sx25q8JyDV3G8fm6.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: [0, 0, 0.2, 1] as const },
+    transition: { delay: i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
 const TRUST_ITEMS = [
   {
-    icon: Microscope,
+    icon: "🔬",
+    color: "bg-pastel-mint",
     title: "Medicina que Explica",
-    description:
-      "Raciocínio clínico transparente, não apenas listas de doenças. Você entenderá o porquê de cada orientação.",
+    description: "Raciocínio clínico transparente. Você entenderá o porquê de cada orientação.",
   },
   {
-    icon: Target,
+    icon: "🎯",
+    color: "bg-pastel-pink",
     title: "Foco Digestivo",
-    description:
-      "Especialização em refluxo, APLV, constipação e dor abdominal. Conhecimento profundo, não genérico.",
+    description: "Especialização em refluxo, APLV, constipação e dor abdominal.",
   },
   {
-    icon: Heart,
+    icon: "💛",
+    color: "bg-pastel-yellow",
     title: "Linguagem Humana",
-    description:
-      "Ciência com acolhimento. Nem acadêmica demais, nem simplista. A medida certa para pais que querem entender.",
+    description: "Ciência com acolhimento. A medida certa para pais que querem entender.",
   },
 ];
 
 const SYMPTOMS = [
-  "Barriga Inchada",
-  "Refluxo",
-  "Intestino Preso",
-  "Fezes Diferentes",
-  "Dor Abdominal",
+  { name: "Barriga Inchada", emoji: "🫧" },
+  { name: "Refluxo", emoji: "🔄" },
+  { name: "Intestino Preso", emoji: "🧱" },
+  { name: "Fezes Diferentes", emoji: "🔍" },
+  { name: "Dor Abdominal", emoji: "😣" },
 ];
 
 const LIBRARY_ARTICLES = [
@@ -50,111 +51,150 @@ const LIBRARY_ARTICLES = [
     slug: "refluxo-bebe",
     title: "Refluxo em Bebê",
     description: "Quando é normal, quando é problema e como manejar",
-    icon: "🔄",
-    category: "Refluxo",
+    emoji: "🍼",
+    color: "border-pastel-pink",
+    bgColor: "bg-pastel-pink/20",
   },
   {
     slug: "aplv-guia-completo",
     title: "APLV",
     description: "Alergia à Proteína do Leite de Vaca: sinais e manejo",
-    icon: "🥛",
-    category: "Alergias",
+    emoji: "🥛",
+    color: "border-pastel-blue",
+    bgColor: "bg-pastel-blue/20",
   },
   {
     slug: "constipacao-infantil",
     title: "Constipação Infantil",
     description: "Além do laxante: entenda as causas reais",
-    icon: "💪",
-    category: "Constipação",
+    emoji: "💪",
+    color: "border-pastel-mint",
+    bgColor: "bg-pastel-mint/20",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="w-full overflow-hidden">
+      {/* ═══════════ HERO ═══════════ */}
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
+        {/* Watercolor background */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${HERO_BG}')` }}
+        />
+        {/* Subtle overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/50" />
 
-        <div className="relative z-10 container text-center text-white max-w-3xl px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-sm md:text-base uppercase tracking-[0.2em] text-white/80 mb-4 font-sans font-medium">
-              Gastroenterologia Pediátrica
-            </p>
-          </motion.div>
-          <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Saúde Digestiva Infantil
-            <br />
-            <span className="text-white/90">com Confiança</span>
-          </motion.h1>
-          <motion.p
-            className="text-lg md:text-xl mb-10 text-white/85 font-sans max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Informações claras, baseadas em ciência, para pais que querem entender e agir
-          </motion.p>
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <Link
-              href="/atlas-sintomas"
-              className="btn-primary !bg-white !text-primary hover:!bg-white/90 !shadow-lg"
-            >
-              Explorar Atlas de Sintomas
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-            <Link
-              href="/contato"
-              className="btn-outline !border-white !text-white hover:!bg-white/10"
-            >
-              Agendar Consulta
-            </Link>
-          </motion.div>
-        </div>
+        {/* Floating decorative elements */}
+        <div className="absolute top-20 left-[10%] w-16 h-16 text-4xl animate-float opacity-60 pointer-events-none">🎈</div>
+        <div className="absolute top-32 right-[15%] w-12 h-12 text-3xl animate-float-slow opacity-50 pointer-events-none">⭐</div>
+        <div className="absolute bottom-40 left-[5%] w-14 h-14 text-3xl animate-float-reverse opacity-40 pointer-events-none">☁️</div>
+        <div className="absolute bottom-32 right-[8%] w-10 h-10 text-2xl animate-wiggle opacity-50 pointer-events-none">🩺</div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-2 bg-white/60 rounded-full" />
+        <div className="relative z-10 container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Text Content */}
+            <div className="max-w-xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border-2 border-pastel-pink/30"
+              >
+                <Sparkles className="w-4 h-4 text-salmon" />
+                <span className="text-sm font-semibold text-foreground/80 font-display">
+                  Gastroenterologia Pediátrica
+                </span>
+              </motion.div>
+
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-[3.5rem] font-display font-extrabold leading-[1.15] mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                style={{ color: 'oklch(0.35 0.03 50)' }}
+              >
+                Saúde Digestiva{" "}
+                <span className="text-salmon">Infantil</span>
+                <br />
+                <span className="text-mint-dark">com Confiança</span>
+              </motion.h1>
+
+              <motion.p
+                className="text-lg md:text-xl mb-8 text-foreground/70 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                Informações claras, baseadas em ciência, para pais que querem entender e agir
+              </motion.p>
+
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.45 }}
+              >
+                <Link href="/atlas-sintomas" className="btn-primary">
+                  Explorar Atlas de Sintomas
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+                <Link href="/contato" className="btn-outline">
+                  Agendar Consulta
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Doctor illustration */}
+            <motion.div
+              className="hidden lg:flex justify-center"
+              initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
+            >
+              <div className="relative">
+                <div className="w-72 h-80 xl:w-80 xl:h-[22rem] rounded-[2rem] overflow-hidden border-4 border-white shadow-xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                  <img
+                    src={DOCTOR_IMG}
+                    alt="Dr. Bruno - Gastropediatra"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                {/* Decorative shapes around the image */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-pastel-pink rounded-full opacity-60 animate-pulse-soft" />
+                <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-pastel-mint rounded-2xl opacity-50 animate-float-slow" />
+                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-pastel-yellow rounded-lg opacity-60 animate-wiggle" />
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="section-spacing bg-background">
+      {/* ═══════════ TRUST SECTION ═══════════ */}
+      <section className="section-spacing relative" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+        {/* Wavy top divider */}
+        <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
+          <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
+            <path fill="white" fillOpacity="0.5" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
+          </svg>
+        </div>
+
         <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-4">Por que Nosso Pediatra?</h2>
+            <span className="text-sm font-bold text-salmon uppercase tracking-wider mb-3 block font-display">
+              Por que nos escolher?
+            </span>
+            <h2 className="mb-4">
+              Nosso <span className="text-salmon">Pediatra</span>
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Um ecossistema completo de informação confiável sobre gastroenterologia pediátrica
             </p>
@@ -164,15 +204,15 @@ export default function Home() {
             {TRUST_ITEMS.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="card-base p-8 text-center hover:shadow-lg transition-shadow duration-300"
+                className="card-base p-8 text-center group"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={fadeUp}
                 custom={idx + 1}
               >
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-5">
-                  <item.icon className="w-7 h-7 text-primary" />
+                <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mx-auto mb-5 text-3xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-500`}>
+                  {item.icon}
                 </div>
                 <h3 className="text-xl mb-3">{item.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -184,40 +224,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Atlas Preview */}
-      <section className="section-spacing bg-card">
-        <div className="container">
+      {/* ═══════════ ATLAS PREVIEW ═══════════ */}
+      <section
+        className="section-spacing relative"
+        style={{
+          backgroundImage: `url('${PATTERN_BG}')`,
+          backgroundSize: '400px',
+          backgroundRepeat: 'repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-white/85" />
+        <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
               custom={0}
             >
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 block font-sans">
-                Ferramenta Interativa
-              </span>
-              <h2 className="mb-6">Atlas de Sintomas</h2>
+              <div className="inline-flex items-center gap-2 bg-pastel-mint/40 rounded-full px-4 py-1.5 mb-4">
+                <span className="text-lg">🗺️</span>
+                <span className="text-sm font-bold text-mint-dark font-display">Ferramenta Interativa</span>
+              </div>
+              <h2 className="mb-6">Atlas de <span className="text-salmon">Sintomas</span></h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Pais pesquisam sintomas, não diagnósticos. Nosso atlas organiza informação de forma intuitiva para você entender o que está acontecendo.
               </p>
-              <ul className="space-y-3 mb-8">
+              <div className="space-y-3 mb-8">
                 {SYMPTOMS.map((symptom, idx) => (
-                  <motion.li
+                  <motion.div
                     key={idx}
-                    className="flex items-center gap-3"
+                    className="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border-2 border-pastel-peach/30 hover:border-salmon/30 transition-colors"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUp}
-                    custom={idx * 0.5}
+                    custom={idx * 0.3}
                   >
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span className="text-foreground font-medium">{symptom}</span>
-                  </motion.li>
+                    <span className="text-xl">{symptom.emoji}</span>
+                    <span className="text-foreground font-semibold font-display">{symptom.name}</span>
+                  </motion.div>
                 ))}
-              </ul>
+              </div>
               <Link href="/atlas-sintomas" className="btn-primary">
                 Acessar Atlas Completo
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -225,41 +274,50 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              className="relative"
+              className="relative flex justify-center"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
               custom={1}
             >
-              <div
-                className="rounded-2xl overflow-hidden h-80 md:h-[28rem] bg-cover bg-center shadow-xl"
-                style={{ backgroundImage: `url('${ATLAS_IMAGE}')` }}
-              />
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-secondary/20 rounded-2xl -z-10" />
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary/10 rounded-xl -z-10" />
+              {/* Decorative card with illustration */}
+              <div className="relative">
+                <div className="w-72 h-80 md:w-80 md:h-[22rem] bg-gradient-to-br from-pastel-pink/40 to-pastel-peach/40 rounded-[2rem] border-4 border-white shadow-xl flex items-center justify-center rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <div className="text-center p-6">
+                    <div className="text-7xl mb-4 animate-float">🩺</div>
+                    <p className="font-display font-bold text-xl text-foreground/80">5 Sintomas</p>
+                    <p className="text-muted-foreground text-sm mt-1">Guia completo e interativo</p>
+                  </div>
+                </div>
+                <div className="absolute -top-5 -right-5 w-14 h-14 bg-pastel-yellow rounded-2xl flex items-center justify-center text-2xl animate-wiggle shadow-md">
+                  ✨
+                </div>
+                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-pastel-mint rounded-full opacity-70 animate-float-slow" />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Library Preview */}
-      <section className="section-spacing bg-background">
+      {/* ═══════════ LIBRARY PREVIEW ═══════════ */}
+      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
         <div className="container">
           <motion.div
             className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
           >
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 block font-sans">
-              Conteúdo Educativo
-            </span>
-            <h2 className="mb-4">Biblioteca Educativa</h2>
+            <div className="inline-flex items-center gap-2 bg-pastel-blue/30 rounded-full px-4 py-1.5 mb-4">
+              <BookOpen className="w-4 h-4 text-foreground/60" />
+              <span className="text-sm font-bold text-foreground/70 font-display">Conteúdo Educativo</span>
+            </div>
+            <h2 className="mb-4">Biblioteca <span className="text-salmon">Educativa</span></h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Artigos profundos que geram autoridade e confiança, escritos por quem entende do assunto
+              Artigos profundos que geram autoridade e confiança
             </p>
           </motion.div>
 
@@ -275,21 +333,18 @@ export default function Home() {
               >
                 <Link
                   href={`/artigo/${article.slug}`}
-                  className="card-base p-7 block hover:shadow-lg transition-all duration-300 group h-full"
+                  className={`card-base p-7 block group h-full border-t-4 ${article.color}`}
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">{article.icon}</span>
-                    <span className="text-xs font-semibold text-primary bg-primary/10 px-2.5 py-1 rounded-full uppercase tracking-wider font-sans">
-                      {article.category}
-                    </span>
+                  <div className={`w-14 h-14 ${article.bgColor} rounded-2xl flex items-center justify-center text-3xl mb-4 rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
+                    {article.emoji}
                   </div>
-                  <h3 className="text-xl mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl mb-2 group-hover:text-salmon transition-colors">
                     {article.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {article.description}
                   </p>
-                  <span className="text-primary font-semibold text-sm inline-flex items-center gap-1 font-sans">
+                  <span className="text-salmon font-bold text-sm inline-flex items-center gap-1 font-display">
                     Ler artigo
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -313,13 +368,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Guia Alimentar Destaque */}
-      <section className="section-spacing bg-card border-t border-border">
+      {/* ═══════════ GUIA ALIMENTAR DESTAQUE ═══════════ */}
+      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'white' }}>
         <div className="container max-w-4xl">
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
           >
@@ -329,47 +384,66 @@ export default function Home() {
               rel="noopener noreferrer"
               className="block group"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-accent/10 via-primary/5 to-secondary/10 border border-accent/20 p-8 md:p-12 hover:shadow-xl transition-all duration-500">
-                <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/15 text-accent text-xs font-semibold rounded-full uppercase tracking-wider font-sans">
-                    Ferramenta Interativa
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-                <div className="max-w-xl">
-                  <span className="text-4xl mb-4 block">🥑</span>
-                  <h2 className="text-2xl md:text-3xl mb-3 group-hover:text-accent transition-colors">
+              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-pastel-mint/40 via-pastel-yellow/20 to-pastel-peach/30 border-3 border-pastel-mint/30 p-8 md:p-12 hover:shadow-xl transition-all duration-500">
+                {/* Floating decorations */}
+                <div className="absolute top-4 right-6 text-3xl animate-float opacity-60">🥑</div>
+                <div className="absolute bottom-6 right-16 text-2xl animate-float-slow opacity-50">🍌</div>
+                <div className="absolute top-1/2 right-8 text-xl animate-wiggle opacity-40">🍎</div>
+
+                <div className="max-w-xl relative z-10">
+                  <div className="inline-flex items-center gap-2 bg-white/60 rounded-full px-3 py-1 mb-4">
+                    <Sparkles className="w-3.5 h-3.5 text-mint-dark" />
+                    <span className="text-xs font-bold text-mint-dark font-display uppercase tracking-wider">Ferramenta Interativa</span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl mb-3 group-hover:text-mint-dark transition-colors">
                     E Quando Chega a Hora da 1ª Papinha?
                   </h2>
                   <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
                     Seu bebê já está pronto? Descubra no nosso guia interativo: o que oferecer primeiro, o que evitar, e os erros que quase todo pai comete sem saber.
                   </p>
-                  <span className="btn-primary !bg-accent hover:!bg-accent/90 inline-flex items-center gap-2">
+                  <span className="btn-secondary inline-flex items-center gap-2">
                     Descobrir Agora
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/5 rounded-full" />
-                <div className="absolute -top-4 right-1/3 w-20 h-20 bg-secondary/5 rounded-full" />
+
+                {/* Decorative circles */}
+                <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-pastel-mint/20 rounded-full" />
+                <div className="absolute -top-6 right-1/4 w-24 h-24 bg-pastel-yellow/20 rounded-full" />
               </div>
             </a>
           </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-spacing bg-primary text-white">
-        <div className="container max-w-2xl text-center">
+      {/* ═══════════ INSTAGRAM GALLERY ═══════════ */}
+      <InstagramGallery />
+
+      {/* ═══════════ CTA SECTION ═══════════ */}
+      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'oklch(0.75 0.10 25)' }}>
+        {/* Wavy top */}
+        <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
+          <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
+            <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
+          </svg>
+        </div>
+
+        {/* Floating decorations */}
+        <div className="absolute top-20 left-[10%] text-3xl animate-float opacity-20">💛</div>
+        <div className="absolute bottom-16 right-[12%] text-2xl animate-float-slow opacity-20">⭐</div>
+        <div className="absolute top-1/2 right-[5%] text-xl animate-wiggle opacity-15">☁️</div>
+
+        <div className="container max-w-2xl text-center relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-6 text-white">Pronto para Agendar uma Consulta?</h2>
-            <p className="text-xl mb-10 text-white/85 font-sans">
+            <Heart className="w-10 h-10 text-white/40 mx-auto mb-4 animate-pulse-soft" />
+            <h2 className="mb-6 !text-white">Pronto para Agendar uma Consulta?</h2>
+            <p className="text-xl mb-10 text-white/85 font-display">
               Consulta a 1 clique de distância. Escolha a forma que funciona melhor para você.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -377,7 +451,7 @@ export default function Home() {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-secondary !bg-white !text-salmon"
               >
                 💬 WhatsApp
               </a>

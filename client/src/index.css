@@ -40,45 +40,55 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "EB Garamond", "Georgia", serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  /* Kindergarten-inspired Typography */
+  --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, sans-serif;
+  --font-script: "Sacramento", cursive;
+  /* Custom pastel colors */
+  --color-pastel-pink: oklch(0.85 0.06 15);
+  --color-pastel-mint: oklch(0.88 0.06 160);
+  --color-pastel-peach: oklch(0.88 0.05 60);
+  --color-pastel-blue: oklch(0.88 0.04 240);
+  --color-pastel-yellow: oklch(0.92 0.06 95);
+  --color-salmon: oklch(0.75 0.10 25);
+  --color-mint-dark: oklch(0.55 0.10 160);
 }
 
 :root {
-  --radius: 0.75rem;
-  /* Nosso Pediatra Design System - "Casa de Médico que Sabe Ouvir" */
-  --background: oklch(0.959 0.013 86.86);     /* #f5f1e8 Creme claro */
-  --foreground: oklch(0.356 0.039 248.99);     /* #2c3e50 Cinza escuro */
-  --primary: oklch(0.646 0.142 253.93);        /* #4a90e2 Azul pediátrico */
-  --primary-foreground: oklch(1.000 0.000 0);  /* #ffffff */
-  --secondary: oklch(0.754 0.085 67.09);       /* #d4a574 Terroso quente */
-  --secondary-foreground: oklch(0.356 0.039 248.99); /* #2c3e50 */
-  --accent: oklch(0.705 0.155 131.40);         /* #7cb342 Verde suave */
-  --accent-foreground: oklch(1.000 0.000 0);   /* #ffffff */
-  --muted: oklch(0.908 0.012 79.76);           /* #e5e0d8 */
-  --muted-foreground: oklch(0.561 0.020 96.32); /* #787568 */
-  --border: oklch(0.807 0.018 67.51);          /* #c8beb4 */
-  --card: oklch(1.000 0.000 0);                /* #ffffff */
-  --card-foreground: oklch(0.356 0.039 248.99); /* #2c3e50 */
+  --radius: 1rem;
+  /* Nosso Pediatra — Kindergarten Pastel Design System */
+  --background: oklch(0.97 0.008 75);        /* Creme suave #FDF5ED */
+  --foreground: oklch(0.35 0.03 50);          /* Marrom escuro quente */
+  --primary: oklch(0.75 0.10 25);             /* Rosa salmão */
+  --primary-foreground: oklch(1.000 0.000 0); /* Branco */
+  --secondary: oklch(0.82 0.08 160);          /* Verde menta */
+  --secondary-foreground: oklch(0.30 0.04 160); /* Verde escuro */
+  --accent: oklch(0.88 0.05 60);              /* Pêssego/peach */
+  --accent-foreground: oklch(0.35 0.03 50);   /* Marrom escuro */
+  --muted: oklch(0.94 0.01 75);               /* Creme mais claro */
+  --muted-foreground: oklch(0.55 0.02 50);    /* Cinza quente */
+  --border: oklch(0.88 0.02 60);              /* Borda suave */
+  --card: oklch(1.000 0.000 0);               /* Branco */
+  --card-foreground: oklch(0.35 0.03 50);     /* Marrom escuro */
   --popover: oklch(1.000 0.000 0);
-  --popover-foreground: oklch(0.356 0.039 248.99);
-  --input: oklch(0.807 0.018 67.51);
-  --ring: oklch(0.646 0.142 253.93);
+  --popover-foreground: oklch(0.35 0.03 50);
+  --input: oklch(0.90 0.02 60);
+  --ring: oklch(0.75 0.10 25);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --chart-1: oklch(0.646 0.142 253.93);
-  --chart-2: oklch(0.754 0.085 67.09);
-  --chart-3: oklch(0.705 0.155 131.40);
-  --chart-4: oklch(0.561 0.020 96.32);
-  --chart-5: oklch(0.356 0.039 248.99);
-  --sidebar: oklch(0.959 0.013 86.86);
-  --sidebar-foreground: oklch(0.356 0.039 248.99);
-  --sidebar-primary: oklch(0.646 0.142 253.93);
+  --chart-1: oklch(0.75 0.10 25);
+  --chart-2: oklch(0.82 0.08 160);
+  --chart-3: oklch(0.88 0.05 60);
+  --chart-4: oklch(0.88 0.04 240);
+  --chart-5: oklch(0.92 0.06 95);
+  --sidebar: oklch(0.97 0.008 75);
+  --sidebar-foreground: oklch(0.35 0.03 50);
+  --sidebar-primary: oklch(0.75 0.10 25);
   --sidebar-primary-foreground: oklch(1.000 0.000 0);
-  --sidebar-accent: oklch(0.908 0.012 79.76);
-  --sidebar-accent-foreground: oklch(0.356 0.039 248.99);
-  --sidebar-border: oklch(0.807 0.018 67.51);
-  --sidebar-ring: oklch(0.646 0.142 253.93);
+  --sidebar-accent: oklch(0.94 0.01 75);
+  --sidebar-accent-foreground: oklch(0.35 0.03 50);
+  --sidebar-border: oklch(0.88 0.02 60);
+  --sidebar-ring: oklch(0.75 0.10 25);
 }
 
 @layer base {
@@ -91,6 +101,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
+    color: oklch(0.35 0.03 50);
   }
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl;
@@ -146,77 +157,127 @@
     }
   }
 
-  /* Nosso Pediatra Custom Button Classes */
+  /* Kindergarten-style Buttons */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    font-family: var(--font-sans);
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
     color: white;
-    background-color: oklch(0.646 0.142 253.93);
-    transition: all 0.2s ease;
+    background-color: oklch(0.75 0.10 25);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 14px oklch(0.75 0.10 25 / 0.25);
   }
   .btn-primary:hover {
-    background-color: oklch(0.58 0.142 253.93);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px oklch(0.646 0.142 253.93 / 0.3);
+    background-color: oklch(0.68 0.12 25);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px oklch(0.75 0.10 25 / 0.35);
   }
 
   .btn-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    font-family: var(--font-sans);
-    color: oklch(0.356 0.039 248.99);
-    background-color: oklch(0.754 0.085 67.09);
-    transition: all 0.2s ease;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: oklch(0.30 0.04 160);
+    background-color: oklch(0.82 0.08 160);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 14px oklch(0.82 0.08 160 / 0.25);
   }
   .btn-secondary:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+    background-color: oklch(0.76 0.10 160);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px oklch(0.82 0.08 160 / 0.35);
   }
 
   .btn-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    font-family: var(--font-sans);
-    color: oklch(0.646 0.142 253.93);
-    border: 2px solid oklch(0.646 0.142 253.93);
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: oklch(0.75 0.10 25);
+    border: 2.5px solid oklch(0.75 0.10 25);
     background: transparent;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .btn-outline:hover {
-    background-color: oklch(0.646 0.142 253.93 / 0.1);
+    background-color: oklch(0.75 0.10 25 / 0.08);
+    transform: translateY(-2px);
   }
 
   .card-base {
     background-color: oklch(1.000 0.000 0);
-    color: oklch(0.356 0.039 248.99);
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    border: 1px solid oklch(0.807 0.018 67.51);
+    color: oklch(0.35 0.03 50);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.03);
+    border: 2px solid oklch(0.92 0.02 60);
+    transition: all 0.3s ease;
+  }
+  .card-base:hover {
+    box-shadow: 0 8px 30px rgb(0 0 0 / 0.08);
+    border-color: oklch(0.85 0.06 15);
   }
 
   .section-spacing {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
   @media (min-width: 768px) {
     .section-spacing {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+      padding-top: 7rem;
+      padding-bottom: 7rem;
     }
   }
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1.5deg); }
+}
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(1deg); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.animate-float-reverse {
+  animation: float-reverse 5s ease-in-out infinite;
+}
+.animate-wiggle {
+  animation: wiggle 3s ease-in-out infinite;
+}
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
 }
 
 /* Smooth scrolling */
@@ -224,23 +285,39 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - pastel style */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: oklch(0.959 0.013 86.86);
+  background: oklch(0.97 0.008 75);
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.807 0.018 67.51);
+  background: oklch(0.85 0.06 15);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.646 0.142 253.93);
+  background: oklch(0.75 0.10 25);
 }
 
 /* Selection color */
 ::selection {
-  background-color: oklch(0.646 0.142 253.93 / 0.2);
-  color: oklch(0.356 0.039 248.99);
+  background-color: oklch(0.85 0.06 15 / 0.3);
+  color: oklch(0.35 0.03 50);
+}
+
+/* Wavy divider SVG helper */
+.wavy-top {
+  position: relative;
+}
+.wavy-top::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23FDF5ED' d='M0,20 C240,40 480,0 720,20 C960,40 1200,0 1440,20 L1440,0 L0,0 Z'/%3E%3C/svg%3E") repeat-x;
+  background-size: 1440px 40px;
+  z-index: 1;
 }

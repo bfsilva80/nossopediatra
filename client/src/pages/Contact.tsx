@@ -1,40 +1,36 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  MessageCircle,
-  Mail,
-  MapPin,
-  ChevronDown,
-  Send,
-} from "lucide-react";
+import { ChevronDown, Send, Sparkles } from "lucide-react";
+
+const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 
 const CONTACT_METHODS = [
   {
-    icon: MessageCircle,
+    emoji: "💬",
     title: "WhatsApp",
     description: "Resposta rápida para dúvidas e agendamento",
     link: "https://wa.me/5511999999999",
     linkText: "Enviar Mensagem",
-    color: "bg-green-50 border-green-200",
-    iconColor: "text-green-600",
+    bgColor: "bg-pastel-mint/30",
+    borderColor: "border-pastel-mint",
   },
   {
-    icon: Mail,
+    emoji: "📧",
     title: "Email",
     description: "Para dúvidas mais detalhadas",
     link: "mailto:contato@nossopediatra.com.br",
     linkText: "Enviar Email",
-    color: "bg-blue-50 border-blue-200",
-    iconColor: "text-blue-600",
+    bgColor: "bg-pastel-blue/30",
+    borderColor: "border-pastel-blue",
   },
   {
-    icon: MapPin,
+    emoji: "📍",
     title: "Consultório",
     description: "Rua Exemplo, 123 - São Paulo, SP",
     link: "#",
     linkText: "Ver Localização",
-    color: "bg-orange-50 border-orange-200",
-    iconColor: "text-orange-600",
+    bgColor: "bg-pastel-peach/30",
+    borderColor: "border-pastel-peach",
   },
 ];
 
@@ -92,17 +88,29 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="section-spacing bg-card border-b border-border">
-        <div className="container max-w-3xl text-center">
+      <section
+        className="section-spacing relative overflow-hidden"
+        style={{
+          backgroundImage: `url('${PATTERN_BG}')`,
+          backgroundSize: '400px',
+          backgroundRepeat: 'repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80" />
+        <div className="absolute top-10 right-[10%] text-3xl animate-float opacity-40 pointer-events-none">💌</div>
+        <div className="absolute bottom-8 left-[8%] text-2xl animate-float-slow opacity-30 pointer-events-none">☁️</div>
+
+        <div className="container max-w-3xl text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 block font-sans">
-              Fale Conosco
-            </span>
-            <h1 className="mb-4">Entre em Contato</h1>
+            <div className="inline-flex items-center gap-2 bg-pastel-pink/30 rounded-full px-4 py-1.5 mb-4">
+              <Sparkles className="w-4 h-4 text-salmon" />
+              <span className="text-sm font-bold text-salmon font-display">Fale Conosco</span>
+            </div>
+            <h1 className="mb-4">Entre em <span className="text-salmon">Contato</span></h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Estamos aqui para ajudar. Escolha a forma que funciona melhor para você.
             </p>
@@ -111,7 +119,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Methods */}
-      <section className="section-spacing bg-background">
+      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {CONTACT_METHODS.map((method, idx) => (
@@ -120,23 +128,21 @@ export default function Contact() {
                 href={method.link}
                 target={method.link.startsWith("http") ? "_blank" : undefined}
                 rel={method.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`card-base p-6 text-center hover:shadow-lg transition-all duration-300 group block border ${method.color}`}
+                className={`card-base p-6 text-center hover:shadow-lg transition-all duration-300 group block border-t-4 ${method.borderColor}`}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
                 custom={idx}
               >
-                <div
-                  className={`w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 ${method.iconColor} bg-white shadow-sm`}
-                >
-                  <method.icon className="w-7 h-7" />
+                <div className={`w-16 h-16 ${method.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-4 text-3xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
+                  {method.emoji}
                 </div>
                 <h3 className="text-xl mb-2">{method.title}</h3>
                 <p className="text-muted-foreground text-sm mb-4">
                   {method.description}
                 </p>
-                <span className="text-primary font-semibold text-sm inline-flex items-center gap-1 font-sans group-hover:underline">
+                <span className="text-salmon font-bold text-sm inline-flex items-center gap-1 font-display group-hover:underline">
                   {method.linkText} →
                 </span>
               </motion.a>
@@ -153,11 +159,11 @@ export default function Contact() {
             custom={0}
           >
             <h2 className="text-2xl md:text-3xl mb-8 text-center">
-              Formulário de Contato
+              Formulário de <span className="text-salmon">Contato</span>
             </h2>
             <form onSubmit={handleSubmit} className="card-base p-6 md:p-8 space-y-5">
               <div>
-                <label className="block text-sm font-semibold mb-2 font-sans">
+                <label className="block text-sm font-bold mb-2 font-display">
                   Nome Completo *
                 </label>
                 <input
@@ -166,14 +172,14 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary bg-background font-sans text-sm transition-colors"
+                  className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
                   placeholder="Seu nome"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm font-semibold mb-2 font-sans">
+                  <label className="block text-sm font-bold mb-2 font-display">
                     Email *
                   </label>
                   <input
@@ -182,12 +188,12 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary bg-background font-sans text-sm transition-colors"
+                    className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
                     placeholder="seu@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2 font-sans">
+                  <label className="block text-sm font-bold mb-2 font-display">
                     Telefone *
                   </label>
                   <input
@@ -196,14 +202,14 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary bg-background font-sans text-sm transition-colors"
+                    className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
                     placeholder="(11) 99999-9999"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 font-sans">
+                <label className="block text-sm font-bold mb-2 font-display">
                   Idade da Criança *
                 </label>
                 <select
@@ -211,7 +217,7 @@ export default function Contact() {
                   value={formData.childAge}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary bg-background font-sans text-sm transition-colors"
+                  className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
                 >
                   <option value="">Selecione...</option>
                   <option value="0-3m">0-3 meses</option>
@@ -224,7 +230,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 font-sans">
+                <label className="block text-sm font-bold mb-2 font-display">
                   Qual é sua Dúvida ou Preocupação? *
                 </label>
                 <textarea
@@ -233,7 +239,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary bg-background font-sans text-sm transition-colors resize-none"
+                  className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors resize-none"
                   placeholder="Descreva o sintoma ou dúvida que você tem sobre a saúde digestiva do seu filho..."
                 />
               </div>
@@ -255,7 +261,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ */}
-      <section className="section-spacing bg-card border-t border-border">
+      <section className="section-spacing bg-white">
         <div className="container max-w-3xl">
           <motion.div
             className="text-center mb-10"
@@ -265,14 +271,14 @@ export default function Contact() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-4">Perguntas Frequentes</h2>
+            <h2 className="mb-4">Perguntas <span className="text-salmon">Frequentes</span></h2>
           </motion.div>
 
           <div className="space-y-3">
             {FAQ_ITEMS.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="border border-border rounded-xl overflow-hidden"
+                className="bg-white border-2 border-pastel-peach/20 rounded-2xl overflow-hidden hover:border-pastel-pink/30 transition-colors"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -281,13 +287,13 @@ export default function Contact() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-muted/30 transition-colors"
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-pastel-peach/5 transition-colors"
                 >
-                  <span className="font-semibold text-foreground text-sm md:text-base pr-4">
+                  <span className="font-bold text-foreground text-sm md:text-base pr-4 font-display">
                     {item.q}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-200 ${
+                    className={`w-5 h-5 text-salmon flex-shrink-0 transition-transform duration-200 ${
                       openFaq === idx ? "rotate-180" : ""
                     }`}
                   />
