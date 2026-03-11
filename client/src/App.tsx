@@ -13,6 +13,7 @@ import Library from "./pages/Library";
 import Article from "./pages/Article";
 import Consultations from "./pages/Consultations";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/artigo/:slug" component={Article} />
       <Route path="/consultas" component={Consultations} />
       <Route path="/contato" component={Contact} />
+      <Route path="/sobre" component={About} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
