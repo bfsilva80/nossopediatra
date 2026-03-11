@@ -241,14 +241,14 @@ export default function Article() {
           >
             <Link
               href="/biblioteca"
-              className="text-salmon font-bold text-sm mb-6 inline-flex items-center gap-1 hover:underline font-display"
+              className="text-blue font-bold text-sm mb-6 inline-flex items-center gap-1 hover:underline font-display"
             >
               <ArrowLeft className="w-4 h-4" />
               Voltar para Biblioteca
             </Link>
 
             <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-pastel-pink/30 text-salmon text-xs font-bold rounded-full uppercase tracking-wider font-display">
+              <span className="inline-block px-3 py-1 bg-blue/10 text-blue text-xs font-bold rounded-full uppercase tracking-wider font-display">
                 {article.category}
               </span>
             </div>
@@ -262,7 +262,7 @@ export default function Article() {
                 <User className="w-4 h-4" />
                 Dr. Bruno
               </span>
-              <span className="text-pastel-peach">|</span>
+              <span className="text-golden">|</span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
                 {article.readTime} de leitura
@@ -273,7 +273,7 @@ export default function Article() {
       </section>
 
       {/* Article Content */}
-      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+      <section className="section-spacing bg-cream">
         <div className="container max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -281,7 +281,7 @@ export default function Article() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {/* Introduction */}
-            <div className="bg-pastel-blue/15 border-l-4 border-pastel-blue p-6 rounded-2xl mb-10">
+            <div className="bg-blue/8 border-l-4 border-blue p-6 rounded-2xl mb-10">
               <p className="text-foreground leading-relaxed text-lg">
                 {article.intro}
               </p>
@@ -315,13 +315,13 @@ export default function Article() {
 
             {/* Guia Alimentar CTA - only for introducao-alimentar article */}
             {slug === "introducao-alimentar" && (
-              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-pastel-mint/40 via-pastel-yellow/20 to-pastel-peach/30 border-3 border-pastel-mint/30 p-6 md:p-8 mb-10">
+              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald/10 via-golden/15 to-blue/10 border-3 border-emerald/20 p-6 md:p-8 mb-10">
                 <div className="absolute top-4 right-6 text-2xl animate-float opacity-50">🥑</div>
                 <div className="flex flex-col md:flex-row md:items-center gap-5 relative z-10">
                   <div className="flex-1">
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 rounded-full mb-3">
-                      <Sparkles className="w-3 h-3 text-mint-dark" />
-                      <span className="text-xs font-bold text-mint-dark font-display uppercase tracking-wider">Guia Interativo</span>
+                      <Sparkles className="w-3 h-3 text-emerald" />
+                      <span className="text-xs font-bold text-emerald font-display uppercase tracking-wider">Guia Interativo</span>
                     </div>
                     <h3 className="text-xl mb-2">E Agora, o Que Colocar no Prato?</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
@@ -342,9 +342,9 @@ export default function Article() {
             )}
 
             {/* Disclaimer */}
-            <div className="bg-pastel-peach/15 p-5 rounded-2xl mb-6">
+            <div className="bg-golden/10 p-5 rounded-2xl mb-6">
               <p className="text-muted-foreground text-sm flex items-start gap-2">
-                <BookOpen className="w-4 h-4 mt-0.5 flex-shrink-0 text-salmon" />
+                <BookOpen className="w-4 h-4 mt-0.5 flex-shrink-0 text-blue" />
                 Este artigo é informativo e educativo. Não substitui avaliação médica profissional. Sempre consulte um pediatra para diagnóstico e tratamento adequado.
               </p>
             </div>
@@ -355,7 +355,7 @@ export default function Article() {
       {/* Related Articles */}
       <section className="section-spacing bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-2xl md:text-3xl mb-8 text-center">Artigos <span className="text-salmon">Relacionados</span></h2>
+          <h2 className="text-2xl md:text-3xl mb-8 text-center">Artigos <span className="text-coral">Relacionados</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {article.relatedSlugs.map((relSlug) => {
               const meta = ALL_ARTICLES_META[relSlug];
@@ -364,18 +364,18 @@ export default function Article() {
                 <Link
                   key={relSlug}
                   href={`/artigo/${relSlug}`}
-                  className="card-base p-5 group block border-t-4 border-pastel-pink"
+                  className="card-base p-5 group block border-t-4 border-blue/30"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-2xl">{meta.emoji}</span>
-                    <span className="text-xs font-bold text-salmon bg-pastel-pink/20 px-2 py-0.5 rounded-full uppercase tracking-wider font-display">
+                    <span className="text-xs font-bold text-blue bg-blue/10 px-2 py-0.5 rounded-full uppercase tracking-wider font-display">
                       {meta.category}
                     </span>
                   </div>
-                  <h3 className="text-lg mb-2 group-hover:text-salmon transition-colors">
+                  <h3 className="text-lg mb-2 group-hover:text-blue transition-colors">
                     {meta.title}
                   </h3>
-                  <span className="text-salmon font-bold text-sm inline-flex items-center gap-1 font-display">
+                  <span className="text-blue font-bold text-sm inline-flex items-center gap-1 font-display">
                     Ler artigo
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -387,7 +387,7 @@ export default function Article() {
       </section>
 
       {/* CTA */}
-      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'oklch(0.75 0.10 25)' }}>
+      <section className="section-spacing relative overflow-hidden bg-teal">
         <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
           <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
             <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
@@ -402,7 +402,7 @@ export default function Article() {
             href="https://wa.me/5511999999999"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary !bg-white !text-salmon"
+            className="btn-secondary !bg-white !text-teal"
           >
             Agendar Consulta
           </a>

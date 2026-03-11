@@ -10,8 +10,8 @@ const SYMPTOMS = [
     name: "Barriga Inchada",
     fullName: "Barriga Inchada / Distensão Abdominal",
     emoji: "🫧",
-    color: "from-pastel-pink/40 to-pastel-peach/30",
-    borderColor: "border-pastel-pink",
+    color: "from-coral/20 to-golden/20",
+    borderColor: "border-coral/40",
     description: "Quando a barriguinha fica inchada, dura ou desconfortável",
     whatIs:
       "A distensão abdominal é o aumento do volume da barriga do bebê ou da criança. Pode ser causada por acúmulo de gases, retenção de fezes ou até mesmo por engolir ar durante a alimentação. Na maioria das vezes é benigna, mas merece atenção quando acompanhada de outros sintomas.",
@@ -39,8 +39,8 @@ const SYMPTOMS = [
     name: "Refluxo",
     fullName: "Refluxo / Regurgitação",
     emoji: "🔄",
-    color: "from-pastel-blue/40 to-pastel-mint/30",
-    borderColor: "border-pastel-blue",
+    color: "from-blue/15 to-emerald/15",
+    borderColor: "border-blue/40",
     description: "Quando o alimento volta pela boca após alimentação",
     whatIs:
       "O refluxo gastroesofágico é o retorno do conteúdo gástrico para o esôfago e, às vezes, até a boca. Em bebês, é muito comum nos primeiros meses de vida devido à imaturidade do esfíncter esofágico inferior. A maioria melhora naturalmente até os 12-18 meses.",
@@ -68,8 +68,8 @@ const SYMPTOMS = [
     name: "Intestino Preso",
     fullName: "Intestino Preso / Constipação",
     emoji: "🧱",
-    color: "from-pastel-yellow/40 to-pastel-peach/30",
-    borderColor: "border-pastel-yellow",
+    color: "from-golden/25 to-coral/15",
+    borderColor: "border-golden/50",
     description: "Quando a criança tem dificuldade para evacuar ou fezes muito duras",
     whatIs:
       "A constipação intestinal é caracterizada pela dificuldade em evacuar, fezes endurecidas ou intervalos prolongados entre as evacuações. É muito comum durante a introdução alimentar e no período de desfralde. O manejo adequado evita complicações como fissuras anais.",
@@ -97,8 +97,8 @@ const SYMPTOMS = [
     name: "Fezes Diferentes",
     fullName: "Fezes Diferentes / Alteração de Padrão",
     emoji: "🔍",
-    color: "from-pastel-mint/40 to-pastel-blue/30",
-    borderColor: "border-pastel-mint",
+    color: "from-emerald/15 to-blue/15",
+    borderColor: "border-emerald/40",
     description: "Quando as fezes mudam de cor, consistência ou frequência",
     whatIs:
       "Mudanças no padrão das fezes são muito comuns em crianças e nem sempre indicam doença. A cor, consistência e frequência variam conforme a idade, alimentação e estado de saúde. Conhecer o padrão normal do seu filho é o primeiro passo para identificar alterações relevantes.",
@@ -126,8 +126,8 @@ const SYMPTOMS = [
     name: "Dor Abdominal",
     fullName: "Dor Abdominal / Cólica",
     emoji: "😣",
-    color: "from-pastel-peach/40 to-pastel-pink/30",
-    borderColor: "border-pastel-peach",
+    color: "from-teal/15 to-golden/15",
+    borderColor: "border-teal/40",
     description: "Quando a criança apresenta choro persistente e desconforto abdominal",
     whatIs:
       "A dor abdominal é uma das queixas mais comuns na pediatria. Em bebês, manifesta-se como choro intenso e flexão das pernas. Em crianças maiores, pode ser localizada ou difusa. As causas variam desde cólicas funcionais benignas até condições que necessitam investigação.",
@@ -179,11 +179,11 @@ export default function SymptomAtlas() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-pastel-mint/40 rounded-full px-4 py-1.5 mb-4">
-              <Sparkles className="w-4 h-4 text-mint-dark" />
-              <span className="text-sm font-bold text-mint-dark font-display">Ferramenta Interativa</span>
+            <div className="inline-flex items-center gap-2 bg-emerald/10 rounded-full px-4 py-1.5 mb-4">
+              <Sparkles className="w-4 h-4 text-teal" />
+              <span className="text-sm font-bold text-teal font-display">Ferramenta Interativa</span>
             </div>
-            <h1 className="mb-4">Atlas de <span className="text-salmon">Sintomas</span></h1>
+            <h1 className="mb-4">Atlas de <span className="text-coral">Sintomas</span></h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Pais pesquisam sintomas, não diagnósticos. Explore cada um para entender melhor o que pode estar acontecendo com seu filho.
             </p>
@@ -192,7 +192,7 @@ export default function SymptomAtlas() {
       </section>
 
       {/* Main Content */}
-      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+      <section className="section-spacing bg-cream">
         <div className="container">
           {/* Symptom Selector - Playful rounded cards */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mb-12">
@@ -203,7 +203,7 @@ export default function SymptomAtlas() {
                 className={`p-4 md:p-5 rounded-2xl transition-all duration-300 border-3 text-center group ${
                   selectedId === symptom.id
                     ? `bg-gradient-to-br ${symptom.color} ${symptom.borderColor} shadow-lg`
-                    : "bg-white border-pastel-peach/30 hover:border-pastel-pink/50 hover:shadow-md"
+                    : "bg-white border-golden/20 hover:border-blue/30 hover:shadow-md"
                 }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -229,8 +229,7 @@ export default function SymptomAtlas() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.35 }}
-              className="card-base p-6 md:p-10 lg:p-12 border-t-4"
-              style={{ borderTopColor: 'oklch(0.75 0.10 25)' }}
+              className="card-base p-6 md:p-10 lg:p-12 border-t-4 border-t-blue"
             >
               {/* Title */}
               <div className="mb-10">
@@ -247,9 +246,9 @@ export default function SymptomAtlas() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 {/* O que é */}
-                <div className="bg-pastel-blue/10 rounded-2xl p-6">
+                <div className="bg-blue/5 rounded-2xl p-6">
                   <h3 className="text-xl mb-4 flex items-center gap-2">
-                    <Info className="w-5 h-5 text-salmon" />
+                    <Info className="w-5 h-5 text-blue" />
                     O que é?
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -258,12 +257,12 @@ export default function SymptomAtlas() {
                 </div>
 
                 {/* Causas Comuns */}
-                <div className="bg-pastel-peach/15 rounded-2xl p-6">
+                <div className="bg-golden/10 rounded-2xl p-6">
                   <h3 className="text-xl mb-4">Causas Comuns</h3>
                   <ul className="space-y-2.5">
                     {selectedSymptom.commonCauses.map((cause, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <span className="w-2 h-2 bg-salmon rounded-full mt-2 flex-shrink-0" />
+                        <span className="w-2 h-2 bg-coral rounded-full mt-2 flex-shrink-0" />
                         <span className="text-muted-foreground">{cause}</span>
                       </li>
                     ))}
@@ -288,15 +287,15 @@ export default function SymptomAtlas() {
               </div>
 
               {/* Dicas Práticas */}
-              <div className="bg-pastel-mint/20 border-l-4 border-pastel-mint p-6 rounded-2xl mb-8">
-                <h3 className="text-xl mb-4 text-mint-dark flex items-center gap-2 font-display">
+              <div className="bg-emerald/8 border-l-4 border-emerald p-6 rounded-2xl mb-8">
+                <h3 className="text-xl mb-4 text-teal flex items-center gap-2 font-display">
                   <Lightbulb className="w-5 h-5" />
                   Dicas Práticas
                 </h3>
                 <ul className="space-y-2">
                   {selectedSymptom.tips.map((tip, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <span className="text-mint-dark font-bold mt-0.5">✓</span>
+                      <span className="text-emerald font-bold mt-0.5">✓</span>
                       <span className="text-foreground/80">{tip}</span>
                     </li>
                   ))}
@@ -304,7 +303,7 @@ export default function SymptomAtlas() {
               </div>
 
               {/* CTA */}
-              <div className="pt-6 border-t-2 border-pastel-pink/20 text-center">
+              <div className="pt-6 border-t-2 border-blue/10 text-center">
                 <p className="text-muted-foreground mb-4 font-display">
                   Quer entender melhor este sintoma com um especialista?
                 </p>
@@ -326,9 +325,9 @@ export default function SymptomAtlas() {
       {/* Educational Note */}
       <section className="section-spacing bg-white">
         <div className="container max-w-2xl">
-          <div className="bg-pastel-blue/15 border-l-4 border-pastel-blue p-6 rounded-2xl">
+          <div className="bg-blue/8 border-l-4 border-blue p-6 rounded-2xl">
             <h3 className="font-bold text-foreground mb-2 flex items-center gap-2 font-display">
-              <Info className="w-5 h-5 text-salmon" />
+              <Info className="w-5 h-5 text-blue" />
               Informação Educativa
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">

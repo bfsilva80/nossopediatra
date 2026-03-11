@@ -30,7 +30,7 @@ export default function Navigation() {
     <nav
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b-2 border-pastel-pink/30"
+          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b-2 border-blue/15"
           : "bg-white/70 backdrop-blur-sm border-b-2 border-transparent"
       }`}
     >
@@ -40,7 +40,7 @@ export default function Navigation() {
           href="/"
           className="flex items-center gap-2.5 hover:scale-105 transition-transform duration-300"
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-salmon to-pastel-pink rounded-2xl flex items-center justify-center shadow-md rotate-[-3deg] hover:rotate-0 transition-transform">
+          <div className="w-10 h-10 bg-gradient-to-br from-teal to-blue rounded-2xl flex items-center justify-center shadow-md rotate-[-3deg] hover:rotate-0 transition-transform">
             <span className="text-white font-bold text-sm font-display">NP</span>
           </div>
           <div className="hidden sm:block">
@@ -61,8 +61,8 @@ export default function Navigation() {
               href={link.href}
               className={`text-sm font-semibold font-display px-4 py-2 rounded-full transition-all duration-300 ${
                 location === link.href
-                  ? "text-primary bg-pastel-pink/30"
-                  : "text-foreground/70 hover:text-foreground hover:bg-pastel-peach/30"
+                  ? "text-blue bg-blue/10"
+                  : "text-foreground/70 hover:text-foreground hover:bg-golden/20"
               }`}
             >
               {link.label}
@@ -72,7 +72,7 @@ export default function Navigation() {
             href={GUIA_ALIMENTAR_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold font-display px-4 py-2 rounded-full text-mint-dark hover:bg-pastel-mint/30 transition-all duration-300 inline-flex items-center gap-1.5"
+            className="text-sm font-semibold font-display px-4 py-2 rounded-full text-emerald hover:bg-emerald/10 transition-all duration-300 inline-flex items-center gap-1.5"
           >
             1ª Papinha?
             <ExternalLink className="w-3 h-3" />
@@ -88,7 +88,7 @@ export default function Navigation() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2.5 hover:bg-pastel-peach/30 rounded-xl transition-colors"
+          className="md:hidden p-2.5 hover:bg-golden/20 rounded-xl transition-colors"
           aria-label="Menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -103,7 +103,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="md:hidden border-t-2 border-pastel-pink/20 bg-white overflow-hidden"
+            className="md:hidden border-t-2 border-blue/10 bg-white overflow-hidden"
           >
             <div className="container py-4 space-y-1">
               {NAV_LINKS.map((link, idx) => (
@@ -117,8 +117,8 @@ export default function Navigation() {
                     href={link.href}
                     className={`block py-3 px-4 rounded-2xl text-sm font-semibold font-display transition-all ${
                       location === link.href
-                        ? "text-primary bg-pastel-pink/20"
-                        : "text-foreground/70 hover:text-foreground hover:bg-pastel-peach/20"
+                        ? "text-blue bg-blue/10"
+                        : "text-foreground/70 hover:text-foreground hover:bg-golden/15"
                     }`}
                   >
                     {link.label}
@@ -134,7 +134,7 @@ export default function Navigation() {
                   href={GUIA_ALIMENTAR_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-3 px-4 rounded-2xl text-sm font-semibold font-display text-mint-dark hover:bg-pastel-mint/20 transition-all flex items-center gap-1.5"
+                  className="py-3 px-4 rounded-2xl text-sm font-semibold font-display text-emerald hover:bg-emerald/10 transition-all flex items-center gap-1.5"
                 >
                   1ª Papinha?
                   <ExternalLink className="w-3 h-3" />

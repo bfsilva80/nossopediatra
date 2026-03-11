@@ -70,7 +70,7 @@ export default function InstagramGallery() {
       {/* Wavy top divider */}
       <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
         <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
-          <path fill="oklch(0.97 0.008 75)" fillOpacity="0.5" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
+          <path fill="#f6f0e6" fillOpacity="0.5" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
         </svg>
       </div>
 
@@ -91,7 +91,7 @@ export default function InstagramGallery() {
             className="inline-flex flex-col items-center group"
           >
             <div className="relative mb-4">
-              <div className="w-20 h-20 rounded-full p-[3px] bg-gradient-to-tr from-salmon via-pastel-pink to-pastel-peach">
+              <div className="w-20 h-20 rounded-full p-[3px] bg-gradient-to-tr from-coral via-golden to-blue">
                 <img
                   src={PROFILE_IMG}
                   alt="@nossopediatra"
@@ -102,8 +102,8 @@ export default function InstagramGallery() {
                 <Instagram className="w-3.5 h-3.5 text-white" />
               </div>
             </div>
-            <h2 className="mb-1 group-hover:text-salmon transition-colors">
-              @nosso<span className="text-salmon">pediatra</span>
+            <h2 className="mb-1 group-hover:text-blue transition-colors">
+              @nosso<span className="text-coral">pediatra</span>
             </h2>
             <p className="text-muted-foreground text-sm max-w-md mx-auto leading-relaxed font-display">
               Barriga de criança tem história. Aprendi ouvir com ciência, abraço e fé.
@@ -123,7 +123,7 @@ export default function InstagramGallery() {
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square rounded-2xl overflow-hidden border-2 border-pastel-peach/20 hover:border-salmon/30 transition-all duration-300"
+              className="group relative aspect-square rounded-2xl overflow-hidden border-2 border-golden/20 hover:border-blue/30 transition-all duration-300"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}

@@ -40,55 +40,64 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Kindergarten-inspired Typography */
+  /* Typography */
   --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
   --font-sans: "Nunito", system-ui, sans-serif;
   --font-script: "Sacramento", cursive;
-  /* Custom pastel colors */
-  --color-pastel-pink: oklch(0.85 0.06 15);
-  --color-pastel-mint: oklch(0.88 0.06 160);
-  --color-pastel-peach: oklch(0.88 0.05 60);
-  --color-pastel-blue: oklch(0.88 0.04 240);
-  --color-pastel-yellow: oklch(0.92 0.06 95);
-  --color-salmon: oklch(0.75 0.10 25);
-  --color-mint-dark: oklch(0.55 0.10 160);
+  /* New Palette Custom Colors */
+  --color-teal: oklch(0.337 0.075 245.7);         /* #0e3a5b - dark teal */
+  --color-coral: oklch(0.640 0.194 14.7);          /* #e94b66 - coral pink */
+  --color-golden: oklch(0.876 0.108 87.1);         /* #f5d280 - golden yellow */
+  --color-emerald: oklch(0.777 0.160 166.6);       /* #06d6a0 - emerald green */
+  --color-blue: oklch(0.609 0.182 257.3);          /* #2f80ed - bright blue */
+  --color-cream: oklch(0.957 0.015 80.7);          /* #f6f0e6 - cream ivory */
+  --color-charcoal: oklch(0.298 0.008 240.1);      /* #2a2e31 - dark charcoal */
+  --color-slate: oklch(0.554 0.041 257.4);         /* #64748b - slate gray */
+  /* Pastel variants for decorative elements */
+  --color-pastel-pink: oklch(0.88 0.08 14);
+  --color-pastel-mint: oklch(0.90 0.06 166);
+  --color-pastel-peach: oklch(0.92 0.05 87);
+  --color-pastel-blue: oklch(0.88 0.06 257);
+  --color-pastel-yellow: oklch(0.94 0.06 87);
+  --color-salmon: oklch(0.640 0.194 14.7);
+  --color-mint-dark: oklch(0.337 0.075 245.7);
 }
 
 :root {
   --radius: 1rem;
-  /* Nosso Pediatra — Kindergarten Pastel Design System */
-  --background: oklch(0.97 0.008 75);        /* Creme suave #FDF5ED */
-  --foreground: oklch(0.35 0.03 50);          /* Marrom escuro quente */
-  --primary: oklch(0.75 0.10 25);             /* Rosa salmão */
-  --primary-foreground: oklch(1.000 0.000 0); /* Branco */
-  --secondary: oklch(0.82 0.08 160);          /* Verde menta */
-  --secondary-foreground: oklch(0.30 0.04 160); /* Verde escuro */
-  --accent: oklch(0.88 0.05 60);              /* Pêssego/peach */
-  --accent-foreground: oklch(0.35 0.03 50);   /* Marrom escuro */
-  --muted: oklch(0.94 0.01 75);               /* Creme mais claro */
-  --muted-foreground: oklch(0.55 0.02 50);    /* Cinza quente */
-  --border: oklch(0.88 0.02 60);              /* Borda suave */
-  --card: oklch(1.000 0.000 0);               /* Branco */
-  --card-foreground: oklch(0.35 0.03 50);     /* Marrom escuro */
+  /* Nosso Pediatra — New Palette Design System */
+  --background: oklch(0.957 0.015 80.7);           /* #f6f0e6 cream ivory */
+  --foreground: oklch(0.298 0.008 240.1);           /* #2a2e31 dark charcoal */
+  --primary: oklch(0.609 0.182 257.3);              /* #2f80ed bright blue */
+  --primary-foreground: oklch(1.000 0.000 0);       /* white */
+  --secondary: oklch(0.777 0.160 166.6);            /* #06d6a0 emerald green */
+  --secondary-foreground: oklch(0.298 0.008 240.1); /* dark charcoal */
+  --accent: oklch(0.876 0.108 87.1);                /* #f5d280 golden yellow */
+  --accent-foreground: oklch(0.298 0.008 240.1);    /* dark charcoal */
+  --muted: oklch(0.94 0.010 80);                    /* lighter cream */
+  --muted-foreground: oklch(0.554 0.041 257.4);     /* #64748b slate gray */
+  --border: oklch(0.90 0.015 80);                   /* soft cream border */
+  --card: oklch(1.000 0.000 0);                     /* white */
+  --card-foreground: oklch(0.298 0.008 240.1);      /* dark charcoal */
   --popover: oklch(1.000 0.000 0);
-  --popover-foreground: oklch(0.35 0.03 50);
-  --input: oklch(0.90 0.02 60);
-  --ring: oklch(0.75 0.10 25);
-  --destructive: oklch(0.577 0.245 27.325);
+  --popover-foreground: oklch(0.298 0.008 240.1);
+  --input: oklch(0.92 0.012 80);
+  --ring: oklch(0.609 0.182 257.3);                 /* bright blue */
+  --destructive: oklch(0.640 0.194 14.7);           /* coral pink */
   --destructive-foreground: oklch(0.985 0 0);
-  --chart-1: oklch(0.75 0.10 25);
-  --chart-2: oklch(0.82 0.08 160);
-  --chart-3: oklch(0.88 0.05 60);
-  --chart-4: oklch(0.88 0.04 240);
-  --chart-5: oklch(0.92 0.06 95);
-  --sidebar: oklch(0.97 0.008 75);
-  --sidebar-foreground: oklch(0.35 0.03 50);
-  --sidebar-primary: oklch(0.75 0.10 25);
+  --chart-1: oklch(0.609 0.182 257.3);              /* bright blue */
+  --chart-2: oklch(0.777 0.160 166.6);              /* emerald green */
+  --chart-3: oklch(0.876 0.108 87.1);               /* golden yellow */
+  --chart-4: oklch(0.640 0.194 14.7);               /* coral pink */
+  --chart-5: oklch(0.337 0.075 245.7);              /* dark teal */
+  --sidebar: oklch(0.957 0.015 80.7);
+  --sidebar-foreground: oklch(0.298 0.008 240.1);
+  --sidebar-primary: oklch(0.609 0.182 257.3);
   --sidebar-primary-foreground: oklch(1.000 0.000 0);
-  --sidebar-accent: oklch(0.94 0.01 75);
-  --sidebar-accent-foreground: oklch(0.35 0.03 50);
-  --sidebar-border: oklch(0.88 0.02 60);
-  --sidebar-ring: oklch(0.75 0.10 25);
+  --sidebar-accent: oklch(0.94 0.010 80);
+  --sidebar-accent-foreground: oklch(0.298 0.008 240.1);
+  --sidebar-border: oklch(0.90 0.015 80);
+  --sidebar-ring: oklch(0.609 0.182 257.3);
 }
 
 @layer base {
@@ -101,7 +110,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
-    color: oklch(0.35 0.03 50);
+    color: oklch(0.298 0.008 240.1);
   }
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl;
@@ -157,7 +166,7 @@
     }
   }
 
-  /* Kindergarten-style Buttons */
+  /* Buttons with new palette */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -168,14 +177,14 @@
     font-family: var(--font-display);
     font-size: 0.95rem;
     color: white;
-    background-color: oklch(0.75 0.10 25);
+    background-color: oklch(0.609 0.182 257.3);    /* bright blue */
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 14px oklch(0.75 0.10 25 / 0.25);
+    box-shadow: 0 4px 14px oklch(0.609 0.182 257.3 / 0.25);
   }
   .btn-primary:hover {
-    background-color: oklch(0.68 0.12 25);
+    background-color: oklch(0.55 0.19 257);
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 20px oklch(0.75 0.10 25 / 0.35);
+    box-shadow: 0 6px 20px oklch(0.609 0.182 257.3 / 0.35);
   }
 
   .btn-secondary {
@@ -187,15 +196,15 @@
     font-weight: 700;
     font-family: var(--font-display);
     font-size: 0.95rem;
-    color: oklch(0.30 0.04 160);
-    background-color: oklch(0.82 0.08 160);
+    color: white;
+    background-color: oklch(0.777 0.160 166.6);    /* emerald green */
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 14px oklch(0.82 0.08 160 / 0.25);
+    box-shadow: 0 4px 14px oklch(0.777 0.160 166.6 / 0.25);
   }
   .btn-secondary:hover {
-    background-color: oklch(0.76 0.10 160);
+    background-color: oklch(0.70 0.17 166);
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 20px oklch(0.82 0.08 160 / 0.35);
+    box-shadow: 0 6px 20px oklch(0.777 0.160 166.6 / 0.35);
   }
 
   .btn-outline {
@@ -207,27 +216,27 @@
     font-weight: 700;
     font-family: var(--font-display);
     font-size: 0.95rem;
-    color: oklch(0.75 0.10 25);
-    border: 2.5px solid oklch(0.75 0.10 25);
+    color: oklch(0.609 0.182 257.3);
+    border: 2.5px solid oklch(0.609 0.182 257.3);
     background: transparent;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .btn-outline:hover {
-    background-color: oklch(0.75 0.10 25 / 0.08);
+    background-color: oklch(0.609 0.182 257.3 / 0.08);
     transform: translateY(-2px);
   }
 
   .card-base {
     background-color: oklch(1.000 0.000 0);
-    color: oklch(0.35 0.03 50);
+    color: oklch(0.298 0.008 240.1);
     border-radius: 1.5rem;
     box-shadow: 0 4px 20px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.03);
-    border: 2px solid oklch(0.92 0.02 60);
+    border: 2px solid oklch(0.90 0.015 80);
     transition: all 0.3s ease;
   }
   .card-base:hover {
     box-shadow: 0 8px 30px rgb(0 0 0 / 0.08);
-    border-color: oklch(0.85 0.06 15);
+    border-color: oklch(0.609 0.182 257.3 / 0.3);
   }
 
   .section-spacing {
@@ -285,25 +294,25 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar - pastel style */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: oklch(0.97 0.008 75);
+  background: oklch(0.957 0.015 80.7);
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.85 0.06 15);
+  background: oklch(0.609 0.182 257.3 / 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.75 0.10 25);
+  background: oklch(0.609 0.182 257.3 / 0.5);
 }
 
 /* Selection color */
 ::selection {
-  background-color: oklch(0.85 0.06 15 / 0.3);
-  color: oklch(0.35 0.03 50);
+  background-color: oklch(0.609 0.182 257.3 / 0.2);
+  color: oklch(0.298 0.008 240.1);
 }
 
 /* Wavy divider SVG helper */
@@ -317,7 +326,7 @@ html {
   left: 0;
   right: 0;
   height: 40px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23FDF5ED' d='M0,20 C240,40 480,0 720,20 C960,40 1200,0 1440,20 L1440,0 L0,0 Z'/%3E%3C/svg%3E") repeat-x;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23f6f0e6' d='M0,20 C240,40 480,0 720,20 C960,40 1200,0 1440,20 L1440,0 L0,0 Z'/%3E%3C/svg%3E") repeat-x;
   background-size: 1440px 40px;
   z-index: 1;
 }

@@ -11,8 +11,8 @@ const CONTACT_METHODS = [
     description: "Resposta rápida para dúvidas e agendamento",
     link: "https://wa.me/5511999999999",
     linkText: "Enviar Mensagem",
-    bgColor: "bg-pastel-mint/30",
-    borderColor: "border-pastel-mint",
+    bgColor: "bg-emerald/10",
+    borderColor: "border-emerald/40",
   },
   {
     emoji: "📧",
@@ -20,17 +20,17 @@ const CONTACT_METHODS = [
     description: "Para dúvidas mais detalhadas",
     link: "mailto:contato@nossopediatra.com.br",
     linkText: "Enviar Email",
-    bgColor: "bg-pastel-blue/30",
-    borderColor: "border-pastel-blue",
+    bgColor: "bg-blue/10",
+    borderColor: "border-blue/40",
   },
   {
     emoji: "📍",
     title: "Consultório",
-    description: "Rua Exemplo, 123 - São Paulo, SP",
+    description: "Uberaba, MG",
     link: "#",
     linkText: "Ver Localização",
-    bgColor: "bg-pastel-peach/30",
-    borderColor: "border-pastel-peach",
+    bgColor: "bg-golden/15",
+    borderColor: "border-golden/40",
   },
 ];
 
@@ -106,11 +106,11 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-pastel-pink/30 rounded-full px-4 py-1.5 mb-4">
-              <Sparkles className="w-4 h-4 text-salmon" />
-              <span className="text-sm font-bold text-salmon font-display">Fale Conosco</span>
+            <div className="inline-flex items-center gap-2 bg-blue/10 rounded-full px-4 py-1.5 mb-4">
+              <Sparkles className="w-4 h-4 text-blue" />
+              <span className="text-sm font-bold text-blue font-display">Fale Conosco</span>
             </div>
-            <h1 className="mb-4">Entre em <span className="text-salmon">Contato</span></h1>
+            <h1 className="mb-4">Entre em <span className="text-coral">Contato</span></h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Estamos aqui para ajudar. Escolha a forma que funciona melhor para você.
             </p>
@@ -119,7 +119,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Methods */}
-      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+      <section className="section-spacing bg-cream">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {CONTACT_METHODS.map((method, idx) => (
@@ -142,7 +142,7 @@ export default function Contact() {
                 <p className="text-muted-foreground text-sm mb-4">
                   {method.description}
                 </p>
-                <span className="text-salmon font-bold text-sm inline-flex items-center gap-1 font-display group-hover:underline">
+                <span className="text-blue font-bold text-sm inline-flex items-center gap-1 font-display group-hover:underline">
                   {method.linkText} →
                 </span>
               </motion.a>
@@ -159,7 +159,7 @@ export default function Contact() {
             custom={0}
           >
             <h2 className="text-2xl md:text-3xl mb-8 text-center">
-              Formulário de <span className="text-salmon">Contato</span>
+              Formulário de <span className="text-coral">Contato</span>
             </h2>
             <form onSubmit={handleSubmit} className="card-base p-6 md:p-8 space-y-5">
               <div>
@@ -172,7 +172,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
+                  className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors"
                   placeholder="Seu nome"
                 />
               </div>
@@ -188,7 +188,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
+                    className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors"
                     placeholder="seu@email.com"
                   />
                 </div>
@@ -202,8 +202,8 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
-                    placeholder="(11) 99999-9999"
+                    className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors"
+                    placeholder="(34) 99999-9999"
                   />
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function Contact() {
                   value={formData.childAge}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors"
+                  className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors"
                 >
                   <option value="">Selecione...</option>
                   <option value="0-3m">0-3 meses</option>
@@ -239,7 +239,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border-2 border-pastel-peach/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-salmon/30 focus:border-salmon/50 bg-white font-sans text-sm transition-colors resize-none"
+                  className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors resize-none"
                   placeholder="Descreva o sintoma ou dúvida que você tem sobre a saúde digestiva do seu filho..."
                 />
               </div>
@@ -271,14 +271,14 @@ export default function Contact() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-4">Perguntas <span className="text-salmon">Frequentes</span></h2>
+            <h2 className="mb-4">Perguntas <span className="text-coral">Frequentes</span></h2>
           </motion.div>
 
           <div className="space-y-3">
             {FAQ_ITEMS.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-white border-2 border-pastel-peach/20 rounded-2xl overflow-hidden hover:border-pastel-pink/30 transition-colors"
+                className="bg-white border-2 border-golden/15 rounded-2xl overflow-hidden hover:border-blue/20 transition-colors"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -287,13 +287,13 @@ export default function Contact() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-pastel-peach/5 transition-colors"
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-cream/50 transition-colors"
                 >
                   <span className="font-bold text-foreground text-sm md:text-base pr-4 font-display">
                     {item.q}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-salmon flex-shrink-0 transition-transform duration-200 ${
+                    className={`w-5 h-5 text-blue flex-shrink-0 transition-transform duration-200 ${
                       openFaq === idx ? "rotate-180" : ""
                     }`}
                   />

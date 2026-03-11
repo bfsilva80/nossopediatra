@@ -3,30 +3,30 @@ import { motion } from "framer-motion";
 import { Star, ArrowRight, Sparkles, Heart, Stethoscope, FileText, Clock } from "lucide-react";
 
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
-const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_doctor_illustration-RQPad3Sx25q8JyDV3G8fm6.webp";
+const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
 
 const STEPS = [
   {
     emoji: "📋",
-    color: "bg-pastel-pink/30",
+    color: "bg-coral/15",
     title: "Avaliação Completa",
     description: "Histórico detalhado, exame físico minucioso e investigação cuidadosa dos sintomas.",
   },
   {
     emoji: "💬",
-    color: "bg-pastel-blue/30",
+    color: "bg-blue/10",
     title: "Explicação Clara",
     description: "Você entenderá o raciocínio clínico por trás de cada recomendação.",
   },
   {
     emoji: "🎯",
-    color: "bg-pastel-mint/30",
+    color: "bg-emerald/10",
     title: "Plano Personalizado",
     description: "Estratégia adaptada às necessidades do seu filho e à realidade da sua família.",
   },
   {
     emoji: "🤝",
-    color: "bg-pastel-yellow/30",
+    color: "bg-golden/20",
     title: "Acompanhamento",
     description: "Suporte contínuo e ajustes conforme necessário. Você não estará sozinho.",
   },
@@ -71,7 +71,7 @@ export default function Consultations() {
           backgroundRepeat: 'repeat',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-pastel-pink/50 via-white/70 to-pastel-mint/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue/10 via-white/70 to-emerald/10" />
         {/* Floating decorations */}
         <div className="absolute top-16 left-[8%] text-3xl animate-float opacity-40 pointer-events-none">🩺</div>
         <div className="absolute top-20 right-[12%] text-2xl animate-float-slow opacity-30 pointer-events-none">💛</div>
@@ -85,11 +85,11 @@ export default function Consultations() {
               transition={{ duration: 0.7 }}
               className="max-w-lg"
             >
-              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 border-2 border-pastel-pink/30">
-                <Sparkles className="w-4 h-4 text-salmon" />
+              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 border-2 border-blue/15">
+                <Sparkles className="w-4 h-4 text-blue" />
                 <span className="text-sm font-bold text-foreground/80 font-display">Atendimento Especializado</span>
               </div>
-              <h1 className="mb-4">Consultas <span className="text-salmon">Especializadas</span></h1>
+              <h1 className="mb-4">Consultas <span className="text-coral">Especializadas</span></h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Atendimento focado em gastroenterologia pediátrica, com escuta atenta e ciência de verdade
               </p>
@@ -103,10 +103,10 @@ export default function Consultations() {
             >
               <div className="relative">
                 <div className="w-56 h-64 rounded-[2rem] overflow-hidden border-4 border-white shadow-xl rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <img src={DOCTOR_IMG} alt="Dr. Bruno" className="w-full h-full object-cover object-top" />
+                  <img src={DOCTOR_IMG} alt="Dr. Bruno Fernandes" className="w-full h-full object-cover object-top" />
                 </div>
-                <div className="absolute -top-3 -left-3 w-10 h-10 bg-pastel-yellow rounded-full opacity-60 animate-pulse-soft" />
-                <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-pastel-mint rounded-2xl opacity-50 animate-float-slow" />
+                <div className="absolute -top-3 -left-3 w-10 h-10 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
+                <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
               </div>
             </motion.div>
           </div>
@@ -114,7 +114,7 @@ export default function Consultations() {
       </section>
 
       {/* Main Content */}
-      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+      <section className="section-spacing bg-cream">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left Column - O que Esperar */}
@@ -125,12 +125,12 @@ export default function Consultations() {
               variants={fadeUp}
               custom={0}
             >
-              <h2 className="mb-8">O que <span className="text-salmon">Esperar</span></h2>
+              <h2 className="mb-8">O que <span className="text-coral">Esperar</span></h2>
               <div className="space-y-5">
                 {STEPS.map((step, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-pastel-peach/20 hover:border-pastel-pink/30 transition-all duration-300 hover:shadow-md group"
+                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-golden/15 hover:border-blue/20 transition-all duration-300 hover:shadow-md group"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -161,12 +161,12 @@ export default function Consultations() {
               variants={fadeUp}
               custom={1}
             >
-              <h2 className="mb-8">Informações <span className="text-mint-dark">Práticas</span></h2>
+              <h2 className="mb-8">Informações <span className="text-teal">Práticas</span></h2>
               <div className="card-base p-6 md:p-8 space-y-6">
                 {/* Quando Procurar */}
                 <div>
                   <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Stethoscope className="w-5 h-5 text-salmon" />
+                    <Stethoscope className="w-5 h-5 text-blue" />
                     Quando Procurar
                   </h4>
                   <ul className="space-y-2 text-muted-foreground text-sm">
@@ -178,16 +178,16 @@ export default function Consultations() {
                       "Dificuldades na alimentação ou ganho de peso",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-salmon mt-0.5">•</span>
+                        <span className="text-coral mt-0.5">•</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="border-t-2 border-pastel-pink/15 pt-6">
+                <div className="border-t-2 border-blue/10 pt-6">
                   <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-mint-dark" />
+                    <FileText className="w-5 h-5 text-teal" />
                     O que Levar
                   </h4>
                   <ul className="space-y-2 text-muted-foreground text-sm">
@@ -199,25 +199,25 @@ export default function Consultations() {
                       "Anotações de sintomas observados",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-mint-dark font-bold mt-0.5">✓</span>
+                        <span className="text-emerald font-bold mt-0.5">✓</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="border-t-2 border-pastel-pink/15 pt-6">
+                <div className="border-t-2 border-blue/10 pt-6">
                   <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-salmon" />
+                    <Clock className="w-5 h-5 text-blue" />
                     Duração
                   </h4>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-pastel-pink/15 p-4 rounded-2xl text-center">
-                      <p className="text-2xl font-display font-bold text-salmon">60</p>
+                    <div className="bg-coral/10 p-4 rounded-2xl text-center">
+                      <p className="text-2xl font-display font-bold text-coral">60</p>
                       <p className="text-xs text-muted-foreground mt-1">min — Primeira consulta</p>
                     </div>
-                    <div className="bg-pastel-mint/15 p-4 rounded-2xl text-center">
-                      <p className="text-2xl font-display font-bold text-mint-dark">30-45</p>
+                    <div className="bg-emerald/10 p-4 rounded-2xl text-center">
+                      <p className="text-2xl font-display font-bold text-teal">30-45</p>
                       <p className="text-xs text-muted-foreground mt-1">min — Acompanhamento</p>
                     </div>
                   </div>
@@ -239,7 +239,7 @@ export default function Consultations() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-4">O que Pais <span className="text-salmon">Dizem</span></h2>
+            <h2 className="mb-4">O que Pais <span className="text-coral">Dizem</span></h2>
             <p className="text-muted-foreground text-lg">
               Depoimentos de famílias que confiaram no Nosso Pediatra
             </p>
@@ -249,7 +249,7 @@ export default function Consultations() {
             {TESTIMONIALS.map((testimonial, idx) => (
               <motion.div
                 key={idx}
-                className="card-base p-6 md:p-7 border-t-4 border-pastel-pink"
+                className="card-base p-6 md:p-7 border-t-4 border-blue/30"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
@@ -265,7 +265,7 @@ export default function Consultations() {
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-pastel-pink/30 rounded-2xl flex items-center justify-center text-lg">
+                  <div className="w-10 h-10 bg-golden/20 rounded-full flex items-center justify-center text-lg">
                     {testimonial.emoji}
                   </div>
                   <p className="font-bold text-foreground text-sm font-display">
@@ -279,7 +279,7 @@ export default function Consultations() {
       </section>
 
       {/* CTA */}
-      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'oklch(0.75 0.10 25)' }}>
+      <section className="section-spacing relative overflow-hidden bg-teal">
         <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
           <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
             <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
@@ -307,7 +307,7 @@ export default function Consultations() {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary !bg-white !text-salmon"
+                className="btn-secondary !bg-white !text-teal"
               >
                 💬 WhatsApp
               </a>

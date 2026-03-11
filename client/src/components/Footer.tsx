@@ -13,13 +13,13 @@ export default function Footer() {
         style={{ backgroundImage: `url('${MOUNTAINS_BG}')` }}
       />
 
-      <div className="bg-white/80 backdrop-blur-sm border-t-2 border-pastel-pink/20">
+      <div className="bg-white/80 backdrop-blur-sm border-t-2 border-blue/10">
         <div className="container py-12 md:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
             {/* Brand */}
             <div className="sm:col-span-2 md:col-span-1">
               <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-9 h-9 bg-gradient-to-br from-salmon to-pastel-pink rounded-2xl flex items-center justify-center shadow-sm rotate-[-3deg]">
+                <div className="w-9 h-9 bg-gradient-to-br from-teal to-blue rounded-2xl flex items-center justify-center shadow-sm rotate-[-3deg]">
                   <span className="text-white font-bold text-xs font-display">NP</span>
                 </div>
                 <span className="font-display font-bold text-foreground text-lg">
@@ -61,7 +61,7 @@ export default function Footer() {
                     href="https://guiabebes-xlauyfmx.manus.space"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-mint-dark hover:text-foreground transition-colors inline-flex items-center gap-1"
+                    className="text-sm text-emerald hover:text-foreground transition-colors inline-flex items-center gap-1"
                   >
                     1ª Papinha? ↗
                   </a>
@@ -126,7 +126,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t-2 border-pastel-pink/15 pt-8">
+          <div className="border-t-2 border-blue/10 pt-8">
             <p className="text-center text-sm text-muted-foreground font-display">
               &copy; {currentYear} Nosso Pediatra. Todos os direitos reservados.
             </p>

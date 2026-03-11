@@ -12,8 +12,8 @@ const ARTICLES = [
     category: "Refluxo",
     readTime: "8 min",
     emoji: "🍼",
-    color: "border-pastel-pink",
-    bgColor: "bg-pastel-pink/20",
+    color: "border-coral/40",
+    bgColor: "bg-coral/10",
   },
   {
     slug: "aplv-guia-completo",
@@ -22,8 +22,8 @@ const ARTICLES = [
     category: "Alergias",
     readTime: "10 min",
     emoji: "🥛",
-    color: "border-pastel-blue",
-    bgColor: "bg-pastel-blue/20",
+    color: "border-blue/40",
+    bgColor: "bg-blue/10",
   },
   {
     slug: "constipacao-infantil",
@@ -32,8 +32,8 @@ const ARTICLES = [
     category: "Constipação",
     readTime: "9 min",
     emoji: "💪",
-    color: "border-pastel-mint",
-    bgColor: "bg-pastel-mint/20",
+    color: "border-emerald/40",
+    bgColor: "bg-emerald/10",
   },
   {
     slug: "introducao-alimentar",
@@ -42,8 +42,8 @@ const ARTICLES = [
     category: "Alimentação",
     readTime: "12 min",
     emoji: "🥑",
-    color: "border-pastel-yellow",
-    bgColor: "bg-pastel-yellow/20",
+    color: "border-golden/50",
+    bgColor: "bg-golden/15",
   },
   {
     slug: "coco-crianca",
@@ -52,8 +52,8 @@ const ARTICLES = [
     category: "Desenvolvimento",
     readTime: "7 min",
     emoji: "🔍",
-    color: "border-pastel-peach",
-    bgColor: "bg-pastel-peach/20",
+    color: "border-teal/40",
+    bgColor: "bg-teal/10",
   },
 ];
 
@@ -88,11 +88,11 @@ export default function Library() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-pastel-blue/30 rounded-full px-4 py-1.5 mb-4">
-              <BookOpen className="w-4 h-4 text-foreground/60" />
-              <span className="text-sm font-bold text-foreground/70 font-display">Conteúdo Educativo</span>
+            <div className="inline-flex items-center gap-2 bg-blue/10 rounded-full px-4 py-1.5 mb-4">
+              <BookOpen className="w-4 h-4 text-blue" />
+              <span className="text-sm font-bold text-blue font-display">Conteúdo Educativo</span>
             </div>
-            <h1 className="mb-4">Biblioteca <span className="text-salmon">Educativa</span></h1>
+            <h1 className="mb-4">Biblioteca <span className="text-coral">Educativa</span></h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Conteúdo profundo e confiável sobre temas que importam para a saúde digestiva do seu filho
             </p>
@@ -101,7 +101,7 @@ export default function Library() {
       </section>
 
       {/* Articles Grid */}
-      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+      <section className="section-spacing bg-cream">
         <div className="container max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {ARTICLES.map((article, idx) => (
@@ -122,7 +122,7 @@ export default function Library() {
                       <div className={`w-12 h-12 ${article.bgColor} rounded-2xl flex items-center justify-center text-2xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
                         {article.emoji}
                       </div>
-                      <span className="inline-block px-2.5 py-1 bg-pastel-pink/20 text-salmon text-xs font-bold rounded-full uppercase tracking-wider font-display">
+                      <span className="inline-block px-2.5 py-1 bg-blue/10 text-blue text-xs font-bold rounded-full uppercase tracking-wider font-display">
                         {article.category}
                       </span>
                     </div>
@@ -131,13 +131,13 @@ export default function Library() {
                       {article.readTime}
                     </span>
                   </div>
-                  <h3 className="text-lg md:text-xl mb-3 group-hover:text-salmon transition-colors leading-snug">
+                  <h3 className="text-lg md:text-xl mb-3 group-hover:text-blue transition-colors leading-snug">
                     {article.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {article.excerpt}
                   </p>
-                  <span className="text-salmon font-bold text-sm inline-flex items-center gap-1 font-display">
+                  <span className="text-blue font-bold text-sm inline-flex items-center gap-1 font-display">
                     Ler artigo
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -163,25 +163,25 @@ export default function Library() {
               rel="noopener noreferrer"
               className="block group"
             >
-              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-pastel-mint/40 via-pastel-yellow/20 to-pastel-peach/30 border-3 border-pastel-mint/30 p-6 md:p-8 hover:shadow-xl transition-all duration-500">
+              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald/10 via-golden/15 to-blue/10 border-3 border-emerald/20 p-6 md:p-8 hover:shadow-xl transition-all duration-500">
                 <div className="absolute top-4 right-6 text-3xl animate-float opacity-50">🥑</div>
                 <div className="absolute bottom-4 right-16 text-2xl animate-float-slow opacity-40">🍌</div>
 
                 <div className="flex flex-col md:flex-row md:items-center gap-6 relative z-10">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-pastel-mint/40 rounded-2xl flex items-center justify-center text-3xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform">
+                    <div className="w-16 h-16 bg-emerald/15 rounded-2xl flex items-center justify-center text-3xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform">
                       🥑
                     </div>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 rounded-full">
-                        <Sparkles className="w-3 h-3 text-mint-dark" />
-                        <span className="text-xs font-bold text-mint-dark font-display uppercase tracking-wider">Guia Interativo</span>
+                        <Sparkles className="w-3 h-3 text-emerald" />
+                        <span className="text-xs font-bold text-emerald font-display uppercase tracking-wider">Guia Interativo</span>
                       </div>
-                      <ExternalLink className="w-3.5 h-3.5 text-mint-dark" />
+                      <ExternalLink className="w-3.5 h-3.5 text-emerald" />
                     </div>
-                    <h3 className="text-lg md:text-xl mb-2 group-hover:text-mint-dark transition-colors leading-snug">
+                    <h3 className="text-lg md:text-xl mb-2 group-hover:text-teal transition-colors leading-snug">
                       1ª Papinha? O Guia que Todo Pai Queria Ter Recebido Antes
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
@@ -202,7 +202,7 @@ export default function Library() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'oklch(0.75 0.10 25)' }}>
+      <section className="section-spacing relative overflow-hidden bg-teal">
         {/* Wavy top */}
         <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
           <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
@@ -237,7 +237,7 @@ export default function Library() {
                 className="flex-1 px-5 py-3 rounded-full text-foreground bg-white border-0 focus:outline-none focus:ring-2 focus:ring-white/50 font-sans"
                 required
               />
-              <button type="submit" className="btn-secondary !bg-white !text-salmon whitespace-nowrap">
+              <button type="submit" className="btn-secondary !bg-white !text-teal whitespace-nowrap">
                 Inscrever
               </button>
             </form>

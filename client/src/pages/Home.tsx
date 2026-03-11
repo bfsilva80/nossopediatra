@@ -6,7 +6,7 @@ import InstagramGallery from "@/components/InstagramGallery";
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
-const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_doctor_illustration-RQPad3Sx25q8JyDV3G8fm6.webp";
+const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,19 +20,19 @@ const fadeUp = {
 const TRUST_ITEMS = [
   {
     icon: "🔬",
-    color: "bg-pastel-mint",
+    color: "bg-emerald/15",
     title: "Medicina que Explica",
     description: "Raciocínio clínico transparente. Você entenderá o porquê de cada orientação.",
   },
   {
     icon: "🎯",
-    color: "bg-pastel-pink",
+    color: "bg-coral/15",
     title: "Foco Digestivo",
     description: "Especialização em refluxo, APLV, constipação e dor abdominal.",
   },
   {
     icon: "💛",
-    color: "bg-pastel-yellow",
+    color: "bg-golden/20",
     title: "Linguagem Humana",
     description: "Ciência com acolhimento. A medida certa para pais que querem entender.",
   },
@@ -52,24 +52,24 @@ const LIBRARY_ARTICLES = [
     title: "Refluxo em Bebê",
     description: "Quando é normal, quando é problema e como manejar",
     emoji: "🍼",
-    color: "border-pastel-pink",
-    bgColor: "bg-pastel-pink/20",
+    color: "border-coral/40",
+    bgColor: "bg-coral/10",
   },
   {
     slug: "aplv-guia-completo",
     title: "APLV",
     description: "Alergia à Proteína do Leite de Vaca: sinais e manejo",
     emoji: "🥛",
-    color: "border-pastel-blue",
-    bgColor: "bg-pastel-blue/20",
+    color: "border-blue/40",
+    bgColor: "bg-blue/10",
   },
   {
     slug: "constipacao-infantil",
     title: "Constipação Infantil",
     description: "Além do laxante: entenda as causas reais",
     emoji: "💪",
-    color: "border-pastel-mint",
-    bgColor: "bg-pastel-mint/20",
+    color: "border-emerald/40",
+    bgColor: "bg-emerald/10",
   },
 ];
 
@@ -100,9 +100,9 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border-2 border-pastel-pink/30"
+                className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border-2 border-blue/15"
               >
-                <Sparkles className="w-4 h-4 text-salmon" />
+                <Sparkles className="w-4 h-4 text-blue" />
                 <span className="text-sm font-semibold text-foreground/80 font-display">
                   Gastroenterologia Pediátrica
                 </span>
@@ -113,12 +113,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
-                style={{ color: 'oklch(0.35 0.03 50)' }}
               >
                 Saúde Digestiva{" "}
-                <span className="text-salmon">Infantil</span>
+                <span className="text-coral">Infantil</span>
                 <br />
-                <span className="text-mint-dark">com Confiança</span>
+                <span className="text-teal">com Confiança</span>
               </motion.h1>
 
               <motion.p
@@ -146,7 +145,7 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Doctor illustration */}
+            {/* Doctor watercolor portrait */}
             <motion.div
               className="hidden lg:flex justify-center"
               initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
@@ -157,14 +156,14 @@ export default function Home() {
                 <div className="w-72 h-80 xl:w-80 xl:h-[22rem] rounded-[2rem] overflow-hidden border-4 border-white shadow-xl rotate-2 hover:rotate-0 transition-transform duration-500">
                   <img
                     src={DOCTOR_IMG}
-                    alt="Dr. Bruno - Gastropediatra"
+                    alt="Dr. Bruno Fernandes - Gastropediatra"
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
                 {/* Decorative shapes around the image */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-pastel-pink rounded-full opacity-60 animate-pulse-soft" />
-                <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-pastel-mint rounded-2xl opacity-50 animate-float-slow" />
-                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-pastel-yellow rounded-lg opacity-60 animate-wiggle" />
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
+                <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
+                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-blue/20 rounded-lg opacity-60 animate-wiggle" />
               </div>
             </motion.div>
           </div>
@@ -172,7 +171,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ TRUST SECTION ═══════════ */}
-      <section className="section-spacing relative" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+      <section className="section-spacing relative bg-cream">
         {/* Wavy top divider */}
         <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
           <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
@@ -189,11 +188,11 @@ export default function Home() {
             variants={fadeUp}
             custom={0}
           >
-            <span className="text-sm font-bold text-salmon uppercase tracking-wider mb-3 block font-display">
+            <span className="text-sm font-bold text-blue uppercase tracking-wider mb-3 block font-display">
               Por que nos escolher?
             </span>
             <h2 className="mb-4">
-              Nosso <span className="text-salmon">Pediatra</span>
+              Nosso <span className="text-coral">Pediatra</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Um ecossistema completo de informação confiável sobre gastroenterologia pediátrica
@@ -243,11 +242,11 @@ export default function Home() {
               variants={fadeUp}
               custom={0}
             >
-              <div className="inline-flex items-center gap-2 bg-pastel-mint/40 rounded-full px-4 py-1.5 mb-4">
+              <div className="inline-flex items-center gap-2 bg-emerald/10 rounded-full px-4 py-1.5 mb-4">
                 <span className="text-lg">🗺️</span>
-                <span className="text-sm font-bold text-mint-dark font-display">Ferramenta Interativa</span>
+                <span className="text-sm font-bold text-teal font-display">Ferramenta Interativa</span>
               </div>
-              <h2 className="mb-6">Atlas de <span className="text-salmon">Sintomas</span></h2>
+              <h2 className="mb-6">Atlas de <span className="text-coral">Sintomas</span></h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Pais pesquisam sintomas, não diagnósticos. Nosso atlas organiza informação de forma intuitiva para você entender o que está acontecendo.
               </p>
@@ -255,7 +254,7 @@ export default function Home() {
                 {SYMPTOMS.map((symptom, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border-2 border-pastel-peach/30 hover:border-salmon/30 transition-colors"
+                    className="flex items-center gap-3 bg-white/80 rounded-2xl px-4 py-3 border-2 border-golden/20 hover:border-blue/25 transition-colors"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -281,19 +280,19 @@ export default function Home() {
               variants={fadeUp}
               custom={1}
             >
-              {/* Decorative card with illustration */}
+              {/* Decorative card */}
               <div className="relative">
-                <div className="w-72 h-80 md:w-80 md:h-[22rem] bg-gradient-to-br from-pastel-pink/40 to-pastel-peach/40 rounded-[2rem] border-4 border-white shadow-xl flex items-center justify-center rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="w-72 h-80 md:w-80 md:h-[22rem] bg-gradient-to-br from-blue/15 to-golden/20 rounded-[2rem] border-4 border-white shadow-xl flex items-center justify-center rotate-3 hover:rotate-0 transition-transform duration-500">
                   <div className="text-center p-6">
                     <div className="text-7xl mb-4 animate-float">🩺</div>
                     <p className="font-display font-bold text-xl text-foreground/80">5 Sintomas</p>
                     <p className="text-muted-foreground text-sm mt-1">Guia completo e interativo</p>
                   </div>
                 </div>
-                <div className="absolute -top-5 -right-5 w-14 h-14 bg-pastel-yellow rounded-2xl flex items-center justify-center text-2xl animate-wiggle shadow-md">
+                <div className="absolute -top-5 -right-5 w-14 h-14 bg-golden/40 rounded-2xl flex items-center justify-center text-2xl animate-wiggle shadow-md">
                   ✨
                 </div>
-                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-pastel-mint rounded-full opacity-70 animate-float-slow" />
+                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-emerald/20 rounded-full opacity-70 animate-float-slow" />
               </div>
             </motion.div>
           </div>
@@ -301,7 +300,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ LIBRARY PREVIEW ═══════════ */}
-      <section className="section-spacing" style={{ backgroundColor: 'oklch(0.97 0.008 75)' }}>
+      <section className="section-spacing bg-cream">
         <div className="container">
           <motion.div
             className="text-center mb-14"
@@ -311,11 +310,11 @@ export default function Home() {
             variants={fadeUp}
             custom={0}
           >
-            <div className="inline-flex items-center gap-2 bg-pastel-blue/30 rounded-full px-4 py-1.5 mb-4">
-              <BookOpen className="w-4 h-4 text-foreground/60" />
-              <span className="text-sm font-bold text-foreground/70 font-display">Conteúdo Educativo</span>
+            <div className="inline-flex items-center gap-2 bg-blue/10 rounded-full px-4 py-1.5 mb-4">
+              <BookOpen className="w-4 h-4 text-blue" />
+              <span className="text-sm font-bold text-blue font-display">Conteúdo Educativo</span>
             </div>
-            <h2 className="mb-4">Biblioteca <span className="text-salmon">Educativa</span></h2>
+            <h2 className="mb-4">Biblioteca <span className="text-coral">Educativa</span></h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Artigos profundos que geram autoridade e confiança
             </p>
@@ -338,13 +337,13 @@ export default function Home() {
                   <div className={`w-14 h-14 ${article.bgColor} rounded-2xl flex items-center justify-center text-3xl mb-4 rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
                     {article.emoji}
                   </div>
-                  <h3 className="text-xl mb-2 group-hover:text-salmon transition-colors">
+                  <h3 className="text-xl mb-2 group-hover:text-blue transition-colors">
                     {article.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {article.description}
                   </p>
-                  <span className="text-salmon font-bold text-sm inline-flex items-center gap-1 font-display">
+                  <span className="text-blue font-bold text-sm inline-flex items-center gap-1 font-display">
                     Ler artigo
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -369,7 +368,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ GUIA ALIMENTAR DESTAQUE ═══════════ */}
-      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'white' }}>
+      <section className="section-spacing relative overflow-hidden bg-white">
         <div className="container max-w-4xl">
           <motion.div
             initial="hidden"
@@ -384,7 +383,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="block group"
             >
-              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-pastel-mint/40 via-pastel-yellow/20 to-pastel-peach/30 border-3 border-pastel-mint/30 p-8 md:p-12 hover:shadow-xl transition-all duration-500">
+              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald/10 via-golden/15 to-blue/10 border-3 border-emerald/20 p-8 md:p-12 hover:shadow-xl transition-all duration-500">
                 {/* Floating decorations */}
                 <div className="absolute top-4 right-6 text-3xl animate-float opacity-60">🥑</div>
                 <div className="absolute bottom-6 right-16 text-2xl animate-float-slow opacity-50">🍌</div>
@@ -392,10 +391,10 @@ export default function Home() {
 
                 <div className="max-w-xl relative z-10">
                   <div className="inline-flex items-center gap-2 bg-white/60 rounded-full px-3 py-1 mb-4">
-                    <Sparkles className="w-3.5 h-3.5 text-mint-dark" />
-                    <span className="text-xs font-bold text-mint-dark font-display uppercase tracking-wider">Ferramenta Interativa</span>
+                    <Sparkles className="w-3.5 h-3.5 text-emerald" />
+                    <span className="text-xs font-bold text-emerald font-display uppercase tracking-wider">Ferramenta Interativa</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl mb-3 group-hover:text-mint-dark transition-colors">
+                  <h2 className="text-2xl md:text-3xl mb-3 group-hover:text-teal transition-colors">
                     E Quando Chega a Hora da 1ª Papinha?
                   </h2>
                   <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
@@ -408,8 +407,8 @@ export default function Home() {
                 </div>
 
                 {/* Decorative circles */}
-                <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-pastel-mint/20 rounded-full" />
-                <div className="absolute -top-6 right-1/4 w-24 h-24 bg-pastel-yellow/20 rounded-full" />
+                <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-emerald/10 rounded-full" />
+                <div className="absolute -top-6 right-1/4 w-24 h-24 bg-golden/15 rounded-full" />
               </div>
             </a>
           </motion.div>
@@ -420,7 +419,7 @@ export default function Home() {
       <InstagramGallery />
 
       {/* ═══════════ CTA SECTION ═══════════ */}
-      <section className="section-spacing relative overflow-hidden" style={{ backgroundColor: 'oklch(0.75 0.10 25)' }}>
+      <section className="section-spacing relative overflow-hidden bg-teal">
         {/* Wavy top */}
         <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
           <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
@@ -451,7 +450,7 @@ export default function Home() {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary !bg-white !text-salmon"
+                className="btn-secondary !bg-white !text-teal"
               >
                 💬 WhatsApp
               </a>
