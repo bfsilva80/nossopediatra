@@ -77,7 +77,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 <li>
                   <a
-                    href="https://wa.me/5516981112555"
+                    href="https://wa.me/553499709226"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"

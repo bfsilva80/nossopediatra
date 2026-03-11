@@ -304,7 +304,7 @@ export default function Consultations() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/5516981112555"
+                href="https://wa.me/553499709226"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary !bg-white !text-teal"

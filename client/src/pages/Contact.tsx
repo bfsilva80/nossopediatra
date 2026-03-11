@@ -9,7 +9,7 @@ const CONTACT_METHODS = [
     emoji: "💬",
     title: "WhatsApp",
     description: "Resposta rápida para dúvidas e agendamento",
-    link: "https://wa.me/5516981112555",
+    link: "https://wa.me/553499709226",
     linkText: "Enviar Mensagem",
     bgColor: "bg-emerald/10",
     borderColor: "border-emerald/40",

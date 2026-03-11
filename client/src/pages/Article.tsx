@@ -399,7 +399,7 @@ export default function Article() {
             Agende uma consulta para discussão personalizada sobre o caso do seu filho
           </p>
           <a
-            href="https://wa.me/5516981112555"
+            href="https://wa.me/553499709226"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary !bg-white !text-teal"
