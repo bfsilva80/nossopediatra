@@ -77,7 +77,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 <li>
                   <a
-                    href="https://wa.me/5511999999999"
+                    href="https://wa.me/5516981112555"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -87,7 +87,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="mailto:contato@nossopediatra.com.br"
+                    href="mailto:nossopediatra@gmail.com"
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     Email

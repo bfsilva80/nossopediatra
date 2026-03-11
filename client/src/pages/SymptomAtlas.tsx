@@ -308,7 +308,7 @@ export default function SymptomAtlas() {
                   Quer entender melhor este sintoma com um especialista?
                 </p>
                 <a
-                  href="https://wa.me/5511999999999"
+                  href="https://wa.me/5516981112555"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"
