@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
 import { Link } from "wouter";
@@ -7,6 +8,17 @@ import InstagramGallery from "@/components/InstagramGallery";
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
+
+// Doctor scene carousel images
+const DOCTOR_SCENES = [
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_1_consultation-G8CAuRbAEaBFpvxLDcnJ9M.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_2_listening-mc2hMnYpeSaAvRbKqP678b.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_3_explaining-h5YjsGWdTMoMWEhagXhoFf.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_4_examining_throat-3zkChXaiNALk49DQPnEMCa.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_5_comforting-LhctefHsBwXtSESBaZVUQF.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_6_writing_notes-dw67xW6b2Lt2AHP588L9Sk.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_7_final_advice-jRaD8YgvYSq7jzeV8gGfeK.webp",
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -98,6 +110,16 @@ const LIBRARY_ARTICLES = [
 ];
 
 export default function Home() {
+  const [currentScene, setCurrentScene] = useState(0);
+
+  // Auto-rotate doctor scenes every 3.5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentScene((prev) => (prev + 1) % DOCTOR_SCENES.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="w-full overflow-hidden">
       {/* ═══════════ HERO ═══════════ */}
@@ -193,25 +215,47 @@ export default function Home() {
               </motion.p>
             </div>
 
-            {/* Doctor watercolor portrait */}
+            {/* Animated Doctor Scenes Carousel */}
             <motion.div
               className="hidden lg:flex justify-center"
-              initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             >
-              <div className="relative">
-                <div className="w-72 h-80 xl:w-80 xl:h-[22rem] rounded-[2rem] overflow-hidden border-4 border-white shadow-xl rotate-2 hover:rotate-0 transition-transform duration-500">
-                  <img
-                    src={DOCTOR_IMG}
-                    alt="Dr. Bruno Fernandes - Gastropediatra"
-                    className="w-full h-full object-cover object-top"
-                  />
+              <div className="relative w-full max-w-md">
+                {/* Carousel container */}
+                <div className="relative h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+                  {DOCTOR_SCENES.map((scene, idx) => (
+                    <motion.img
+                      key={idx}
+                      src={scene}
+                      alt={`Dr. Bruno - Cena ${idx + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: currentScene === idx ? 1 : 0 }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                    />
+                  ))}
                 </div>
-                {/* Decorative shapes around the image */}
+
+                {/* Decorative shapes around the carousel */}
                 <div className="absolute -top-4 -left-4 w-12 h-12 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
                 <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
                 <div className="absolute top-1/2 -right-6 w-8 h-8 bg-blue/20 rounded-lg opacity-60 animate-wiggle" />
+
+                {/* Scene indicators */}
+                <div className="flex justify-center gap-2 mt-6">
+                  {DOCTOR_SCENES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentScene(idx)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentScene === idx ? "bg-teal w-6" : "bg-teal/30 hover:bg-teal/50"
+                      }`}
+                      aria-label={`Ir para cena ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -249,7 +293,7 @@ export default function Home() {
                 custom={idx + 1}
               >
                 <div className="text-4xl mb-4">{reason.emoji}</div>
-                <h3 className="text-lg font-semibold mb-2">{reason.title}</h3>
+                <h3 className="font-display font-bold text-lg mb-3">{reason.title}</h3>
                 <p className="text-sm text-muted-foreground">{reason.description}</p>
               </motion.div>
             ))}
@@ -263,7 +307,7 @@ export default function Home() {
             variants={fadeUp}
             custom={4}
           >
-            <Link href="/atlas-sintomas" className="btn-secondary">
+            <Link href="/atlas-sintomas" className="btn-primary">
               Ver Todos os Sintomas
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
@@ -272,31 +316,21 @@ export default function Home() {
       </section>
 
       {/* ═══════════ TRUST SECTION ═══════════ */}
-      <section className="section-spacing relative bg-white">
-        {/* Wavy top divider */}
-        <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
-          <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
-            <path fill="#f6f0e6" fillOpacity="0.5" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
-          </svg>
-        </div>
-
+      <section className="section-spacing">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-14"
+            className="text-center mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
           >
-            <span className="text-sm font-bold text-blue uppercase tracking-wider mb-3 block font-display">
-              Por que nos escolher?
-            </span>
             <h2 className="mb-4">
-              Nosso <span className="text-coral">Pediatra</span>
+              Por Que <span className="text-teal">Confiar</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Um ecossistema completo de informação confiável sobre gastroenterologia pediátrica
+              Uma abordagem que coloca você e seu filho no centro da decisão
             </p>
           </motion.div>
 
@@ -304,77 +338,18 @@ export default function Home() {
             {TRUST_ITEMS.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="card-base p-8 text-center group"
+                className={`card-base p-8 ${item.color} border-2 border-transparent hover:border-teal/20 transition-colors`}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={fadeUp}
                 custom={idx + 1}
               >
-                <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mx-auto mb-5 text-3xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-500`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl mb-3">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="font-display font-bold text-xl mb-3">{item.title}</h3>
+                <p className="text-muted-foreground">{item.description}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════ ATLAS PREVIEW ═══════════ */}
-      <section
-        className="section-spacing relative"
-        style={{
-          backgroundImage: `url('${PATTERN_BG}')`,
-          backgroundSize: '400px',
-          backgroundRepeat: 'repeat',
-        }}
-      >
-        <div className="absolute inset-0 bg-white/85" />
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={fadeUp}
-              custom={0}
-            >
-              <div className="inline-flex items-center gap-2 bg-emerald/10 rounded-full px-4 py-1.5 mb-4">
-                <span className="text-lg">🗺️</span>
-                <span className="text-sm font-bold text-teal font-display">Ferramenta Interativa</span>
-              </div>
-              <h2 className="mb-6">Atlas de <span className="text-coral">Sintomas</span></h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Explore os principais sintomas de problemas digestivos em crianças. Cada um tem explicação detalhada sobre o que é, causas comuns, quando procurar emergência e dicas práticas.
-              </p>
-              <Link href="/atlas-sintomas" className="btn-primary">
-                Explorar Atlas
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-2 sm:grid-cols-3 gap-3"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeUp}
-              custom={1}
-            >
-              {SYMPTOMS.map((symptom, idx) => (
-                <button
-                  key={idx}
-                  className="card-base p-4 text-center hover:shadow-lg transition-all duration-300 group cursor-pointer"
-                >
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{symptom.emoji}</div>
-                  <p className="text-xs font-semibold text-foreground/70 leading-tight">{symptom.name}</p>
-                </button>
-              ))}
-            </motion.div>
           </div>
         </div>
       </section>
@@ -390,29 +365,29 @@ export default function Home() {
             variants={fadeUp}
             custom={0}
           >
-            <div className="inline-flex items-center gap-2 bg-blue/10 rounded-full px-4 py-1.5 mb-4">
-              <BookOpen className="w-4 h-4 text-blue" />
-              <span className="text-sm font-bold text-blue font-display">Conteúdo Educativo</span>
-            </div>
-            <h2 className="mb-4">Biblioteca <span className="text-coral">Educativa</span></h2>
+            <h2 className="mb-4">
+              Conteúdo para <span className="text-coral">Pais</span>
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Artigos profundos e confiáveis sobre os temas que mais importam para a saúde digestiva do seu filho
+              Artigos baseados em evidência para você entender melhor
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {LIBRARY_ARTICLES.map((article, idx) => (
-              <Link
-                key={idx}
-                href={`/artigo/${article.slug}`}
-                className={`card-base p-6 border-2 ${article.color} ${article.bgColor} hover:shadow-lg transition-all duration-300 group cursor-pointer`}
-              >
-                <div className="text-4xl mb-3">{article.emoji}</div>
-                <h3 className="text-lg font-semibold mb-2 group-hover:text-coral transition-colors">{article.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{article.description}</p>
-                <div className="flex items-center text-sm font-semibold text-blue group-hover:translate-x-1 transition-transform">
-                  Ler artigo <ArrowRight className="ml-2 w-4 h-4" />
-                </div>
+              <Link key={idx} href={`/artigo/${article.slug}`}>
+                <motion.div
+                  className={`card-base p-6 border-2 cursor-pointer ${article.color} ${article.bgColor} hover:shadow-lg transition-shadow`}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={fadeUp}
+                  custom={idx + 1}
+                >
+                  <div className="text-4xl mb-4">{article.emoji}</div>
+                  <h3 className="font-display font-bold text-lg mb-2">{article.title}</h3>
+                  <p className="text-sm text-muted-foreground">{article.description}</p>
+                </motion.div>
               </Link>
             ))}
           </div>
@@ -425,41 +400,10 @@ export default function Home() {
             variants={fadeUp}
             custom={4}
           >
-            <Link href="/biblioteca" className="btn-secondary">
-              Ver Todos os Artigos
+            <Link href="/biblioteca" className="btn-primary">
+              Ver Biblioteca Completa
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════ GUIA ALIMENTAR ═══════════ */}
-      <section className="section-spacing">
-        <div className="container max-w-3xl">
-          <motion.div
-            className="card-base p-8 md:p-12 bg-gradient-to-br from-golden/10 to-emerald/10 border-2 border-golden/30 text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            custom={0}
-          >
-            <div className="text-5xl mb-4">🍌</div>
-            <h3 className="text-2xl md:text-3xl font-semibold mb-4">
-              1ª Papinha? O Guia que Todo Pai Queria Ter Recebido Antes
-            </h3>
-            <p className="text-muted-foreground mb-6 text-lg">
-              Descubra o que oferecer, o que evitar, e os erros mais comuns que ninguém te conta sobre introdução alimentar.
-            </p>
-            <a
-              href="https://guiabebes-xlauyfmx.manus.space"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex"
-            >
-              Acessar Guia Completo
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
           </motion.div>
         </div>
       </section>
@@ -468,18 +412,21 @@ export default function Home() {
       <InstagramGallery />
 
       {/* ═══════════ FINAL CTA ═══════════ */}
-      <section className="section-spacing bg-gradient-to-r from-blue/5 to-emerald/5">
-        <div className="container max-w-3xl text-center">
+      <section className="section-spacing bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
+        <div className="container max-w-3xl">
           <motion.div
+            className="text-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-6">Pronto para Começar?</h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              Agende uma consulta para discussão personalizada sobre a saúde digestiva do seu filho
+            <h2 className="mb-6">
+              Pronto para entender melhor?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Agende uma consulta e vamos descobrir juntos o que está acontecendo com seu filho.
             </p>
             <Link href="/consultas" className="btn-primary">
               Agendar Consulta Agora
