@@ -11,13 +11,12 @@ const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuM
 
 // Doctor scene carousel images
 const DOCTOR_SCENES = [
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_1_consultation-G8CAuRbAEaBFpvxLDcnJ9M.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_2_listening-mc2hMnYpeSaAvRbKqP678b.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_3_explaining-h5YjsGWdTMoMWEhagXhoFf.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_4_examining_throat-3zkChXaiNALk49DQPnEMCa.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_5_comforting-LhctefHsBwXtSESBaZVUQF.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_6_writing_notes-dw67xW6b2Lt2AHP588L9Sk.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_scene_7_final_advice-jRaD8YgvYSq7jzeV8gGfeK.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_1_9661cce5.png",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_2_e5928107.png",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_3_1440a2a4.png",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_4_af61f8c1.png",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_5_6499b50d.webp",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_6_8b632e90.webp",
 ];
 
 const fadeUp = {
