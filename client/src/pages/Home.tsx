@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 import InstagramGallery from "@/components/InstagramGallery";
-import InkDropTransition from "@/components/InkDropTransition";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
@@ -115,23 +114,14 @@ const LIBRARY_ARTICLES = [
 
 export default function Home() {
   const [currentScene, setCurrentScene] = useState(0);
-  const [showSmokeTransition, setShowSmokeTransition] = useState(false);
-  const [nextScene, setNextScene] = useState(0);
 
   // Auto-rotate doctor scenes every 3.5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setNextScene((prev) => (prev + 1) % DOCTOR_SCENES.length);
-      setShowSmokeTransition(true);
+      setCurrentScene((prev) => (prev + 1) % DOCTOR_SCENES.length);
     }, 3500);
     return () => clearInterval(interval);
   }, []);
-
-  // Handle smoke transition completion
-  const handleSmokeComplete = () => {
-    setCurrentScene(nextScene);
-    setShowSmokeTransition(false);
-  };
 
   return (
     <div className="w-full overflow-hidden">
@@ -243,18 +233,13 @@ export default function Home() {
                       key={idx}
                       src={scene}
                       alt={`Dr. Bruno - Cena ${idx + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-contain"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: currentScene === idx ? 1 : 0 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                     />
                   ))}
-                  {/* Smoke transition effect */}
-                  <InkDropTransition
-                    isActive={showSmokeTransition}
-                    onComplete={handleSmokeComplete}
-                    duration={2000}
-                  />
+                  {/* Ink drop transition effect disabled - keeping smooth fade only */}
                 </div>
 
                 {/* Decorative shapes around the carousel */}
@@ -274,12 +259,7 @@ export default function Home() {
                       aria-label={`Ir para cena ${idx + 1}`}
                     />
                   ))}
-                  {/* Smoke transition effect */}
-                  <InkDropTransition
-                    isActive={showSmokeTransition}
-                    onComplete={handleSmokeComplete}
-                    duration={2000}
-                  />
+                  {/* Ink drop transition effect disabled - keeping smooth fade only */}
                 </div>
               </div>
             </motion.div>
