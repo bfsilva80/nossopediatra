@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 import InstagramGallery from "@/components/InstagramGallery";
-import SmokeTransition from "@/components/SmokeTransition";
+import InkDropTransition from "@/components/InkDropTransition";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
@@ -250,7 +250,7 @@ export default function Home() {
                     />
                   ))}
                   {/* Smoke transition effect */}
-                  <SmokeTransition
+                  <InkDropTransition
                     isActive={showSmokeTransition}
                     onComplete={handleSmokeComplete}
                     duration={2000}
@@ -275,7 +275,7 @@ export default function Home() {
                     />
                   ))}
                   {/* Smoke transition effect */}
-                  <SmokeTransition
+                  <InkDropTransition
                     isActive={showSmokeTransition}
                     onComplete={handleSmokeComplete}
                     duration={2000}
