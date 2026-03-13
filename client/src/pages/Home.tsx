@@ -225,7 +225,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             >
-              <div className="relative w-full max-w-md">
+              <div className="relative w-full" style={{ maxWidth: '346px' }}>
                 {/* Carousel container */}
                 <div className="relative h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
                   {DOCTOR_SCENES.map((scene, idx) => (
