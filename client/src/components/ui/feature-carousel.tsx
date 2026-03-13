@@ -18,103 +18,103 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Consultation reasons for pediatric gastroenterology
+// Consultation reasons with professional consultation photos and medical specialties
 const FEATURES = [
   {
     id: "reflux",
     label: "Refluxo Gastroesofágico",
     icon: Activity,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_refluxo-2hpHWwfrEc8sK6BzGx9R43.webp",
     description: "Tratamento especializado para refluxo em crianças e bebês.",
+    specialty: "Gastroenterologia",
   },
   {
     id: "constipation",
     label: "Constipação Intestinal",
     icon: Pill,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropw=1200https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropfit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_constipacao-7HFaw8rLh8R8tQY73rhcv3.webp",
     description: "Orientação e tratamento para problemas de constipação.",
+    specialty: "Gastroenterologia",
   },
   {
     id: "diarrhea",
     label: "Diarreia Crônica",
     icon: Droplets,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_diarreia-m7GBQFDksDuBuvsms8ihqM.webp",
     description: "Diagnóstico e manejo de diarreia persistente em pediatria.",
+    specialty: "Gastroenterologia",
   },
   {
     id: "allergy",
     label: "Alergia Alimentar",
     icon: AlertCircle,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropw=1200https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropfit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_alergia-Z4KFj7uEzbzHcNfob75Hm3.webp",
     description: "Avaliação completa e orientação para alergias alimentares.",
+    specialty: "Nutrição",
   },
   {
     id: "intolerance",
     label: "Intolerância à Lactose",
     icon: Zap,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_intolerancia-CWetvowR8BkveFHyTuk2hG.webp",
     description: "Diagnóstico e estratégias nutricionais personalizadas.",
+    specialty: "Nutrição",
   },
   {
     id: "ibd",
     label: "Doença Inflamatória Intestinal",
     icon: Flame,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropw=1200https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropfit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_ibd-DUswVjoiZ2K6QYFXqqQsSm.webp",
     description: "Manejo especializado de Crohn e retocolite ulcerativa.",
+    specialty: "Gastroenterologia",
   },
   {
     id: "celiac",
     label: "Doença Celíaca",
     icon: Microscope,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_celiaca-RFNxVRSweVS5n4FiBThKxo.webp",
     description: "Diagnóstico, orientação nutricional e acompanhamento.",
+    specialty: "Nutrição",
   },
   {
     id: "pain",
     label: "Dor Abdominal Recorrente",
     icon: HeartHandshake,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropw=1200https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropfit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_dor-kGNdcPEtbmuxrb963qg3Uq.webp",
     description: "Investigação e tratamento de dores abdominais crônicas.",
+    specialty: "Gastroenterologia",
   },
   {
     id: "growth",
     label: "Problemas de Crescimento",
     icon: TrendingUp,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_crescimento-Y99cZ5YwqBpHemCB4rrB7R.webp",
     description: "Avaliação nutricional e otimização do crescimento.",
+    specialty: "Puericultura",
   },
   {
     id: "vomiting",
     label: "Vômito Recorrente",
     icon: Stethoscope,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropw=1200https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropfit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_vomito-EbJPoFfdgnsRyuq797pj4y.webp",
     description: "Investigação e tratamento de vômitos persistentes.",
+    specialty: "Gastroenterologia",
   },
   {
     id: "prevention",
     label: "Prevenção e Promoção",
     icon: Shield,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_prevencao-BVU8F7ZRF4pKAc99Qw5xCW.webp",
     description: "Educação nutricional e hábitos saudáveis para toda a família.",
+    specialty: "Puericultura",
   },
   {
     id: "followup",
     label: "Acompanhamento Pós-Cirúrgico",
     icon: CheckCircle2,
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropw=1200https://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1631217314831-c02b6f1d482b?q=80&w=1200&auto=format&fit=cropfit=crop",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/consultation_pos_cirurgico-DqMtUBM2hpRt9bcJBXPg3q.webp",
     description: "Cuidados especializados após procedimentos cirúrgicos.",
+    specialty: "Hepatologia",
   },
 ];
 
@@ -281,7 +281,7 @@ export function FeatureCarousel() {
                         className="absolute inset-x-0 bottom-0 p-10 pt-32 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end pointer-events-none"
                       >
                         <div className="bg-background text-foreground px-4 py-1.5 rounded-full text-[11px] font-normal uppercase tracking-[0.2em] w-fit shadow-lg mb-3 border border-border/50">
-                          {index + 1} • {feature.label}
+                          {index + 1} • {feature.specialty}
                         </div>
                         <p className="text-white font-normal text-xl md:text-2xl leading-tight drop-shadow-md tracking-tight">
                           {feature.description}
@@ -298,7 +298,7 @@ export function FeatureCarousel() {
                   >
                     <div className="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]" />
                     <span className="text-white/80 text-[10px] font-normal uppercase tracking-[0.3em] font-mono">
-                      Especialidade
+                      {feature.specialty}
                     </span>
                   </div>
                 </motion.div>
