@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import FloatingDock from "./components/FloatingDock";
 import Home from "./pages/Home";
 import SymptomAtlas from "./pages/SymptomAtlas";
 import Library from "./pages/Library";
@@ -51,6 +52,7 @@ function App() {
             </main>
             <Footer />
             <WhatsAppButton />
+            <FloatingDock />
           </div>
         </TooltipProvider>
       </ThemeProvider>
