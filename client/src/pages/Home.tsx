@@ -3,20 +3,25 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 import InstagramGallery from "@/components/InstagramGallery";
+import SmokeTransition from "@/components/SmokeTransition";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
 
-// Doctor scene carousel images
+// Doctor scene carousel images - 3 pairs with smoke transition effect
+// Each pair: real photo → watercolor version
 const DOCTOR_SCENES = [
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_1_9661cce5.png",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_2_e5928107.png",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_3_1440a2a4.png",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_4_af61f8c1.png",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_5_6499b50d.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/carousel_6_8b632e90.webp",
+  // Pair 1: Professional Portrait
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png", // Real
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Gemini_Generated_Image_li4vndli4vndli4v_aa3193cf.png", // Watercolor
+  // Pair 2: Consultation with Parents
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Gemini_Generated_Image_n7x9hkn7x9hkn7x9_7377a486.webp", // Real
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Gemini_Generated_Image_68rwyj68rwyj68rw_f6f9682d.webp", // Watercolor
+  // Pair 3: Presentation/Lecture
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Gemini_Generated_Image_gwuqr2gwuqr2gwuq_a7bc7850.webp", // Real
+  "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Gemini_Generated_Image_qgkrzpqgkrzpqgkr_ad98dd33.webp", // Watercolor
 ];
 
 const fadeUp = {
@@ -110,14 +115,23 @@ const LIBRARY_ARTICLES = [
 
 export default function Home() {
   const [currentScene, setCurrentScene] = useState(0);
+  const [showSmokeTransition, setShowSmokeTransition] = useState(false);
+  const [nextScene, setNextScene] = useState(0);
 
   // Auto-rotate doctor scenes every 3.5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentScene((prev) => (prev + 1) % DOCTOR_SCENES.length);
+      setNextScene((prev) => (prev + 1) % DOCTOR_SCENES.length);
+      setShowSmokeTransition(true);
     }, 3500);
     return () => clearInterval(interval);
   }, []);
+
+  // Handle smoke transition completion
+  const handleSmokeComplete = () => {
+    setCurrentScene(nextScene);
+    setShowSmokeTransition(false);
+  };
 
   return (
     <div className="w-full overflow-hidden">
@@ -235,6 +249,12 @@ export default function Home() {
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                     />
                   ))}
+                  {/* Smoke transition effect */}
+                  <SmokeTransition
+                    isActive={showSmokeTransition}
+                    onComplete={handleSmokeComplete}
+                    duration={2000}
+                  />
                 </div>
 
                 {/* Decorative shapes around the carousel */}
@@ -254,6 +274,12 @@ export default function Home() {
                       aria-label={`Ir para cena ${idx + 1}`}
                     />
                   ))}
+                  {/* Smoke transition effect */}
+                  <SmokeTransition
+                    isActive={showSmokeTransition}
+                    onComplete={handleSmokeComplete}
+                    duration={2000}
+                  />
                 </div>
               </div>
             </motion.div>
