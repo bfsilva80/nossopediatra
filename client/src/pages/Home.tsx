@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 import InstagramGallery from "@/components/InstagramGallery";
+import FeatureCarousel from "@/components/ui/feature-carousel";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
@@ -286,31 +287,23 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {CONSULTATION_REASONS.map((reason, idx) => (
-              <motion.div
-                key={idx}
-                className={`card-base p-6 border-2 ${reason.color} ${reason.bgColor}`}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                custom={idx + 1}
-              >
-                <div className="text-4xl mb-4">{reason.emoji}</div>
-                <h3 className="font-display font-bold text-lg mb-3">{reason.title}</h3>
-                <p className="text-sm text-muted-foreground">{reason.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            custom={1}
+          >
+            <FeatureCarousel />
+          </motion.div>
 
           <motion.div
-            className="text-center"
+            className="text-center mt-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            custom={4}
+            custom={2}
           >
             <Link href="/atlas-sintomas" className="btn-primary">
               Ver Todos os Sintomas
