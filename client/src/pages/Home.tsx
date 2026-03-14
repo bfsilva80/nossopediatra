@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react
 import { Link } from "wouter";
 import InstagramGallery from "@/components/InstagramGallery";
 import FeatureCarousel from "@/components/ui/feature-carousel";
+import TypingEffect from "@/components/ui/typing-effect";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
@@ -246,14 +247,24 @@ export default function Home() {
                 </span>
               </motion.div>
 
-              {/* New H1 */}
+              {/* New H1 with Typing Effect */}
               <motion.h1
                 className="text-4xl md:text-5xl lg:text-[3.2rem] font-display font-extrabold leading-[1.2] mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                Ajudando a entender e cuidar dos problemas digestivos das <span className="text-coral">crianças</span>
+                <TypingEffect 
+                  texts={[
+                    "Ajudando a entender os problemas digestivos das crianças",
+                    "Cuidando da saúde digestiva com ciência e dedicação",
+                    "Orientando pais com informações claras e precisas"
+                  ]}
+                  className="text-4xl md:text-5xl lg:text-[3.2rem]"
+                  typingSpeed={50}
+                  rotationInterval={4000}
+                />
+                <span className="text-coral">.</span>
               </motion.h1>
 
               {/* New Subtitle */}
