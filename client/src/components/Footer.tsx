@@ -1,10 +1,21 @@
 import { Link } from "wouter";
-import { Mail, MapPin, Phone, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Phone, MessageCircle, Instagram, Facebook, Linkedin, Sun, Moon } from "lucide-react";
 import { LocationMap } from "./LocationMap";
+import { useState, useEffect } from "react";
 
 const MOUNTAINS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_mountains_footer-d9sbJ8crkY33j276wNkwsN.webp";
 
 export default function Footer() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
   const currentYear = new Date().getFullYear();
   const whatsappNumber = "553499709-9226";
   const phoneNumber = "(34) 9 9709-9226";
@@ -122,6 +133,66 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
+            </div>
+
+            {/* Siga-nos */}
+            <div>
+              <h4 className="font-display font-bold text-foreground mb-4 text-sm">
+                Siga-nos
+              </h4>
+              <div className="flex gap-3 mb-6">
+                <a
+                  href="https://instagram.com/nossopediatra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full border border-blue/20 hover:border-blue/40 hover:bg-blue/5 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5 text-foreground" />
+                </a>
+                <a
+                  href="https://wa.me/5534997099226"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full border border-blue/20 hover:border-blue/40 hover:bg-blue/5 transition-colors"
+                  aria-label="WhatsApp"
+                >
+                  <MessageCircle className="w-5 h-5 text-foreground" />
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full border border-blue/20 hover:border-blue/40 hover:bg-blue/5 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5 text-foreground" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full border border-blue/20 hover:border-blue/40 hover:bg-blue/5 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5 text-foreground" />
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sun className="w-4 h-4 text-foreground" />
+                <button
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className="relative inline-flex h-6 w-11 items-center rounded-full bg-blue/20 transition-colors hover:bg-blue/30"
+                  aria-label="Toggle dark mode"
+                >
+                  <span
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform ${
+                      isDarkMode ? "translate-x-6" : "translate-x-1"
+                    }`}
+                  />
+                </button>
+                <Moon className="w-4 h-4 text-foreground" />
+              </div>
             </div>
 
             {/* Localização */}
