@@ -1,20 +1,11 @@
 import { Link } from "wouter";
-import { Mail, MapPin, Phone, MessageCircle, Instagram, Facebook, Linkedin, Sun, Moon } from "lucide-react";
+import { Mail, MapPin, Phone, MessageCircle, Instagram, Facebook, Linkedin } from "lucide-react";
 import { LocationMap } from "./LocationMap";
-import { useState, useEffect } from "react";
 
 const MOUNTAINS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_mountains_footer-d9sbJ8crkY33j276wNkwsN.webp";
 
 export default function Footer() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+
 
   const currentYear = new Date().getFullYear();
   const whatsappNumber = "553499709-9226";
@@ -178,21 +169,7 @@ export default function Footer() {
                   <Linkedin className="w-5 h-5 text-foreground" />
                 </a>
               </div>
-              <div className="flex items-center gap-2">
-                <Sun className="w-4 h-4 text-foreground" />
-                <button
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  className="relative inline-flex h-6 w-11 items-center rounded-full bg-blue/20 transition-colors hover:bg-blue/30"
-                  aria-label="Toggle dark mode"
-                >
-                  <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform ${
-                      isDarkMode ? "translate-x-6" : "translate-x-1"
-                    }`}
-                  />
-                </button>
-                <Moon className="w-4 h-4 text-foreground" />
-              </div>
+
             </div>
 
             {/* Localização */}
