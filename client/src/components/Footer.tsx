@@ -6,8 +6,8 @@ const MOUNTAINS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/P
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const whatsappNumber = "553499709226";
-  const phoneNumber = "(34) 9 9709-226";
+  const whatsappNumber = "553499709-9226";
+  const phoneNumber = "(34) 9 9709-9226";
   const email = "nossopediatra@gmail.com";
   const address = "Uberaba, MG";
   const coordinates = "-19.7597° S, 47.9203° W";
