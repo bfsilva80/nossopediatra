@@ -41,8 +41,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   /* Typography */
-  --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
-  --font-sans: "Nunito", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
   --font-script: "Sacramento", cursive;
   /* New Palette Custom Colors */
   --color-teal: oklch(0.337 0.075 245.7);         /* #0e3a5b - dark teal */
@@ -64,40 +64,75 @@
 }
 
 :root {
-  --radius: 1rem;
-  /* Nosso Pediatra — New Palette Design System */
-  --background: oklch(0.957 0.015 80.7);           /* #f6f0e6 cream ivory */
-  --foreground: oklch(0.298 0.008 240.1);           /* #2a2e31 dark charcoal */
-  --primary: oklch(0.609 0.182 257.3);              /* #2f80ed bright blue */
-  --primary-foreground: oklch(1.000 0.000 0);       /* white */
-  --secondary: oklch(0.777 0.160 166.6);            /* #06d6a0 emerald green */
-  --secondary-foreground: oklch(0.298 0.008 240.1); /* dark charcoal */
-  --accent: oklch(0.876 0.108 87.1);                /* #f5d280 golden yellow */
-  --accent-foreground: oklch(0.298 0.008 240.1);    /* dark charcoal */
-  --muted: oklch(0.94 0.010 80);                    /* lighter cream */
-  --muted-foreground: oklch(0.554 0.041 257.4);     /* #64748b slate gray */
-  --border: oklch(0.90 0.015 80);                   /* soft cream border */
-  --card: oklch(1.000 0.000 0);                     /* white */
-  --card-foreground: oklch(0.298 0.008 240.1);      /* dark charcoal */
-  --popover: oklch(1.000 0.000 0);
-  --popover-foreground: oklch(0.298 0.008 240.1);
-  --input: oklch(0.92 0.012 80);
-  --ring: oklch(0.609 0.182 257.3);                 /* bright blue */
-  --destructive: oklch(0.640 0.194 14.7);           /* coral pink */
-  --destructive-foreground: oklch(0.985 0 0);
-  --chart-1: oklch(0.609 0.182 257.3);              /* bright blue */
-  --chart-2: oklch(0.777 0.160 166.6);              /* emerald green */
-  --chart-3: oklch(0.876 0.108 87.1);               /* golden yellow */
-  --chart-4: oklch(0.640 0.194 14.7);               /* coral pink */
-  --chart-5: oklch(0.337 0.075 245.7);              /* dark teal */
-  --sidebar: oklch(0.957 0.015 80.7);
-  --sidebar-foreground: oklch(0.298 0.008 240.1);
-  --sidebar-primary: oklch(0.609 0.182 257.3);
-  --sidebar-primary-foreground: oklch(1.000 0.000 0);
-  --sidebar-accent: oklch(0.94 0.010 80);
-  --sidebar-accent-foreground: oklch(0.298 0.008 240.1);
-  --sidebar-border: oklch(0.90 0.015 80);
-  --sidebar-ring: oklch(0.609 0.182 257.3);
+  --radius: 0.5rem;
+  /* Nosso Pediatra — Pastel Palette Design System */
+  --background: #f7f9fa;                            /* light background */
+  --foreground: #333333;                            /* dark text */
+  --primary: #ffc0cb;                               /* pastel pink */
+  --primary-foreground: #000000;                    /* black text */
+  --secondary: #87ceeb;                             /* sky blue */
+  --secondary-foreground: #000000;                  /* black text */
+  --accent: #ffff00;                                /* yellow */
+  --accent-foreground: #000000;                     /* black text */
+  --muted: #ddd9c4;                                 /* muted beige */
+  --muted-foreground: #6e6e6e;                      /* gray text */
+  --border: #d4d4d4;                                /* light gray border */
+  --card: #ffffff;                                  /* white cards */
+  --card-foreground: #333333;                       /* dark text */
+  --popover: #ffffff;
+  --popover-foreground: #333333;
+  --input: #d4d4d4;                                 /* gray input */
+  --ring: #ffc0cb;                                  /* pink ring */
+  --destructive: #ef4444;                           /* red */
+  --destructive-foreground: #ffffff;                /* white text */
+  --chart-1: #ffc0cb;                               /* pink */
+  --chart-2: #87ceeb;                               /* sky blue */
+  --chart-3: #ffff00;                               /* yellow */
+  --chart-4: #ff99cc;                               /* hot pink */
+  --chart-5: #33cc33;                               /* green */
+  --sidebar: #f7f9fa;
+  --sidebar-foreground: #333333;
+  --sidebar-primary: #ffc0cb;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #ffff00;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #d4d4d4;
+  --sidebar-ring: #ffc0cb;
+}
+
+.dark {
+  --card: #2f3436;
+  --ring: #ff99cc;
+  --input: #444444;
+  --muted: #444444;
+  --accent: #87ceeb;
+  --border: #444444;
+  --popover: #2f3436;
+  --primary: #ff99cc;
+  --sidebar: #1a1d23;
+  --secondary: #33cc33;
+  --background: #1a1d23;
+  --foreground: #e5e5e5;
+  --destructive: #ef4444;
+  --sidebar-ring: #ff99cc;
+  --sidebar-accent: #87ceeb;
+  --sidebar-border: #444444;
+  --card-foreground: #e5e5e5;
+  --sidebar-primary: #ff99cc;
+  --muted-foreground: #a3a3a3;
+  --accent-foreground: #000000;
+  --popover-foreground: #e5e5e5;
+  --primary-foreground: #000000;
+  --sidebar-foreground: #e5e5e5;
+  --secondary-foreground: #000000;
+  --destructive-foreground: #ffffff;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-primary-foreground: #000000;
+  --chart-1: #ff99cc;
+  --chart-2: #33cc33;
+  --chart-3: #87ceeb;
+  --chart-4: #ffff00;
+  --chart-5: #ffcc00;
 }
 
 @layer base {
