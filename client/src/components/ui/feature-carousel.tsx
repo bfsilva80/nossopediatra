@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Link } from "wouter";
 import {
   Activity,
   Pill,
@@ -24,6 +25,7 @@ import { cn } from "@/lib/utils";
 const FEATURES = [
   {
     id: "reflux",
+    slug: "refluxo-gastroesofagico",
     label: "Refluxo Gastroesofágico",
     icon: Activity,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Consulta_f415ff2b.webp",
@@ -32,6 +34,7 @@ const FEATURES = [
   },
   {
     id: "constipation",
+    slug: "constipacao-intestinal",
     label: "Constipação Intestinal",
     icon: Pill,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Constipacao_7d4f890a.webp",
@@ -40,6 +43,7 @@ const FEATURES = [
   },
   {
     id: "diarrhea",
+    slug: "diarreia-cronica",
     label: "Diarreia Crônica",
     icon: Droplets,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Consulta2_83e1d370.webp",
@@ -48,6 +52,7 @@ const FEATURES = [
   },
   {
     id: "allergy",
+    slug: "alergia-alimentar",
     label: "Alergia Alimentar",
     icon: AlertCircle,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/APLV_e269c4ee.webp",
@@ -56,6 +61,7 @@ const FEATURES = [
   },
   {
     id: "intolerance",
+    slug: "intolerancia-lactose",
     label: "Intolerância à Lactose",
     icon: Zap,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Alergia_8b250ced.webp",
@@ -64,6 +70,7 @@ const FEATURES = [
   },
   {
     id: "ibd",
+    slug: "doenca-inflamatoria-intestinal",
     label: "Doença Inflamatória Intestinal",
     icon: Flame,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/DorAbdominal_debc644f.webp",
@@ -72,6 +79,7 @@ const FEATURES = [
   },
   {
     id: "celiac",
+    slug: "doenca-celiaca",
     label: "Doença Celíaca",
     icon: Microscope,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Dieta_925834a0.webp",
@@ -80,6 +88,7 @@ const FEATURES = [
   },
   {
     id: "blood",
+    slug: "sangue-fezes",
     label: "Sangue nas Fezes",
     icon: Droplet,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Paipreocupado_a411aede.webp",
@@ -88,6 +97,7 @@ const FEATURES = [
   },
   {
     id: "hepatitis",
+    slug: "hepatites",
     label: "Hepatites",
     icon: Heart,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Ictericia_1993d4a5.webp",
@@ -96,6 +106,7 @@ const FEATURES = [
   },
   {
     id: "liver",
+    slug: "doencas-figado-vias-biliares",
     label: "Doenças do Fígado/Vias Biliares",
     icon: Heart,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Consulta2_83e1d370.webp",
@@ -104,6 +115,7 @@ const FEATURES = [
   },
   {
     id: "feeding",
+    slug: "dificuldade-alimentar",
     label: "Dificuldade Alimentar",
     icon: Utensils,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Orientando_074dcbce.webp",
@@ -112,6 +124,7 @@ const FEATURES = [
   },
   {
     id: "eosinophilic",
+    slug: "esofagite-eosinofílica",
     label: "Esofagite Eosinofílica",
     icon: Zap,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Consulta_f415ff2b.webp",
@@ -120,6 +133,7 @@ const FEATURES = [
   },
   {
     id: "pancreatitis",
+    slug: "pancreatite",
     label: "Pancreatite Aguda/Recorrente/Crônica",
     icon: Flame,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/DorAbdominal_debc644f.webp",
@@ -128,12 +142,13 @@ const FEATURES = [
   },
   {
     id: "vomiting",
+    slug: "vomito-recorrente",
     label: "Vômito Recorrente",
     icon: Stethoscope,
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Consulta2_83e1d370.webp",
     description: "Investigação e tratamento de vômitos persistentes.",
     specialty: "Gastroenterologia",
-  },
+  }
 ];
 
 const AUTO_PLAY_INTERVAL = 4000;
@@ -260,25 +275,26 @@ export function FeatureCarousel() {
               const Icon = feature.icon;
 
               return (
-                <motion.div
-                  key={feature.id}
-                  initial={false}
-                  animate={{
-                    x: isActive ? 0 : isPrev ? -100 : isNext ? 100 : 0,
-                    scale: isActive ? 1 : isPrev || isNext ? 0.85 : 0.7,
-                    opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
-                    rotate: isPrev ? -3 : isNext ? 3 : 0,
-                    zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
-                    pointerEvents: isActive ? "auto" : "none",
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 25,
-                    mass: 0.8,
-                  }}
-                  className="absolute inset-0 rounded-[2rem] md:rounded-[2.8rem] overflow-hidden border-4 md:border-8 border-background bg-background origin-center"
-                >
+                <Link href={`/conteudo/${feature.slug}`}>
+                  <motion.div
+                    key={feature.id}
+                    initial={false}
+                    animate={{
+                      x: isActive ? 0 : isPrev ? -100 : isNext ? 100 : 0,
+                      scale: isActive ? 1 : isPrev || isNext ? 0.85 : 0.7,
+                      opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
+                      rotate: isPrev ? -3 : isNext ? 3 : 0,
+                      zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
+                      pointerEvents: isActive ? "auto" : "none",
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 25,
+                      mass: 0.8,
+                    }}
+                    className="absolute inset-0 rounded-[2rem] md:rounded-[2.8rem] overflow-hidden border-4 md:border-8 border-background bg-background origin-center cursor-pointer"
+                  >
                   <img
                     src={feature.image}
                     alt={feature.label}
@@ -319,7 +335,8 @@ export function FeatureCarousel() {
                       {feature.specialty}
                     </span>
                   </div>
-                </motion.div>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>

@@ -88,30 +88,118 @@ const SYMPTOMS = [
 
 const LIBRARY_ARTICLES = [
   {
-    slug: "refluxo-bebe",
-    title: "Refluxo em Bebê",
-    description: "Quando é normal, quando é problema e como manejar",
+    slug: "refluxo-gastroesofagico",
+    title: "Refluxo Gastroesofágico",
+    description: "Tratamento especializado para refluxo em crianças e bebês",
     emoji: "🍼",
-    color: "border-coral/40",
-    bgColor: "bg-coral/10",
-  },
-  {
-    slug: "aplv-guia-completo",
-    title: "APLV",
-    description: "Alergia à Proteína do Leite de Vaca: sinais e manejo",
-    emoji: "🥛",
     color: "border-blue/40",
     bgColor: "bg-blue/10",
   },
   {
-    slug: "constipacao-infantil",
-    title: "Constipação Infantil",
-    description: "Além do laxante: entenda as causas reais",
+    slug: "constipacao-intestinal",
+    title: "Constipação Intestinal",
+    description: "Orientação e tratamento para problemas de constipação",
     emoji: "💪",
     color: "border-emerald/40",
     bgColor: "bg-emerald/10",
   },
-];
+  {
+    slug: "diarreia-cronica",
+    title: "Diarreia Crônica",
+    description: "Diagnóstico e manejo de diarreia persistente em pediatria",
+    emoji: "🌊",
+    color: "border-teal/40",
+    bgColor: "bg-teal/10",
+  },
+  {
+    slug: "alergia-alimentar",
+    title: "Alergia Alimentar",
+    description: "Avaliação completa e orientação para alergias alimentares",
+    emoji: "⚠️",
+    color: "border-coral/40",
+    bgColor: "bg-coral/10",
+  },
+  {
+    slug: "intolerancia-lactose",
+    title: "Intolerância à Lactose",
+    description: "Diagnóstico e estratégias nutricionais personalizadas",
+    emoji: "🥛",
+    color: "border-golden/40",
+    bgColor: "bg-golden/10",
+  },
+  {
+    slug: "doenca-inflamatoria-intestinal",
+    title: "Doença Inflamatória Intestinal",
+    description: "Manejo especializado de Crohn e retocolite ulcerativa",
+    emoji: "🔥",
+    color: "border-coral/40",
+    bgColor: "bg-coral/10",
+  },
+  {
+    slug: "doenca-celiaca",
+    title: "Doença Celíaca",
+    description: "Diagnóstico, orientação nutricional e acompanhamento",
+    emoji: "🌾",
+    color: "border-emerald/40",
+    bgColor: "bg-emerald/10",
+  },
+  {
+    slug: "sangue-fezes",
+    title: "Sangue nas Fezes",
+    description: "Investigação e diagnóstico de hematoquesia pediátrica",
+    emoji: "🩸",
+    color: "border-coral/40",
+    bgColor: "bg-coral/10",
+  },
+  {
+    slug: "hepatites",
+    title: "Hepatites",
+    description: "Diagnóstico e manejo de hepatites virais e autoimunes",
+    emoji: "🏥",
+    color: "border-blue/40",
+    bgColor: "bg-blue/10",
+  },
+  {
+    slug: "doencas-figado-vias-biliares",
+    title: "Doenças do Fígado/Vias Biliares",
+    description: "Avaliação e tratamento especializado de hepatopatias",
+    emoji: "⚕️",
+    color: "border-teal/40",
+    bgColor: "bg-teal/10",
+  },
+  {
+    slug: "dificuldade-alimentar",
+    title: "Dificuldade Alimentar",
+    description: "Orientação nutricional para problemas de alimentação",
+    emoji: "🍽️",
+    color: "border-golden/40",
+    bgColor: "bg-golden/10",
+  },
+  {
+    slug: "esofagite-eosinofílica",
+    title: "Esofagite Eosinofílica",
+    description: "Diagnóstico e manejo de esofagite eosinofílica",
+    emoji: "🔬",
+    color: "border-blue/40",
+    bgColor: "bg-blue/10",
+  },
+  {
+    slug: "pancreatite",
+    title: "Pancreatite Aguda/Recorrente/Crônica",
+    description: "Manejo especializado de pancreatite em crianças",
+    emoji: "⚡",
+    color: "border-coral/40",
+    bgColor: "bg-coral/10",
+  },
+  {
+    slug: "vomito-recorrente",
+    title: "Vômito Recorrente",
+    description: "Investigação e tratamento de vômitos persistentes",
+    emoji: "🤢",
+    color: "border-emerald/40",
+    bgColor: "bg-emerald/10",
+  },
+]
 
 export default function Home() {
   const [currentScene, setCurrentScene] = useState(0);
@@ -353,7 +441,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ LIBRARY PREVIEW ═══════════ */}
-      <section className="section-spacing bg-cream">
+      <section id="conteudo-pais" className="section-spacing bg-cream">
         <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-12"
