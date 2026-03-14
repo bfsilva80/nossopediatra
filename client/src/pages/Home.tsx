@@ -239,17 +239,17 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border-2 border-blue/15"
+                className="inline-flex items-center gap-2.5 bg-blue/8 backdrop-blur-md rounded-full px-5 py-2.5 mb-8 border border-blue/20 hover:border-blue/40 transition-colors"
               >
-                <Sparkles className="w-4 h-4 text-blue" />
-                <span className="text-sm font-semibold text-foreground/80 font-display">
-                  Gastroenterologia Pediátrica em Uberaba
+                <Sparkles className="w-4 h-4 text-blue flex-shrink-0" />
+                <span className="text-xs font-semibold tracking-wide text-blue uppercase">
+                  Gastroenterologia Pediátrica
                 </span>
               </motion.div>
 
               {/* New H1 with Typing Effect */}
               <motion.h1
-                className="text-4xl md:text-5xl lg:text-[3.2rem] font-display font-extrabold leading-[1.2] mb-6"
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] mb-8 tracking-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
@@ -260,32 +260,31 @@ export default function Home() {
                     "Cuidando da saúde digestiva com ciência e dedicação",
                     "Orientando pais com informações claras e precisas"
                   ]}
-                  className="text-4xl md:text-5xl lg:text-[3.2rem]"
+                  className="text-5xl md:text-6xl lg:text-7xl font-black"
                   typingSpeed={50}
                   rotationInterval={4000}
                 />
-                <span className="text-coral">.</span>
               </motion.h1>
 
               {/* New Subtitle */}
               <motion.p
-                className="text-lg md:text-xl mb-6 text-foreground/70 leading-relaxed"
+                className="text-lg md:text-xl mb-8 text-foreground/65 leading-relaxed max-w-2xl font-light"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                Especialista em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina. Informações científicas para ajudar pais a compreender melhor e tomar decisões com segurança.
+                Especialista em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina.
               </motion.p>
 
               {/* Credentials Line */}
               <motion.div
-                className="mb-8 pb-6 border-b border-blue/20"
+                className="mb-10 pb-8 border-b border-blue/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                <p className="text-sm font-semibold text-teal mb-2">Dr. Bruno Fernandes</p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-sm font-bold text-foreground mb-1 tracking-wide">Dr. Bruno Fernandes</p>
+                <p className="text-xs text-foreground/50 leading-relaxed font-light">
                   Gastropediatra – USP Ribeirão Preto<br />
                   CRM 93321 | RQE 63639
                 </p>
@@ -293,28 +292,28 @@ export default function Home() {
 
               {/* CTAs */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 mb-6"
+                className="flex flex-col sm:flex-row gap-4 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
               >
-                <Link href="/consultas" className="btn-primary">
+                <Link href="/consultas" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
                   Agendar Consulta
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
-                <Link href="/atlas-sintomas" className="btn-outline">
+                <Link href="/atlas-sintomas" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all">
                   Explorar Sintomas
                 </Link>
               </motion.div>
 
               {/* Microtexto */}
               <motion.p
-                className="text-xs text-muted-foreground"
+                className="text-sm text-foreground/50 font-light"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
               >
-                Atendimento em Uberaba e por telemedicina.
+                ✓ Atendimento em Uberaba e por telemedicina
               </motion.p>
             </div>
 
