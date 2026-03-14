@@ -6,7 +6,7 @@ import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
+import { FooterSection } from "./components/ui/footer-section";
 import WhatsAppButton from "./components/WhatsAppButton";
 import FloatingDock from "./components/FloatingDock";
 import Home from "./pages/Home";
@@ -50,7 +50,7 @@ function App() {
             <main className="flex-1">
               <Router />
             </main>
-            <Footer />
+            <FooterSection />
             <WhatsAppButton />
             <FloatingDock />
           </div>
