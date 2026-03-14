@@ -234,7 +234,7 @@ export default function Home() {
                       key={idx}
                       src={scene}
                       alt={`Dr. Bruno - Cena ${idx + 1}`}
-                      className="absolute inset-0 w-full h-full object-contain"
+                      className="absolute inset-0 w-full h-full object-cover"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: currentScene === idx ? 1 : 0 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
