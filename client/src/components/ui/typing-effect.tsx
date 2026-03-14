@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'motion/react'
+import { motion } from 'motion/react'
 import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -25,38 +25,54 @@ export const TypingEffect = ({
   const [displayedText, setDisplayedText] = useState('')
   const [currentTextIndex, setCurrentTextIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(containerRef, { once: true })
+  const [isMounted, setIsMounted] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const currentText = texts[currentTextIndex % texts.length]
 
+  // Only run effect when component is mounted
   useEffect(() => {
-    if (!isInView) return
+    setIsMounted(true)
+    return () => {
+      setIsMounted(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+
+    // Clear previous timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
 
     if (charIndex < currentText.length) {
-      const typingTimeout = setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setDisplayedText((prev) => prev + currentText.charAt(charIndex))
         setCharIndex(charIndex + 1)
       }, typingSpeed)
-      return () => clearTimeout(typingTimeout)
     } else {
-      const changeLabelTimeout = setTimeout(() => {
+      // Wait before rotating to next text
+      timeoutRef.current = setTimeout(() => {
         setDisplayedText('')
         setCharIndex(0)
         setCurrentTextIndex((prev) => (prev + 1) % texts.length)
       }, rotationInterval)
-      return () => clearTimeout(changeLabelTimeout)
     }
-  }, [charIndex, currentText, isInView, typingSpeed, rotationInterval])
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [charIndex, currentText, isMounted, typingSpeed, rotationInterval, texts])
+
+  if (!isMounted) {
+    return <span className={className}>{texts[0]}</span>
+  }
 
   return (
-    <div
-      ref={containerRef}
-      className={cn(
-        'relative inline-flex items-center justify-center text-center font-bold',
-        className
-      )}
-    >
+    <span className={cn('relative inline', className)}>
       {displayedText}
       <motion.span
         initial={{ opacity: 0 }}
@@ -66,11 +82,9 @@ export const TypingEffect = ({
           repeat: Infinity,
           repeatType: 'reverse',
         }}
-        className={cn(
-          'ml-1 h-[1em] w-1 rounded-sm bg-current'
-        )}
+        className="ml-1 h-[1em] w-1 rounded-sm bg-current inline-block"
       />
-    </div>
+    </span>
   )
 }
 
