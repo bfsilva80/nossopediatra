@@ -65,74 +65,74 @@
 
 :root {
   --radius: 0.5rem;
-  /* Nosso Pediatra — Pastel Palette Design System */
-  --background: #f7f9fa;                            /* light background */
-  --foreground: #333333;                            /* dark text */
-  --primary: #ffc0cb;                               /* pastel pink */
-  --primary-foreground: #000000;                    /* black text */
-  --secondary: #87ceeb;                             /* sky blue */
-  --secondary-foreground: #000000;                  /* black text */
-  --accent: #ffff00;                                /* yellow */
-  --accent-foreground: #000000;                     /* black text */
-  --muted: #ddd9c4;                                 /* muted beige */
-  --muted-foreground: #6e6e6e;                      /* gray text */
-  --border: #d4d4d4;                                /* light gray border */
+  /* Nosso Pediatra — Pediatric Medical Design System */
+  --background: #f8f9fa;                            /* clean light background */
+  --foreground: #2c3e50;                            /* professional dark gray */
+  --primary: #0066cc;                               /* medical blue */
+  --primary-foreground: #ffffff;                    /* white text */
+  --secondary: #20b2aa;                             /* mint green - health */
+  --secondary-foreground: #ffffff;                  /* white text */
+  --accent: #ff9500;                                /* warm orange - friendly */
+  --accent-foreground: #ffffff;                     /* white text */
+  --muted: #e8eef5;                                 /* soft blue-gray */
+  --muted-foreground: #5a6c7d;                      /* medium gray */
+  --border: #d4dce6;                                /* soft border */
   --card: #ffffff;                                  /* white cards */
-  --card-foreground: #333333;                       /* dark text */
+  --card-foreground: #2c3e50;                       /* dark text */
   --popover: #ffffff;
-  --popover-foreground: #333333;
-  --input: #d4d4d4;                                 /* gray input */
-  --ring: #ffc0cb;                                  /* pink ring */
-  --destructive: #ef4444;                           /* red */
+  --popover-foreground: #2c3e50;
+  --input: #e8eef5;                                 /* light blue-gray input */
+  --ring: #0066cc;                                  /* blue ring */
+  --destructive: #e74c3c;                           /* medical red */
   --destructive-foreground: #ffffff;                /* white text */
-  --chart-1: #ffc0cb;                               /* pink */
-  --chart-2: #87ceeb;                               /* sky blue */
-  --chart-3: #ffff00;                               /* yellow */
-  --chart-4: #ff99cc;                               /* hot pink */
-  --chart-5: #33cc33;                               /* green */
-  --sidebar: #f7f9fa;
-  --sidebar-foreground: #333333;
-  --sidebar-primary: #ffc0cb;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #ffff00;
-  --sidebar-accent-foreground: #000000;
-  --sidebar-border: #d4d4d4;
-  --sidebar-ring: #ffc0cb;
+  --chart-1: #0066cc;                               /* blue */
+  --chart-2: #20b2aa;                               /* mint green */
+  --chart-3: #ff9500;                               /* orange */
+  --chart-4: #27ae60;                               /* darker green */
+  --chart-5: #3498db;                               /* light blue */
+  --sidebar: #f8f9fa;
+  --sidebar-foreground: #2c3e50;
+  --sidebar-primary: #0066cc;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ff9500;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #d4dce6;
+  --sidebar-ring: #0066cc;
 }
 
 .dark {
-  --card: #2f3436;
-  --ring: #ff99cc;
-  --input: #444444;
-  --muted: #444444;
-  --accent: #87ceeb;
-  --border: #444444;
-  --popover: #2f3436;
-  --primary: #ff99cc;
-  --sidebar: #1a1d23;
-  --secondary: #33cc33;
-  --background: #1a1d23;
-  --foreground: #e5e5e5;
-  --destructive: #ef4444;
-  --sidebar-ring: #ff99cc;
-  --sidebar-accent: #87ceeb;
-  --sidebar-border: #444444;
-  --card-foreground: #e5e5e5;
-  --sidebar-primary: #ff99cc;
-  --muted-foreground: #a3a3a3;
-  --accent-foreground: #000000;
-  --popover-foreground: #e5e5e5;
-  --primary-foreground: #000000;
-  --sidebar-foreground: #e5e5e5;
-  --secondary-foreground: #000000;
-  --destructive-foreground: #ffffff;
-  --sidebar-accent-foreground: #000000;
-  --sidebar-primary-foreground: #000000;
-  --chart-1: #ff99cc;
-  --chart-2: #33cc33;
-  --chart-3: #87ceeb;
-  --chart-4: #ffff00;
-  --chart-5: #ffcc00;
+  --card: #1f2937;
+  --ring: #4a90e2;
+  --input: #374151;
+  --muted: #374151;
+  --accent: #ffb366;
+  --border: #4b5563;
+  --popover: #1f2937;
+  --primary: #4a90e2;
+  --sidebar: #111827;
+  --secondary: #4ecdc4;
+  --background: #111827;
+  --foreground: #e8e8e8;
+  --destructive: #f87171;
+  --sidebar-ring: #4a90e2;
+  --sidebar-accent: #ffb366;
+  --sidebar-border: #4b5563;
+  --card-foreground: #e8e8e8;
+  --sidebar-primary: #4a90e2;
+  --muted-foreground: #9ca3af;
+  --accent-foreground: #111827;
+  --popover-foreground: #e8e8e8;
+  --primary-foreground: #111827;
+  --sidebar-foreground: #e8e8e8;
+  --secondary-foreground: #111827;
+  --destructive-foreground: #111827;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-primary-foreground: #111827;
+  --chart-1: #4a90e2;
+  --chart-2: #4ecdc4;
+  --chart-3: #ffb366;
+  --chart-4: #52c41a;
+  --chart-5: #1890ff;
 }
 
 @layer base {
