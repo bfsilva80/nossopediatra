@@ -232,9 +232,9 @@ export default function Home() {
         <div className="absolute bottom-32 right-[8%] w-10 h-10 text-2xl animate-wiggle opacity-25 pointer-events-none">🩺</div>
 
         <div className="relative z-10 container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
             {/* Text Content */}
-            <div className="max-w-xl">
+            <div className="lg:col-span-2 max-w-2xl">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -319,14 +319,14 @@ export default function Home() {
 
             {/* Animated Doctor Scenes Carousel */}
             <motion.div
-              className="hidden lg:flex justify-center"
+              className="hidden lg:flex justify-center lg:col-span-3"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             >
-              <div className="relative w-full" style={{ maxWidth: '346px' }}>
+              <div className="relative w-full" style={{ maxWidth: '500px' }}>
                 {/* Carousel container */}
-                <div className="relative h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+                <div className="relative h-[600px] rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
                   {DOCTOR_SCENES.map((scene, idx) => (
                     <motion.img
                       key={idx}
@@ -342,9 +342,9 @@ export default function Home() {
                 </div>
 
                 {/* Decorative shapes around the carousel */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
-                <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
-                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-blue/20 rounded-lg opacity-60 animate-wiggle" />
+                <div className="absolute -top-6 -left-6 w-16 h-16 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
+                <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
+                <div className="absolute top-1/2 -right-8 w-12 h-12 bg-blue/20 rounded-lg opacity-60 animate-wiggle" />
 
                 {/* Scene indicators */}
                 <div className="flex justify-center gap-2 mt-6">
