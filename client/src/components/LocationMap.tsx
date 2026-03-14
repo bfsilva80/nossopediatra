@@ -17,7 +17,7 @@ interface LocationMapProps {
 }
 
 export function LocationMap({
-  location = "Uberaba, MG",
+  location = "Rua Salvador, 79 - Uberaba/MG",
   coordinates = "-19.7597° S, 47.9203° W",
   className,
 }: LocationMapProps) {
