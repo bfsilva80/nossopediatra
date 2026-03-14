@@ -275,9 +275,8 @@ export function FeatureCarousel() {
               const Icon = feature.icon;
 
               return (
-                <Link href={`/conteudo/${feature.slug}`}>
+                <Link key={feature.id} href={`/conteudo/${feature.slug}`}>
                   <motion.div
-                    key={feature.id}
                     initial={false}
                     animate={{
                       x: isActive ? 0 : isPrev ? -100 : isNext ? 100 : 0,
