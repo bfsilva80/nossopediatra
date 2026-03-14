@@ -243,7 +243,7 @@ export default function Home() {
               >
                 <Sparkles className="w-4 h-4 text-blue" />
                 <span className="text-sm font-semibold text-foreground/80 font-display">
-                  Gastroenterologia Pediátrica
+                  Gastroenterologia Pediátrica em Uberaba
                 </span>
               </motion.div>
 
@@ -274,7 +274,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                Informações claras, baseadas em ciência, para ajudar pais a compreender melhor o que está acontecendo e tomar decisões com segurança.
+                Especialista em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina. Informações científicas para ajudar pais a compreender melhor e tomar decisões com segurança.
               </motion.p>
 
               {/* Credentials Line */}

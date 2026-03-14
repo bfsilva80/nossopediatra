@@ -1,0 +1,59 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Nosso Pediatra - Gastroenterologia Pediátrica",
+  "description": "Consultório especializado em gastroenterologia pediátrica em Uberaba, MG",
+  "url": "https://nossopediatra.com.br",
+  "telephone": "+55 34 99709-9226",
+  "email": "nossopediatra@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Uberaba",
+    "addressLocality": "Uberaba",
+    "addressRegion": "MG",
+    "postalCode": "38000-000",
+    "addressCountry": "BR"
+  },
+  "priceRange": "$$",
+  "areaServed": {
+    "@type": "City",
+    "name": "Uberaba"
+  },
+  "medicalSpecialty": "Pediatric Gastroenterology",
+  "doctor": {
+    "@type": "Person",
+    "name": "Dr. Bruno Fernandes",
+    "jobTitle": "Gastroenterologista Pediátrico",
+    "medicalSpecialty": "Gastroenterologia Pediátrica",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "CRM",
+      "value": "93321"
+    }
+  },
+  "sameAs": [
+    "https://www.instagram.com/nossopediatra"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Medical Appointment",
+    "telephone": "+55 34 99709-9226",
+    "email": "nossopediatra@gmail.com"
+  },
+  "knowsAbout": [
+    "Refluxo Gastroesofágico",
+    "Constipação Infantil",
+    "Diarreia Crônica",
+    "Alergia Alimentar",
+    "Intolerância à Lactose",
+    "Doença Inflamatória Intestinal",
+    "Doença Celíaca",
+    "Dor Abdominal Recorrente",
+    "Sangue nas Fezes",
+    "Hepatites",
+    "Doenças do Fígado",
+    "Dificuldade Alimentar",
+    "Esofagite Eosinofílica",
+    "Pancreatite"
+  ]
+}
