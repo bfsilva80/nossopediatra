@@ -1,19 +1,26 @@
 import { Link } from "wouter";
+import { Mail, MapPin, Phone, MessageCircle } from "lucide-react";
+import { LocationMap } from "./LocationMap";
 
 const MOUNTAINS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_mountains_footer-d9sbJ8crkY33j276wNkwsN.webp";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const whatsappNumber = "553499709226";
+  const phoneNumber = "(34) 9 9709-226";
+  const email = "nossopediatra@gmail.com";
+  const address = "Uberaba, MG";
+  const coordinates = "-19.7597° S, 47.9203° W";
 
   return (
-    <footer className="relative">
+    <footer className="relative bg-gradient-to-b from-white to-blue-50/30">
       {/* Watercolor mountains decoration */}
       <div
         className="w-full h-32 md:h-48 bg-contain bg-bottom bg-repeat-x pointer-events-none"
         style={{ backgroundImage: `url('${MOUNTAINS_BG}')` }}
       />
 
-      <div className="bg-white/80 backdrop-blur-sm border-t-2 border-blue/10">
+      <div className="border-t-2 border-blue/10">
         <div className="container py-12 md:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
             {/* Brand */}
@@ -77,19 +84,30 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 <li>
                   <a
-                    href="https://wa.me/553499709226"
+                    href={`tel:${phoneNumber.replace(/\D/g, "")}`}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                  >
+                    <Phone className="w-4 h-4" />
+                    {phoneNumber}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`https://wa.me/${whatsappNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-green-600 transition-colors flex items-center gap-2"
                   >
+                    <MessageCircle className="w-4 h-4" />
                     WhatsApp
                   </a>
                 </li>
                 <li>
                   <a
-                    href="mailto:nossopediatra@gmail.com"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    href={`mailto:${email}`}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                   >
+                    <Mail className="w-4 h-4" />
                     Email
                   </a>
                 </li>
@@ -104,6 +122,18 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
+            </div>
+
+            {/* Localização */}
+            <div>
+              <h4 className="font-display font-bold text-foreground mb-4 text-sm">
+                Localização
+              </h4>
+              <div className="flex items-start gap-2 mb-3">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-coral" />
+                <p className="text-sm text-muted-foreground">{address}</p>
+              </div>
+              <LocationMap location="Uberaba, MG" coordinates={coordinates} />
             </div>
 
             {/* Legal */}
