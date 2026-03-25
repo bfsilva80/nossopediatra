@@ -1,146 +1,105 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Award, BookOpen, Stethoscope, Users } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Award, BookOpen, Stethoscope, ArrowRight } from 'lucide-react'
+import { Link } from 'wouter'
 
-interface QualificationItem {
-  id: string
-  title: string
-  items: string[]
+interface CredentialItem {
   icon: React.ReactNode
+  label: string
+  value: string
 }
 
-const QUALIFICATIONS: QualificationItem[] = [
+const CREDENTIALS: CredentialItem[] = [
   {
-    id: 'medical-school',
-    title: 'Formação Médica',
-    icon: <BookOpen className="w-6 h-6" />,
-    items: [
-      'Graduação em Medicina - Universidade Federal do Mato Grosso do Sul (UFMS)',
-      'Registro Profissional: CRM MG 93321',
-      'Pediatra Especialista em Gastroenterologia e Hepatologia Pediátrica'
-    ]
+    icon: <BookOpen className="w-5 h-5" />,
+    label: "Formação",
+    value: "Medicina (UFMS 2006)"
   },
   {
-    id: 'residency',
-    title: 'Residência Médica',
-    icon: <Stethoscope className="w-6 h-6" />,
-    items: [
-      'Residência em Pediatria - Hospital de Clínicas da UFTM',
-      'Subespecialização em Gastroenterologia Pediátrica',
-      'Experiência clínica de mais de 15 anos'
-    ]
+    icon: <Stethoscope className="w-5 h-5" />,
+    label: "Especialidade",
+    value: "Pediatria com Gastroenterologia e Hepatologia"
   },
   {
-    id: 'certifications',
-    title: 'Certificações e Credenciais',
-    icon: <Award className="w-6 h-6" />,
-    items: [
-      'Registro de Especialista: RQE 63639',
-      'Membro da Sociedade Brasileira de Pediatria (SBP)',
-      'Membro da Sociedade Brasileira de Gastroenterologia Pediátrica',
-      'Certificação em Suporte Avançado de Vida Pediátrica (PALS)',
-      'Certificação em Reanimação Neonatal'
-    ]
-  },
-  {
-    id: 'training',
-    title: 'Treinamento Avançado',
-    icon: <Users className="w-6 h-6" />,
-    items: [
-      'Treinamento em Endoscopia Digestiva Pediátrica',
-      'Especialização em Nutrição Infantil e Alergias Alimentares',
-      'Formação em Distúrbios do Sono Pediátrico',
-      'Participação em congressos nacionais e internacionais',
-      'Atualização contínua em gastroenterologia pediátrica'
-    ]
+    icon: <Award className="w-5 h-5" />,
+    label: "Experiência",
+    value: "14 anos de prática clínica"
   }
 ]
 
 export function QualificationsSection() {
-  const [expanded, setExpanded] = useState<string | null>('medical-school')
-
   return (
-    <section className="section-spacing bg-card">
+    <section className="section-spacing bg-background">
       <div className="container">
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            Qualificações e Experiência
-          </h2>
-          <p className="text-lg text-foreground/70">
-            Formação especializada e experiência clínica para cuidar da saúde do seu filho
-          </p>
-        </div>
+        <motion.div
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* Subtle Header */}
+          <div className="text-center mb-8">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
+              Credenciais Profissionais
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              Formação e Experiência Especializada
+            </h2>
+          </div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          {QUALIFICATIONS.map((qual) => (
-            <motion.div
-              key={qual.id}
-              className="border border-border rounded-lg overflow-hidden"
-              initial={false}
-            >
-              <button
-                onClick={() => setExpanded(expanded === qual.id ? null : qual.id)}
-                className="w-full px-6 py-4 flex items-center justify-between hover:bg-background/50 transition-colors"
+          {/* Credentials Grid - Minimal and Clean */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {CREDENTIALS.map((cred, idx) => (
+              <motion.div
+                key={idx}
+                className="flex flex-col items-center text-center p-6 rounded-lg border border-border/50 bg-card/50 hover:border-primary/30 transition-colors"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
               >
-                <div className="flex items-center gap-4">
-                  <div className="text-primary">{qual.icon}</div>
-                  <h3 className="text-lg font-semibold text-foreground text-left">
-                    {qual.title}
-                  </h3>
+                <div className="text-primary mb-3">
+                  {cred.icon}
                 </div>
-                <motion.div
-                  animate={{ rotate: expanded === qual.id ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ChevronDown className="text-primary" size={24} />
-                </motion.div>
-              </button>
+                <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wide mb-1">
+                  {cred.label}
+                </p>
+                <p className="text-sm font-semibold text-foreground">
+                  {cred.value}
+                </p>
+              </motion.div>
+            ))}
+          </div>
 
-              <AnimatePresence>
-                {expanded === qual.id && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="border-t border-border"
-                  >
-                    <div className="px-6 py-4 bg-background/30 space-y-3">
-                      {qual.items.map((item, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.1 }}
-                          className="flex items-start gap-3"
-                        >
-                          <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          <p className="text-foreground/80">{item}</p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </div>
+          {/* CRM and RQE - Minimal Display */}
+          <motion.div
+            className="text-center text-xs text-foreground/50 mb-8 space-y-1"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <p>CRM MG 93321 | RQE 63639</p>
+            <p>Membro da Sociedade Brasileira de Pediatria</p>
+          </motion.div>
 
-        {/* Credentials Display */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          <div className="bg-background rounded-lg p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">15+</div>
-            <p className="text-foreground/70">Anos de Experiência</p>
-          </div>
-          <div className="bg-background rounded-lg p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">500+</div>
-            <p className="text-foreground/70">Famílias Atendidas</p>
-          </div>
-          <div className="bg-background rounded-lg p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">CRM 93321</div>
-            <p className="text-foreground/70">RQE 63639</p>
-          </div>
-        </div>
+          {/* CTA to Full Profile */}
+          <motion.div
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            <Link 
+              href="/sobre-dr-bruno" 
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all text-sm"
+            >
+              Ver formação completa
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
