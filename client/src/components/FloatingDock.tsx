@@ -17,19 +17,9 @@ const dockItems = [
     href: '/',
   },
   {
-    title: 'Atlas de Sintomas',
+    title: 'O que esta acontecendo?',
     icon: <Stethoscope className='h-full w-full text-emerald-600 dark:text-emerald-400' />,
-    href: '/atlas',
-  },
-  {
-    title: 'Biblioteca',
-    icon: <BookOpen className='h-full w-full text-amber-600 dark:text-amber-400' />,
-    href: '/biblioteca',
-  },
-  {
-    title: 'Dúvidas',
-    icon: <HelpCircle className='h-full w-full text-purple-600 dark:text-purple-400' />,
-    href: '/duvidas',
+    href: '/diagnostico',
   },
   {
     title: 'Consultas',
@@ -37,9 +27,9 @@ const dockItems = [
     href: '/consultas',
   },
   {
-    title: 'Contato',
+    title: 'Sobre',
     icon: <Phone className='h-full w-full text-red-600 dark:text-red-400' />,
-    href: '/contato',
+    href: '/sobre',
   },
 ];
 

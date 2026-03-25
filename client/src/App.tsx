@@ -16,6 +16,7 @@ import Article from "./pages/Article";
 import Consultations from "./pages/Consultations";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import SymptomChecker from "./pages/SymptomChecker";
 
 function Router() {
   const [location] = useLocation();
@@ -33,6 +34,7 @@ function Router() {
       <Route path="/consultas" component={Consultations} />
       <Route path="/contato" component={Contact} />
       <Route path="/sobre" component={About} />
+      <Route path="/diagnostico" component={SymptomChecker} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
