@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
+import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen, Phone, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 import InstagramGallery from "@/components/InstagramGallery";
 import FeatureCarousel from "@/components/ui/feature-carousel";
 import TypingEffect from "@/components/ui/typing-effect";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { QualificationsSection } from "@/components/QualificationsSection";
+import { ConsultationBenefitsSection } from "@/components/ConsultationBenefitsSection";
+import { ClinicEnvironmentSection } from "@/components/ClinicEnvironmentSection";
+import { EducationalVideoSection } from "@/components/EducationalVideoSection";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
@@ -301,9 +306,14 @@ export default function Home() {
                   Agendar Consulta
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
-                <Link href="/atlas-sintomas" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all">
-                  Explorar Sintomas
-                </Link>
+                <a href="tel:+553499709-9226" className="inline-flex items-center justify-center bg-green-600 text-white text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-green-700 transition-all">
+                  <Phone className="mr-2 w-5 h-5" />
+                  Ligar Agora
+                </a>
+                <a href="https://wa.me/5534997099226" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-green-500 text-white text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-green-600 transition-all">
+                  <MessageCircle className="mr-2 w-5 h-5" />
+                  WhatsApp
+                </a>
               </motion.div>
 
               {/* Microtexto */}
@@ -394,7 +404,27 @@ export default function Home() {
           >
             <FeatureCarousel />
           </motion.div>
+        </div>
+      </section>
 
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Qualifications Section */}
+      <QualificationsSection />
+
+      {/* Consultation Benefits Section */}
+      <ConsultationBenefitsSection />
+
+      {/* Clinic Environment Section */}
+      <ClinicEnvironmentSection />
+
+      {/* Educational Video Section */}
+      <EducationalVideoSection />
+
+      {/* Content for Parents Section */}
+      <section className="section-spacing bg-background">
+        <div className="container">
           <motion.div
             className="text-center mt-12"
             initial="hidden"
