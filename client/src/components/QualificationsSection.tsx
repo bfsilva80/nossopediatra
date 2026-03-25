@@ -15,9 +15,9 @@ const QUALIFICATIONS: QualificationItem[] = [
     title: 'Formação Médica',
     icon: <BookOpen className="w-6 h-6" />,
     items: [
-      'Diploma de Medicina - Universidade Federal do Triângulo Mineiro (UFTM)',
-      'Registro Profissional: CRM 93321',
-      'Especialista em Gastroenterologia Pediátrica'
+      'Graduação em Medicina - Universidade Federal do Mato Grosso do Sul (UFMS)',
+      'Registro Profissional: CRM MG 93321',
+      'Pediatra Especialista em Gastroenterologia e Hepatologia Pediátrica'
     ]
   },
   {
