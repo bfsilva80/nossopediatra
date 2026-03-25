@@ -254,22 +254,32 @@ export default function Home() {
 
               {/* New H1 with Typing Effect */}
               <motion.h1
-                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] mb-8 tracking-tight"
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] mb-4 tracking-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
+                Gastroenterologista Pediátrico em Uberaba
+              </motion.h1>
+
+              {/* Animated Subtitle with Typing Effect */}
+              <motion.h2
+                className="text-2xl md:text-3xl font-semibold leading-relaxed mb-8 text-foreground/80"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25 }}
+              >
                 <TypingEffect 
                   texts={[
-                    "Ajudando a entender os problemas digestivos das crianças",
+                    "Ajudando famílias a entender os problemas digestivos das crianças",
                     "Cuidando da saúde digestiva com ciência e dedicação",
                     "Orientando pais com informações claras e precisas"
                   ]}
-                  className="text-5xl md:text-6xl lg:text-7xl font-black"
+                  className="text-2xl md:text-3xl font-semibold"
                   typingSpeed={50}
                   rotationInterval={4000}
                 />
-              </motion.h1>
+              </motion.h2>
 
               {/* New Subtitle */}
               <motion.p
