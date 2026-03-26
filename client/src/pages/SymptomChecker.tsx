@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle2, AlertCircle, AlertTriangle, RotateCcw } from 'lucide-react'
 import { Link } from 'wouter'
 
 interface Question {
   id: string
   text: string
+  help?: string
   answers: Answer[]
 }
 
@@ -18,6 +19,7 @@ interface Answer {
 
 interface Diagnosis {
   id: string
+  slug: string
   title: string
   description: string
   recommendation: string
@@ -28,14 +30,16 @@ interface Diagnosis {
 const DIAGNOSES: Record<string, Diagnosis> = {
   reflux: {
     id: 'reflux',
+    slug: 'refluxo-lactente',
     title: 'Refluxo Gastroesofágico',
-    description: 'Baseado nas respostas, seu filho pode estar com refluxo, que é quando o alimento volta do estômago para o esôfago.',
+    description: 'Com base nas respostas, seu filho pode estar com refluxo, que é quando o alimento volta do estômago para o esôfago. É comum em bebês e crianças pequenas.',
     recommendation: 'Recomendamos uma consulta especializada para confirmar o diagnóstico e definir o melhor tratamento.',
     contentSlug: 'refluxo-gastroesofagico',
     severity: 'medium'
   },
   constipation: {
     id: 'constipation',
+    slug: 'constipacao-infantil',
     title: 'Constipação Intestinal',
     description: 'Os sintomas sugerem dificuldade para evacuar. A constipação é comum em crianças e tem tratamento eficaz.',
     recommendation: 'Uma avaliação profissional ajudará a identificar a causa e prescrever o tratamento adequado.',
@@ -44,6 +48,7 @@ const DIAGNOSES: Record<string, Diagnosis> = {
   },
   diarrhea: {
     id: 'diarrhea',
+    slug: 'diarreia-cronica',
     title: 'Diarreia Crônica',
     description: 'As respostas indicam diarreia persistente. Isso pode ter várias causas que precisam ser investigadas.',
     recommendation: 'É importante identificar a causa para oferecer o tratamento correto. Agende uma consulta.',
@@ -52,14 +57,16 @@ const DIAGNOSES: Record<string, Diagnosis> = {
   },
   allergy: {
     id: 'allergy',
+    slug: 'alergia-alimentar',
     title: 'Possível Alergia Alimentar',
-    description: 'Os sintomas podem estar relacionados a uma alergia ou intolerância alimentar, como APLV.',
+    description: 'Os sintomas podem estar relacionados a uma alergia ou intolerância alimentar, como APLV (Alergia à Proteína do Leite de Vaca).',
     recommendation: 'Um teste de alergia e avaliação nutricional são recomendados para confirmar e orientar a dieta.',
     contentSlug: 'alergia-alimentar',
     severity: 'high'
   },
   ibd: {
     id: 'ibd',
+    slug: 'doenca-inflamatoria-intestinal',
     title: 'Possível Doença Inflamatória Intestinal',
     description: 'Os sintomas sugerem uma possível inflamação intestinal que requer investigação especializada.',
     recommendation: 'Procure atendimento especializado para realizar exames diagnósticos e iniciar tratamento.',
@@ -68,6 +75,7 @@ const DIAGNOSES: Record<string, Diagnosis> = {
   },
   unclear: {
     id: 'unclear',
+    slug: 'diagnostico-nao-definido',
     title: 'Diagnóstico Não Definido',
     description: 'Com base nas respostas, não conseguimos identificar um padrão claro. Os sintomas podem ter várias causas.',
     recommendation: 'Recomendamos uma consulta presencial para uma avaliação completa e diagnóstico preciso.',
@@ -79,14 +87,15 @@ const DIAGNOSES: Record<string, Diagnosis> = {
 const QUESTIONS: Record<string, Question> = {
   initial: {
     id: 'initial',
-    text: 'Qual é a principal queixa do seu filho?',
+    text: 'O que mais preocupa você hoje?',
+    help: 'Escolha a opção mais parecida com o que seu filho está vivenciando',
     answers: [
-      { id: 'reflux_start', text: 'Regurgita ou vomita frequentemente', nextQuestionId: 'reflux_q1', diagnosis: 'reflux' },
-      { id: 'constipation_start', text: 'Tem dificuldade para evacuar ou fezes duras', nextQuestionId: 'constipation_q1', diagnosis: 'constipation' },
-      { id: 'diarrhea_start', text: 'Fezes soltas ou diarreia frequente', nextQuestionId: 'diarrhea_q1', diagnosis: 'diarrhea' },
-      { id: 'allergy_start', text: 'Reações após comer certos alimentos', nextQuestionId: 'allergy_q1', diagnosis: 'allergy' },
-      { id: 'pain_start', text: 'Dor abdominal recorrente', nextQuestionId: 'pain_q1', diagnosis: 'unclear' },
-      { id: 'other_start', text: 'Outro sintoma', nextQuestionId: 'other_q1', diagnosis: 'unclear' }
+      { id: 'reflux_start', text: 'Golfadas/vômitos', nextQuestionId: 'reflux_q1', diagnosis: 'reflux' },
+      { id: 'constipation_start', text: 'Intestino preso/fezes duras', nextQuestionId: 'constipation_q1', diagnosis: 'constipation' },
+      { id: 'diarrhea_start', text: 'Diarreia/fezes muito soltas', nextQuestionId: 'diarrhea_q1', diagnosis: 'diarrhea' },
+      { id: 'allergy_start', text: 'Piora após leite/ovo/trigo etc', nextQuestionId: 'allergy_q1', diagnosis: 'allergy' },
+      { id: 'pain_start', text: 'Dor de barriga recorrente', nextQuestionId: 'pain_q1', diagnosis: 'unclear' },
+      { id: 'other_start', text: 'Outro (me conte em 1 frase)', nextQuestionId: 'other_q1', diagnosis: 'unclear' }
     ]
   },
   reflux_q1: {
@@ -157,12 +166,29 @@ const QUESTIONS: Record<string, Question> = {
   }
 }
 
+const ALERT_SIGNS = [
+  'Dificuldade para respirar',
+  'Sonolência excessiva ou desmaio',
+  'Sangue no vômito ou fezes',
+  'Vômitos persistentes (não consegue reter nada)',
+  'Febre alta (acima de 39°C)',
+  'Barriga muito inchada ou dura',
+  'Recusa total em comer ou beber'
+]
+
 export default function SymptomChecker() {
   const [currentQuestionId, setCurrentQuestionId] = useState<string>('initial')
   const [diagnosis, setDiagnosis] = useState<Diagnosis | null>(null)
   const [history, setHistory] = useState<string[]>(['initial'])
+  const [totalQuestions] = useState<number>(3) // Average questions to reach diagnosis
 
   const currentQuestion = QUESTIONS[currentQuestionId]
+  const currentStep = history.length
+  const progressPercent = (currentStep / (totalQuestions + 1)) * 100
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [currentQuestionId, diagnosis])
 
   const handleAnswer = (answer: Answer) => {
     if (answer.diagnosis) {
@@ -190,21 +216,71 @@ export default function SymptomChecker() {
   }
 
   return (
-    <div className="min-h-screen bg-background pt-32 pb-20">
+    <div className="min-h-screen bg-background pt-24 pb-20">
+      {/* Alert Banner - Critical Safety */}
+      <motion.div
+        className="fixed top-16 left-0 right-0 z-40 bg-red-50 border-b-2 border-red-200 px-4 py-3"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+      >
+        <div className="container max-w-2xl">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-red-900">
+              <p className="font-semibold mb-1">
+                🛟 Se houver sinais de gravidade, procure urgência
+              </p>
+              <p className="text-red-800">
+                Dificuldade para respirar, sonolência excessiva, sangue, vômitos persistentes ou febre alta? Ligue <span className="font-bold">192 (SAMU)</span> ou vá ao pronto-socorro.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
       <div className="container max-w-2xl">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-3">
             O que está acontecendo com seu filho?
           </h1>
-          <p className="text-lg text-foreground/70">
-            Responda algumas perguntas simples para ajudar a identificar possíveis problemas digestivos
+          <p className="text-lg text-foreground/70 mb-4">
+            Vou te guiar por algumas perguntas simples
+          </p>
+          <p className="text-sm text-foreground/60">
+            ⏱️ Leva ~60 segundos | 📋 Este guia é educativo e não substitui consulta médica
           </p>
         </motion.div>
+
+        {/* Progress Bar */}
+        {!diagnosis && (
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-semibold text-foreground/70">
+                Pergunta {currentStep} de {totalQuestions}
+              </span>
+              <span className="text-sm font-semibold text-primary">
+                {Math.round(progressPercent)}%
+              </span>
+            </div>
+            <div className="w-full h-2 bg-border rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-primary"
+                initial={{ width: 0 }}
+                animate={{ width: `${progressPercent}%` }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </motion.div>
+        )}
 
         <AnimatePresence mode="wait">
           {!diagnosis ? (
@@ -217,10 +293,15 @@ export default function SymptomChecker() {
               className="bg-card rounded-2xl p-8 md:p-12 border border-border shadow-sm"
             >
               <div className="mb-8">
-                <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+                <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                   {currentQuestion.text}
                 </h2>
-                <div className="h-1 w-16 bg-primary rounded-full" />
+                {currentQuestion.help && (
+                  <p className="text-foreground/60 text-sm">
+                    {currentQuestion.help}
+                  </p>
+                )}
+                <div className="h-1 w-16 bg-primary rounded-full mt-4" />
               </div>
 
               <div className="space-y-3 mb-8">
@@ -228,8 +309,9 @@ export default function SymptomChecker() {
                   <motion.button
                     key={answer.id}
                     onClick={() => handleAnswer(answer)}
-                    className="w-full text-left p-4 rounded-lg border-2 border-border hover:border-primary hover:bg-primary/5 transition-all"
+                    className="w-full text-left p-4 rounded-lg border-2 border-border hover:border-primary hover:bg-primary/5 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     whileHover={{ x: 4 }}
+                    aria-label={answer.text}
                   >
                     <span className="text-foreground font-medium">{answer.text}</span>
                   </motion.button>
@@ -240,6 +322,7 @@ export default function SymptomChecker() {
                 <button
                   onClick={handleBack}
                   className="flex items-center gap-2 text-primary hover:text-primary/80 font-semibold"
+                  aria-label="Voltar à pergunta anterior"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Voltar à pergunta anterior
@@ -274,8 +357,11 @@ export default function SymptomChecker() {
                     <p className="text-foreground/80 text-lg leading-relaxed mb-4">
                       {diagnosis.description}
                     </p>
-                    <p className="text-foreground/70 font-semibold">
+                    <p className="text-foreground/70 font-semibold mb-4">
                       {diagnosis.recommendation}
+                    </p>
+                    <p className="text-sm text-foreground/60 border-t border-current pt-3">
+                      ⚠️ Este resultado é educativo. Sempre consulte um pediatra para diagnóstico e tratamento.
                     </p>
                   </div>
                 </div>
@@ -306,8 +392,9 @@ export default function SymptomChecker() {
               {/* Reset Button */}
               <button
                 onClick={handleReset}
-                className="w-full text-primary font-semibold py-3 px-6 rounded-lg border-2 border-primary hover:bg-primary/5 transition-colors"
+                className="w-full text-primary font-semibold py-3 px-6 rounded-lg border-2 border-primary hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
               >
+                <RotateCcw className="w-4 h-4" />
                 Fazer nova avaliação
               </button>
             </motion.div>
