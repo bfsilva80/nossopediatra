@@ -54,7 +54,7 @@ const DIAGNOSES: Record<string, Diagnosis> = {
   constipation: {
     id: 'constipation',
     slug: 'constipacao-infantil',
-    title: 'Pode estar relacionado a Intestino Preso',
+    title: 'Pode estar relacionado a Constipação Intestinal',
     emoji: '🔒',
     description: 'Os sintomas sugerem dificuldade para evacuar, que é muito comum em crianças. Mas cada caso é único e merece uma avaliação pessoal.',
     recommendation: 'Essa é apenas uma pista inicial. Só um pediatra pode confirmar o que está realmente acontecendo com seu filho.',
@@ -144,7 +144,7 @@ const QUESTIONS: Record<string, Question> = {
     subtitle: 'Escolha o que mais se parece com o que seu filho está vivenciando',
     answers: [
       { id: 'complaint_reflux', text: '🌊 Golfadas ou vômitos', nextQuestionId: 'reflux_frequency' },
-      { id: 'complaint_constipation', text: '🔒 Intestino preso / fezes duras', nextQuestionId: 'constipation_frequency' },
+      { id: 'complaint_constipation', text: '🔒 Constipação intestinal / fezes duras', nextQuestionId: 'constipation_frequency' },
       { id: 'complaint_diarrhea', text: '💧 Diarreia / fezes muito soltas', nextQuestionId: 'diarrhea_duration' },
       { id: 'complaint_allergy', text: '🚫 Reação após comer algo', nextQuestionId: 'allergy_type' },
       { id: 'complaint_pain', text: '😣 Dor de barriga recorrente', nextQuestionId: 'pain_location' },

@@ -51,7 +51,7 @@ const CONSULTATION_REASONS = [
   },
   {
     emoji: "🧱",
-    title: "Intestino Preso ou Fezes Diferentes",
+    title: "Constipação Intestinal ou Fezes Diferentes",
     description: "Constipação, diarreia recorrente, distensão abdominal.",
     color: "border-emerald/40",
     bgColor: "bg-emerald/10",
@@ -82,7 +82,7 @@ const TRUST_ITEMS = [
 const SYMPTOMS = [
   { name: "Barriga Inchada", emoji: "🫧" },
   { name: "Refluxo", emoji: "🔄" },
-  { name: "Intestino Preso", emoji: "🧱" },
+  { name: "Constipação Intestinal", emoji: "🧱" },
   { name: "Fezes Diferentes", emoji: "🔍" },
   { name: "Dor Abdominal", emoji: "😣" },
 ];

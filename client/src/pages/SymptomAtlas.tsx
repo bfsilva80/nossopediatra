@@ -65,8 +65,8 @@ const SYMPTOMS = [
   },
   {
     id: "intestino-preso",
-    name: "Intestino Preso",
-    fullName: "Intestino Preso / Constipação",
+    name: "Constipação Intestinal",
+    fullName: "Constipação Intestinal",
     emoji: "🧱",
     color: "from-golden/25 to-coral/15",
     borderColor: "border-golden/50",
