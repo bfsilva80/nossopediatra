@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, RotateCcw } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, RotateCcw, Phone } from 'lucide-react'
 import { Link } from 'wouter'
 
 interface Question {
@@ -24,11 +24,23 @@ interface Diagnosis {
   description: string
   recommendation: string
   contentSlug: string
-  severity: 'low' | 'medium' | 'high'
+  severity: 'low' | 'medium' | 'high' | 'emergency'
   emoji?: string
+  isEmergency?: boolean
 }
 
 const DIAGNOSES: Record<string, Diagnosis> = {
+  emergency: {
+    id: 'emergency',
+    slug: 'emergencia',
+    title: '🚨 PROCURE EMERGÊNCIA AGORA',
+    emoji: '🚨',
+    description: 'Os sintomas que você descreveu indicam uma situação que precisa de atendimento médico imediato. Não espere - procure um pronto-socorro ou ligue para o SAMU agora.',
+    recommendation: 'Esta é uma situação de emergência. Procure atendimento médico imediatamente.',
+    contentSlug: '',
+    severity: 'emergency',
+    isEmergency: true
+  },
   reflux: {
     id: 'reflux',
     slug: 'refluxo-lactente',
@@ -106,11 +118,11 @@ const QUESTIONS: Record<string, Question> = {
     text: 'Qual dessas situações está acontecendo?',
     subtitle: 'Escolha todas que se aplicam',
     answers: [
-      { id: 'alert_breathing', text: '😰 Dificuldade para respirar', diagnosis: 'ibd' },
-      { id: 'alert_blood', text: '🔴 Sangue no vômito ou fezes', diagnosis: 'ibd' },
-      { id: 'alert_fever', text: '🌡️ Febre muito alta (acima de 39°C)', diagnosis: 'ibd' },
-      { id: 'alert_lethargy', text: '😴 Muito sonolento ou desacordado', diagnosis: 'ibd' },
-      { id: 'alert_belly', text: '🤰 Barriga muito inchada ou dura', diagnosis: 'ibd' },
+      { id: 'alert_breathing', text: '😰 Dificuldade para respirar', diagnosis: 'emergency' },
+      { id: 'alert_blood', text: '🔴 Sangue no vômito ou fezes', diagnosis: 'emergency' },
+      { id: 'alert_fever', text: '🌡️ Febre muito alta (acima de 39°C)', diagnosis: 'emergency' },
+      { id: 'alert_lethargy', text: '😴 Muito sonolento ou desacordado', diagnosis: 'emergency' },
+      { id: 'alert_belly', text: '🤰 Barriga muito inchada ou dura', diagnosis: 'emergency' },
       { id: 'alert_none', text: 'Nenhum desses', nextQuestionId: 'age_context' }
     ]
   },
@@ -235,37 +247,33 @@ const QUESTIONS: Record<string, Question> = {
     text: 'Onde fica essa dor?',
     subtitle: 'A localização nos dá pistas importantes',
     answers: [
-      { id: 'pain_upper', text: '☝️ Na parte superior (perto do peito)', nextQuestionId: 'pain_pattern' },
-      { id: 'pain_middle', text: '⭕ Ao redor do umbigo', nextQuestionId: 'pain_pattern' },
-      { id: 'pain_lower', text: '👇 Na parte baixa do abdômen', nextQuestionId: 'pain_pattern' },
-      { id: 'pain_diffuse', text: '🌐 Em vários lugares', nextQuestionId: 'pain_pattern' }
+      { id: 'pain_upper', text: '📍 Na parte superior da barriga', nextQuestionId: 'pain_pattern' },
+      { id: 'pain_lower', text: '📍 Na parte inferior da barriga', nextQuestionId: 'pain_pattern' },
+      { id: 'pain_around', text: '📍 Ao redor do umbigo', nextQuestionId: 'pain_pattern' },
+      { id: 'pain_diffuse', text: '📍 Em vários lugares', nextQuestionId: 'pain_pattern' }
     ]
   },
   pain_pattern: {
     id: 'pain_pattern',
-    text: 'Como é o padrão dessa dor?',
-    subtitle: 'Ajuda a entender melhor',
+    text: 'Como é essa dor?',
+    subtitle: 'Escolha o que mais se parece',
     answers: [
-      { id: 'pain_constant', text: '⏰ O tempo todo', diagnosis: 'unclear' },
-      { id: 'pain_episodes', text: '🔄 Em episódios (vai e volta)', diagnosis: 'unclear' },
-      { id: 'pain_after_food', text: '🍽️ Após comer', diagnosis: 'reflux' },
-      { id: 'pain_before_poop', text: '💩 Antes de evacuar', diagnosis: 'constipation' }
+      { id: 'pain_constant', text: '⏰ Constante, o tempo todo', diagnosis: 'ibd' },
+      { id: 'pain_episodes', text: '🔄 Em episódios, depois passa', diagnosis: 'unclear' },
+      { id: 'pain_after_food', text: '🍽️ Piora após comer', diagnosis: 'unclear' },
+      { id: 'pain_with_stool', text: '💩 Relacionada com evacuação', diagnosis: 'constipation' }
     ]
   }
 }
 
 export default function SymptomChecker() {
-  const [currentQuestionId, setCurrentQuestionId] = useState<string>('initial')
+  const [currentQuestionId, setCurrentQuestionId] = useState('initial')
   const [diagnosis, setDiagnosis] = useState<Diagnosis | null>(null)
-  const [history, setHistory] = useState<string[]>(['initial'])
+  const [history, setHistory] = useState(['initial'])
 
   const currentQuestion = QUESTIONS[currentQuestionId]
   const currentStep = history.length
-  const totalSteps = 6 // Alert → Age → Complaint → Detail1 → Detail2 → Result
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [currentQuestionId, diagnosis])
+  const totalSteps = 6
 
   const handleAnswer = (answer: Answer) => {
     if (answer.diagnosis) {
@@ -308,7 +316,7 @@ export default function SymptomChecker() {
                 🛟 Se houver sinais de gravidade, procure urgência
               </p>
               <p className="text-red-800">
-                Dificuldade para respirar, sangue, febre alta ou sonolência excessiva? Ligue <span className="font-bold">192 (SAMU)</span>.
+                Dificuldade respirar, sangue, febre alta, desmaio, barriga muito inchada: <strong>SAMU 192</strong>
               </p>
             </div>
           </div>
@@ -349,139 +357,168 @@ export default function SymptomChecker() {
               <span className="text-sm font-semibold text-foreground/70">
                 Passo {currentStep} de {totalSteps}
               </span>
-              <span className="text-sm font-semibold text-primary">
+              <span className="text-sm font-semibold text-foreground/70">
                 {Math.round((currentStep / totalSteps) * 100)}%
               </span>
             </div>
-            <div className="w-full h-3 bg-border rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-blue/20 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-primary to-emerald-500"
+                className="h-full bg-gradient-to-r from-blue to-emerald"
                 initial={{ width: 0 }}
                 animate={{ width: `${(currentStep / totalSteps) * 100}%` }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.5 }}
               />
             </div>
           </motion.div>
         )}
 
+        {/* Questions */}
         <AnimatePresence mode="wait">
-          {!diagnosis ? (
-            // Question View
+          {!diagnosis && currentQuestion && (
             <motion.div
               key={currentQuestionId}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-white rounded-3xl p-8 md:p-12 border-2 border-blue-100 shadow-lg"
+              transition={{ duration: 0.3 }}
+              className="mb-8"
             >
-              <div className="mb-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                  {currentQuestion.text}
-                </h2>
-                {currentQuestion.subtitle && (
-                  <p className="text-lg text-foreground/60">
-                    {currentQuestion.subtitle}
-                  </p>
-                )}
-              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                {currentQuestion.text}
+              </h2>
+              {currentQuestion.subtitle && (
+                <p className="text-lg text-foreground/60 mb-8">
+                  {currentQuestion.subtitle}
+                </p>
+              )}
 
-              <div className="space-y-3 mb-10">
+              <div className="space-y-3">
                 {currentQuestion.answers.map((answer) => (
                   <motion.button
                     key={answer.id}
                     onClick={() => handleAnswer(answer)}
-                    className="w-full text-left p-5 rounded-2xl border-2 border-blue-100 hover:border-primary hover:bg-blue-50 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-lg"
-                    whileHover={{ x: 4 }}
-                    aria-label={answer.text}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full p-4 text-left rounded-xl border-2 border-blue/30 hover:border-blue/60 hover:bg-blue/5 transition-all text-lg font-medium text-foreground"
                   >
-                    <span className="font-semibold text-foreground">{answer.text}</span>
+                    {answer.text}
                   </motion.button>
                 ))}
               </div>
-
-              {history.length > 1 && (
-                <button
-                  onClick={handleBack}
-                  className="flex items-center gap-2 text-primary hover:text-primary/80 font-semibold"
-                  aria-label="Voltar à pergunta anterior"
-                >
-                  <ArrowLeft className="w-5 h-5" />
-                  Voltar
-                </button>
-              )}
             </motion.div>
-          ) : (
-            // Clue View
+          )}
+
+          {/* Result */}
+          {diagnosis && (
             <motion.div
-              key="diagnosis"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
+              key="result"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
             >
-              {/* Clue Card */}
-              <div className={`rounded-3xl p-8 md:p-12 border-3 ${
-                diagnosis.severity === 'high' 
-                  ? 'bg-amber-50 border-amber-200' 
-                  : 'bg-blue-50 border-blue-200'
-              }`}>
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="text-5xl">{diagnosis.emoji}</div>
-                  <div className="flex-1">
-                    <p className="text-sm font-bold text-amber-700 mb-2 uppercase tracking-wide">
-                      💡 Pista Inicial
-                    </p>
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      {diagnosis.title}
-                    </h2>
-                    <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                      {diagnosis.description}
-                    </p>
-                    <div className="bg-white/60 rounded-xl p-4 border-l-4 border-primary">
-                      <p className="text-foreground font-semibold">
-                        💙 {diagnosis.recommendation}
-                      </p>
+              {diagnosis.isEmergency ? (
+                <div className="bg-red-50 border-4 border-red-500 rounded-2xl p-8 text-center">
+                  <div className="text-6xl mb-4">🚨</div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-red-600 mb-4">
+                    {diagnosis.title}
+                  </h2>
+                  <p className="text-lg text-red-700 mb-8 leading-relaxed">
+                    {diagnosis.description}
+                  </p>
+                  <a
+                    href="tel:192"
+                    className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all mb-4"
+                  >
+                    <Phone className="w-6 h-6" />
+                    Ligar para SAMU 192
+                  </a>
+                  <p className="text-red-700 font-semibold mt-6">
+                    ⚠️ Esta é uma situação de emergência. Procure atendimento médico imediatamente.
+                  </p>
+                </div>
+              ) : (
+                <div className={`rounded-2xl p-8 border-2 ${
+                  diagnosis.severity === 'high'
+                    ? 'bg-amber-50 border-amber-300'
+                    : 'bg-blue-50 border-blue-300'
+                }`}>
+                  <div className="flex items-start gap-4 mb-6">
+                    <span className="text-5xl">{diagnosis.emoji}</span>
+                    <div>
+                      <div className="inline-block bg-amber-200 text-amber-900 px-3 py-1 rounded-full text-sm font-semibold mb-2">
+                        💡 Pista Inicial
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                        {diagnosis.title}
+                      </h2>
                     </div>
-                    <p className="text-sm text-foreground/70 mt-6 font-semibold bg-amber-50 rounded-lg p-3 border-l-4 border-amber-300">
-                      ⚠️ Lembre-se: Isso é apenas uma orientação inicial baseada nos sintomas que você descreveu. Não substitui uma avaliação médica completa. Somente um pediatra pode fazer um diagnóstico preciso.
+                  </div>
+
+                  <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
+                    {diagnosis.description}
+                  </p>
+
+                  <div className={`rounded-xl p-4 mb-6 ${
+                    diagnosis.severity === 'high'
+                      ? 'bg-amber-100 border-l-4 border-amber-500'
+                      : 'bg-blue-100 border-l-4 border-blue-500'
+                  }`}>
+                    <p className="text-sm font-semibold text-foreground">
+                      ⚠️ {diagnosis.recommendation}
                     </p>
                   </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    {diagnosis.contentSlug && (
+                      <a
+                        href={`/conteudo/${diagnosis.contentSlug}`}
+                        className="flex-1 btn-primary text-center py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all"
+                      >
+                        Saber mais sobre isso
+                      </a>
+                    )}
+                    <a
+                      href="https://wa.me/553499709-9226?text=Olá%20Dr.%20Bruno!%20Gostaria%20de%20conversar%20sobre%20os%20sintomas%20do%20meu%20filho."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all"
+                    >
+                      💬 Conversar com Dr. Bruno
+                    </a>
+                  </div>
                 </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="space-y-3">
-                {diagnosis.contentSlug && (
-                  <Link href={`/conteudo/${diagnosis.contentSlug}`}>
-                    <button className="w-full bg-primary text-white font-bold py-4 px-6 rounded-2xl hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 text-lg">
-                      📖 Saber mais sobre isso
-                      <ArrowRight className="w-5 h-5" />
-                    </button>
-                  </Link>
-                )}
-                
-                <a 
-                  href="https://wa.me/5534997099226?text=Ol%C3%A1%20Dr.%20Bruno!%20Gostaria%20de%20conversar%20sobre%20os%20sintomas%20do%20meu%20filho." 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-full bg-green-600 text-white font-bold py-4 px-6 rounded-2xl hover:bg-green-700 transition-colors flex items-center justify-center gap-2 text-lg"
-                >
-                  💬 Conversar com o Dr. Bruno
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </div>
-
-              {/* Reset Button */}
-              <button
-                onClick={handleReset}
-                className="w-full text-primary font-bold py-4 px-6 rounded-2xl border-2 border-primary hover:bg-primary/5 transition-colors flex items-center justify-center gap-2 text-lg"
-              >
-                <RotateCcw className="w-5 h-5" />
-                Fazer nova avaliação
-              </button>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Navigation Buttons */}
+        <div className="flex gap-4 justify-center mt-12">
+          {history.length > 1 && !diagnosis && (
+            <motion.button
+              onClick={handleBack}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-foreground/30 hover:border-foreground/60 font-semibold transition-all"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Voltar
+            </motion.button>
+          )}
+
+          {diagnosis && (
+            <motion.button
+              onClick={handleReset}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue/10 hover:bg-blue/20 border-2 border-blue/30 font-semibold transition-all"
+            >
+              <RotateCcw className="w-5 h-5" />
+              Fazer nova avaliação
+            </motion.button>
+          )}
+        </div>
       </div>
     </div>
   )
