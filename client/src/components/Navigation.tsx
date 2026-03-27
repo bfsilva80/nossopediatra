@@ -4,7 +4,7 @@ import { Menu, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "/diagnostico", label: "O que está acontecendo?" },
+  { href: "/diagnostico", label: "O que a Barriguinha Está Dizendo?" },
   { href: "/sobre", label: "Sobre o Dr. Bruno" },
   { href: "/consultas", label: "Consultas" },
 ];

@@ -17,7 +17,7 @@ const dockItems = [
     href: '/',
   },
   {
-    title: 'O que esta acontecendo?',
+    title: 'Barriguinha',
     icon: <Stethoscope className='h-full w-full text-emerald-600 dark:text-emerald-400' />,
     href: '/diagnostico',
   },
