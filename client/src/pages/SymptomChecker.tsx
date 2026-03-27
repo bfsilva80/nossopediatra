@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, RotateCcw, Heart, Smile } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, RotateCcw } from 'lucide-react'
 import { Link } from 'wouter'
 
 interface Question {
@@ -15,7 +15,6 @@ interface Answer {
   text: string
   nextQuestionId?: string
   diagnosis?: string
-  icon?: React.ReactNode
 }
 
 interface Diagnosis {
@@ -132,74 +131,125 @@ const QUESTIONS: Record<string, Question> = {
     text: 'O que a barriguinha está dizendo?',
     subtitle: 'Escolha o que mais se parece com o que seu filho está vivenciando',
     answers: [
-      { id: 'complaint_reflux', text: '🌊 Golfadas ou vômitos', nextQuestionId: 'reflux_detail', diagnosis: 'reflux' },
-      { id: 'complaint_constipation', text: '🔒 Intestino preso / fezes duras', nextQuestionId: 'constipation_detail', diagnosis: 'constipation' },
-      { id: 'complaint_diarrhea', text: '💧 Diarreia / fezes muito soltas', nextQuestionId: 'diarrhea_detail', diagnosis: 'diarrhea' },
-      { id: 'complaint_allergy', text: '🚫 Reação após comer algo', nextQuestionId: 'allergy_detail', diagnosis: 'allergy' },
-      { id: 'complaint_pain', text: '😣 Dor de barriga recorrente', nextQuestionId: 'pain_detail', diagnosis: 'unclear' },
+      { id: 'complaint_reflux', text: '🌊 Golfadas ou vômitos', nextQuestionId: 'reflux_frequency' },
+      { id: 'complaint_constipation', text: '🔒 Intestino preso / fezes duras', nextQuestionId: 'constipation_frequency' },
+      { id: 'complaint_diarrhea', text: '💧 Diarreia / fezes muito soltas', nextQuestionId: 'diarrhea_duration' },
+      { id: 'complaint_allergy', text: '🚫 Reação após comer algo', nextQuestionId: 'allergy_type' },
+      { id: 'complaint_pain', text: '😣 Dor de barriga recorrente', nextQuestionId: 'pain_location' },
       { id: 'complaint_other', text: '❓ Outro sintoma', diagnosis: 'unclear' }
     ]
   },
-  reflux_detail: {
-    id: 'reflux_detail',
+  // REFLUXO - 2 passos de refinamento
+  reflux_frequency: {
+    id: 'reflux_frequency',
     text: 'Com que frequência isso acontece?',
     subtitle: 'Ajuda a entender melhor a situação',
     answers: [
-      { id: 'reflux_daily', text: '📅 Diariamente ou várias vezes ao dia', diagnosis: 'reflux' },
-      { id: 'reflux_occasional', text: '📆 Algumas vezes por semana', diagnosis: 'unclear' },
+      { id: 'reflux_daily', text: '📅 Diariamente ou várias vezes ao dia', nextQuestionId: 'reflux_context' },
+      { id: 'reflux_occasional', text: '📆 Algumas vezes por semana', nextQuestionId: 'reflux_context' },
       { id: 'reflux_rare', text: '🤷 Raramente', diagnosis: 'unclear' }
     ]
   },
-  constipation_detail: {
-    id: 'constipation_detail',
-    text: 'Como está a frequência?',
-    subtitle: 'Quantas vezes por semana seu filho evacua?',
+  reflux_context: {
+    id: 'reflux_context',
+    text: 'Quando costuma acontecer?',
+    subtitle: 'Isso nos dá pistas importantes',
     answers: [
-      { id: 'const_rare', text: '⏰ Menos de 3 vezes por semana', diagnosis: 'constipation' },
-      { id: 'const_normal', text: '📊 3 a 5 vezes por semana', nextQuestionId: 'constipation_texture' },
+      { id: 'reflux_after_feed', text: '🍽️ Logo após comer ou beber', diagnosis: 'reflux' },
+      { id: 'reflux_during_sleep', text: '😴 Durante o sono ou deitado', diagnosis: 'reflux' },
+      { id: 'reflux_all_time', text: '⏰ O tempo todo, sem padrão', diagnosis: 'reflux' },
+      { id: 'reflux_with_pain', text: '😣 Acompanhado de choro ou incômodo', diagnosis: 'reflux' }
+    ]
+  },
+  // CONSTIPAÇÃO - 2 passos de refinamento
+  constipation_frequency: {
+    id: 'constipation_frequency',
+    text: 'Com que frequência seu filho evacua?',
+    subtitle: 'Quantas vezes por semana?',
+    answers: [
+      { id: 'const_rare', text: '⏰ Menos de 3 vezes por semana', nextQuestionId: 'constipation_behavior' },
+      { id: 'const_normal', text: '📊 3 a 5 vezes por semana', nextQuestionId: 'constipation_behavior' },
       { id: 'const_frequent', text: '✅ Mais de 5 vezes por semana', diagnosis: 'unclear' }
     ]
   },
-  constipation_texture: {
-    id: 'constipation_texture',
-    text: 'E as fezes, como estão?',
-    subtitle: 'A textura é importante',
+  constipation_behavior: {
+    id: 'constipation_behavior',
+    text: 'Como é o processo de evacuar?',
+    subtitle: 'Escolha o que mais se parece',
     answers: [
-      { id: 'texture_hard', text: '🪨 Muito duras e difíceis de sair', diagnosis: 'constipation' },
-      { id: 'texture_normal', text: '✨ Textura normal', diagnosis: 'unclear' },
-      { id: 'texture_soft', text: '💧 Moles ou soltas', diagnosis: 'unclear' }
+      { id: 'const_difficult', text: '😣 Difícil, com esforço ou dor', diagnosis: 'constipation' },
+      { id: 'const_hard_stool', text: '🪨 Fezes muito duras e ressecadas', diagnosis: 'constipation' },
+      { id: 'const_holds', text: '🤐 Segura as fezes ou evita evacuar', diagnosis: 'constipation' },
+      { id: 'const_normal', text: '✨ Normal, sem dificuldade', diagnosis: 'unclear' }
     ]
   },
-  diarrhea_detail: {
-    id: 'diarrhea_detail',
+  // DIARREIA - 2 passos de refinamento
+  diarrhea_duration: {
+    id: 'diarrhea_duration',
     text: 'Há quanto tempo isso está acontecendo?',
-    subtitle: 'Isso nos ajuda a entender se é algo agudo ou crônico',
+    subtitle: 'Ajuda a entender se é algo agudo ou crônico',
     answers: [
-      { id: 'diar_chronic', text: '📅 Mais de 2 semanas', diagnosis: 'diarrhea' },
+      { id: 'diar_chronic', text: '📅 Mais de 2 semanas', nextQuestionId: 'diarrhea_pattern' },
       { id: 'diar_acute', text: '⏰ Menos de 2 semanas', diagnosis: 'unclear' },
-      { id: 'diar_intermittent', text: '🔄 Vai e volta', diagnosis: 'unclear' }
+      { id: 'diar_intermittent', text: '🔄 Vai e volta há meses', nextQuestionId: 'diarrhea_pattern' }
     ]
   },
-  allergy_detail: {
-    id: 'allergy_detail',
+  diarrhea_pattern: {
+    id: 'diarrhea_pattern',
+    text: 'Como é o padrão da diarreia?',
+    subtitle: 'Escolha o que mais se parece',
+    answers: [
+      { id: 'diar_constant', text: '💧 Fezes muito soltas o tempo todo', diagnosis: 'diarrhea' },
+      { id: 'diar_after_food', text: '🍽️ Piora após comer certos alimentos', diagnosis: 'allergy' },
+      { id: 'diar_with_urgency', text: '⚡ Urgência para evacuar', diagnosis: 'diarrhea' },
+      { id: 'diar_with_pain', text: '😣 Acompanhada de dor ou gases', diagnosis: 'diarrhea' }
+    ]
+  },
+  // ALERGIA - 2 passos de refinamento
+  allergy_type: {
+    id: 'allergy_type',
     text: 'Qual é a reação que você observa?',
     subtitle: 'Pode ser mais de uma',
     answers: [
-      { id: 'allergy_skin', text: '🔴 Coceira, inchaço ou vermelhidão na pele', diagnosis: 'allergy' },
-      { id: 'allergy_gi', text: '🤢 Vômito, diarreia ou dor abdominal', diagnosis: 'allergy' },
-      { id: 'allergy_respiratory', text: '😤 Dificuldade para respirar ou tosse', diagnosis: 'allergy' },
-      { id: 'allergy_other', text: '❓ Outro tipo de reação', diagnosis: 'allergy' }
+      { id: 'allergy_skin', text: '🔴 Coceira, inchaço ou vermelhidão na pele', nextQuestionId: 'allergy_trigger' },
+      { id: 'allergy_gi', text: '🤢 Vômito, diarreia ou dor abdominal', nextQuestionId: 'allergy_trigger' },
+      { id: 'allergy_respiratory', text: '😤 Dificuldade para respirar ou tosse', nextQuestionId: 'allergy_trigger' },
+      { id: 'allergy_other', text: '❓ Outro tipo de reação', nextQuestionId: 'allergy_trigger' }
     ]
   },
-  pain_detail: {
-    id: 'pain_detail',
+  allergy_trigger: {
+    id: 'allergy_trigger',
+    text: 'Qual alimento parece causar a reação?',
+    subtitle: 'Ou o que você suspeita?',
+    answers: [
+      { id: 'allergy_milk', text: '🥛 Leite ou derivados (APLV)', diagnosis: 'allergy' },
+      { id: 'allergy_egg', text: '🥚 Ovo', diagnosis: 'allergy' },
+      { id: 'allergy_gluten', text: '🌾 Trigo ou glúten', diagnosis: 'allergy' },
+      { id: 'allergy_nuts', text: '🥜 Amendoim ou nozes', diagnosis: 'allergy' },
+      { id: 'allergy_unknown', text: '❓ Não sei qual é', diagnosis: 'allergy' }
+    ]
+  },
+  // DOR - 2 passos de refinamento
+  pain_location: {
+    id: 'pain_location',
     text: 'Onde fica essa dor?',
     subtitle: 'A localização nos dá pistas importantes',
     answers: [
-      { id: 'pain_upper', text: '☝️ Na parte superior (perto do peito)', diagnosis: 'reflux' },
-      { id: 'pain_middle', text: '⭕ Ao redor do umbigo', diagnosis: 'unclear' },
-      { id: 'pain_lower', text: '👇 Na parte baixa do abdômen', diagnosis: 'constipation' },
-      { id: 'pain_diffuse', text: '🌐 Em vários lugares', diagnosis: 'unclear' }
+      { id: 'pain_upper', text: '☝️ Na parte superior (perto do peito)', nextQuestionId: 'pain_pattern' },
+      { id: 'pain_middle', text: '⭕ Ao redor do umbigo', nextQuestionId: 'pain_pattern' },
+      { id: 'pain_lower', text: '👇 Na parte baixa do abdômen', nextQuestionId: 'pain_pattern' },
+      { id: 'pain_diffuse', text: '🌐 Em vários lugares', nextQuestionId: 'pain_pattern' }
+    ]
+  },
+  pain_pattern: {
+    id: 'pain_pattern',
+    text: 'Como é o padrão dessa dor?',
+    subtitle: 'Ajuda a entender melhor',
+    answers: [
+      { id: 'pain_constant', text: '⏰ O tempo todo', diagnosis: 'unclear' },
+      { id: 'pain_episodes', text: '🔄 Em episódios (vai e volta)', diagnosis: 'unclear' },
+      { id: 'pain_after_food', text: '🍽️ Após comer', diagnosis: 'reflux' },
+      { id: 'pain_before_poop', text: '💩 Antes de evacuar', diagnosis: 'constipation' }
     ]
   }
 }
@@ -208,20 +258,16 @@ export default function SymptomChecker() {
   const [currentQuestionId, setCurrentQuestionId] = useState<string>('initial')
   const [diagnosis, setDiagnosis] = useState<Diagnosis | null>(null)
   const [history, setHistory] = useState<string[]>(['initial'])
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({})
 
   const currentQuestion = QUESTIONS[currentQuestionId]
   const currentStep = history.length
-  const totalSteps = 4 // Alert → Age → Complaint → Detail
+  const totalSteps = 6 // Alert → Age → Complaint → Detail1 → Detail2 → Result
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [currentQuestionId, diagnosis])
 
   const handleAnswer = (answer: Answer) => {
-    const newAnswers = { ...selectedAnswers, [currentQuestionId]: answer.id }
-    setSelectedAnswers(newAnswers)
-
     if (answer.diagnosis) {
       setDiagnosis(DIAGNOSES[answer.diagnosis])
     } else if (answer.nextQuestionId) {
@@ -244,7 +290,6 @@ export default function SymptomChecker() {
     setCurrentQuestionId('initial')
     setDiagnosis(null)
     setHistory(['initial'])
-    setSelectedAnswers({})
   }
 
   return (
@@ -284,7 +329,7 @@ export default function SymptomChecker() {
             Vou te ajudar a entender o que está acontecendo
           </p>
           <p className="text-sm text-foreground/60 bg-blue-100 text-blue-900 rounded-full inline-block px-4 py-2">
-            ⏱️ Leva menos de 2 minutos | 💙 Este é um guia educativo
+            ⏱️ Leva menos de 3 minutos | 💙 Este é um guia educativo
           </p>
         </motion.div>
 
@@ -361,7 +406,7 @@ export default function SymptomChecker() {
               )}
             </motion.div>
           ) : (
-            // Diagnosis View
+            // Clue View
             <motion.div
               key="diagnosis"
               initial={{ opacity: 0, y: 20 }}
