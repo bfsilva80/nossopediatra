@@ -33,60 +33,60 @@ const DIAGNOSES: Record<string, Diagnosis> = {
   reflux: {
     id: 'reflux',
     slug: 'refluxo-lactente',
-    title: 'Refluxo Gastroesofágico',
+    title: 'Pode estar relacionado a Refluxo',
     emoji: '🌊',
-    description: 'A barriguinha está devolvendo o alimento. Isso é comum em bebês e crianças pequenas, especialmente quando comem rápido ou em grandes quantidades.',
-    recommendation: 'Uma consulta vai ajudar a confirmar e encontrar as melhores estratégias para seu filho.',
+    description: 'Os sintomas que você descreveu costumam estar relacionados a refluxo - quando a barriguinha devolve o alimento. Isso é muito comum em bebês e crianças pequenas.',
+    recommendation: 'Essa é apenas uma pista inicial. Só um pediatra pode confirmar o que está realmente acontecendo com seu filho.',
     contentSlug: 'refluxo-gastroesofagico',
     severity: 'medium'
   },
   constipation: {
     id: 'constipation',
     slug: 'constipacao-infantil',
-    title: 'Intestino Preso',
+    title: 'Pode estar relacionado a Intestino Preso',
     emoji: '🔒',
-    description: 'A barriguinha está com dificuldade para evacuar. Isso é muito comum em crianças e tem solução! Geralmente envolve ajustes na rotina e na alimentação.',
-    recommendation: 'Vamos conversar sobre o que pode estar acontecendo e como ajudar seu filho a se sentir melhor.',
+    description: 'Os sintomas sugerem dificuldade para evacuar, que é muito comum em crianças. Mas cada caso é único e merece uma avaliação pessoal.',
+    recommendation: 'Essa é apenas uma pista inicial. Só um pediatra pode confirmar o que está realmente acontecendo com seu filho.',
     contentSlug: 'constipacao-infantil',
     severity: 'medium'
   },
   diarrhea: {
     id: 'diarrhea',
     slug: 'diarreia-cronica',
-    title: 'Diarreia Persistente',
+    title: 'Pode estar relacionado a Diarreia Persistente',
     emoji: '💧',
-    description: 'A barriguinha está solta há mais tempo. Pode ter várias causas, e é importante investigar para encontrar a melhor solução.',
-    recommendation: 'Uma avaliação vai ajudar a identificar o que está acontecendo e como tratar.',
+    description: 'Os sintomas que você descreveu costumam estar relacionados a diarreia crônica. Mas há várias causas possíveis que precisam ser investigadas.',
+    recommendation: 'Essa é apenas uma pista inicial. Só um pediatra pode confirmar o que está realmente acontecendo com seu filho.',
     contentSlug: 'diarreia-cronica',
     severity: 'medium'
   },
   allergy: {
     id: 'allergy',
     slug: 'alergia-alimentar',
-    title: 'Possível Alergia Alimentar',
+    title: 'Pode estar relacionado a Alergia Alimentar',
     emoji: '🚫',
-    description: 'A barriguinha pode estar reagindo a algum alimento. Isso é importante investigar para que seu filho coma com segurança e tranquilidade.',
-    recommendation: 'Vamos conversar sobre quais alimentos estão causando reações e como proceder com segurança.',
+    description: 'Os sintomas sugerem uma possível reação a algum alimento. Isso é importante investigar com cuidado para que seu filho coma com segurança.',
+    recommendation: 'Essa é apenas uma pista inicial. Só um pediatra pode confirmar o que está realmente acontecendo com seu filho.',
     contentSlug: 'alergia-alimentar',
     severity: 'high'
   },
   ibd: {
     id: 'ibd',
     slug: 'doenca-inflamatoria-intestinal',
-    title: 'Possível Inflamação Intestinal',
+    title: 'Pode estar relacionado a Inflamação Intestinal',
     emoji: '⚠️',
-    description: 'Os sintomas sugerem uma possível inflamação que precisa de investigação especializada.',
-    recommendation: 'É importante fazer uma avaliação completa para confirmar e iniciar o tratamento adequado.',
+    description: 'Os sintomas que você descreveu costumam estar relacionados a uma possível inflamação intestinal. Isso precisa de investigação especializada.',
+    recommendation: 'Essa é apenas uma pista inicial. Só um pediatra pode confirmar o que está realmente acontecendo com seu filho.',
     contentSlug: 'doenca-inflamatoria-intestinal',
     severity: 'high'
   },
   unclear: {
     id: 'unclear',
     slug: 'diagnostico-nao-definido',
-    title: 'Precisa de Avaliação Completa',
+    title: 'Precisa de uma Conversa Pessoal',
     emoji: '🤔',
-    description: 'Com as informações que você deu, não consigo identificar um padrão claro. Cada criança é única e merece uma avaliação pessoal.',
-    recommendation: 'Vamos conversar sobre o que está acontecendo para encontrar a melhor solução para seu filho.',
+    description: 'Com as informações que você deu, não consigo identificar um padrão claro. Cada criança é única e os sintomas podem ter várias causas diferentes.',
+    recommendation: 'Essa é apenas uma pista inicial. Só um pediatra pode confirmar o que está realmente acontecendo com seu filho.',
     contentSlug: '',
     severity: 'medium'
   }
@@ -369,15 +369,18 @@ export default function SymptomChecker() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              {/* Diagnosis Card */}
+              {/* Clue Card */}
               <div className={`rounded-3xl p-8 md:p-12 border-3 ${
                 diagnosis.severity === 'high' 
-                  ? 'bg-red-50 border-red-200' 
+                  ? 'bg-amber-50 border-amber-200' 
                   : 'bg-blue-50 border-blue-200'
               }`}>
                 <div className="flex items-start gap-4 mb-6">
                   <div className="text-5xl">{diagnosis.emoji}</div>
                   <div className="flex-1">
+                    <p className="text-sm font-bold text-amber-700 mb-2 uppercase tracking-wide">
+                      💡 Pista Inicial
+                    </p>
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                       {diagnosis.title}
                     </h2>
@@ -389,8 +392,8 @@ export default function SymptomChecker() {
                         💙 {diagnosis.recommendation}
                       </p>
                     </div>
-                    <p className="text-sm text-foreground/60 mt-6">
-                      ⚠️ Este resultado é educativo. Sempre consulte um pediatra para diagnóstico e tratamento.
+                    <p className="text-sm text-foreground/70 mt-6 font-semibold bg-amber-50 rounded-lg p-3 border-l-4 border-amber-300">
+                      ⚠️ Lembre-se: Isso é apenas uma orientação inicial baseada nos sintomas que você descreveu. Não substitui uma avaliação médica completa. Somente um pediatra pode fazer um diagnóstico preciso.
                     </p>
                   </div>
                 </div>
@@ -401,19 +404,19 @@ export default function SymptomChecker() {
                 {diagnosis.contentSlug && (
                   <Link href={`/conteudo/${diagnosis.contentSlug}`}>
                     <button className="w-full bg-primary text-white font-bold py-4 px-6 rounded-2xl hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 text-lg">
-                      📖 Ler artigo completo
+                      📖 Saber mais sobre isso
                       <ArrowRight className="w-5 h-5" />
                     </button>
                   </Link>
                 )}
                 
                 <a 
-                  href="https://wa.me/5534997099226" 
+                  href="https://wa.me/5534997099226?text=Ol%C3%A1%20Dr.%20Bruno!%20Gostaria%20de%20conversar%20sobre%20os%20sintomas%20do%20meu%20filho." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full bg-green-600 text-white font-bold py-4 px-6 rounded-2xl hover:bg-green-700 transition-colors flex items-center justify-center gap-2 text-lg"
                 >
-                  💬 Agendar consulta no WhatsApp
+                  💬 Conversar com o Dr. Bruno
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </div>
