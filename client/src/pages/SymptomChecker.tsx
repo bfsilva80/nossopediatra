@@ -322,6 +322,11 @@ export default function SymptomChecker() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/logo-hires_c3083669.png"
+            alt="Nosso Pediatra"
+            className="w-16 h-16 md:w-20 md:h-20 object-contain mx-auto mb-4"
+          />
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-3">
             🤔 O que a Barriguinha Está Dizendo?
           </h1>

@@ -247,14 +247,22 @@ export default function Home() {
                 </span>
               </motion.div>
 
-              {/* New H1 with Typing Effect */}
-              <motion.h1
-                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] mb-8 tracking-tight"
+              {/* Logo + H1 with Typing Effect */}
+              <motion.div
+                className="flex items-start gap-4 mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                <TypingEffect 
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/logo-hires_c3083669.png"
+                  alt="Nosso Pediatra"
+                  className="w-20 h-20 md:w-24 md:h-24 object-contain flex-shrink-0"
+                />
+                <motion.h1
+                  className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight"
+                >
+                  <TypingEffect 
                   texts={[
                     "Ajudando a entender os problemas digestivos das crianças",
                     "Cuidando da saúde digestiva com ciência e dedicação",
@@ -265,6 +273,7 @@ export default function Home() {
                   rotationInterval={4000}
                 />
               </motion.h1>
+              </motion.div>
 
               {/* New Subtitle */}
               <motion.p

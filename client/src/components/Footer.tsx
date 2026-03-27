@@ -28,9 +28,11 @@ export default function Footer() {
             {/* Brand */}
             <div className="sm:col-span-2 md:col-span-1">
               <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-9 h-9 bg-gradient-to-br from-teal to-blue rounded-2xl flex items-center justify-center shadow-sm rotate-[-3deg]">
-                  <span className="text-white font-bold text-xs font-display">NP</span>
-                </div>
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/logo-hires_c3083669.png"
+                  alt="Nosso Pediatra"
+                  className="w-10 h-10 object-contain"
+                />
                 <span className="font-display font-bold text-foreground text-lg">
                   Nosso Pediatra
                 </span>
