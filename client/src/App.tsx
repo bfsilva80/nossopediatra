@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch, useLocation } from "wouter";
+import { Route, Switch, useLocation, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
@@ -31,6 +31,9 @@ function Router() {
       <Route path="/atlas-sintomas" component={SymptomAtlas} />
       <Route path="/biblioteca" component={Library} />
       <Route path="/artigo/:slug" component={Article} />
+      <Route path="/conteudo/:slug">
+        {({ slug }) => <Redirect to={`/artigo/${slug}`} />}
+      </Route>
       <Route path="/consultas" component={Consultations} />
       <Route path="/contato" component={Contact} />
       <Route path="/sobre" component={About} />

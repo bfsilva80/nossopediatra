@@ -185,6 +185,156 @@ const ARTICLES: Record<string, ArticleData> = {
     ],
     relatedSlugs: ["constipacao-infantil", "aplv-guia-completo", "refluxo-bebe"],
   },
+  "refluxo-gastroesofagico": {
+    slug: "refluxo-gastroesofagico",
+    title: "Refluxo Gastroesofágico em Crianças: Diagnóstico e Tratamento",
+    category: "Refluxo",
+    readTime: "9 min",
+    emoji: "🌊",
+    intro: "O refluxo gastroesofágico é uma das condições mais frequentes em crianças pequenas. Compreender a diferença entre refluxo fisiológico e doença do refluxo é essencial para evitar tratamentos desnecessários e garantir que seu filho receba o cuidado apropriado.",
+    sections: [
+      {
+        title: "Entendendo o Refluxo Gastroesofágico",
+        content: "O refluxo gastroesofágico (RGE) é o retorno do conteúdo do estômago para o esôfago. Em bebês, isso ocorre porque o esfíncter esofágico inferior — a válvula que separa o esôfago do estômago — ainda está em desenvolvimento. Enquanto alguns bebês apresentam refluxo fisiológico (normal e sem consequências), outros desenvolvem a Doença do Refluxo Gastroesofágico (DRGE), que causa sintomas significativos e afeta a qualidade de vida.",
+      },
+      {
+        title: "Sinais de Alerta e Quando Procurar Ajuda",
+        content: "Sinais que indicam necessidade de avaliação incluem: recusa alimentar persistente, choro durante as mamadas, arqueamento do corpo, ganho de peso insuficiente, episódios de engasgo ou tosse crônica, e irritabilidade extrema. Sangue no vômito ou nas fezes é sempre motivo para procurar atendimento imediato. A avaliação clínica cuidadosa é fundamental para distinguir refluxo fisiológico de DRGE e orientar o tratamento adequado.",
+      },
+      {
+        title: "Estratégias de Manejo Eficaz",
+        content: "O tratamento começa com medidas posturais: manter o bebê em posição vertical por 20-30 minutos após as mamadas, oferecer volumes menores e mais frequentes, e elevar a cabeceira do berço. Evitar roupas apertadas e movimentos bruscos também ajuda. Quando indicado, o pediatra pode prescrever medicação. A alimentação deve ser avaliada — em alguns casos, mudanças na dieta (como exclusão de leite de vaca) trazem melhora significativa.",
+      },
+    ],
+    whenToSeek: [
+      "Sangue no vômito ou nas fezes",
+      "Recusa alimentar com perda de peso",
+      "Choro intenso durante as mamadas",
+      "Tosse crônica ou episódios de engasgo",
+      "Sintomas que não melhoram com medidas posturais",
+    ],
+    relatedSlugs: ["aplv-guia-completo", "constipacao-infantil", "coco-crianca"],
+  },
+  "constipacao-intestinal": {
+    slug: "constipacao-intestinal",
+    title: "Constipação Intestinal em Crianças: Causas e Soluções",
+    category: "Constipação",
+    readTime: "10 min",
+    emoji: "🔒",
+    intro: "A constipação é uma das queixas mais frequentes em pediatria. Entender suas causas e aprender estratégias eficazes de manejo pode transformar essa experiência para toda a família.",
+    sections: [
+      {
+        title: "Definindo Constipação na Infância",
+        content: "Constipação não é apenas falta de evacuações frequentes. É a combinação de fezes endurecidas, dificuldade ou dor para evacuar, e frequentemente comportamento de retenção. A frequência normal varia bastante: bebês em aleitamento materno podem evacuar de 8 vezes ao dia a uma vez por semana. Crianças maiores geralmente evacuam de 3 vezes ao dia a 3 vezes por semana. O importante é o conforto e a consistência das fezes.",
+      },
+      {
+        title: "O Ciclo Vicioso da Constipação",
+        content: "Mais de 95% dos casos de constipação são funcionais — não há doença orgânica. O ciclo vicioso é clássico: a criança sente dor ao evacuar, passa a reter as fezes, as fezes ficam mais duras, e a próxima evacuação é ainda mais dolorosa. Fatores desencadeantes incluem: introdução alimentar inadequada, desfralde forçado, mudanças de rotina, estresse, e dieta pobre em fibras. Identificar e corrigir esses fatores é essencial.",
+      },
+      {
+        title: "Abordagem Integrada ao Tratamento",
+        content: "O tratamento eficaz tem três pilares: desimpactação (quando necessário), manutenção e mudança de hábitos. A alimentação é fundamental — aumentar gradualmente fibras, garantir hidratação adequada, e reduzir excesso de leite de vaca. O treinamento evacuatório — sentar no vaso após as refeições — aproveita reflexos naturais. Laxantes podem ser necessários, mas sempre sob orientação médica como parte de uma estratégia mais ampla, nunca como solução única.",
+      },
+    ],
+    whenToSeek: [
+      "Constipação desde o nascimento",
+      "Sangue nas fezes recorrente",
+      "Distensão abdominal importante",
+      "Falha no crescimento ou perda de peso",
+      "Constipação que não melhora com medidas dietéticas",
+    ],
+    relatedSlugs: ["coco-crianca", "introducao-alimentar", "refluxo-bebe"],
+  },
+  "diarreia-cronica": {
+    slug: "diarreia-cronica",
+    title: "Diarreia Crônica em Crianças: Investigação e Manejo",
+    category: "Diarreia",
+    readTime: "9 min",
+    emoji: "💧",
+    intro: "Diarreia crônica em crianças pode ter múltiplas causas. Entender quando é apenas uma alteração transitória e quando requer investigação é fundamental para o cuidado adequado.",
+    sections: [
+      {
+        title: "Definindo Diarreia Crônica",
+        content: "Diarreia crônica é definida como fezes soltas ou aquosas por mais de 2 semanas. Pode ser contínua, intermitente ou recorrente. As causas variam conforme a idade: em bebês, frequentemente está relacionada a alergias alimentares ou intolerâncias. Em crianças maiores, pode indicar infecções recorrentes, alergias, intolerâncias, ou problemas de absorção. A avaliação cuidadosa das características das fezes, padrão de ocorrência e sintomas associados ajuda a orientar a investigação.",
+      },
+      {
+        title: "Investigação Clínica Sistemática",
+        content: "A história clínica é fundamental: quando começou, padrão das fezes, presença de sangue ou muco, sintomas associados, ganho de peso, e relação com alimentos. Observar se há perda de peso, desnutrição, ou sinais de desidratação é essencial. Alguns casos requerem investigação laboratorial — exames de fezes, testes de alergia, ou endoscopia. Mas muitos casos de diarreia crônica são funcionais e melhoram com ajustes dietéticos e manejo adequado.",
+      },
+      {
+        title: "Estratégias de Manejo",
+        content: "O manejo depende da causa. Se relacionada a alergia alimentar, exclusão do alérgeno é essencial. Se funcional, aumentar fibras solúveis, garantir hidratação, e evitar alimentos que pioram os sintomas ajuda. Probióticos podem ser benéficos em alguns casos. A manutenção do estado nutricional é fundamental — suplementação de vitaminas e minerais pode ser necessária se houver má absorção. O acompanhamento regular com o pediatra garante que o tratamento está sendo eficaz.",
+      },
+    ],
+    whenToSeek: [
+      "Sangue ou muco excessivo nas fezes",
+      "Perda de peso ou falha no crescimento",
+      "Sinais de desidratação",
+      "Diarreia por mais de 2 semanas sem melhora",
+      "Sintomas de desnutrição ou anemia",
+    ],
+    relatedSlugs: ["aplv-guia-completo", "constipacao-intestinal", "coco-crianca"],
+  },
+  "alergia-alimentar": {
+    slug: "alergia-alimentar",
+    title: "Alergia Alimentar em Crianças: Identificação e Manejo Seguro",
+    category: "Alergias",
+    readTime: "11 min",
+    emoji: "🚫",
+    intro: "Alergia alimentar é uma reação imunológica do corpo a proteínas específicas em alimentos. Entender os sinais, como diferenciar de intolerância, e como manejar com segurança é crucial para a saúde do seu filho.",
+    sections: [
+      {
+        title: "Alergia vs. Intolerância: Qual é a Diferença?",
+        content: "Alergia alimentar é uma reação imunológica — o corpo reconhece uma proteína como ameaça e monta uma resposta imunológica. Pode ser imediata (minutos a 2 horas) com sintomas como urticária, inchaço, vômitos, ou anafilaxia. Ou tardia (horas a dias) com sintomas gastrointestinais como diarreia, cólicas, ou dermatite. Intolerância é uma reação não-imunológica — por exemplo, falta de lactase para digerir lactose. Ambas requerem manejo, mas o tratamento é diferente.",
+      },
+      {
+        title: "Sinais de Alerta para Alergia Alimentar",
+        content: "Sinais imediatos incluem: inchaço de lábios ou língua, urticária, vômitos, ou dificuldade para respirar — estes são emergências. Sinais tardios incluem: diarreia com sangue ou muco, cólicas intensas, eczema ou dermatite que piora, ou refluxo persistente após introdução de novo alimento. Se você suspeita de alergia, não introduza o alimento novamente sem orientação médica — o risco de reação grave aumenta na reexposição.",
+      },
+      {
+        title: "Diagnóstico e Manejo Seguro",
+        content: "O diagnóstico não é feito por um único teste. O padrão-ouro é a exclusão do alimento suspeito por 2-4 semanas, observando melhora dos sintomas, seguida de reintrodução controlada. Exames de sangue e testes cutâneos auxiliam, mas não são definitivos isoladamente. O manejo é a exclusão rigorosa do alérgeno — da dieta da criança e, se em aleitamento materno, da dieta materna. Substitutos seguros devem ser oferecidos para garantir nutrição adequada. O acompanhamento com gastropediatra é fundamental.",
+      },
+    ],
+    whenToSeek: [
+      "Inchaço de lábios, língua ou garganta",
+      "Dificuldade para respirar",
+      "Vômitos ou diarreia com sangue",
+      "Reações cutâneas graves",
+      "Qualquer suspeita de reação alérgica imediata",
+    ],
+    relatedSlugs: ["aplv-guia-completo", "diarreia-cronica", "introducao-alimentar"],
+  },
+  "doenca-inflamatoria-intestinal": {
+    slug: "doenca-inflamatoria-intestinal",
+    title: "Doença Inflamatória Intestinal em Crianças: Reconhecimento Precoce",
+    category: "Gastroenterologia",
+    readTime: "10 min",
+    emoji: "⚠️",
+    intro: "Doença inflamatória intestinal (DII) em crianças é rara, mas seu reconhecimento precoce é crucial. Saiba quais sinais merecem investigação especializada.",
+    sections: [
+      {
+        title: "O que é Doença Inflamatória Intestinal?",
+        content: "Doença inflamatória intestinal (DII) é um grupo de condições crônicas que causam inflamação no trato gastrointestinal. As duas principais são Doença de Crohn (pode afetar qualquer parte do trato digestivo) e Retocolite Ulcerativa (afeta apenas o cólon e reto). Diferentemente de intolerâncias ou alergias, a DII é uma doença autoimune onde o sistema imunológico ataca o intestino. Em crianças, geralmente se manifesta com diarreia crônica, dor abdominal, perda de peso, e atraso no crescimento.",
+      },
+      {
+        title: "Sinais de Alerta que Requerem Investigação",
+        content: "Sinais que sugerem possível DII incluem: diarreia persistente por mais de 4 semanas com sangue ou muco, dor abdominal crônica, perda de peso ou falha no crescimento, atraso na puberdade, aftas recorrentes, ou articulações inchadas. Febre baixa recorrente também pode estar presente. É importante não confundir com constipação ou alergias alimentares — a investigação adequada com gastroenterologista pediátrico é essencial para diagnóstico correto.",
+      },
+      {
+        title: "Diagnóstico e Abordagem Terapêutica",
+        content: "O diagnóstico envolve exames de sangue, análise de fezes, e frequentemente endoscopia com biópsia. O tratamento é individualizado e pode incluir anti-inflamatórios, imunomoduladoras, ou terapias biológicas. O objetivo é controlar a inflamação, aliviar sintomas, e permitir crescimento e desenvolvimento normais. O acompanhamento multidisciplinar — com gastroenterologista, nutricionista, e psicólogo — garante cuidado integral. Embora seja uma condição crônica, muitas crianças vivem bem com tratamento apropriado.",
+      },
+    ],
+    whenToSeek: [
+      "Diarreia persistente com sangue por mais de 4 semanas",
+      "Dor abdominal crônica",
+      "Perda de peso ou falha no crescimento",
+      "Atraso na puberdade",
+      "Aftas recorrentes ou problemas articulares associados",
+    ],
+    relatedSlugs: ["diarreia-cronica", "constipacao-intestinal", "coco-crianca"],
+  },
 };
 
 const ALL_ARTICLES_META: Record<string, { title: string; category: string; emoji: string }> = {
@@ -193,6 +343,11 @@ const ALL_ARTICLES_META: Record<string, { title: string; category: string; emoji
   "constipacao-infantil": { title: "Constipação Infantil", category: "Constipação", emoji: "💪" },
   "introducao-alimentar": { title: "Introdução Alimentar", category: "Alimentação", emoji: "🥑" },
   "coco-crianca": { title: "Cocô de Criança", category: "Desenvolvimento", emoji: "🔍" },
+  "refluxo-gastroesofagico": { title: "Refluxo Gastroesofágico", category: "Refluxo", emoji: "🌊" },
+  "constipacao-intestinal": { title: "Constipação Intestinal", category: "Constipação", emoji: "🔒" },
+  "diarreia-cronica": { title: "Diarreia Crônica", category: "Diarreia", emoji: "💧" },
+  "alergia-alimentar": { title: "Alergia Alimentar", category: "Alergias", emoji: "🚫" },
+  "doenca-inflamatoria-intestinal": { title: "Doença Inflamatória Intestinal", category: "Gastroenterologia", emoji: "⚠️" },
 };
 
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
