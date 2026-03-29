@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, AlertCircle, CheckCircle, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ShareResults } from "@/components/ShareResults";
+import { LoadingAnimation } from "@/components/LoadingAnimation";
 import {
   initialQuestions,
   refluxQuestions,
@@ -22,6 +23,7 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<{ condition: Condition; matchedSymptoms: string[] } | null>(null);
   const [history, setHistory] = useState<string[]>(["main-complaint"]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Obter todas as perguntas em um mapa único
   const allQuestions = new Map<string, Question>();
@@ -39,9 +41,13 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     if (currentQuestion?.nextQuestions) {
       const nextId = currentQuestion.nextQuestions[answer];
       if (nextId === "reflux-result" || nextId === "constipation-result" || nextId === "allergy-result") {
-        // Calcular resultado
-        const diagnosisResult = calculateDiagnosis(newAnswers);
-        setResult(diagnosisResult);
+        // Mostrar loading e calcular resultado com delay
+        setIsLoading(true);
+        setTimeout(() => {
+          const diagnosisResult = calculateDiagnosis(newAnswers);
+          setResult(diagnosisResult);
+          setIsLoading(false);
+        }, 2000);
       } else if (nextId) {
         setHistory([...history, currentQuestionId]);
         setCurrentQuestionId(nextId);
@@ -89,7 +95,13 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     setAnswers({});
     setResult(null);
     setHistory([]);
+    setIsLoading(false);
   };
+
+  // Mostrar loading enquanto processa
+  if (isLoading) {
+    return <LoadingAnimation message="Analisando seus sintomas..." />;
+  }
 
   if (result) {
     return (
