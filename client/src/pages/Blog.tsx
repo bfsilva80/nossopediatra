@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BlogCard } from "@/components/BlogCard";
 import { blogArticles, blogCategories } from "@/data/blog";
 import { Search } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,6 +15,24 @@ const fadeUp = {
 };
 
 export default function BlogPage() {
+  useEffect(() => {
+    SEOHead({
+      title: "Blog | Artigos sobre Saude Digestiva Infantil",
+      description: "Biblioteca educacional com artigos sobre refluxo infantil, constipacao, alergias alimentares e saude digestiva. Conteudo baseado em evidencias cientificas.",
+      image: "https://nossopediatra.com.br/logo.png",
+      url: "https://nossopediatra.com.br/blog",
+      type: "website",
+      keywords: [
+        "blog pediatria",
+        "saude digestiva infantil",
+        "refluxo infantil",
+        "constipacao em criancas",
+        "alergias alimentares",
+        "artigos pediatricos",
+      ],
+    });
+  }, []);
+
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -39,15 +58,14 @@ export default function BlogPage() {
             custom={0}
             className="text-center mb-12"
           >
-            <div className="inline-block mb-4 px-4 py-2 bg-teal/10 rounded-full">
-              <span className="text-teal font-semibold text-sm">Biblioteca Educacional</span>
+            <div className="inline-block px-4 py-2 rounded-full bg-blue/10 border border-blue/20 mb-6">
+              <span className="text-sm font-medium text-blue">Biblioteca Educacional</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
               Artigos e Guias
             </h1>
-            <p className="text-xl text-foreground/70 leading-relaxed max-w-2xl mx-auto">
-              Conteúdo educacional baseado em evidências científicas sobre saúde digestiva infantil, 
-              refluxo, constipação e alergias alimentares.
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Conteúdo educacional baseado em evidências científicas sobre saúde digestiva infantil, refluxo, constipação e alergias alimentares.
             </p>
           </motion.div>
         </div>
@@ -56,107 +74,97 @@ export default function BlogPage() {
       {/* Search and Filter Section */}
       <section className="section-spacing">
         <div className="container max-w-4xl">
-          {/* Search Bar */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeUp}
-            custom={0}
-            className="mb-8"
-          >
+          <div className="space-y-6">
+            {/* Search Bar */}
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-foreground/40" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <input
                 type="text"
                 placeholder="Buscar artigos..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:border-blue transition-colors"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue/50"
               />
             </div>
-          </motion.div>
 
-          {/* Category Filter */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeUp}
-            custom={1}
-            className="flex flex-wrap gap-3 mb-12"
-          >
-            <button
-              onClick={() => setSelectedCategory(null)}
-              className={`px-4 py-2 rounded-full font-medium transition-all ${
-                selectedCategory === null
-                  ? "bg-gradient-to-r from-blue to-teal text-white shadow-lg"
-                  : "bg-background border border-border text-foreground hover:border-foreground/50"
-              }`}
-            >
-              Todos
-            </button>
-            {blogCategories.map((category) => (
+            {/* Category Filters */}
+            <div className="flex flex-wrap gap-3">
               <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
+                onClick={() => setSelectedCategory(null)}
                 className={`px-4 py-2 rounded-full font-medium transition-all ${
-                  selectedCategory === category.id
-                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
-                    : "bg-background border border-border text-foreground hover:border-foreground/50"
+                  selectedCategory === null
+                    ? "bg-blue text-white"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                 }`}
               >
-                {category.label}
+                Todos
               </button>
-            ))}
-          </motion.div>
+              {blogCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`px-4 py-2 rounded-full font-medium transition-all ${
+                    selectedCategory === category.id
+                      ? "bg-blue text-white"
+                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-          {/* Articles Grid */}
+      {/* Articles Grid */}
+      <section className="section-spacing">
+        <div className="container max-w-6xl">
           {filteredArticles.length > 0 ? (
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1,
+                  },
+                },
+              }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {filteredArticles.map((article, idx) => (
-                <BlogCard key={article.id} article={article} index={idx} />
+              {filteredArticles.map((article, index) => (
+                <motion.div key={article.id} variants={fadeUp} custom={index}>
+                  <BlogCard article={article} />
+                </motion.div>
               ))}
             </motion.div>
           ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12"
-            >
-              <p className="text-foreground/70 text-lg">
+            <div className="text-center py-12">
+              <p className="text-lg text-slate-600">
                 Nenhum artigo encontrado. Tente ajustar seus filtros.
               </p>
-            </motion.div>
+            </div>
           )}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-spacing bg-gradient-to-br from-teal/5 to-blue/5">
-        <div className="container max-w-3xl text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeUp}
-            custom={0}
+      <section className="section-spacing bg-gradient-to-br from-blue/5 via-teal/5 to-emerald/5">
+        <div className="container max-w-2xl text-center">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Ainda tem dúvidas?
+          </h2>
+          <p className="text-lg text-slate-600 mb-8">
+            Converse com o Dr. Bruno para um diagnóstico profissional e personalizado.
+          </p>
+          <a
+            href="https://wa.me/5534999999999"
+            className="inline-block px-8 py-3 bg-blue text-white rounded-lg font-semibold hover:bg-blue/90 transition-colors"
           >
-            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
-              Tem dúvidas específicas?
-            </h2>
-            <p className="text-lg text-foreground/70 mb-8">
-              Converse com o Dr. Bruno para uma avaliação personalizada e orientações específicas para seu filho.
-            </p>
-            <button className="px-8 py-3 bg-blue hover:bg-blue/90 text-white rounded-lg font-semibold transition-colors">
-              Agendar Consulta
-            </button>
-          </motion.div>
+            Conversar Agora
+          </a>
         </div>
       </section>
     </div>

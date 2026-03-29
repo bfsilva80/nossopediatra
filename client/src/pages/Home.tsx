@@ -7,6 +7,7 @@ import FeatureCarousel from "@/components/ui/feature-carousel";
 import TypingEffect from "@/components/ui/typing-effect";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { injectSchema, generateLocalBusinessSchema } from "@/lib/seo-schema";
+import { SEOHead } from "@/components/SEOHead";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
@@ -203,10 +204,28 @@ const LIBRARY_ARTICLES = [
 
 export default function Home() {
   useEffect(() => {
-    // Inject LocalBusiness schema for SEO
+    // Set SEO meta tags for home page
+    SEOHead({
+      title: "Gastroenterologista Pediátrico em Uberaba | Dr. Bruno Fernandes",
+      description: "Especialista em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina. Diagnóstico inteligente e acolhimento humanizado.",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png",
+      url: "https://nossopediatra.com.br",
+      type: "website",
+      keywords: [
+        "gastroenterologista pediátrico",
+        "refluxo infantil",
+        "constipação em crianças",
+        "alergias alimentares",
+        "pediatra em Uberaba",
+        "telemedicina pediátrica",
+      ],
+    });
+
+    // Inject LocalBusiness schema
     const schema = generateLocalBusinessSchema();
     injectSchema(schema);
   }, []);
+
   const [currentScene, setCurrentScene] = useState(0);
 
   // Auto-rotate doctor scenes every 3.5 seconds

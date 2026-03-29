@@ -1,9 +1,10 @@
-import React, { useMemo, useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link, useParams } from "wouter";
 import { blogArticles, blogCategories } from "@/data/blog";
 import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
 import { injectSchema, generateArticleSchema, removeSchema } from "@/lib/seo-schema";
+import { SEOHead } from "@/components/SEOHead";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -24,6 +25,20 @@ export default function ArticleDetailPage() {
 
   useEffect(() => {
     if (article) {
+      // Set SEO meta tags for article
+      SEOHead({
+        title: article.title,
+        description: article.description,
+        image: article.image || "https://nossopediatra.com.br/logo.png",
+        url: `https://nossopediatra.com.br/blog/${article.slug}`,
+        type: "article",
+        author: article.author,
+        publishedDate: article.date,
+        modifiedDate: article.date,
+        keywords: article.tags,
+      });
+
+      // Inject Article schema
       const schema = generateArticleSchema(
         article.title,
         article.description,

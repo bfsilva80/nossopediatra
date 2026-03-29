@@ -6,6 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { Lightbulb, Heart, Shield } from "lucide-react";
 import { injectSchema, generateFAQSchema } from "@/lib/seo-schema";
 import { faqItems, FAQItem } from "@/data/faq";
+import { SEOHead } from "@/components/SEOHead";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,6 +19,23 @@ const fadeUp = {
 
 export default function SymptomCheckerPage() {
   useEffect(() => {
+    // Set SEO meta tags
+    SEOHead({
+      title: "Verificador de Sintomas | Entender Meu Filho",
+      description: "Ferramenta interativa para diagnosticar sintomas digestivos em criancas. Refluxo, constipacao, alergias alimentares e dor abdominal. Diagnostico personalizado em menos de 2 minutos.",
+      image: "https://nossopediatra.com.br/logo.png",
+      url: "https://nossopediatra.com.br/diagnostico",
+      type: "website",
+      keywords: [
+        "verificador de sintomas",
+        "diagnostico infantil",
+        "refluxo em criancas",
+        "constipacao infantil",
+        "alergias alimentares",
+        "dor abdominal em criancas",
+      ],
+    });
+
     // Convert FAQ data to schema format
     const schemaFaqs = faqItems.map((item: FAQItem) => ({
       question: item.question,

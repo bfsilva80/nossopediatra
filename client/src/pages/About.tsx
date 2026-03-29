@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Heart, Award, Users, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import { firstColumn, secondColumn, thirdColumn } from "@/data/testimonials";
+import { SEOHead } from "@/components/SEOHead";
 
 const DOCTOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png";
 
@@ -39,8 +41,26 @@ const CREDENTIALS = [
     description: "Abordagem que coloca o paciente e sua família no centro, unindo excelência clínica com acolhimento genuíno",
   },
 ];
-
 export default function About() {
+  useEffect(() => {
+    SEOHead({
+      title: "Conhecer Dr. Bruno Fernandes | Gastroenterologista Pediátrico",
+      description: "Conheça Dr. Bruno Fernandes, especialista em gastroenterologia pediátrica com mais de 15 anos de experiência. Formado pela USP, MBA em Gestão de Saúde, com abordagem humanizada e acolhedora para crianças e famílias.",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png",
+      url: "https://nossopediatra.com.br/sobre",
+      type: "website",
+      author: "Dr. Bruno Fernandes",
+      keywords: [
+        "Dr. Bruno Fernandes",
+        "gastroenterologista pediátrico",
+        "especialista em pediatria",
+        "CRM 93321",
+        "RQE 63639",
+        "USP Ribeirão Preto",
+      ],
+    });
+  }, []);
+
   return (
     <div className="w-full overflow-hidden">
       {/* ═══════════ HERO ═══════════ */}
