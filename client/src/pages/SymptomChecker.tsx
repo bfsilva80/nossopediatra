@@ -118,10 +118,10 @@ export default function SymptomCheckerPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Perguntas frequentes
+              Perguntas Frequentes
             </h2>
             <p className="text-lg text-slate-600">
-              Dúvidas comuns sobre sintomas digestivos e sobre esta ferramenta
+              Respostas às dúvidas mais comuns
             </p>
           </motion.div>
 

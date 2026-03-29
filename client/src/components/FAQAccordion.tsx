@@ -16,20 +16,6 @@ export function FAQAccordion() {
   return (
     <section className="py-16 px-4 md:px-6 bg-gradient-to-b from-background to-background/50">
       <div className="max-w-3xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-3">
-            Perguntas Frequentes
-          </h2>
-          <p className="text-lg text-foreground/70">
-            Respostas às dúvidas mais comuns sobre saúde digestiva infantil
-          </p>
-        </motion.div>
 
         {/* Category Filter */}
         <motion.div
@@ -107,23 +93,7 @@ export function FAQAccordion() {
           </AnimatePresence>
         </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 p-6 bg-gradient-to-r from-blue/5 to-teal/5 border border-blue/20 rounded-lg text-center"
-        >
-          <p className="text-foreground/80 mb-4">
-            Não encontrou a resposta que procurava?
-          </p>
-          <a
-            href="#contact"
-            className="inline-block px-6 py-2 bg-gradient-to-r from-blue to-teal text-white font-semibold rounded-lg hover:shadow-lg transition-shadow"
-          >
-            Converse com o Dr. Bruno
-          </a>
-        </motion.div>
+
       </div>
     </section>
   );
