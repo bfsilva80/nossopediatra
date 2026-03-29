@@ -8,6 +8,7 @@ import {
 import { instagramTestimonials } from "@/data/instagram-testimonials";
 
 type Testimonial = {
+	id: string;
 	quote: string;
 	image: string;
 	name: string;
@@ -16,6 +17,7 @@ type Testimonial = {
 };
 
 const testimonials: Testimonial[] = instagramTestimonials.map(t => ({
+	  id: t.id,
 	  quote: t.quote,
 	  image: t.image,
 	  name: t.name,
@@ -50,12 +52,12 @@ export function TestimonialsSection() {
 					)}
 				>
 					<InfiniteSlider direction="vertical" speed={30} speedOnHover={15}>
-						{firstColumn.map((testimonial) => (
-							<TestimonialsCard
-								key={testimonial.name}
-								testimonial={testimonial}
-							/>
-						))}
+					{firstColumn.map((testimonial) => (
+						<TestimonialsCard
+							key={testimonial.id}
+							testimonial={testimonial}
+						/>
+					))}
 					</InfiniteSlider>
 					<InfiniteSlider
 						className="hidden md:block"
@@ -65,7 +67,7 @@ export function TestimonialsSection() {
 					>
 						{secondColumn.map((testimonial) => (
 							<TestimonialsCard
-								key={testimonial.name}
+								key={testimonial.id}
 								testimonial={testimonial}
 							/>
 						))}
@@ -78,7 +80,7 @@ export function TestimonialsSection() {
 					>
 						{thirdColumn.map((testimonial) => (
 							<TestimonialsCard
-								key={testimonial.name}
+								key={testimonial.id}
 								testimonial={testimonial}
 							/>
 						))}
