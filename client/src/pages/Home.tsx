@@ -249,59 +249,45 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
             {/* Text Content */}
             <div className="lg:col-span-2 max-w-2xl">
-              <motion.div
+              {/* Sobrancelha - Eyebrow */}
+              <motion.p
+                className="text-sm font-semibold text-blue/80 tracking-wide uppercase mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2.5 bg-blue/8 backdrop-blur-md rounded-full px-5 py-2.5 mb-8 border border-blue/20 hover:border-blue/40 transition-colors"
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <Sparkles className="w-4 h-4 text-blue flex-shrink-0" />
-                <span className="text-xs font-semibold tracking-wide text-blue uppercase">
-                  Gastroenterologia Pediátrica
-                </span>
-              </motion.div>
+                Gastropediatria em Uberaba
+              </motion.p>
 
-              {/* Logo + H1 Static Title */}
+              {/* H1 - Main Title */}
               <motion.h1
                 className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                Barriga de criança conta história. A gente ajuda a ouvi-la com ciência e cuidado.
+                Entender o que seu filho tem muda tudo.
               </motion.h1>
 
-              {/* H2 with Support Line */}
+              {/* H2 - Subtitle with Clarity */}
               <motion.h2
                 className="text-xl md:text-2xl font-semibold mb-8 text-foreground/80 leading-relaxed max-w-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
               >
-                Refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância.
+                Clareza para refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância.
               </motion.h2>
-
-              {/* First Paragraph with Technical Phrase */}
-              <motion.p
-                className="text-lg md:text-xl mb-8 text-foreground/65 leading-relaxed max-w-2xl font-light"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-              >
-                Sou o dr. Bruno, gastroenterologista pediátrico em Uberaba, e ajudo famílias a entender com mais clareza o que a barriga das crianças está tentando contar.
-              </motion.p>
 
               {/* Credentials Line */}
               <motion.div
                 className="mb-10 pb-8 border-b border-blue/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
               >
-                <p className="text-sm font-bold text-foreground mb-1 tracking-wide">Dr. Bruno Fernandes</p>
-                <p className="text-xs text-foreground/50 leading-relaxed font-light">
-                  Gastropediatra – USP Ribeirão Preto<br />
-                  CRM 93321 | RQE 63639
+                <p className="text-sm font-semibold text-foreground tracking-wide">
+                  Dr. Bruno Fernandes • CRM 93321 • RQE 63639
                 </p>
               </motion.div>
 
@@ -310,14 +296,14 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-4 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
               >
                 <Link href="/consultas" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all" title="Agendar consulta com gastropediatra em Uberaba">
-                  Agendar Consulta
+                  Agendar consulta
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all" title="Verificador de sintomas digestivos infantis">
-                  Explorar Sintomas
+                  Ver sintomas
                 </Link>
               </motion.div>
 
@@ -326,9 +312,9 @@ export default function Home() {
                 className="text-sm text-foreground/50 font-light"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.6 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
               >
-                ✓ Atendimento em Uberaba e por telemedicina
+                Atendimento em Uberaba e por telemedicina
               </motion.p>
             </div>
 
