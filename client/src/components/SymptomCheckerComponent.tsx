@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, AlertCircle, CheckCircle, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ShareResults } from "@/components/ShareResults";
 import {
   initialQuestions,
   refluxQuestions,
@@ -158,6 +159,14 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
             </div>
           )}
         </div>
+
+        {/* Compartilhar Resultado */}
+        <ShareResults
+          diagnosisTitle={result.condition.name}
+          diagnosisDescription={result.condition.description}
+          recommendations={result.condition.recommendations}
+          severity={result.condition.urgency === "high" ? "high" : "medium"}
+        />
 
         {/* CTA Final */}
         <div className="bg-white rounded-2xl p-8 border-2 border-blue/20 text-center">
