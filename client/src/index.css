@@ -340,3 +340,87 @@ html {
   background-size: 1440px 40px;
   z-index: 1;
 }
+
+
+/* ============================================================================
+   Core Web Vitals Optimization
+   ============================================================================ */
+
+/* Prevent Cumulative Layout Shift (CLS) */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reserve space for images to prevent layout shift */
+img[width] {
+  width: auto;
+}
+
+/* Prevent font loading layout shift */
+@font-face {
+  font-family: "Poppins";
+  font-display: swap;
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize scrolling performance */
+html {
+  scroll-behavior: auto;
+}
+
+/* Prevent layout shift from scrollbar */
+html {
+  overflow-y: scroll;
+}
+
+/* Optimize form inputs for mobile */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+/* Lazy load images */
+img[loading="lazy"] {
+  background-color: #f0ede9;
+}
+
+/* Optimize button performance */
+button {
+  will-change: auto;
+}
+
+button:active {
+  will-change: transform;
+}
+
+/* Optimize text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimize link performance */
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Reserve space for dynamic content */
+.skeleton {
+  background-color: #e8e5e0;
+  border-radius: var(--radius);
+}

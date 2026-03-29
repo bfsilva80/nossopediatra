@@ -11,6 +11,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import FloatingDock from "./components/FloatingDock";
 import StickyMobileFooterCTA from "./components/StickyMobileFooterCTA";
 import { injectSchema, generateOrganizationSchema } from "@/lib/seo-schema";
+import { initializePerformanceOptimizations } from "@/lib/performance";
 import Home from "./pages/Home";
 import SymptomAtlas from "./pages/SymptomAtlas";
 import Library from "./pages/Library";
@@ -29,6 +30,14 @@ function Router() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  useEffect(() => {
+    // Initialize performance optimizations on mount
+    initializePerformanceOptimizations();
+    
+    // Inject Organization schema
+    injectSchema(generateOrganizationSchema());
+  }, []);
 
   return (
     <Switch>
