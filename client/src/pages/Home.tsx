@@ -39,20 +39,23 @@ const CONSULTATION_REASONS = [
     emoji: "🔄",
     title: "Refluxo e Dor Abdominal",
     description: "Bebês irritados, regurgitação frequente, desconforto após alimentação.",
+    slug: "refluxo-infantil",
     color: "border-coral/40",
     bgColor: "bg-coral/10",
   },
   {
     emoji: "🥛",
     title: "Alergia Alimentar",
-    description: "APLV, suspeitas de reação alimentar, investigação especializada.",
+    description: "Suspeitas de reação alimentar e investigação especializada.",
+    slug: "alergia-alimentar",
     color: "border-blue/40",
     bgColor: "bg-blue/10",
   },
   {
     emoji: "🧱",
-    title: "Constipação Intestinal ou Fezes Diferentes",
-    description: "Constipação, diarreia recorrente, distensão abdominal.",
+    title: "Constipação Intestinal",
+    description: "Constipação, fezes diferentes e distensão abdominal.",
+    slug: "constipacao-infantil",
     color: "border-emerald/40",
     bgColor: "bg-emerald/10",
   },
@@ -79,13 +82,7 @@ const TRUST_ITEMS = [
   },
 ];
 
-const SYMPTOMS = [
-  { name: "Barriga Inchada", emoji: "🫧" },
-  { name: "Refluxo", emoji: "🔄" },
-  { name: "Constipação Intestinal", emoji: "🧱" },
-  { name: "Fezes Diferentes", emoji: "🔍" },
-  { name: "Dor Abdominal", emoji: "😣" },
-];
+// Removed: SYMPTOMS array consolidated into CONSULTATION_REASONS
 
 const LIBRARY_ARTICLES = [
   {
