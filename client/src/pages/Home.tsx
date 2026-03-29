@@ -339,10 +339,7 @@ export default function Home() {
                   {/* Ink drop transition effect disabled - keeping smooth fade only */}
                 </div>
 
-                {/* Decorative shapes around the carousel */}
-                <div className="absolute -top-6 -left-6 w-16 h-16 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
-                <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
-                <div className="absolute top-1/2 -right-8 w-12 h-12 bg-blue/20 rounded-lg opacity-60 animate-wiggle" />
+
 
                 {/* Scene indicators */}
                 <div className="flex justify-center gap-2 mt-6">
