@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, AlertCircle, CheckCircle, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -66,6 +66,13 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     }
   };
 
+  const handleReset = () => {
+    setCurrentQuestionId("main-complaint");
+    setAnswers({});
+    setResult(null);
+    setHistory(["main-complaint"]);
+  };
+
   const calculateDiagnosis = (allAnswers: Record<string, string>): { condition: Condition; matchedSymptoms: string[] } => {
     const mainComplaint = allAnswers["main-complaint"];
 
@@ -120,14 +127,6 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
       condition: condition || conditions[0],
       matchedSymptoms,
     };
-  };
-
-  const handleReset = () => {
-    setCurrentQuestionId("main-complaint");
-    setAnswers({});
-    setResult(null);
-    setHistory([]);
-    setIsLoading(false);
   };
 
   // Mostrar loading enquanto processa
@@ -259,13 +258,19 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
   return (
     <motion.div
       key={currentQuestionId}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -30, scale: 0.95 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="space-y-8"
     >
       {/* Barra de Progresso */}
-      <div className="space-y-2">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="space-y-2"
+      >
         <div className="flex justify-between text-sm text-foreground/60">
           <span>Etapa {history.length + 1} de 10</span>
           <span>{Math.round(((history.length + 1) / 10) * 100)}%</span>
@@ -275,61 +280,112 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
             className="h-full bg-gradient-to-r from-teal to-blue"
             initial={{ width: 0 }}
             animate={{ width: `${((history.length + 1) / 10) * 100}%` }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Pergunta */}
-      <div className="bg-white rounded-2xl p-8 border-2 border-blue/10">
-        <h2 className="text-2xl font-display font-bold text-foreground mb-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        className="bg-white rounded-2xl p-8 border-2 border-blue/10"
+      >
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="text-2xl font-display font-bold text-foreground mb-6"
+        >
           {currentQuestion.text}
-        </h2>
+        </motion.h2>
 
         {/* Opções de Resposta */}
-        <div className="space-y-3">
+        <motion.div
+          className="space-y-3"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.08,
+                delayChildren: 0.25,
+              },
+            },
+          }}
+        >
           {currentQuestion.type === "yes-no" ? (
             <>
-              <Button
-                onClick={() => handleAnswer("yes")}
-                variant="outline"
-                className="w-full justify-start text-left h-auto py-4 px-6 border-2 hover:border-teal hover:bg-teal/5"
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+                }}
               >
-                <span className="font-semibold">Sim</span>
-              </Button>
-              <Button
-                onClick={() => handleAnswer("no")}
-                variant="outline"
-                className="w-full justify-start text-left h-auto py-4 px-6 border-2 hover:border-teal hover:bg-teal/5"
+                <Button
+                  onClick={() => handleAnswer("yes")}
+                  variant="outline"
+                  className="w-full justify-start text-left h-auto py-4 px-6 border-2 hover:border-teal hover:bg-teal/5 transition-all duration-300 hover:scale-105"
+                >
+                  <span className="font-semibold">Sim</span>
+                </Button>
+              </motion.div>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+                }}
               >
-                <span className="font-semibold">Não</span>
-              </Button>
+                <Button
+                  onClick={() => handleAnswer("no")}
+                  variant="outline"
+                  className="w-full justify-start text-left h-auto py-4 px-6 border-2 hover:border-teal hover:bg-teal/5 transition-all duration-300 hover:scale-105"
+                >
+                  <span className="font-semibold">Não</span>
+                </Button>
+              </motion.div>
             </>
           ) : (
             currentQuestion.options?.map((option) => (
-              <Button
+              <motion.div
                 key={option}
-                onClick={() => handleAnswer(option)}
-                variant="outline"
-                className="w-full justify-start text-left h-auto py-4 px-6 border-2 hover:border-teal hover:bg-teal/5"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+                }}
               >
-                <span className="font-semibold">{option}</span>
-              </Button>
+                <Button
+                  onClick={() => handleAnswer(option)}
+                  variant="outline"
+                  className="w-full justify-start text-left h-auto py-4 px-6 border-2 hover:border-teal hover:bg-teal/5 transition-all duration-300 hover:scale-105"
+                >
+                  <span className="font-semibold">{option}</span>
+                </Button>
+              </motion.div>
             ))
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Botão Voltar */}
       {history.length > 0 && (
-        <Button
-          variant="ghost"
-          onClick={handleBack}
-          className="flex items-center gap-2 text-foreground/60 hover:text-foreground"
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
         >
-          <ChevronLeft className="w-4 h-4" />
-          Voltar
-        </Button>
+          <Button
+            variant="ghost"
+            onClick={handleBack}
+            className="flex items-center gap-2 text-foreground/60 hover:text-foreground transition-colors duration-300"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Voltar
+          </Button>
+        </motion.div>
       )}
     </motion.div>
   );
