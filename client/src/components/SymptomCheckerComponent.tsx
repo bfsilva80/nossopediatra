@@ -9,6 +9,7 @@ import {
   refluxQuestions,
   constipationQuestions,
   allergyQuestions,
+  bellyPainQuestions,
   conditions,
   Question,
   Condition,
@@ -27,7 +28,7 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
 
   // Obter todas as perguntas em um mapa único
   const allQuestions = new Map<string, Question>();
-  [initialQuestions, refluxQuestions, constipationQuestions, allergyQuestions].forEach((group) => {
+  [initialQuestions, refluxQuestions, constipationQuestions, allergyQuestions, bellyPainQuestions].forEach((group) => {
     group.forEach((q) => allQuestions.set(q.id, q));
   });
 
@@ -40,7 +41,7 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     // Determinar próxima pergunta
     if (currentQuestion?.nextQuestions) {
       const nextId = currentQuestion.nextQuestions[answer];
-      if (nextId === "reflux-result" || nextId === "constipation-result" || nextId === "allergy-result") {
+      if (nextId === "reflux-result" || nextId === "constipation-result" || nextId === "allergy-result" || nextId === "belly-pain-result") {
         // Mostrar loading e calcular resultado com delay
         setIsLoading(true);
         setTimeout(() => {
@@ -76,6 +77,18 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     } else if (mainComplaint === "Constipação/Dificuldade intestinal") {
       condition = conditions.find((c) => c.id === "constipation");
       matchedSymptoms = ["Evacuações infrequentes", "Fezes duras"];
+    } else if (mainComplaint === "Dor de Barriga") {
+      const painType = allAnswers["belly-pain-type"];
+      if (painType === "Dor aguda/Súbita") {
+        condition = conditions.find((c) => c.id === "belly-pain-acute");
+        matchedSymptoms = ["Dor abdominal súbita", "Vômitos"];
+      } else if (painType === "Dor crônica/Contínua") {
+        condition = conditions.find((c) => c.id === "belly-pain-chronic");
+        matchedSymptoms = ["Dor abdominal crônica", "Distensão abdominal"];
+      } else {
+        condition = conditions.find((c) => c.id === "uncertain");
+        matchedSymptoms = ["Sintomas não específicos"];
+      }
     } else if (mainComplaint === "Alergias alimentares") {
       condition = conditions.find((c) => c.id === "allergy");
       matchedSymptoms = ["Reação alérgica", "Sintomas após ingestão de alimento"];
