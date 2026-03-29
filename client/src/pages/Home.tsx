@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import InstagramGallery from "@/components/InstagramGallery";
 import FeatureCarousel from "@/components/ui/feature-carousel";
 import TypingEffect from "@/components/ui/typing-effect";
+import { HomeTestimonials } from "@/components/HomeTestimonials";
 
 /* ── Asset URLs (CDN, lifecycle-tied) ── */
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
@@ -498,6 +499,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* ═══════════ TESTIMONIALS ═══════════ */}
+      <HomeTestimonials />
 
       {/* ═══════════ INSTAGRAM GALLERY ═══════════ */}
       <InstagramGallery />
