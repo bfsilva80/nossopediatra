@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useParams } from "wouter";
 import { blogArticles, blogCategories } from "@/data/blog";
 import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
+import { injectSchema, generateArticleSchema, removeSchema } from "@/lib/seo-schema";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,6 +21,21 @@ export default function ArticleDetailPage() {
   const article = useMemo(() => {
     return blogArticles.find((a) => a.slug === slug);
   }, [slug]);
+
+  useEffect(() => {
+    if (article) {
+      const schema = generateArticleSchema(
+        article.title,
+        article.description,
+        article.image || "https://nossopediatra.com.br/logo.png",
+        article.slug,
+        article.date,
+        article.date
+      );
+      injectSchema(schema);
+    }
+  }, [article]);
+
 
   const categoryColor = useMemo(() => {
     if (!article) return "";

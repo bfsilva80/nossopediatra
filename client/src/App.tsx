@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import FloatingDock from "./components/FloatingDock";
 import StickyMobileFooterCTA from "./components/StickyMobileFooterCTA";
+import { injectSchema, generateOrganizationSchema } from "@/lib/seo-schema";
 import Home from "./pages/Home";
 import SymptomAtlas from "./pages/SymptomAtlas";
 import Library from "./pages/Library";
@@ -52,6 +53,12 @@ function Router() {
 }
 
 function App() {
+  useEffect(() => {
+    // Inject Organization schema globally on app load
+    const schema = generateOrganizationSchema();
+    injectSchema(schema);
+  }, []);
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
