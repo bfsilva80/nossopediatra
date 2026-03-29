@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import FloatingDock from "./components/FloatingDock";
+import StickyMobileFooterCTA from "./components/StickyMobileFooterCTA";
 import Home from "./pages/Home";
 import SymptomAtlas from "./pages/SymptomAtlas";
 import Library from "./pages/Library";
@@ -57,6 +58,7 @@ function App() {
             <main className="flex-1">
               <Router />
             </main>
+            <StickyMobileFooterCTA />
             <Footer />
             <WhatsAppButton />
             <FloatingDock />
