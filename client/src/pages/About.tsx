@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Heart, Award, Users, BookOpen } from "lucide-react";
 import { Link } from "wouter";
+import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
+import { firstColumn, secondColumn, thirdColumn } from "@/data/testimonials";
 
 const DOCTOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png";
 
@@ -13,38 +15,7 @@ const fadeUp = {
   }),
 };
 
-const TESTIMONIALS = [
-  {
-    name: "Salles Mikaelem",
-    text: "Dia 10/10 meu 3 tesouro nasceu (Hgt) fiquei impactada com sua atenção com cada bebê que estava no quarto o quando o Sr fez questão de ouvir os pais e abençoar seus filhos! Que Deus abençoe sempre",
-    highlight: "atenção e acolhimento",
-  },
-  {
-    name: "Jully Carolinne",
-    text: "Ora, ora se esse não é o pediatra mais humano que eu conheci, que ama com o olhar cada criança e cada história aqui do Marajó",
-    highlight: "humanidade",
-  },
-  {
-    name: "Polyanna Oliver",
-    text: "Um ser humano raro, Deus o abençoe no fazer e nas palavras",
-    highlight: "raridade humana",
-  },
-  {
-    name: "Euamarina OFC",
-    text: "Dr que bom vê-lo! Já o admirava pelo profissionalismo e excelente médico que o sr é. Mas a minha admiração aumentou foi quando estive de plantão e uma criança infelizmente veio a óbito mesmo após várias intervenções e manobras que o sr fez. Eu te vi sair e orar com aquela mãe. Eu te admirei como servo que trabalha para glória de Deus!",
-    highlight: "dedicação e fé",
-  },
-  {
-    name: "Lara Cristina",
-    text: "Que Deus o proteja e conserve sempre assim o senhor foi o anjo da vida da minha filha e eu agradeço sempre pela sua vida pois hj Layslla já está com 7 anos mais seus primeiros meses foi o maior desespero e Deus colocou o Senhor no nosso caminho só agradecer e orar pela sua vida e de toda família",
-    highlight: "anjo da vida",
-  },
-  {
-    name: "Celiany Ferreira",
-    text: "Um profissional extraordinário que exercer a sua profissão com muito amor e carinho vc está de parabéns Dr. Bruno",
-    highlight: "amor e carinho",
-  },
-];
+
 
 const CREDENTIALS = [
   {
@@ -248,10 +219,10 @@ export default function About() {
       </section>
 
       {/* ═══════════ TESTIMONIALS ═══════════ */}
-      <section className="section-spacing bg-cream">
-        <div className="container max-w-5xl">
+      <section className="section-spacing bg-cream relative overflow-hidden">
+        <div className="container max-w-6xl">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -266,31 +237,10 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {TESTIMONIALS.map((testimonial, idx) => (
-              <motion.div
-                key={idx}
-                className="card-base p-8 border-2 border-blue/20 hover:border-teal/40 transition-colors bg-white"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                custom={idx + 1}
-              >
-                <div className="flex items-start gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-golden text-lg">★</span>
-                  ))}
-                </div>
-                <p className="text-foreground/80 mb-6 leading-relaxed italic">
-                  "{testimonial.text}"
-                </p>
-                <div className="border-t border-blue/10 pt-4">
-                  <p className="font-display font-bold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-teal font-semibold mt-1">{testimonial.highlight}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[600px] overflow-hidden">
+            <TestimonialsColumn testimonials={firstColumn} duration={15} />
+            <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+            <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
           </div>
         </div>
       </section>
