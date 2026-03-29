@@ -267,7 +267,7 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
       {/* Barra de Progresso */}
       <div className="space-y-2">
         <div className="flex justify-between text-sm text-foreground/60">
-          <span>Pergunta {history.length + 1}</span>
+          <span>Etapa {history.length + 1} de 10</span>
           <span>{Math.round(((history.length + 1) / 10) * 100)}%</span>
         </div>
         <div className="w-full h-2 bg-blue/10 rounded-full overflow-hidden">
