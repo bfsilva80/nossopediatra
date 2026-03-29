@@ -330,20 +330,14 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="space-y-2"
+        className="w-full h-2 bg-blue/10 rounded-full overflow-hidden"
       >
-        <div className="flex justify-between text-sm text-foreground/60">
-          <span>Etapa {history.length + 1} de 10</span>
-          <span>{Math.round(((history.length + 1) / 10) * 100)}%</span>
-        </div>
-        <div className="w-full h-2 bg-blue/10 rounded-full overflow-hidden">
-          <motion.div
-            className="h-full bg-gradient-to-r from-teal to-blue"
-            initial={{ width: 0 }}
-            animate={{ width: `${((history.length + 1) / 10) * 100}%` }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
-        </div>
+        <motion.div
+          className="h-full bg-gradient-to-r from-teal to-blue"
+          initial={{ width: 0 }}
+          animate={{ width: `${((history.length + 1) / 10) * 100}%` }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        />
       </motion.div>
 
       {/* Pergunta */}
