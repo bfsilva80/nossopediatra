@@ -206,8 +206,8 @@ export default function Home() {
   useEffect(() => {
     // Set SEO meta tags for home page
     SEOHead({
-      title: "Gastroenterologista Pediátrico em Uberaba | Dr. Bruno Fernandes",
-      description: "Especialista em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina. Diagnóstico inteligente e acolhimento humanizado.",
+      title: "Gastropediatra em Uberaba | Dr. Bruno Fernandes | Nosso Pediatra",
+      description: "Consulta com gastropediatra em Uberaba para refluxo, constipação, alergias alimentares e dor abdominal infantil. Atendimento presencial e telemedicina.",
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png",
       url: "https://nossopediatra.com.br",
       type: "website",
@@ -268,36 +268,27 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                Gastroenterologista Pediátrico em Uberaba
+                Barriga de criança conta história. A gente ajuda a ouvi-la com ciência e cuidado.
               </motion.h1>
 
-              {/* H2 with Typing Effect - Rotating Messages */}
+              {/* H2 with Support Line */}
               <motion.h2
-                className="text-2xl md:text-3xl font-semibold mb-8 text-foreground/80 leading-relaxed max-w-2xl"
+                className="text-xl md:text-2xl font-semibold mb-8 text-foreground/80 leading-relaxed max-w-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
               >
-                <TypingEffect 
-                  texts={[
-                    "Ajudando a entender os problemas digestivos das crianças",
-                    "Cuidando da saúde digestiva com ciência e dedicação",
-                    "Orientando pais com informações claras e precisas"
-                  ]}
-                  className="text-2xl md:text-3xl font-semibold"
-                  typingSpeed={50}
-                  rotationInterval={4000}
-                />
+                Refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância.
               </motion.h2>
 
-              {/* New Subtitle */}
+              {/* First Paragraph with Technical Phrase */}
               <motion.p
                 className="text-lg md:text-xl mb-8 text-foreground/65 leading-relaxed max-w-2xl font-light"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                Especialista em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina.
+                Sou o dr. Bruno, gastroenterologista pediátrico em Uberaba, e ajudo famílias a entender com mais clareza o que a barriga das crianças está tentando contar.
               </motion.p>
 
               {/* Credentials Line */}
@@ -321,11 +312,11 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
               >
-                <Link href="/consultas" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
+                <Link href="/consultas" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all" title="Agendar consulta com gastropediatra em Uberaba">
                   Agendar Consulta
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
-                <Link href="/atlas-sintomas" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all">
+                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all" title="Verificador de sintomas digestivos infantis">
                   Explorar Sintomas
                 </Link>
               </motion.div>
@@ -424,7 +415,7 @@ export default function Home() {
             variants={fadeUp}
             custom={2}
           >
-            <Link href="/atlas-sintomas" className="btn-primary">
+            <Link href="/diagnostico" className="btn-primary" title="Ver verificador completo de sintomas digestivos">
               Ver Todos os Sintomas
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
@@ -517,7 +508,7 @@ export default function Home() {
             variants={fadeUp}
             custom={4}
           >
-            <Link href="/biblioteca" className="btn-primary">
+            <Link href="/blog" className="btn-primary" title="Ver biblioteca completa de artigos sobre saúde digestiva infantil">
               Ver Biblioteca Completa
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
