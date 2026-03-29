@@ -54,6 +54,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {[
                   { href: "/atlas-sintomas", label: "Atlas de Sintomas" },
+                  { href: "/blog", label: "Artigos" },
                   { href: "/biblioteca", label: "Biblioteca" },
                   { href: "/consultas", label: "Consultas" },
                   { href: "/contato", label: "Contato" },

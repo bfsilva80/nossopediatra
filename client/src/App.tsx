@@ -19,6 +19,8 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import SymptomChecker from "./pages/SymptomChecker";
 import SymptomDetail from "./pages/SymptomDetail";
+import Blog from "./pages/Blog";
+import ArticleDetail from "./pages/ArticleDetail";
 
 function Router() {
   const [location] = useLocation();
@@ -41,6 +43,8 @@ function Router() {
       <Route path="/sobre" component={About} />
       <Route path="/diagnostico" component={SymptomChecker} />
       <Route path="/sintoma/:slug" component={SymptomDetail} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={ArticleDetail} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
