@@ -43,6 +43,61 @@ export const initialQuestions: Question[] = [
   },
 ];
 
+// Fluxo de perguntas para INCERTEZA (Não tenho certeza)
+export const uncertainQuestions: Question[] = [
+  {
+    id: "age-check",
+    text: "Qual é a idade do seu filho?",
+    type: "age-range",
+    options: ["Menos de 6 meses", "6-12 meses", "1-2 anos", "2-5 anos", "Acima de 5 anos"],
+    nextQuestions: {
+      "Menos de 6 meses": "uncertain-symptoms",
+      "6-12 meses": "uncertain-symptoms",
+      "1-2 anos": "uncertain-symptoms",
+      "2-5 anos": "uncertain-symptoms",
+      "Acima de 5 anos": "uncertain-symptoms",
+    },
+  },
+  {
+    id: "uncertain-symptoms",
+    text: "Quais sintomas seu filho apresenta? (Selecione todos que se aplicam)",
+    type: "multiple-choice",
+    options: ["Vômitos ou refluxo", "Dificuldade intestinal", "Dor abdominal", "Reações após comer", "Múltiplos sintomas", "Sintomas leves/ocasionais"],
+    nextQuestions: {
+      "Vômitos ou refluxo": "uncertain-frequency",
+      "Dificuldade intestinal": "uncertain-frequency",
+      "Dor abdominal": "uncertain-frequency",
+      "Reações após comer": "uncertain-frequency",
+      "Múltiplos sintomas": "uncertain-frequency",
+      "Sintomas leves/ocasionais": "uncertain-frequency",
+    },
+  },
+  {
+    id: "uncertain-frequency",
+    text: "Com que frequência seu filho apresenta esses sintomas?",
+    type: "multiple-choice",
+    options: ["Raramente (menos de 1x por semana)", "Ocasionalmente (1-3x por semana)", "Frequentemente (mais de 3x por semana)", "Constantemente"],
+    nextQuestions: {
+      "Raramente (menos de 1x por semana)": "uncertain-duration",
+      "Ocasionalmente (1-3x por semana)": "uncertain-duration",
+      "Frequentemente (mais de 3x por semana)": "uncertain-duration",
+      "Constantemente": "uncertain-duration",
+    },
+  },
+  {
+    id: "uncertain-duration",
+    text: "Há quanto tempo seu filho apresenta esses sintomas?",
+    type: "multiple-choice",
+    options: ["Menos de 1 semana", "1-2 semanas", "1-3 meses", "Mais de 3 meses"],
+    nextQuestions: {
+      "Menos de 1 semana": "uncertain-result",
+      "1-2 semanas": "uncertain-result",
+      "1-3 meses": "uncertain-result",
+      "Mais de 3 meses": "uncertain-result",
+    },
+  },
+];
+
 // Fluxo de perguntas para DOR DE BARRIGA
 export const bellyPainQuestions: Question[] = [
   {

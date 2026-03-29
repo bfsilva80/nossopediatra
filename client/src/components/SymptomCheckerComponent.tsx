@@ -10,6 +10,7 @@ import {
   constipationQuestions,
   allergyQuestions,
   bellyPainQuestions,
+  uncertainQuestions,
   conditions,
   Question,
   Condition,
@@ -28,7 +29,7 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
 
   // Obter todas as perguntas em um mapa único
   const allQuestions = new Map<string, Question>();
-  [initialQuestions, refluxQuestions, constipationQuestions, allergyQuestions, bellyPainQuestions].forEach((group) => {
+  [initialQuestions, refluxQuestions, constipationQuestions, allergyQuestions, bellyPainQuestions, uncertainQuestions].forEach((group) => {
     group.forEach((q) => allQuestions.set(q.id, q));
   });
 
@@ -41,7 +42,7 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     // Determinar próxima pergunta
     if (currentQuestion?.nextQuestions) {
       const nextId = currentQuestion.nextQuestions[answer];
-      if (nextId === "reflux-result" || nextId === "constipation-result" || nextId === "allergy-result" || nextId === "belly-pain-result") {
+      if (nextId === "reflux-result" || nextId === "constipation-result" || nextId === "allergy-result" || nextId === "belly-pain-result" || nextId === "uncertain-result") {
         // Mostrar loading e calcular resultado com delay
         setIsLoading(true);
         setTimeout(() => {
@@ -92,6 +93,24 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     } else if (mainComplaint === "Alergias alimentares") {
       condition = conditions.find((c) => c.id === "allergy");
       matchedSymptoms = ["Reação alérgica", "Sintomas após ingestão de alimento"];
+    } else if (mainComplaint === "Não tenho certeza") {
+      const uncertainSymptoms = allAnswers["uncertain-symptoms"];
+      if (uncertainSymptoms === "Vômitos ou refluxo") {
+        condition = conditions.find((c) => c.id === "reflux");
+        matchedSymptoms = ["Vômitos", "Refluxo"];
+      } else if (uncertainSymptoms === "Dificuldade intestinal") {
+        condition = conditions.find((c) => c.id === "constipation");
+        matchedSymptoms = ["Dificuldade intestinal", "Constipação"];
+      } else if (uncertainSymptoms === "Dor abdominal") {
+        condition = conditions.find((c) => c.id === "belly-pain-acute");
+        matchedSymptoms = ["Dor abdominal"];
+      } else if (uncertainSymptoms === "Reações após comer") {
+        condition = conditions.find((c) => c.id === "allergy");
+        matchedSymptoms = ["Reações alimentares"];
+      } else {
+        condition = conditions.find((c) => c.id === "uncertain");
+        matchedSymptoms = ["Sintomas não específicos"];
+      }
     } else {
       condition = conditions.find((c) => c.id === "uncertain");
       matchedSymptoms = ["Sintomas não específicos"];
