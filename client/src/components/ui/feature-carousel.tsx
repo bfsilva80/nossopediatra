@@ -275,25 +275,25 @@ export function FeatureCarousel() {
               const Icon = feature.icon;
 
               return (
-                <Link key={feature.id} href={`/conteudo/${feature.slug}`}>
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      x: isActive ? 0 : isPrev ? -100 : isNext ? 100 : 0,
-                      scale: isActive ? 1 : isPrev || isNext ? 0.85 : 0.7,
-                      opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
-                      rotate: isPrev ? -3 : isNext ? 3 : 0,
-                      zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
-                      pointerEvents: isActive ? "auto" : "none",
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 25,
-                      mass: 0.8,
-                    }}
-                    className="absolute inset-0 rounded-[2rem] md:rounded-[2.8rem] overflow-hidden border-4 md:border-8 border-background bg-background origin-center cursor-pointer"
-                  >
+                <Link key={feature.id} href={`/sintoma/${feature.slug}`}>
+                    <motion.div
+                      key={`image-${feature.id}`}
+                      animate={{
+                        x: isActive ? 0 : isPrev ? -100 : isNext ? 100 : 0,
+                        scale: isActive ? 1 : isPrev || isNext ? 0.85 : 0.7,
+                        opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
+                        rotate: isPrev ? -3 : isNext ? 3 : 0,
+                        zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
+                        pointerEvents: isActive ? "auto" : "none",
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 25,
+                        mass: 0.8,
+                      }}
+                      className="absolute inset-0 rounded-[2rem] md:rounded-[2.8rem] overflow-hidden border-4 md:border-8 border-background bg-background origin-center cursor-pointer"
+                    >
                   <img
                     src={feature.image}
                     alt={feature.label}
@@ -334,7 +334,7 @@ export function FeatureCarousel() {
                       {feature.specialty}
                     </span>
                   </div>
-                  </motion.div>
+                    </motion.div>
                 </Link>
               );
             })}
