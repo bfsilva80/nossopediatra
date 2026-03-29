@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { Award, BookOpen, Heart, Users } from "lucide-react";
+import { Heart, Award, Users, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 
-const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
+const DOCTOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,42 +13,59 @@ const fadeUp = {
   }),
 };
 
+const TESTIMONIALS = [
+  {
+    name: "Salles Mikaelem",
+    text: "Dia 10/10 meu 3 tesouro nasceu (Hgt) fiquei impactada com sua atenção com cada bebê que estava no quarto o quando o Sr fez questão de ouvir os pais e abençoar seus filhos! Que Deus abençoe sempre",
+    highlight: "atenção e acolhimento",
+  },
+  {
+    name: "Jully Carolinne",
+    text: "Ora, ora se esse não é o pediatra mais humano que eu conheci, que ama com o olhar cada criança e cada história aqui do Marajó",
+    highlight: "humanidade",
+  },
+  {
+    name: "Polyanna Oliver",
+    text: "Um ser humano raro, Deus o abençoe no fazer e nas palavras",
+    highlight: "raridade humana",
+  },
+  {
+    name: "Euamarina OFC",
+    text: "Dr que bom vê-lo! Já o admirava pelo profissionalismo e excelente médico que o sr é. Mas a minha admiração aumentou foi quando estive de plantão e uma criança infelizmente veio a óbito mesmo após várias intervenções e manobras que o sr fez. Eu te vi sair e orar com aquela mãe. Eu te admirei como servo que trabalha para glória de Deus!",
+    highlight: "dedicação e fé",
+  },
+  {
+    name: "Lara Cristina",
+    text: "Que Deus o proteja e conserve sempre assim o senhor foi o anjo da vida da minha filha e eu agradeço sempre pela sua vida pois hj Layslla já está com 7 anos mais seus primeiros meses foi o maior desespero e Deus colocou o Senhor no nosso caminho só agradecer e orar pela sua vida e de toda família",
+    highlight: "anjo da vida",
+  },
+  {
+    name: "Celiany Ferreira",
+    text: "Um profissional extraordinário que exercer a sua profissão com muito amor e carinho vc está de parabéns Dr. Bruno",
+    highlight: "amor e carinho",
+  },
+];
+
 const CREDENTIALS = [
   {
     icon: Award,
-    title: "Formação Acadêmica",
-    items: [
-      "Medicina - Universidade de São Paulo (USP)",
-      "Especialização em Pediatria",
-      "Especialização em Gastroenterologia Pediátrica",
-    ],
-  },
-  {
-    icon: BookOpen,
-    title: "Registro Profissional",
-    items: [
-      "CRM 93321 - Conselho Regional de Medicina",
-      "RQE 63639 - Registro de Qualificação de Especialista",
-      "Membro da Sociedade Brasileira de Pediatria",
-    ],
+    title: "Formação Especializada",
+    description: "Graduado em Medicina pela UFMS, especializado em Pediatria e Gastroenterologia & Hepatologia Pediátrica pela USP Ribeirão Preto",
   },
   {
     icon: Users,
-    title: "Experiência",
-    items: [
-      "Atendimento especializado em gastroenterologia pediátrica",
-      "Foco em refluxo, APLV, constipação e dor abdominal",
-      "Abordagem baseada em evidências científicas",
-    ],
+    title: "Experiência Clínica",
+    description: "Mais de 15 anos de experiência em assistência clínica, com expertise em casos de alta complexidade digestiva",
+  },
+  {
+    icon: BookOpen,
+    title: "Liderança em Saúde",
+    description: "MBA em Gestão de Serviços de Saúde pelo Hospital Israelita Albert Einstein, com atuação como docente convidado",
   },
   {
     icon: Heart,
-    title: "Filosofia de Atendimento",
-    items: [
-      "Escuta atenta e acolhedora",
-      "Explicações claras e baseadas em ciência",
-      "Parceria com as famílias no cuidado",
-    ],
+    title: "Visão Humanizada",
+    description: "Abordagem que coloca o paciente e sua família no centro, unindo excelência clínica com acolhimento genuíno",
   },
 ];
 
@@ -56,84 +73,143 @@ export default function About() {
   return (
     <div className="w-full overflow-hidden">
       {/* ═══════════ HERO ═══════════ */}
-      <section className="relative min-h-[70vh] md:min-h-[75vh] flex items-center overflow-hidden bg-gradient-to-b from-blue/5 to-white">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <section className="relative min-h-[80vh] md:min-h-[90vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-blue/5" />
+
+        <div className="relative z-10 container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text Content */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 bg-blue/10 rounded-full px-4 py-2 mb-6">
-                <span className="text-lg">👨‍⚕️</span>
-                <span className="text-sm font-bold text-blue font-display">Sobre o Especialista</span>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="inline-flex items-center gap-2.5 bg-blue/8 backdrop-blur-md rounded-full px-5 py-2.5 mb-8 border border-blue/20 hover:border-blue/40 transition-colors"
+              >
+                <Heart className="w-4 h-4 text-blue flex-shrink-0" />
+                <span className="text-xs font-semibold tracking-wide text-blue uppercase">
+                  Conhecer Dr. Bruno
+                </span>
+              </motion.div>
 
-              <h1 className="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-6">
-                Dr. Bruno <span className="text-coral">Fernandes</span>
-              </h1>
+              <motion.h1
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+              >
+                Dr. Bruno Fernandes da Silva
+              </motion.h1>
 
-              <p className="text-lg md:text-xl text-foreground/70 mb-6 leading-relaxed">
-                Gastropediatra dedicado a ajudar pais a entender e cuidar dos problemas digestivos das crianças com clareza, ciência e acolhimento.
-              </p>
+              <motion.p
+                className="text-xl md:text-2xl font-semibold mb-6 text-foreground/80 leading-relaxed max-w-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25 }}
+              >
+                Gastropediatra com mais de 15 anos de experiência, dedicado a transformar a saúde digestiva de crianças com ciência, humanidade e fé.
+              </motion.p>
 
-              <div className="space-y-3 mb-8">
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">🏥</span>
-                  <div>
-                    <p className="font-semibold text-foreground">Formação</p>
-                    <p className="text-sm text-muted-foreground">Universidade de São Paulo (USP) - Ribeirão Preto</p>
-                  </div>
+              {/* Credentials */}
+              <motion.div
+                className="mb-10 pb-8 border-b border-blue/10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                <p className="text-sm font-bold text-foreground mb-3 tracking-wide">CREDENCIAIS</p>
+                <div className="space-y-2 text-sm text-foreground/70 font-light leading-relaxed">
+                  <p>CRM MG 93321 | RQE 63639</p>
+                  <p>Especialista em Gastroenterologia e Hepatologia Pediátrica</p>
+                  <p>Faculdade de Medicina de Ribeirão Preto – USP</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">📋</span>
-                  <div>
-                    <p className="font-semibold text-foreground">Registro Profissional</p>
-                    <p className="text-sm text-muted-foreground">CRM 93321 | RQE 63639</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">📍</span>
-                  <div>
-                    <p className="font-semibold text-foreground">Atendimento</p>
-                    <p className="text-sm text-muted-foreground">Uberaba, MG | Telemedicina</p>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
 
-              <Link href="/consultas" className="btn-primary">
-                Agendar Consulta
-              </Link>
+              {/* CTA */}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+              >
+                <Link href="/contato" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
+                  Conversar Agora
+                </Link>
+                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all">
+                  Explorar Sintomas
+                </Link>
+              </motion.div>
             </motion.div>
 
-            {/* Doctor Image */}
+            {/* Doctor Photo */}
             <motion.div
               className="hidden lg:flex justify-center"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             >
-              <div className="relative">
-                <div className="w-72 h-80 xl:w-80 xl:h-[22rem] rounded-[2rem] overflow-hidden border-4 border-white shadow-xl">
+              <div className="relative w-full" style={{ maxWidth: '450px' }}>
+                <div className="relative h-[550px] rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
                   <img
-                    src={DOCTOR_IMG}
-                    alt="Dr. Bruno Fernandes"
-                    className="w-full h-full object-cover object-top"
+                    src={DOCTOR_PHOTO}
+                    alt="Dr. Bruno Fernandes da Silva"
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════ CREDENTIALS ═══════════ */}
+      {/* ═══════════ BIOGRAPHY ═══════════ */}
       <section className="section-spacing bg-cream">
+        <div className="container max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeUp}
+            custom={0}
+          >
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
+              Trajetória de <span className="text-teal">Excelência e Humanidade</span>
+            </h2>
+
+            <div className="space-y-6 text-lg text-foreground/75 leading-relaxed">
+              <p>
+                Sou médico pediatra e gestor de saúde com mais de 15 anos de experiência, unindo a excelência da assistência clínica à visão estratégica da gestão de serviços de saúde. Minha formação começou na Universidade Federal de Mato Grosso do Sul (UFMS), onde me graduei em Medicina com dedicação aos princípios fundamentais da prática médica.
+              </p>
+
+              <p>
+                Posteriormente, me especializei em Pediatria e, em seguida, em Gastroenterologia e Hepatologia Pediátrica pelo Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da USP — uma das maiores referências em medicina do Brasil. Essa trajetória me deu uma base técnica sólida e a capacidade de lidar com casos de alta complexidade, sempre com foco no bem-estar da criança e da família.
+              </p>
+
+              <p>
+                Ao longo da carreira, percebi que a transformação da saúde vai além do consultório. Por isso, investi em formação em gestão, concluindo o MBA Executivo em Gestão de Serviços de Saúde pelo Instituto de Ensino e Pesquisa do Hospital Israelita Albert Einstein — onde também tive a honra de atuar como docente convidado no curso de pós-graduação em Gestão em Saúde.
+              </p>
+
+              <p>
+                Como Secretário Municipal de Saúde de Morro Agudo (2019–2021), liderei equipes multidisciplinares, gerenciei recursos públicos e implementei políticas de saúde com foco em resultados para a população. Essa experiência consolidou minha atuação na interseção entre medicina, liderança e gestão pública.
+              </p>
+
+              <p>
+                Hoje, minha missão é clara: oferecer atendimento de excelência que une conhecimento científico com humanidade genuína. Acredito que cada criança merece ser compreendida em sua totalidade, e cada pai merece ser ouvido com respeito e atenção. É isso que guia meu trabalho todos os dias.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════ CREDENTIALS ═══════════ */}
+      <section className="section-spacing">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-14"
+            className="text-center mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -141,40 +217,29 @@ export default function About() {
             custom={0}
           >
             <h2 className="mb-4">
-              Credenciais e <span className="text-coral">Experiência</span>
+              Formação e <span className="text-coral">Experiência</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Formação rigorosa e dedicação contínua à especialização em gastroenterologia pediátrica
+              Uma base sólida construída através de dedicação, aprendizado contínuo e compromisso com a excelência
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {CREDENTIALS.map((cred, idx) => {
-              const Icon = cred.icon;
+            {CREDENTIALS.map((item, idx) => {
+              const Icon = item.icon;
               return (
                 <motion.div
                   key={idx}
-                  className="card-base p-8"
+                  className="card-base p-8 border-2 border-transparent hover:border-teal/20 transition-colors"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={fadeUp}
                   custom={idx + 1}
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-blue/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-blue" />
-                    </div>
-                    <h3 className="text-xl font-semibold">{cred.title}</h3>
-                  </div>
-                  <ul className="space-y-2">
-                    {cred.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
-                        <span className="text-coral font-bold mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <Icon className="w-10 h-10 text-teal mb-4" />
+                  <h3 className="font-display font-bold text-xl mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
                 </motion.div>
               );
             })}
@@ -182,84 +247,73 @@ export default function About() {
         </div>
       </section>
 
-      {/* ═══════════ PHILOSOPHY ═══════════ */}
-      <section className="section-spacing">
-        <div className="container max-w-3xl">
+      {/* ═══════════ TESTIMONIALS ═══════════ */}
+      <section className="section-spacing bg-cream">
+        <div className="container max-w-5xl">
           <motion.div
+            className="text-center mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
-            className="text-center"
           >
-            <h2 className="mb-8">
-              Filosofia de <span className="text-coral">Atendimento</span>
+            <h2 className="mb-4">
+              O que os <span className="text-coral">Pais Dizem</span>
             </h2>
-
-            <div className="space-y-6">
-              <motion.div
-                className="card-base p-8 text-left"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                custom={1}
-              >
-                <h3 className="text-xl font-semibold mb-3 text-teal">Escuta Atenta</h3>
-                <p className="text-muted-foreground">
-                  Cada criança é única. Cada família tem sua história. Dedicamos tempo real para entender não apenas os sintomas, mas o contexto, as preocupações e as necessidades específicas.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="card-base p-8 text-left"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                custom={2}
-              >
-                <h3 className="text-xl font-semibold mb-3 text-coral">Ciência com Clareza</h3>
-                <p className="text-muted-foreground">
-                  A medicina baseada em evidências não precisa ser complicada. Explicamos o raciocínio clínico de forma acessível, para que você entenda o porquê de cada recomendação.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="card-base p-8 text-left"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                custom={3}
-              >
-                <h3 className="text-xl font-semibold mb-3 text-emerald">Parceria com Famílias</h3>
-                <p className="text-muted-foreground">
-                  Você é o expert no seu filho. Nós somos o expert em gastroenterologia pediátrica. Juntos, construímos um plano que funciona para sua realidade.
-                </p>
-              </motion.div>
-            </div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Histórias reais de famílias que confiaram em meu atendimento e viram a diferença na saúde de seus filhos
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {TESTIMONIALS.map((testimonial, idx) => (
+              <motion.div
+                key={idx}
+                className="card-base p-8 border-2 border-blue/20 hover:border-teal/40 transition-colors bg-white"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeUp}
+                custom={idx + 1}
+              >
+                <div className="flex items-start gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-golden text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-foreground/80 mb-6 leading-relaxed italic">
+                  "{testimonial.text}"
+                </p>
+                <div className="border-t border-blue/10 pt-4">
+                  <p className="font-display font-bold text-foreground">{testimonial.name}</p>
+                  <p className="text-sm text-teal font-semibold mt-1">{testimonial.highlight}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══════════ CTA ═══════════ */}
-      <section className="section-spacing bg-gradient-to-r from-blue/5 to-emerald/5">
-        <div className="container max-w-3xl text-center">
+      {/* ═══════════ FINAL CTA ═══════════ */}
+      <section className="section-spacing bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
+        <div className="container max-w-3xl">
           <motion.div
+            className="text-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-6">Pronto para uma Consulta?</h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              Agende uma consulta para discussão personalizada sobre a saúde digestiva do seu filho
+            <h2 className="mb-6">
+              Pronto para conhecer melhor?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Agende uma consulta e vamos conversar sobre a saúde digestiva do seu filho. Estou aqui para ajudar.
             </p>
-            <Link href="/consultas" className="btn-primary">
-              Agendar Agora
+            <Link href="/contato" className="btn-primary">
+              Conversar Agora
             </Link>
           </motion.div>
         </div>
