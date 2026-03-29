@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, AlertCircle, CheckCircle, Info } from "lucid
 import { Button } from "@/components/ui/button";
 import { ShareResults } from "@/components/ShareResults";
 import { LoadingAnimation } from "@/components/LoadingAnimation";
+import { Breadcrumbs, Breadcrumb } from "@/components/Breadcrumbs";
 import {
   initialQuestions,
   refluxQuestions,
@@ -71,6 +72,53 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     setAnswers({});
     setResult(null);
     setHistory(["main-complaint"]);
+  };
+
+  // Gerar breadcrumbs dinâmicos
+  const generateBreadcrumbs = (): Breadcrumb[] => {
+    const breadcrumbs: Breadcrumb[] = [];
+    
+    // Adicionar breadcrumb inicial
+    breadcrumbs.push({
+      id: "main-complaint",
+      label: "Sintoma Principal",
+      answer: answers["main-complaint"],
+    });
+
+    // Adicionar breadcrumbs para cada pergunta no histórico
+    history.forEach((questionId) => {
+      const question = allQuestions.get(questionId);
+      if (question && answers[questionId]) {
+        breadcrumbs.push({
+          id: questionId,
+          label: question.text.substring(0, 30) + (question.text.length > 30 ? "..." : ""),
+          answer: answers[questionId],
+        });
+      }
+    });
+
+    // Adicionar breadcrumb atual
+    if (currentQuestion && currentQuestionId !== "main-complaint" && !history.includes(currentQuestionId)) {
+      breadcrumbs.push({
+        id: currentQuestionId,
+        label: currentQuestion.text.substring(0, 30) + (currentQuestion.text.length > 30 ? "..." : ""),
+      });
+    }
+
+    return breadcrumbs;
+  };
+
+  // Navegar para uma pergunta anterior via breadcrumb
+  const handleBreadcrumbNavigate = (questionId: string) => {
+    if (questionId === currentQuestionId) return;
+    
+    const indexInHistory = history.indexOf(questionId);
+    if (indexInHistory >= 0) {
+      // Remover todas as perguntas após a selecionada
+      setHistory(history.slice(0, indexInHistory));
+      setCurrentQuestionId(questionId);
+      setResult(null);
+    }
   };
 
   const calculateDiagnosis = (allAnswers: Record<string, string>): { condition: Condition; matchedSymptoms: string[] } => {
@@ -264,6 +312,13 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="space-y-8"
     >
+      {/* Breadcrumbs */}
+      <Breadcrumbs 
+        items={generateBreadcrumbs()} 
+        onNavigate={handleBreadcrumbNavigate}
+        currentQuestionId={currentQuestionId}
+      />
+
       {/* Barra de Progresso */}
       <motion.div
         initial={{ opacity: 0 }}
