@@ -40,6 +40,7 @@ const data = {
     name: 'Nosso Pediatra',
     description:
       'Gastropediatra especializado em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina.',
+    logo: '/logo.png',
   },
 };
 
@@ -76,7 +77,7 @@ const contactInfo = [
   { icon: MapPin, text: data.contact.address, isAddress: true },
 ];
 
-export default function Footer() {
+export default function Footer4Col() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -86,7 +87,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex justify-center gap-2 sm:justify-start">
-              <div className="h-8 w-8 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
+              <div className="h-8 w-8 rounded-full bg-teal flex items-center justify-center">
                 <span className="text-white font-bold text-sm">NP</span>
               </div>
               <span className="text-2xl font-semibold text-white">
@@ -106,8 +107,8 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-slate-300 hover:text-teal transition"
-                    aria-label={label}
                   >
+                    <span className="sr-only">{label}</span>
                     <Icon className="size-6" />
                   </a>
                 </li>
