@@ -4,8 +4,8 @@ import { Menu, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "/diagnostico", label: "Diagnóstico" },
-  { href: "/sobre", label: "Sobre" },
+  { href: "/diagnostico", label: "Entender Meu Filho" },
+  { href: "/sobre", label: "Conhecer Dr. Bruno" },
 ];
 
 const GUIA_ALIMENTAR_URL = "https://guiabebes-xlauyfmx.manus.space";
@@ -74,7 +74,7 @@ export default function Navigation() {
             href="/contato"
             className="btn-primary text-sm !py-2 !px-6 ml-2"
           >
-            Agendar
+            Conversar Agora
           </Link>
         </div>
 
@@ -126,7 +126,7 @@ export default function Navigation() {
                 transition={{ delay: 0.2 }}
               >
                 <Link href="/contato" className="btn-primary w-full text-center text-sm block">
-                  Agendar Consulta
+                  Conversar Agora
                 </Link>
               </motion.div>
             </div>
