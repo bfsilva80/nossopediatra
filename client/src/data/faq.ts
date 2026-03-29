@@ -100,30 +100,30 @@ export const faqItems: FAQItem[] = [
   {
     id: "general-1",
     category: "general",
-    question: "Este verificador de sintomas pode substituir uma consulta médica?",
+    question: "Esta ferramenta substitui uma consulta médica?",
     answer:
-      "Não. Este verificador é uma ferramenta educacional para ajudar você a entender melhor os sintomas. Não substitui avaliação profissional. Se seu filho apresenta sintomas persistentes ou graves, agende uma consulta com o Dr. Bruno para diagnóstico e tratamento adequados.",
+      "Não. Ela ajuda a organizar os sintomas e entender quando vale procurar avaliação médica.",
   },
   {
     id: "general-2",
     category: "general",
-    question: "Com que frequência devo consultar o pediatra gastroenterologista?",
+    question: "Quando devo procurar atendimento de urgência?",
     answer:
-      "Crianças saudáveis geralmente consultam anualmente. Se há sintomas digestivos, a frequência depende da condição. O Dr. Bruno recomendará o intervalo apropriado. Não hesite em agendar consultas extras se surgirem novos sintomas.",
+      "Se a criança estiver muito prostrada, com vômitos persistentes, sinais de desidratação, sangue nas fezes, dor importante ou dificuldade para respirar.",
   },
   {
     id: "general-3",
     category: "general",
-    question: "Quando devo procurar atendimento de emergência?",
+    question: "Quando vale marcar consulta com o gastropediatra?",
     answer:
-      "Procure emergência se seu filho apresenta: dificuldade respiratória, inchaço de garganta/língua, vômitos com sangue, dor abdominal intensa, febre alta, desidratação ou qualquer sintoma que o deixe muito preocupado. Não hesite em ligar para o 192 ou ir ao pronto-socorro.",
+      "Quando os sintomas se repetem, persistem, atrapalham a alimentação, o conforto, o crescimento ou deixam a família insegura.",
   },
   {
     id: "general-4",
     category: "general",
     question: "Como agendar uma consulta com o Dr. Bruno?",
     answer:
-      "Você pode agendar através do botão 'Conversar Agora' no topo da página, que o conecta via WhatsApp. Também pode ligar para (34) 9 9709-9226 ou enviar email. O Dr. Bruno oferece consultas presenciais em Uberaba e teleconsultas.",
+      "Você pode falar com nossa equipe pelo WhatsApp ou seguir direto para o agendamento.",
   },
 ];
 

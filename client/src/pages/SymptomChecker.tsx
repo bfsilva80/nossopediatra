@@ -59,13 +59,16 @@ export default function SymptomCheckerPage() {
             className="text-center mb-12"
           >
             <div className="inline-block mb-4 px-4 py-2 bg-teal/10 rounded-full">
-              <span className="text-sm font-medium text-teal">Diagnóstico Inteligente</span>
+              <span className="text-sm font-medium text-teal">Orientação inicial por sintomas</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Entender Meu Filho
+              Entenda melhor os sintomas digestivos do seu filho
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Responda algumas perguntas simples e receba um diagnóstico personalizado sobre os sintomas do seu filho.
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-6">
+              Responda algumas perguntas simples e receba uma orientação inicial sobre o que observar e qual pode ser o próximo passo.
+            </p>
+            <p className="text-base text-slate-600 max-w-2xl mx-auto italic">
+              Nem sempre é fácil saber o que pode esperar e o que merece atenção. Esta ferramenta ajuda a organizar os sintomas com mais clareza.
             </p>
           </motion.div>
 
@@ -77,9 +80,9 @@ export default function SymptomCheckerPage() {
             className="grid md:grid-cols-3 gap-6 mb-12"
           >
             {[
-              { icon: Lightbulb, title: "Rápido", desc: "Menos de 2 minutos" },
-              { icon: Heart, title: "Seguro", desc: "Informações confidenciais" },
-              { icon: Shield, title: "Confiável", desc: "Baseado em medicina" },
+              { icon: Lightbulb, title: "Rápido", desc: "Leva cerca de 2 minutos" },
+              { icon: Heart, title: "Confidencial", desc: "Suas respostas são confidenciais" },
+              { icon: Shield, title: "Clínico", desc: "Triagem inicial baseada em critérios clínicos" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -115,10 +118,10 @@ export default function SymptomCheckerPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Perguntas Frequentes
+              Perguntas frequentes
             </h2>
             <p className="text-lg text-slate-600">
-              Respostas às dúvidas mais comuns sobre diagnóstico e sintomas
+              Dúvidas comuns sobre sintomas digestivos e sobre esta ferramenta
             </p>
           </motion.div>
 
@@ -134,16 +137,19 @@ export default function SymptomCheckerPage() {
             className="mt-12 p-8 bg-gradient-to-r from-teal/10 to-blue/10 rounded-lg text-center border border-teal/20"
           >
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
-              Ainda tem dúvidas?
+              Ainda ficou em dúvida?
             </h3>
             <p className="text-slate-600 mb-6">
-              Converse com o Dr. Bruno para um diagnóstico profissional e personalizado.
+              Se preferir, converse com o Dr. Bruno e receba uma orientação mais individualizada.
             </p>
-            <Link href="/">
-              <a className="inline-block px-8 py-3 bg-teal text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors">
-                Conversar Agora
-              </a>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/" className="inline-block px-8 py-3 bg-teal text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors">
+                Conversar no WhatsApp
+              </Link>
+              <Link href="/" className="inline-block px-8 py-3 bg-white text-teal border-2 border-teal rounded-lg font-semibold hover:bg-teal/5 transition-colors">
+                Agendar consulta
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

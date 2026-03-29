@@ -72,13 +72,13 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
     let condition: Condition | undefined;
     let matchedSymptoms: string[] = [];
 
-    if (mainComplaint === "Refluxo/Vômitos") {
+    if (mainComplaint === "Refluxo ou vômitos") {
       condition = conditions.find((c) => c.id === "reflux");
       matchedSymptoms = ["Vômitos frequentes", "Irritabilidade após alimentação"];
-    } else if (mainComplaint === "Constipação/Dificuldade intestinal") {
+    } else if (mainComplaint === "Intestino preso / constipação") {
       condition = conditions.find((c) => c.id === "constipation");
       matchedSymptoms = ["Evacuações infrequentes", "Fezes duras"];
-    } else if (mainComplaint === "Dor de Barriga") {
+    } else if (mainComplaint === "Dor de barriga") {
       const painType = allAnswers["belly-pain-type"];
       if (painType === "Dor aguda/Súbita") {
         condition = conditions.find((c) => c.id === "belly-pain-acute");
@@ -90,10 +90,10 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
         condition = conditions.find((c) => c.id === "uncertain");
         matchedSymptoms = ["Sintomas não específicos"];
       }
-    } else if (mainComplaint === "Alergias alimentares") {
+    } else if (mainComplaint === "Suspeita de reação a alimentos") {
       condition = conditions.find((c) => c.id === "allergy");
       matchedSymptoms = ["Reação alérgica", "Sintomas após ingestão de alimento"];
-    } else if (mainComplaint === "Não tenho certeza") {
+    } else if (mainComplaint === "Ainda não sei ao certo") {
       const uncertainSymptoms = allAnswers["uncertain-symptoms"];
       if (uncertainSymptoms === "Vômitos ou refluxo") {
         condition = conditions.find((c) => c.id === "reflux");
