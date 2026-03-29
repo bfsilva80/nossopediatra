@@ -4,9 +4,8 @@ import { Menu, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "/diagnostico", label: "O que a Barriguinha Está Dizendo?" },
-  { href: "/sobre", label: "Sobre o Dr. Bruno" },
-  { href: "/consultas", label: "Consultas" },
+  { href: "/diagnostico", label: "Diagnóstico" },
+  { href: "/sobre", label: "Sobre" },
 ];
 
 const GUIA_ALIMENTAR_URL = "https://guiabebes-xlauyfmx.manus.space";
@@ -70,15 +69,7 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={GUIA_ALIMENTAR_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold font-display px-4 py-2 rounded-full text-emerald hover:bg-emerald/10 transition-all duration-300 inline-flex items-center gap-1.5"
-          >
-            1ª Papinha?
-            <ExternalLink className="w-3 h-3" />
-          </a>
+
           <Link
             href="/contato"
             className="btn-primary text-sm !py-2 !px-6 ml-2"
@@ -127,21 +118,7 @@ export default function Navigation() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15 }}
-              >
-                <a
-                  href={GUIA_ALIMENTAR_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-3 px-4 rounded-2xl text-sm font-semibold font-display text-emerald hover:bg-emerald/10 transition-all flex items-center gap-1.5"
-                >
-                  1ª Papinha?
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </motion.div>
+
               <motion.div
                 className="pt-2"
                 initial={{ opacity: 0, y: 10 }}
