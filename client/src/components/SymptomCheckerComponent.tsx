@@ -77,6 +77,7 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
   // Gerar breadcrumbs dinâmicos
   const generateBreadcrumbs = (): Breadcrumb[] => {
     const breadcrumbs: Breadcrumb[] = [];
+    const addedIds = new Set<string>();
     
     // Adicionar breadcrumb inicial
     breadcrumbs.push({
@@ -84,9 +85,12 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
       label: "Sintoma Principal",
       answer: answers["main-complaint"],
     });
+    addedIds.add("main-complaint");
 
-    // Adicionar breadcrumbs para cada pergunta no histórico
+    // Adicionar breadcrumbs para cada pergunta no histórico (exceto main-complaint)
     history.forEach((questionId) => {
+      if (addedIds.has(questionId)) return; // Evitar duplicatas
+      
       const question = allQuestions.get(questionId);
       if (question && answers[questionId]) {
         breadcrumbs.push({
@@ -94,15 +98,17 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
           label: question.text.substring(0, 30) + (question.text.length > 30 ? "..." : ""),
           answer: answers[questionId],
         });
+        addedIds.add(questionId);
       }
     });
 
-    // Adicionar breadcrumb atual
-    if (currentQuestion && currentQuestionId !== "main-complaint" && !history.includes(currentQuestionId)) {
+    // Adicionar breadcrumb atual (se não foi adicionado ainda)
+    if (currentQuestion && !addedIds.has(currentQuestionId)) {
       breadcrumbs.push({
         id: currentQuestionId,
         label: currentQuestion.text.substring(0, 30) + (currentQuestion.text.length > 30 ? "..." : ""),
       });
+      addedIds.add(currentQuestionId);
     }
 
     return breadcrumbs;
