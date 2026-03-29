@@ -214,19 +214,10 @@ export default function Home() {
     <div className="w-full overflow-hidden">
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative min-h-[90vh] md:min-h-[95vh] flex items-center overflow-hidden">
-        {/* Watercolor background with reduced opacity */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{ backgroundImage: `url('${HERO_BG}')` }}
-        />
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/70 to-white/80" />
+        {/* Clean background with subtle gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-blue/5" />
 
-        {/* Floating decorative elements with reduced opacity */}
-        <div className="absolute top-20 left-[10%] w-16 h-16 text-4xl animate-float opacity-30 pointer-events-none">🎈</div>
-        <div className="absolute top-32 right-[15%] w-12 h-12 text-3xl animate-float-slow opacity-20 pointer-events-none">⭐</div>
-        <div className="absolute bottom-40 left-[5%] w-14 h-14 text-3xl animate-float-reverse opacity-15 pointer-events-none">☁️</div>
-        <div className="absolute bottom-32 right-[8%] w-10 h-10 text-2xl animate-wiggle opacity-25 pointer-events-none">🩺</div>
+        {/* Decorative elements removed for minimalist design */}
 
         <div className="relative z-10 container">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
@@ -245,23 +236,14 @@ export default function Home() {
               </motion.div>
 
               {/* Logo + H1 Static Title */}
-              <motion.div
-                className="flex items-start gap-4 mb-6"
+              <motion.h1
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/logo-hires_c3083669.png"
-                  alt="Nosso Pediatra"
-                  className="w-20 h-20 md:w-24 md:h-24 object-contain flex-shrink-0"
-                />
-                <motion.h1
-                  className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight"
-                >
-                  Gastroenterologista Pediátrico em Uberaba
-                </motion.h1>
-              </motion.div>
+                Gastroenterologista Pediátrico em Uberaba
+              </motion.h1>
 
               {/* H2 with Typing Effect - Rotating Messages */}
               <motion.h2
