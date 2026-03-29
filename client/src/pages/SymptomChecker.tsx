@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { SymptomChecker } from "@/components/SymptomCheckerComponent";
+import { FAQAccordion } from "@/components/FAQAccordion";
 import { Lightbulb, Heart, Shield } from "lucide-react";
 
 const fadeUp = {
@@ -90,6 +91,11 @@ export default function SymptomCheckerPage() {
             <SymptomChecker />
           </motion.div>
         </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="section-spacing">
+        <FAQAccordion />
       </section>
 
       {/* Disclaimer */}
