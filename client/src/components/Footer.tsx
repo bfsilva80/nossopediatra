@@ -37,8 +37,8 @@ export default function Footer() {
                   Nosso Pediatra
                 </span>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Barriga de criança tem história. Aprendi ouvir com ciência, abraço e fé.
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3 italic">
+                Barriga de criança conta história. Aprendi a ouvir com ciência, abraço e fé.
               </p>
               <p className="text-xs text-muted-foreground/70">
                 Dr. Bruno Fernandes | USP | RQE 63639<br />
