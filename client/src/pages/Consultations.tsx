@@ -68,7 +68,7 @@ export default function Consultations() {
       <section
         className="relative min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue/5 via-transparent to-emerald/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-teal/5 via-transparent to-coral/5" />
         {/* Floating decorations */}
         <div className="absolute top-16 left-[8%] text-3xl animate-float opacity-40 pointer-events-none">🩺</div>
         <div className="absolute top-20 right-[12%] text-2xl animate-float-slow opacity-30 pointer-events-none">💛</div>
@@ -82,8 +82,8 @@ export default function Consultations() {
               transition={{ duration: 0.7 }}
               className="max-w-lg"
             >
-              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 border-2 border-blue/15">
-                <Sparkles className="w-4 h-4 text-blue" />
+              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 border-2 border-teal/15">
+                <Sparkles className="w-4 h-4 text-teal" />
                 <span className="text-sm font-bold text-foreground/80 font-display">Atendimento Especializado</span>
               </div>
               <h1 className="mb-4">Consultas <span className="text-coral">Especializadas</span></h1>
@@ -111,7 +111,7 @@ export default function Consultations() {
       </section>
 
       {/* Main Content */}
-      <section className="section-spacing bg-cream">
+      <section className="section-spacing bg-background">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left Column - O que Esperar */}
@@ -127,7 +127,7 @@ export default function Consultations() {
                 {STEPS.map((step, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-golden/15 hover:border-blue/20 transition-all duration-300 hover:shadow-md group"
+                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-golden/15 hover:border-teal/20 transition-all duration-300 hover:shadow-md group"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -163,7 +163,7 @@ export default function Consultations() {
                 {/* Quando Procurar */}
                 <div>
                   <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Stethoscope className="w-5 h-5 text-blue" />
+                    <Stethoscope className="w-5 h-5 text-teal" />
                     Quando Procurar
                   </h4>
                   <ul className="space-y-2 text-muted-foreground text-sm">
@@ -182,7 +182,7 @@ export default function Consultations() {
                   </ul>
                 </div>
 
-                <div className="border-t-2 border-blue/10 pt-6">
+                <div className="border-t-2 border-teal/10 pt-6">
                   <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-teal" />
                     O que Levar
@@ -203,9 +203,9 @@ export default function Consultations() {
                   </ul>
                 </div>
 
-                <div className="border-t-2 border-blue/10 pt-6">
+                <div className="border-t-2 border-teal/10 pt-6">
                   <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-blue" />
+                    <Clock className="w-5 h-5 text-teal" />
                     Duração
                   </h4>
                   <div className="grid grid-cols-2 gap-4">

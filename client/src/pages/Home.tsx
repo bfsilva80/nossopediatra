@@ -239,9 +239,9 @@ export default function Home() {
   return (
     <div className="w-full overflow-hidden">
       {/* ═══════════ HERO ═══════════ */}
-      <section className="relative min-h-[90vh] md:min-h-[95vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] md:min-h-[95vh] flex items-center overflow-hidden bg-background">
         {/* Clean background with subtle gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-blue/5" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-teal/5" />
 
         {/* Decorative elements removed for minimalist design */}
 
@@ -251,7 +251,7 @@ export default function Home() {
             <div className="lg:col-span-2 max-w-2xl">
               {/* Sobrancelha - Eyebrow */}
               <motion.p
-                className="text-sm font-semibold text-blue/80 tracking-wide uppercase mb-4"
+                className="text-sm font-semibold text-teal/80 tracking-wide uppercase mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -261,12 +261,12 @@ export default function Home() {
 
               {/* H1 - Main Title */}
               <motion.h1
-                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-6"
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-6 text-foreground"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                Entender o que seu filho tem muda tudo.
+                Entender o que seu filho tem muda <span className="text-coral">tudo.</span>
               </motion.h1>
 
               {/* H2 - Subtitle with Clarity */}
@@ -281,7 +281,7 @@ export default function Home() {
 
               {/* Credentials Line */}
               <motion.div
-                className="mb-10 pb-8 border-b border-blue/10"
+                className="mb-10 pb-8 border-b border-teal/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
@@ -302,7 +302,7 @@ export default function Home() {
                   Agendar consulta
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
-                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all" title="Verificador de sintomas digestivos infantis">
+                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all" title="Verificador de sintomas digestivos infantis">
                   Ver sintomas
                 </Link>
               </motion.div>
@@ -365,7 +365,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ CONSULTATION REASONS ═══════════ */}
-      <section className="section-spacing bg-cream">
+      <section className="section-spacing bg-background">
         <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-12"
@@ -449,7 +449,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ LIBRARY PREVIEW ═══════════ */}
-      <section id="conteudo-pais" className="section-spacing bg-cream">
+      <section id="conteudo-pais" className="section-spacing bg-background">
         <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-12"

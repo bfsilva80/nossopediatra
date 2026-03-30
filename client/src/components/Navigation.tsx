@@ -29,7 +29,7 @@ export default function Navigation() {
     <nav
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b-2 border-blue/15"
+          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b-2 border-teal/15"
           : "bg-white/70 backdrop-blur-sm border-b-2 border-transparent"
       }`}
     >
@@ -62,7 +62,7 @@ export default function Navigation() {
               href={link.href}
               className={`text-sm font-semibold font-display px-4 py-2 rounded-full transition-all duration-300 ${
                 location === link.href
-                  ? "text-blue bg-blue/10"
+                  ? "text-teal bg-teal/10"
                   : "text-foreground/70 hover:text-foreground hover:bg-golden/20"
               }`}
             >
@@ -96,7 +96,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="md:hidden border-t-2 border-blue/10 bg-white overflow-hidden"
+            className="md:hidden border-t-2 border-teal/10 bg-white overflow-hidden"
           >
             <div className="container py-4 space-y-1">
               {NAV_LINKS.map((link, idx) => (
@@ -110,7 +110,7 @@ export default function Navigation() {
                     href={link.href}
                     className={`block py-3 px-4 rounded-2xl text-sm font-semibold font-display transition-all ${
                       location === link.href
-                        ? "text-blue bg-blue/10"
+                        ? "text-teal bg-teal/10"
                         : "text-foreground/70 hover:text-foreground hover:bg-golden/15"
                     }`}
                   >
