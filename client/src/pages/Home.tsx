@@ -251,12 +251,12 @@ export default function Home() {
             <div className="lg:col-span-2 max-w-2xl">
               {/* Sobrancelha - Eyebrow */}
               <motion.p
-                className="text-sm font-semibold text-teal/80 tracking-wide uppercase mb-4"
+                className="text-sm font-semibold text-teal/80 tracking-wide uppercase mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Gastropediatria em Uberaba
+                Gastropediatra em Uberaba
               </motion.p>
 
               {/* H1 - Main Title */}
@@ -271,22 +271,22 @@ export default function Home() {
 
               {/* H2 - Subtitle with Clarity */}
               <motion.h2
-                className="text-xl md:text-2xl font-semibold mb-8 text-foreground/80 leading-relaxed max-w-2xl"
+                className="text-lg md:text-xl font-normal mb-10 text-foreground/75 leading-relaxed max-w-2xl font-sans"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
               >
-                Clareza para refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância.
+                Ajudo você a entender refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância com mais clareza e segurança.
               </motion.h2>
 
               {/* Credentials Line */}
               <motion.div
-                className="mb-10 pb-8 border-b border-teal/10"
+                className="mb-12 pb-10 border-b border-teal/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                <p className="text-sm font-semibold text-foreground tracking-wide">
+                <p className="text-xs font-medium text-foreground/60 tracking-wide uppercase">
                   Dr. Bruno Fernandes • CRM 93321 • RQE 63639
                 </p>
               </motion.div>
@@ -302,8 +302,8 @@ export default function Home() {
                   Agendar consulta
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
-                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all" title="Verificador de sintomas digestivos infantis">
-                  Ver sintomas
+                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all" title="Começar a entender os sintomas do seu filho">
+                  Por onde começar
                 </Link>
               </motion.div>
 
