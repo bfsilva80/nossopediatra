@@ -158,7 +158,7 @@ export default function SymptomCheckerPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-spacing bg-slate-50">
+      <section className="section-spacing bg-slate-50 pb-40 md:pb-12">
         <div className="container max-w-4xl">
           <motion.div
             initial="hidden"
