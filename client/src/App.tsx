@@ -8,7 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import FloatingDock from "./components/FloatingDock";
-import StickyMobileFooterCTA from "./components/StickyMobileFooterCTA";
+
 import { injectSchema, generateOrganizationSchema } from "@/lib/seo-schema";
 import { initializePerformanceOptimizations } from "@/lib/performance";
 import Home from "./pages/Home";
@@ -77,7 +77,6 @@ function App() {
             <main className="flex-1">
               <Router />
             </main>
-            <StickyMobileFooterCTA />
             <Footer />
             <FloatingDock />
           </div>
