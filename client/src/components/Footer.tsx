@@ -12,7 +12,7 @@ import { Link } from 'wouter';
 const data = {
   facebookLink: 'https://facebook.com/nossopediatra',
   instaLink: 'https://instagram.com/nossopediatra',
-  linkedinLink: 'https://linkedin.com/company/nossopediatra',
+  linkedinLink: 'https://www.linkedin.com/in/drbruno/',
   whatsappLink: 'https://wa.me/553499709226',
   about: {
     about: '/sobre',
