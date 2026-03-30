@@ -35,7 +35,7 @@ const dockItems = [
 
 export function FloatingDock() {
   return (
-    <div className='fixed bottom-0 left-0 right-0 z-50 flex justify-center pb-4 pointer-events-none'>
+    <div className='flex justify-center py-6 pointer-events-none'>
       <div className='pointer-events-auto'>
         <Dock className='items-end pb-2'>
           {dockItems.map((item, idx) => (
