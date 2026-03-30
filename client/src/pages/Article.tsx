@@ -1,6 +1,6 @@
 import { useRoute, Link } from "wouter";
 import { motion } from "framer-motion";
-import { Clock, User, ArrowLeft, ArrowRight, AlertTriangle, BookOpen, Sparkles } from "lucide-react";
+import { Clock, User, ArrowLeft, ArrowRight, AlertTriangle, BookOpen, Sparkles, CheckCircle, Heart } from "lucide-react";
 
 interface ArticleData {
   slug: string;
@@ -377,16 +377,9 @@ export default function Article() {
   return (
     <div className="w-full">
       {/* Article Header */}
-      <section
-        className="section-spacing relative overflow-hidden"
-        style={{
-          backgroundImage: `url('${PATTERN_BG}')`,
-          backgroundSize: '400px',
-          backgroundRepeat: 'repeat',
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/85" />
-        <div className="absolute top-10 right-[10%] text-4xl animate-float opacity-30 pointer-events-none">{article.emoji}</div>
+      <section className="relative overflow-hidden bg-gradient-to-b from-teal/10 via-background to-background py-16 md:py-24">
+        <div className="absolute top-0 right-0 text-8xl opacity-10 pointer-events-none">{article.emoji}</div>
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
 
         <div className="container max-w-3xl relative z-10">
           <motion.div
@@ -396,29 +389,29 @@ export default function Article() {
           >
             <Link
               href="/biblioteca"
-              className="text-blue font-bold text-sm mb-6 inline-flex items-center gap-1 hover:underline font-display"
+              className="text-teal font-semibold text-sm mb-8 inline-flex items-center gap-2 hover:underline"
             >
               <ArrowLeft className="w-4 h-4" />
               Voltar para Biblioteca
             </Link>
 
-            <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-blue/10 text-blue text-xs font-bold rounded-full uppercase tracking-wider font-display">
+            <div className="mb-6">
+              <span className="inline-block px-4 py-1.5 bg-teal/20 text-teal text-xs font-bold rounded-full uppercase tracking-wider">
                 {article.category}
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black mb-8 leading-[1.1] text-foreground">
               {article.title}
             </h1>
 
-            <div className="flex items-center gap-4 text-muted-foreground text-sm font-display">
-              <span className="flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center gap-6 text-foreground/70 text-sm">
+              <span className="flex items-center gap-2">
                 <User className="w-4 h-4" />
-                Dr. Bruno
+                Dr. Bruno Fernandes
               </span>
-              <span className="text-golden">|</span>
-              <span className="flex items-center gap-1.5">
+              <span className="text-teal/30">•</span>
+              <span className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 {article.readTime} de leitura
               </span>
@@ -453,16 +446,16 @@ export default function Article() {
             ))}
 
             {/* When to Seek */}
-            <div className="bg-red-50/80 border-l-4 border-red-400 p-6 rounded-2xl mb-10">
-              <h3 className="text-xl mb-4 text-red-700 flex items-center gap-2 font-display">
+            <div className="bg-coral/10 border-l-4 border-coral p-6 rounded-2xl mb-10">
+              <h3 className="text-xl mb-4 text-coral flex items-center gap-2 font-display font-bold">
                 <AlertTriangle className="w-5 h-5" />
                 Quando Procurar o Pediatra
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {article.whenToSeek.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <span className="text-red-500 font-bold mt-0.5">!</span>
-                    <span className="text-red-800">{item}</span>
+                    <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground/80">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -542,25 +535,38 @@ export default function Article() {
       </section>
 
       {/* CTA */}
-      <section className="section-spacing relative overflow-hidden bg-teal">
+      <section className="section-spacing relative overflow-hidden bg-gradient-to-br from-teal via-teal/95 to-teal/90">
         <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
           <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
-            <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
+            <path fill="#f5f1eb" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
           </svg>
         </div>
         <div className="container max-w-2xl text-center relative z-10">
-          <h2 className="!text-white mb-4">Quer Conversar com um Especialista?</h2>
-          <p className="text-lg mb-8 text-white/85 font-display">
-            Agende uma consulta para discussão personalizada sobre o caso do seu filho
-          </p>
-          <a
-            href="https://wa.me/553499709226"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary !bg-white !text-teal"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
           >
-            Agendar Consulta
-          </a>
+            <Heart className="w-12 h-12 text-white mx-auto mb-6" />
+            <h2 className="!text-white mb-4 text-3xl md:text-4xl font-display font-bold">Pronto para Entender Melhor?</h2>
+            <p className="text-lg mb-10 text-white/90 leading-relaxed">
+              Agende uma consulta com o Dr. Bruno para uma avaliação personalizada e orientação específica para seu filho.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://wa.me/553499709226"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary !bg-white !text-teal inline-flex items-center justify-center gap-2"
+              >
+                💬 Conversar no WhatsApp
+              </a>
+              <Link href="/contato" className="btn-secondary !bg-white/20 !text-white border-2 border-white inline-flex items-center justify-center gap-2 hover:bg-white/30 transition-all">
+                📞 Ligar Agora
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
