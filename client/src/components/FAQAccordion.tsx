@@ -14,15 +14,15 @@ export function FAQAccordion() {
   };
 
   return (
-    <section className="py-16 px-4 md:px-6 bg-gradient-to-b from-background to-background/50">
-      <div className="max-w-3xl mx-auto">
+    <section className="py-8 md:py-16 px-0 md:px-6 bg-gradient-to-b from-background to-background/50">
+      <div className="max-w-full md:max-w-3xl mx-auto px-4 md:px-0">
 
         {/* Category Filter */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap gap-3 justify-center mb-12"
+          className="flex gap-2 md:gap-3 justify-start md:justify-center mb-6 md:mb-12 overflow-x-auto pb-2 md:flex-wrap -mx-4 px-4 md:mx-0 md:px-0"
         >
           {faqCategories.map((category) => (
             <button
@@ -31,7 +31,7 @@ export function FAQAccordion() {
                 setSelectedCategory(category.id);
                 setExpandedId(null);
               }}
-              className={`px-4 py-2 rounded-full font-medium transition-all ${
+              className={`px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap flex-shrink-0 ${
                 selectedCategory === category.id
                   ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
                   : "bg-background border border-border text-foreground hover:border-foreground/50"
@@ -47,7 +47,7 @@ export function FAQAccordion() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-3"
+          className="space-y-2 md:space-y-3"
         >
           <AnimatePresence mode="wait">
             {filteredFAQ.map((item, index) => (
@@ -61,9 +61,9 @@ export function FAQAccordion() {
               >
                 <button
                   onClick={() => toggleExpand(item.id)}
-                  className="w-full px-6 py-4 flex items-center justify-between bg-background hover:bg-background/80 transition-colors text-left"
+                  className="w-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between bg-background hover:bg-background/80 transition-colors text-left"
                 >
-                  <span className="font-semibold text-foreground pr-4">{item.question}</span>
+                  <span className="font-semibold text-xs md:text-base text-foreground pr-2 md:pr-4 line-clamp-2">{item.question}</span>
                   <motion.div
                     animate={{ rotate: expandedId === item.id ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -82,7 +82,7 @@ export function FAQAccordion() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 py-4 bg-background/50 border-t border-border text-foreground/80 leading-relaxed">
+                      <div className="px-4 md:px-6 py-3 md:py-4 bg-background/50 border-t border-border text-sm md:text-base text-foreground/80 leading-relaxed">
                         {item.answer}
                       </div>
                     </motion.div>

@@ -356,6 +356,18 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
           {currentQuestion.text}
         </motion.h2>
 
+        {/* Microtexto de Acolhimento - Primeira Pergunta */}
+        {currentQuestionId === "main-complaint" && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+            className="text-sm text-slate-600 italic mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200"
+          >
+            Você não precisa acertar o nome do problema. Basta começar pela queixa que mais chama atenção hoje.
+          </motion.p>
+        )}
+
         {/* Opções de Resposta */}
         <motion.div
           className="space-y-3"
@@ -423,6 +435,18 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
             ))
           )}
         </motion.div>
+
+        {/* Microtexto de Acolhimento - Após Opções */}
+        {currentQuestionId === "main-complaint" && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+            className="text-sm text-slate-600 italic pt-4 border-t border-slate-200"
+          >
+            Tudo bem não ter certeza. A ideia aqui é justamente começar a organizar a história.
+          </motion.p>
+        )}
       </motion.div>
 
       {/* Botão Voltar */}

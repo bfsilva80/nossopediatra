@@ -6,13 +6,43 @@ export interface FAQItem {
 }
 
 export const faqItems: FAQItem[] = [
+  // Geral - Reordenado para o topo
+  {
+    id: "general-1",
+    category: "general",
+    question: "Esta ferramenta substitui uma consulta médica?",
+    answer:
+      "Não. Ela foi criada para oferecer uma orientação inicial e ajudar a organizar os sintomas. A avaliação médica continua sendo o melhor caminho quando os sinais persistem, se repetem ou preocupam.",
+  },
+  {
+    id: "general-2",
+    category: "general",
+    question: "Quando devo procurar atendimento com mais urgência?",
+    answer:
+      "Vale procurar atendimento mais rápido se a criança estiver muito prostrada, com vômitos repetidos, sangue nas fezes ou no vômito, sinais de desidratação, dor abdominal intensa, dificuldade para respirar, febre persistente com piora do estado geral ou qualquer mudança importante no comportamento habitual.",
+  },
+  {
+    id: "general-3",
+    category: "general",
+    question: "Quando vale marcar consulta com gastropediatra?",
+    answer:
+      "Quando os sintomas se repetem, duram mais do que o esperado, atrapalham alimentação, sono, evacuação, ganho de peso ou qualidade de vida. Também faz sentido quando a família sente que a história está confusa e precisa de mais clareza.",
+  },
+  {
+    id: "general-4",
+    category: "general",
+    question: "Como agendar uma consulta com o Dr. Bruno?",
+    answer:
+      "Você pode seguir direto para o WhatsApp ou para o agendamento da consulta. Se preferir, a gente ajuda você a encontrar o melhor caminho.",
+  },
+
   // Refluxo
   {
     id: "reflux-1",
     category: "reflux",
-    question: "Como diferenciar refluxo de vômito normal?",
+    question: "Refluxo e vômitos são a mesma coisa?",
     answer:
-      "O refluxo é o retorno do alimento do estômago para o esôfago, geralmente sem esforço. O vômito é uma expulsão forçada do conteúdo gástrico. No refluxo, a criança pode não apresentar desconforto, enquanto no vômito há geralmente incômodo e esforço. Se seu filho apresenta refluxo frequente, é importante avaliar com um especialista.",
+      "Nem sempre. Regurgitação, refluxo e vômito podem parecer a mesma coisa no começo, mas têm significados clínicos diferentes. O contexto, a frequência, o ganho de peso e os sinais associados ajudam a entender melhor.",
   },
   {
     id: "reflux-2",
@@ -40,9 +70,9 @@ export const faqItems: FAQItem[] = [
   {
     id: "const-1",
     category: "constipation",
-    question: "Quantas vezes por semana meu filho deveria evacuar?",
+    question: "Constipação ocasional é sempre normal?",
     answer:
-      "Não existe um número 'correto' universal. Varia conforme a idade e alimentação. Bebês amamentados podem evacuar a cada mamada ou uma vez por semana. Crianças maiores geralmente evacuam 1-3 vezes por dia. O importante é a consistência das fezes e se a criança não sente desconforto.",
+      "Nem sempre. Muitas crianças têm fases de intestino mais preso, mas a frequência das evacuações, a consistência das fezes, a dor para evacuar, o medo de evacuar e a presença de fissuras ou sangue fazem diferença na avaliação.",
   },
   {
     id: "const-2",
@@ -70,9 +100,9 @@ export const faqItems: FAQItem[] = [
   {
     id: "allergy-1",
     category: "allergy",
-    question: "Como identificar alergia alimentar em bebês?",
+    question: "Suspeita de reação a alimentos significa alergia?",
     answer:
-      "Sinais incluem: coceira na boca/garganta, inchaço de lábios/língua, vômitos, diarréia, constipação, eczema ou urticária. Reações graves podem incluir dificuldade respiratória. Observe se os sintomas aparecem após ingerir um alimento específico e consulte o Dr. Bruno para avaliação.",
+      "Não obrigatoriamente. Existem reações que lembram alergia, mas podem ter outras explicações. O mais importante é entender o tipo de sintoma, o tempo de relação com o alimento e o contexto clínico da criança.",
   },
   {
     id: "allergy-2",
@@ -95,41 +125,11 @@ export const faqItems: FAQItem[] = [
     answer:
       "Evite leite de vaca e derivados. Existem fórmulas infantis hipoalergênicas ou à base de aminoácidos. Para crianças maiores, leites alternativos (soja, aveia, amêndoa) podem ser opções. O Dr. Bruno pode recomendar suplementação de cálcio e orientar sobre leitura de rótulos.",
   },
-
-  // Geral
-  {
-    id: "general-1",
-    category: "general",
-    question: "Esta ferramenta substitui uma consulta médica?",
-    answer:
-      "Não. Ela ajuda a organizar os sintomas e entender quando vale procurar avaliação médica.",
-  },
-  {
-    id: "general-2",
-    category: "general",
-    question: "Quando devo procurar atendimento de urgência?",
-    answer:
-      "Se a criança estiver muito prostrada, com vômitos persistentes, sinais de desidratação, sangue nas fezes, dor importante ou dificuldade para respirar.",
-  },
-  {
-    id: "general-3",
-    category: "general",
-    question: "Quando vale marcar consulta com o gastropediatra?",
-    answer:
-      "Quando os sintomas se repetem, persistem, atrapalham a alimentação, o conforto, o crescimento ou deixam a família insegura.",
-  },
-  {
-    id: "general-4",
-    category: "general",
-    question: "Como agendar uma consulta com o Dr. Bruno?",
-    answer:
-      "Você pode falar com nossa equipe pelo WhatsApp ou seguir direto para o agendamento.",
-  },
 ];
 
 export const faqCategories = [
+  { id: "general", label: "Geral", color: "from-slate to-gray" },
   { id: "reflux", label: "Refluxo/Vômitos", color: "from-blue to-teal" },
   { id: "constipation", label: "Constipação", color: "from-amber to-orange" },
   { id: "allergy", label: "Alergias", color: "from-rose to-pink" },
-  { id: "general", label: "Geral", color: "from-slate to-gray" },
 ];
