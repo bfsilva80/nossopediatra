@@ -15,22 +15,13 @@ const CONTACT_METHODS = [
     borderColor: "border-emerald/40",
   },
   {
-    emoji: "📧",
-    title: "Email",
-    description: "Para dúvidas mais detalhadas",
-    link: "mailto:nossopediatra@gmail.com",
-    linkText: "Enviar Email",
+    emoji: "📞",
+    title: "Telefone",
+    description: "Ligue para o consultório",
+    link: "tel:+553499709226",
+    linkText: "Ligar Agora",
     bgColor: "bg-blue/10",
     borderColor: "border-blue/40",
-  },
-  {
-    emoji: "📍",
-    title: "Consultório",
-    description: "Uberaba, MG",
-    link: "#",
-    linkText: "Ver Localização",
-    bgColor: "bg-golden/15",
-    borderColor: "border-golden/40",
   },
 ];
 
@@ -65,7 +56,6 @@ const fadeUp = {
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
     childAge: "",
     concern: "",
@@ -82,7 +72,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert("Obrigado! Entraremos em contato em breve.");
-    setFormData({ name: "", email: "", phone: "", childAge: "", concern: "" });
+    setFormData({ name: "", phone: "", childAge: "", concern: "" });
   };
 
   return (
@@ -177,35 +167,19 @@ export default function Contact() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-bold mb-2 font-display">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors"
-                    placeholder="seu@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold mb-2 font-display">
-                    Telefone *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors"
-                    placeholder="(34) 99999-9999"
-                  />
-                </div>
+              <div>
+                <label className="block text-sm font-bold mb-2 font-display">
+                  Telefone/WhatsApp *
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border-2 border-golden/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/40 bg-white font-sans text-sm transition-colors"
+                  placeholder="(34) 99999-9999"
+                />
               </div>
 
               <div>
