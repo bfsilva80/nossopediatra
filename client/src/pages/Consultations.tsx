@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Star, ArrowRight, Sparkles, Heart, Stethoscope, FileText, Clock } from "lucide-react";
 import { TestimonialsSection } from "@/components/testimonials-section";
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
+const DOCTOR_PORTRAIT = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png";
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
 
@@ -66,15 +66,9 @@ export default function Consultations() {
     <div className="w-full">
       {/* Hero */}
       <section
-        className="relative min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden"
-        style={{
-          backgroundImage: `url('${HERO_BG}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
+        className="relative min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue/10 via-white/70 to-emerald/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue/5 via-transparent to-emerald/5" />
         {/* Floating decorations */}
         <div className="absolute top-16 left-[8%] text-3xl animate-float opacity-40 pointer-events-none">🩺</div>
         <div className="absolute top-20 right-[12%] text-2xl animate-float-slow opacity-30 pointer-events-none">💛</div>
@@ -105,8 +99,8 @@ export default function Consultations() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <div className="relative">
-                <div className="w-56 h-64 rounded-[2rem] overflow-hidden border-4 border-white shadow-xl rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <img src={DOCTOR_IMG} alt="Dr. Bruno Fernandes" className="w-full h-full object-cover object-top" />
+                <div className="w-80 h-96 rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl">
+                  <img src={DOCTOR_PORTRAIT} alt="Dr. Bruno Fernandes - Retrato Profissional" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -top-3 -left-3 w-10 h-10 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
                 <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
