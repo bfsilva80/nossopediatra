@@ -108,7 +108,7 @@ function Dock({
           mouseX.set(Infinity);
         }}
         className={cn(
-          'mx-auto flex w-full md:w-fit gap-2 md:gap-4 rounded-2xl bg-white/80 backdrop-blur-md px-2 md:px-4 dark:bg-neutral-900/80 border border-white/20 shadow-lg overflow-x-auto',
+          'mx-auto flex w-fit gap-4 rounded-2xl bg-white/80 backdrop-blur-md px-4 dark:bg-neutral-900/80 border border-white/20 shadow-lg',
           className
         )}
         style={{ height: panelHeight }}
