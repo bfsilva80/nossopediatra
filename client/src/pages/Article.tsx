@@ -15,8 +15,8 @@ interface ArticleData {
 }
 
 const ARTICLES: Record<string, ArticleData> = {
-  "refluxo-bebe": {
-    slug: "refluxo-bebe",
+  "refluxo-infantil": {
+    slug: "refluxo-infantil",
     title: "Refluxo em Bebê: Quando é Normal, Quando é Problema",
     category: "Refluxo",
     readTime: "8 min",
@@ -47,41 +47,41 @@ const ARTICLES: Record<string, ArticleData> = {
       "Episódios de engasgo, tosse crônica ou chiado",
       "Irritabilidade extrema que não melhora com medidas posturais",
     ],
-    relatedSlugs: ["aplv-guia-completo", "constipacao-infantil", "coco-crianca"],
+    relatedSlugs: ["alergia-alimentar", "constipacao-infantil", "diarreia-cronica"],
   },
-  "aplv-guia-completo": {
-    slug: "aplv-guia-completo",
-    title: "APLV (Alergia à Proteína do Leite de Vaca): Sinais e Manejo",
+  "alergia-alimentar": {
+    slug: "alergia-alimentar",
+    title: "Alergia Alimentar em Crianças: Identificação e Manejo Seguro",
     category: "Alergias",
-    readTime: "10 min",
+    readTime: "11 min",
     emoji: "🥛",
     intro:
-      "A Alergia à Proteína do Leite de Vaca (APLV) é a alergia alimentar mais comum na infância, afetando cerca de 2-3% dos bebês. É também uma das mais confusas para os pais, porque os sintomas podem ser sutis e se sobrepor a outras condições. Vamos desmistificar essa alergia com ciência e clareza.",
+      "A Alergia à Proteína do Leite de Vaca (APLV) é a alergia alimentar mais comum na infância, afetando cerca de 2-3% dos bebês. Entender os sinais, como diferenciar de intolerância, e como manejar com segurança é crucial para a saúde do seu filho.",
     sections: [
       {
-        title: "O que é APLV e como se manifesta?",
+        title: "Alergia vs. Intolerância: Qual é a Diferença?",
         content:
-          "A APLV é uma reação imunológica adversa às proteínas presentes no leite de vaca (caseína e proteínas do soro). Pode se manifestar de forma imediata (minutos a 2 horas após ingestão) com urticária, vômitos, inchaço ou, raramente, anafilaxia. Ou de forma tardia (horas a dias), com sintomas gastrointestinais como diarreia com muco ou sangue, cólicas intensas, refluxo persistente, constipação e dermatite. A forma tardia é mais difícil de diagnosticar porque os sintomas são inespecíficos e podem ser confundidos com outras condições.",
+          "Alergia alimentar é uma reação imunológica — o corpo reconhece uma proteína como ameaça e monta uma resposta imunológica. Pode ser imediata (minutos a 2 horas) com sintomas como urticária, inchaço, vômitos, ou anafilaxia. Ou tardia (horas a dias) com sintomas gastrointestinais como diarreia, cólicas, ou dermatite. Intolerância é uma reação não-imunológica — por exemplo, falta de lactase para digerir lactose. Ambas requerem manejo, mas o tratamento é diferente.",
       },
       {
-        title: "Diagnóstico: O Caminho Correto",
+        title: "Sinais de Alerta para Alergia Alimentar",
         content:
-          "O diagnóstico de APLV não é feito por um único exame. O padrão-ouro é o teste de provocação oral, precedido por um período de exclusão. Na prática, o médico orienta a retirada completa das proteínas do leite de vaca da dieta (do bebê e da mãe, se em aleitamento materno) por 2-4 semanas. Se houver melhora significativa dos sintomas, seguida de retorno dos sintomas na reintrodução, o diagnóstico é confirmado. Exames de sangue (IgE específica) e testes cutâneos podem auxiliar, mas não são definitivos isoladamente.",
+          "Sinais imediatos incluem: inchaço de lábios ou língua, urticária, vômitos, ou dificuldade para respirar — estes são emergências. Sinais tardios incluem: diarreia com sangue ou muco, cólicas intensas, eczema ou dermatite que piora, ou refluxo persistente após introdução de novo alimento. Se você suspeita de alergia, não introduza o alimento novamente sem orientação médica — o risco de reação grave aumenta na reexposição.",
       },
       {
-        title: "Manejo e Perspectiva de Cura",
+        title: "Diagnóstico e Manejo Seguro",
         content:
-          "O tratamento é a exclusão rigorosa das proteínas do leite de vaca. Para bebês em aleitamento materno, a mãe faz dieta de exclusão com suplementação de cálcio. Para bebês em fórmula, existem fórmulas especiais (extensamente hidrolisadas ou à base de aminoácidos). A boa notícia: a maioria das crianças supera a APLV. Cerca de 50% toleram leite de vaca aos 12 meses, 75% aos 3 anos e mais de 90% aos 6 anos. O acompanhamento com gastropediatra é fundamental para garantir nutrição adequada e planejar a reintrodução no momento certo.",
+          "O diagnóstico não é feito por um único teste. O padrão-ouro é a exclusão do alimento suspeito por 2-4 semanas, observando melhora dos sintomas, seguida de reintrodução controlada. Exames de sangue e testes cutâneos auxiliam, mas não são definitivos isoladamente. O manejo é a exclusão rigorosa do alérgeno — da dieta da criança e, se em aleitamento materno, da dieta materna. Substitutos seguros devem ser oferecidos para garantir nutrição adequada. O acompanhamento com gastropediatra é fundamental.",
       },
     ],
     whenToSeek: [
-      "Sangue nas fezes do bebê",
-      "Perda de peso ou ganho insuficiente",
-      "Vômitos frequentes com recusa alimentar",
-      "Dermatite grave que não responde a tratamento",
-      "Suspeita de reação alérgica imediata (inchaço, urticária)",
+      "Inchaço de lábios, língua ou garganta",
+      "Dificuldade para respirar",
+      "Vômitos ou diarreia com sangue",
+      "Reações cutâneas graves",
+      "Qualquer suspeita de reação alérgica imediata",
     ],
-    relatedSlugs: ["refluxo-bebe", "introducao-alimentar", "coco-crianca"],
+    relatedSlugs: ["refluxo-infantil", "diarreia-cronica", "intolerancia-lactose"],
   },
   "constipacao-infantil": {
     slug: "constipacao-infantil",
@@ -98,142 +98,14 @@ const ARTICLES: Record<string, ArticleData> = {
           "Constipação não é apenas \"não fazer cocô todo dia\". A frequência normal varia com a idade: recém-nascidos em aleitamento materno podem evacuar de 8 vezes ao dia a uma vez a cada 7 dias. Crianças maiores geralmente evacuam de 3 vezes ao dia a 3 vezes por semana. O que define constipação é a combinação de fezes endurecidas, dificuldade ou dor para evacuar, e comportamento de retenção. Os critérios de Roma IV ajudam o médico a fazer o diagnóstico de forma padronizada.",
       },
       {
-        title: "As Causas Reais (e o Ciclo Vicioso)",
-        content:
-          "Na grande maioria dos casos (mais de 95%), a constipação é funcional — não há doença orgânica. O ciclo vicioso é clássico: a criança sente dor ao evacuar → passa a reter as fezes → as fezes ficam mais duras e volumosas → a próxima evacuação é ainda mais dolorosa. Fatores desencadeantes incluem: introdução alimentar com pouca fibra e água, desfralde precoce ou forçado, mudanças de rotina, estresse emocional e dieta rica em leite de vaca e pobre em frutas e vegetais.",
-      },
-      {
-        title: "Tratamento Integrado: Muito Além do Laxante",
-        content:
-          "O tratamento eficaz tem três pilares: desimpactação (quando há fecaloma), manutenção e mudança de hábitos. A alimentação é fundamental: aumentar gradualmente fibras (frutas, vegetais, cereais integrais), garantir hidratação adequada e reduzir excesso de leite de vaca. O treinamento evacuatório — sentar no vaso após as refeições por 5-10 minutos, com apoio para os pés — aproveita o reflexo gastrocólico natural. Laxantes podem ser necessários temporariamente, mas sempre sob orientação médica e como parte de uma estratégia mais ampla.",
-      },
-    ],
-    whenToSeek: [
-      "Constipação desde o nascimento (pode indicar causa orgânica)",
-      "Sangue nas fezes recorrente",
-      "Distensão abdominal importante",
-      "Falha no crescimento ou perda de peso",
-      "Constipação que não melhora com medidas dietéticas",
-    ],
-    relatedSlugs: ["coco-crianca", "introducao-alimentar", "refluxo-bebe"],
-  },
-  "introducao-alimentar": {
-    slug: "introducao-alimentar",
-    title: "Introdução Alimentar: Guia Completo para Pais",
-    category: "Alimentação",
-    readTime: "12 min",
-    emoji: "🥑",
-    intro:
-      "A introdução alimentar é um marco no desenvolvimento do bebê e uma das fases que mais gera ansiedade nos pais. Quando começar? O que oferecer primeiro? BLW ou papinha? Neste guia, vamos navegar juntos por esse momento com base nas evidências científicas mais atuais e muito bom senso.",
-    sections: [
-      {
-        title: "Quando e Como Começar",
-        content:
-          "A Sociedade Brasileira de Pediatria e a OMS recomendam aleitamento materno exclusivo até os 6 meses, com introdução de alimentos complementares a partir dessa idade. Os sinais de prontidão incluem: sentar com apoio mínimo, perda do reflexo de protrusão da língua, interesse pelos alimentos e coordenação mão-boca. Não há evidência de que começar antes dos 6 meses traga benefícios — pelo contrário, pode aumentar riscos de alergias e problemas gastrointestinais.",
-      },
-      {
-        title: "O que Oferecer e em que Ordem",
-        content:
-          "Não existe uma ordem obrigatória de introdução de alimentos. O importante é oferecer variedade: frutas, legumes, verduras, cereais, tubérculos, leguminosas e proteínas animais. Comece com alimentos de sabor suave e textura adequada. A exposição precoce a alimentos potencialmente alergênicos (ovo, peixe, amendoim) é hoje recomendada — não se deve atrasar a introdução desses alimentos. Sal e açúcar devem ser evitados até os 2 anos. Mel é contraindicado antes de 1 ano pelo risco de botulismo.",
-      },
-      {
-        title: "BLW, Papinha ou Abordagem Mista?",
-        content:
-          "O Baby-Led Weaning (BLW) propõe oferecer alimentos em pedaços desde o início, permitindo que o bebê se alimente sozinho. A abordagem tradicional usa papinhas amassadas com progressão gradual de textura. A abordagem mista combina ambas. Todas são válidas quando feitas com segurança. O mais importante é: respeitar os sinais de fome e saciedade do bebê, não forçar alimentação, oferecer variedade, e tornar as refeições um momento prazeroso. A alimentação responsiva — onde o cuidador oferece e o bebê decide quanto come — é o princípio que une todas as abordagens.",
-      },
-    ],
-    whenToSeek: [
-      "Recusa alimentar persistente após os 6 meses",
-      "Engasgos frequentes durante as refeições",
-      "Perda de peso ou estagnação do crescimento",
-      "Reações alérgicas após introdução de novos alimentos",
-      "Vômitos ou diarreia recorrentes com novos alimentos",
-    ],
-    relatedSlugs: ["aplv-guia-completo", "constipacao-infantil", "coco-crianca"],
-  },
-  "coco-crianca": {
-    slug: "coco-crianca",
-    title: "Cocô de Criança: Tudo que Você Precisa Saber",
-    category: "Desenvolvimento",
-    readTime: "7 min",
-    emoji: "🔍",
-    intro:
-      "Vamos falar sobre cocô? Sem tabu e com ciência. As fezes do seu filho são uma janela para a saúde digestiva, e aprender a \"ler\" o que elas dizem pode ajudar você a identificar problemas precocemente e evitar preocupações desnecessárias.",
-    sections: [
-      {
-        title: "O que é Normal em Cada Fase",
-        content:
-          "Nos primeiros dias, o mecônio (fezes escuras e pegajosas) é completamente normal. Bebês em aleitamento materno exclusivo têm fezes amarelo-douradas, pastosas e com odor suave — podem evacuar várias vezes ao dia ou passar até 7 dias sem evacuar, ambos normais. Bebês em fórmula tendem a ter fezes mais firmes e esverdeadas. Com a introdução alimentar, as fezes mudam significativamente: ficam mais consistentes, com cor e odor mais fortes.",
-      },
-      {
-        title: "Cores e o que Significam",
-        content:
-          "Amarelo, mostarda, marrom e verde são todas cores normais. Verde pode indicar trânsito intestinal rápido ou excesso de vegetais verdes — geralmente não é preocupante. Vermelho pode ser alimento (beterraba, tomate) ou sangue — observe se repete. Preto pode ser ferro suplementar ou sangue digerido — merece avaliação. A única cor que é sempre emergência é o branco/acólico (fezes sem cor, como massa de vidraceiro), que pode indicar problema nas vias biliares e requer avaliação imediata.",
-      },
-      {
-        title: "Frequência e Consistência",
-        content:
-          "A Escala de Bristol é a ferramenta que usamos para classificar as fezes. Tipos 3 e 4 (formato de salsicha lisa ou cobra) são o ideal. Tipos 1 e 2 (bolinhas duras) indicam constipação. Tipos 6 e 7 (pastosas ou líquidas) podem indicar diarreia se persistentes. Mais importante que a frequência é o conforto: se a criança evacua sem dor e as fezes têm consistência adequada, o padrão está saudável, independente de ser diário ou a cada 2-3 dias.",
-      },
-    ],
-    whenToSeek: [
-      "Fezes brancas ou muito claras (acólicas) — urgente",
-      "Sangue vivo ou escuro nas fezes de forma recorrente",
-      "Diarreia por mais de 5-7 dias",
-      "Fezes com muco excessivo persistente",
-      "Mudança brusca de padrão com outros sintomas (febre, dor, vômitos)",
-    ],
-    relatedSlugs: ["constipacao-infantil", "aplv-guia-completo", "refluxo-bebe"],
-  },
-  "refluxo-gastroesofagico": {
-    slug: "refluxo-gastroesofagico",
-    title: "Refluxo Gastroesofágico em Crianças: Diagnóstico e Tratamento",
-    category: "Refluxo",
-    readTime: "9 min",
-    emoji: "🌊",
-    intro: "O refluxo gastroesofágico é uma das condições mais frequentes em crianças pequenas. Compreender a diferença entre refluxo fisiológico e doença do refluxo é essencial para evitar tratamentos desnecessários e garantir que seu filho receba o cuidado apropriado.",
-    sections: [
-      {
-        title: "Entendendo o Refluxo Gastroesofágico",
-        content: "O refluxo gastroesofágico (RGE) é o retorno do conteúdo do estômago para o esôfago. Em bebês, isso ocorre porque o esfíncter esofágico inferior — a válvula que separa o esôfago do estômago — ainda está em desenvolvimento. Enquanto alguns bebês apresentam refluxo fisiológico (normal e sem consequências), outros desenvolvem a Doença do Refluxo Gastroesofágico (DRGE), que causa sintomas significativos e afeta a qualidade de vida.",
-      },
-      {
-        title: "Sinais de Alerta e Quando Procurar Ajuda",
-        content: "Sinais que indicam necessidade de avaliação incluem: recusa alimentar persistente, choro durante as mamadas, arqueamento do corpo, ganho de peso insuficiente, episódios de engasgo ou tosse crônica, e irritabilidade extrema. Sangue no vômito ou nas fezes é sempre motivo para procurar atendimento imediato. A avaliação clínica cuidadosa é fundamental para distinguir refluxo fisiológico de DRGE e orientar o tratamento adequado.",
-      },
-      {
-        title: "Estratégias de Manejo Eficaz",
-        content: "O tratamento começa com medidas posturais: manter o bebê em posição vertical por 20-30 minutos após as mamadas, oferecer volumes menores e mais frequentes, e elevar a cabeceira do berço. Evitar roupas apertadas e movimentos bruscos também ajuda. Quando indicado, o pediatra pode prescrever medicação. A alimentação deve ser avaliada — em alguns casos, mudanças na dieta (como exclusão de leite de vaca) trazem melhora significativa.",
-      },
-    ],
-    whenToSeek: [
-      "Sangue no vômito ou nas fezes",
-      "Recusa alimentar com perda de peso",
-      "Choro intenso durante as mamadas",
-      "Tosse crônica ou episódios de engasgo",
-      "Sintomas que não melhoram com medidas posturais",
-    ],
-    relatedSlugs: ["aplv-guia-completo", "constipacao-infantil", "coco-crianca"],
-  },
-  "constipacao-intestinal": {
-    slug: "constipacao-intestinal",
-    title: "Constipação Intestinal em Crianças: Causas e Soluções",
-    category: "Constipação",
-    readTime: "10 min",
-    emoji: "🔒",
-    intro: "A constipação é uma das queixas mais frequentes em pediatria. Entender suas causas e aprender estratégias eficazes de manejo pode transformar essa experiência para toda a família.",
-    sections: [
-      {
-        title: "Definindo Constipação na Infância",
-        content: "Constipação não é apenas falta de evacuações frequentes. É a combinação de fezes endurecidas, dificuldade ou dor para evacuar, e frequentemente comportamento de retenção. A frequência normal varia bastante: bebês em aleitamento materno podem evacuar de 8 vezes ao dia a uma vez por semana. Crianças maiores geralmente evacuam de 3 vezes ao dia a 3 vezes por semana. O importante é o conforto e a consistência das fezes.",
-      },
-      {
         title: "O Ciclo Vicioso da Constipação",
-        content: "Mais de 95% dos casos de constipação são funcionais — não há doença orgânica. O ciclo vicioso é clássico: a criança sente dor ao evacuar, passa a reter as fezes, as fezes ficam mais duras, e a próxima evacuação é ainda mais dolorosa. Fatores desencadeantes incluem: introdução alimentar inadequada, desfralde forçado, mudanças de rotina, estresse, e dieta pobre em fibras. Identificar e corrigir esses fatores é essencial.",
+        content:
+          "Mais de 95% dos casos de constipação são funcionais — não há doença orgânica. O ciclo vicioso é clássico: a criança sente dor ao evacuar, passa a reter as fezes, as fezes ficam mais duras, e a próxima evacuação é ainda mais dolorosa. Fatores desencadeantes incluem: introdução alimentar inadequada, desfralde forçado, mudanças de rotina, estresse, e dieta pobre em fibras. Identificar e corrigir esses fatores é essencial.",
       },
       {
         title: "Abordagem Integrada ao Tratamento",
-        content: "O tratamento eficaz tem três pilares: desimpactação (quando necessário), manutenção e mudança de hábitos. A alimentação é fundamental — aumentar gradualmente fibras, garantir hidratação adequada, e reduzir excesso de leite de vaca. O treinamento evacuatório — sentar no vaso após as refeições — aproveita reflexos naturais. Laxantes podem ser necessários, mas sempre sob orientação médica como parte de uma estratégia mais ampla, nunca como solução única.",
+        content:
+          "O tratamento eficaz tem três pilares: desimpactação (quando necessário), manutenção e mudança de hábitos. A alimentação é fundamental — aumentar gradualmente fibras, garantir hidratação adequada, e reduzir excesso de leite de vaca. O treinamento evacuatório — sentar no vaso após as refeições — aproveita reflexos naturais. Laxantes podem ser necessários, mas sempre sob orientação médica como parte de uma estratégia mais ampla, nunca como solução única.",
       },
     ],
     whenToSeek: [
@@ -243,7 +115,7 @@ const ARTICLES: Record<string, ArticleData> = {
       "Falha no crescimento ou perda de peso",
       "Constipação que não melhora com medidas dietéticas",
     ],
-    relatedSlugs: ["coco-crianca", "introducao-alimentar", "refluxo-bebe"],
+    relatedSlugs: ["refluxo-infantil", "alergia-alimentar", "diarreia-cronica"],
   },
   "diarreia-cronica": {
     slug: "diarreia-cronica",
@@ -273,37 +145,37 @@ const ARTICLES: Record<string, ArticleData> = {
       "Diarreia por mais de 2 semanas sem melhora",
       "Sintomas de desnutrição ou anemia",
     ],
-    relatedSlugs: ["aplv-guia-completo", "constipacao-intestinal", "coco-crianca"],
+    relatedSlugs: ["alergia-alimentar", "constipacao-infantil", "intolerancia-lactose"],
   },
-  "alergia-alimentar": {
-    slug: "alergia-alimentar",
-    title: "Alergia Alimentar em Crianças: Identificação e Manejo Seguro",
+  "intolerancia-lactose": {
+    slug: "intolerancia-lactose",
+    title: "Intolerância à Lactose em Crianças: Diagnóstico e Manejo",
     category: "Alergias",
-    readTime: "11 min",
-    emoji: "🚫",
-    intro: "Alergia alimentar é uma reação imunológica do corpo a proteínas específicas em alimentos. Entender os sinais, como diferenciar de intolerância, e como manejar com segurança é crucial para a saúde do seu filho.",
+    readTime: "8 min",
+    emoji: "🥛",
+    intro: "A intolerância à lactose é diferente de alergia ao leite. Entender essa distinção e como manejar adequadamente é importante para garantir nutrição adequada ao seu filho.",
     sections: [
       {
-        title: "Alergia vs. Intolerância: Qual é a Diferença?",
-        content: "Alergia alimentar é uma reação imunológica — o corpo reconhece uma proteína como ameaça e monta uma resposta imunológica. Pode ser imediata (minutos a 2 horas) com sintomas como urticária, inchaço, vômitos, ou anafilaxia. Ou tardia (horas a dias) com sintomas gastrointestinais como diarreia, cólicas, ou dermatite. Intolerância é uma reação não-imunológica — por exemplo, falta de lactase para digerir lactose. Ambas requerem manejo, mas o tratamento é diferente.",
+        title: "O que é Intolerância à Lactose?",
+        content: "Intolerância à lactose é a dificuldade em digerir lactose, o açúcar presente no leite. Ocorre quando há deficiência de lactase, a enzima responsável por quebrar a lactose em açúcares simples. Diferentemente da alergia (reação imunológica), a intolerância é uma reação não-imunológica. Os sintomas aparecem após consumo de leite ou derivados: inchaço, gases, diarreia, cólicas e desconforto abdominal.",
       },
       {
-        title: "Sinais de Alerta para Alergia Alimentar",
-        content: "Sinais imediatos incluem: inchaço de lábios ou língua, urticária, vômitos, ou dificuldade para respirar — estes são emergências. Sinais tardios incluem: diarreia com sangue ou muco, cólicas intensas, eczema ou dermatite que piora, ou refluxo persistente após introdução de novo alimento. Se você suspeita de alergia, não introduza o alimento novamente sem orientação médica — o risco de reação grave aumenta na reexposição.",
+        title: "Intolerância Primária vs. Secundária",
+        content: "A intolerância primária é genética e desenvolve-se naturalmente após o desmame — é a forma mais comum em adultos. A intolerância secundária ocorre após infecções gastrointestinais que danificam a mucosa intestinal, reduzindo temporariamente a produção de lactase. Crianças com intolerância secundária frequentemente recuperam a capacidade de digerir lactose após alguns meses de exclusão. É importante distinguir entre os dois tipos para orientar adequadamente o manejo.",
       },
       {
-        title: "Diagnóstico e Manejo Seguro",
-        content: "O diagnóstico não é feito por um único teste. O padrão-ouro é a exclusão do alimento suspeito por 2-4 semanas, observando melhora dos sintomas, seguida de reintrodução controlada. Exames de sangue e testes cutâneos auxiliam, mas não são definitivos isoladamente. O manejo é a exclusão rigorosa do alérgeno — da dieta da criança e, se em aleitamento materno, da dieta materna. Substitutos seguros devem ser oferecidos para garantir nutrição adequada. O acompanhamento com gastropediatra é fundamental.",
+        title: "Manejo Nutricional Adequado",
+        content: "O manejo envolve redução ou exclusão de leite e derivados, dependendo do grau de intolerância. Muitas crianças toleram pequenas quantidades de leite ou derivados fermentados (iogurte, queijo). Alternativas como leite de cabra, bebidas vegetais enriquecidas e alimentos ricos em cálcio devem ser oferecidas para garantir nutrição adequada. O acompanhamento com nutricionista é recomendado para garantir que a criança receba todos os nutrientes necessários.",
       },
     ],
     whenToSeek: [
-      "Inchaço de lábios, língua ou garganta",
-      "Dificuldade para respirar",
-      "Vômitos ou diarreia com sangue",
-      "Reações cutâneas graves",
-      "Qualquer suspeita de reação alérgica imediata",
+      "Sintomas persistentes mesmo com exclusão de lactose",
+      "Perda de peso ou falha no crescimento",
+      "Sinais de desnutrição",
+      "Diarreia com sangue ou muco",
+      "Suspeita de alergia ao leite (reação imediata)",
     ],
-    relatedSlugs: ["aplv-guia-completo", "diarreia-cronica", "introducao-alimentar"],
+    relatedSlugs: ["alergia-alimentar", "diarreia-cronica", "refluxo-infantil"],
   },
   "doenca-inflamatoria-intestinal": {
     slug: "doenca-inflamatoria-intestinal",
@@ -333,21 +205,79 @@ const ARTICLES: Record<string, ArticleData> = {
       "Atraso na puberdade",
       "Aftas recorrentes ou problemas articulares associados",
     ],
-    relatedSlugs: ["diarreia-cronica", "constipacao-intestinal", "coco-crianca"],
+    relatedSlugs: ["diarreia-cronica", "constipacao-infantil", "alergia-alimentar"],
+  },
+  "doenca-celiaca": {
+    slug: "doenca-celiaca",
+    title: "Doença Celíaca em Crianças: Diagnóstico e Manejo com Dieta Sem Glúten",
+    category: "Alergias",
+    readTime: "10 min",
+    emoji: "🌾",
+    intro: "A doença celíaca é uma condição autoimune que afeta a absorção de nutrientes. Entender seus sinais e como manejar com dieta sem glúten é essencial para a saúde e desenvolvimento da criança.",
+    sections: [
+      {
+        title: "O que é Doença Celíaca?",
+        content: "Doença celíaca é uma condição autoimune onde o consumo de glúten (proteína presente em trigo, cevada e centeio) causa inflamação no intestino delgado, danificando as vilosidades intestinais e prejudicando a absorção de nutrientes. Afeta cerca de 1% da população e tem predisposição genética. Pode se manifestar em qualquer idade, mas frequentemente aparece após a introdução de alimentos com glúten (por volta dos 6-12 meses) ou após infecções que desencadeiam a resposta autoimune.",
+      },
+      {
+        title: "Sinais e Sintomas",
+        content: "Os sintomas variam bastante. Alguns incluem: diarreia crônica, constipação, distensão abdominal, dor abdominal recorrente, perda de peso ou falha no crescimento, anemia, fadiga, irritabilidade, atraso no desenvolvimento, dermatite herpetiforme (erupção cutânea característica) e aftas recorrentes. Alguns casos são assintomáticos e descobertos apenas por triagem em familiares de afetados. A apresentação clínica varia significativamente entre crianças.",
+      },
+      {
+        title: "Diagnóstico e Manejo com Dieta Sem Glúten",
+        content: "O diagnóstico envolve exames de sangue (sorologia) e confirmação com biópsia duodenal. É importante que a criança esteja consumindo glúten no momento dos testes — uma dieta sem glúten prematura pode resultar em falsos negativos. O tratamento é a dieta sem glúten rigorosa, que deve ser mantida por toda a vida. Nutricionista especializado é fundamental para garantir que a criança receba todos os nutrientes necessários. A maioria das crianças melhora significativamente com a dieta e pode ter vida completamente normal.",
+      },
+    ],
+    whenToSeek: [
+      "Diarreia crônica ou constipação persistente",
+      "Falha no crescimento ou perda de peso",
+      "Anemia sem causa aparente",
+      "Atraso no desenvolvimento",
+      "Histórico familiar de doença celíaca",
+    ],
+    relatedSlugs: ["diarreia-cronica", "alergia-alimentar", "constipacao-infantil"],
+  },
+  "sangue-fezes": {
+    slug: "sangue-fezes",
+    title: "Sangue nas Fezes em Crianças: Quando Investigar",
+    category: "Gastroenterologia",
+    readTime: "8 min",
+    emoji: "🩸",
+    intro: "Sangue nas fezes é sempre motivo de preocupação para os pais. Entender as possíveis causas e quando investigar ajuda a manter a calma e buscar ajuda apropriada.",
+    sections: [
+      {
+        title: "Causas Comuns de Sangue nas Fezes",
+        content: "Sangue nas fezes em crianças pode ter múltiplas causas. As mais comuns incluem: fissura anal (causa mais frequente em crianças pequenas), alergia alimentar (especialmente APLV), constipação com trauma da mucosa, infecções gastrointestinais, doença inflamatória intestinal, doença celíaca, e poliposes. A localização do sangue (misturado com fezes, nas fraldas ou no papel) e a quantidade ajudam a orientar o diagnóstico.",
+      },
+      {
+        title: "Avaliação Clínica Inicial",
+        content: "A história clínica é fundamental: há quanto tempo ocorre, frequência, quantidade, presença de dor ou desconforto, outros sintomas gastrointestinais, padrão alimentar e histórico familiar. Exame físico cuidadoso, incluindo inspeção da região anal, geralmente revela a causa em muitos casos. Alguns casos requerem investigação adicional com exames de sangue, análise de fezes, ou endoscopia. Não se deve ignorar sangue nas fezes, mas também não é necessário panicar — a maioria dos casos tem causa benigna.",
+      },
+      {
+        title: "Quando Procurar Ajuda Especializada",
+        content: "Procure avaliação especializada se: o sangue persiste por mais de 2 semanas, há quantidade significativa de sangue, há perda de peso ou falha no crescimento, há febre ou outros sintomas sistêmicos, ou há histórico familiar de doença inflamatória intestinal ou poliposes. Avaliação urgente é necessária se há sinais de choque ou sangramento profuso. O gastropediatra pode orientar adequadamente sobre a necessidade de investigação adicional.",
+      },
+    ],
+    whenToSeek: [
+      "Sangue nas fezes por mais de 2 semanas",
+      "Quantidade significativa de sangue",
+      "Perda de peso ou falha no crescimento",
+      "Febre ou outros sintomas sistêmicos",
+      "Sangramento profuso ou sinais de choque",
+    ],
+    relatedSlugs: ["alergia-alimentar", "diarreia-cronica", "constipacao-infantil"],
   },
 };
 
 const ALL_ARTICLES_META: Record<string, { title: string; category: string; emoji: string }> = {
-  "refluxo-bebe": { title: "Refluxo em Bebê", category: "Refluxo", emoji: "🍼" },
-  "aplv-guia-completo": { title: "APLV: Sinais e Manejo", category: "Alergias", emoji: "🥛" },
+  "refluxo-infantil": { title: "Refluxo em Bebê", category: "Refluxo", emoji: "🍼" },
+  "alergia-alimentar": { title: "Alergia Alimentar", category: "Alergias", emoji: "🥛" },
   "constipacao-infantil": { title: "Constipação Infantil", category: "Constipação", emoji: "💪" },
-  "introducao-alimentar": { title: "Introdução Alimentar", category: "Alimentação", emoji: "🥑" },
-  "coco-crianca": { title: "Cocô de Criança", category: "Desenvolvimento", emoji: "🔍" },
-  "refluxo-gastroesofagico": { title: "Refluxo Gastroesofágico", category: "Refluxo", emoji: "🌊" },
-  "constipacao-intestinal": { title: "Constipação Intestinal", category: "Constipação", emoji: "🔒" },
   "diarreia-cronica": { title: "Diarreia Crônica", category: "Diarreia", emoji: "💧" },
-  "alergia-alimentar": { title: "Alergia Alimentar", category: "Alergias", emoji: "🚫" },
+  "intolerancia-lactose": { title: "Intolerância à Lactose", category: "Alergias", emoji: "🥛" },
   "doenca-inflamatoria-intestinal": { title: "Doença Inflamatória Intestinal", category: "Gastroenterologia", emoji: "⚠️" },
+  "doenca-celiaca": { title: "Doença Celíaca", category: "Alergias", emoji: "🌾" },
+  "sangue-fezes": { title: "Sangue nas Fezes", category: "Gastroenterologia", emoji: "🩸" },
 };
 
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
@@ -460,34 +390,6 @@ export default function Article() {
                 ))}
               </ul>
             </div>
-
-            {/* Guia Alimentar CTA - only for introducao-alimentar article */}
-            {slug === "introducao-alimentar" && (
-              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald/10 via-golden/15 to-blue/10 border-3 border-emerald/20 p-6 md:p-8 mb-10">
-                <div className="absolute top-4 right-6 text-2xl animate-float opacity-50">🥑</div>
-                <div className="flex flex-col md:flex-row md:items-center gap-5 relative z-10">
-                  <div className="flex-1">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 rounded-full mb-3">
-                      <Sparkles className="w-3 h-3 text-emerald" />
-                      <span className="text-xs font-bold text-emerald font-display uppercase tracking-wider">Guia Interativo</span>
-                    </div>
-                    <h3 className="text-xl mb-2">E Agora, o Que Colocar no Prato?</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      Descubra no nosso guia interativo: cronograma por idade, receitas testadas e os erros que quase todo pai comete sem saber.
-                    </p>
-                  </div>
-                  <a
-                    href="https://guiabebes-xlauyfmx.manus.space"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary whitespace-nowrap inline-flex items-center gap-2"
-                  >
-                    Quero Descobrir
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            )}
 
             {/* Disclaimer */}
             <div className="bg-golden/10 p-5 rounded-2xl mb-6">
