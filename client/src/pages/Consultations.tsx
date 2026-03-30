@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Star, ArrowRight, Sparkles, Heart, Stethoscope, FileText, Clock } from "lucide-react";
+import { TestimonialsSection } from "@/components/testimonials-section";
 
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
@@ -228,55 +229,8 @@ export default function Consultations() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section-spacing bg-white">
-        <div className="container">
-          <motion.div
-            className="text-center mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            custom={0}
-          >
-            <h2 className="mb-4">O que Pais <span className="text-coral">Dizem</span></h2>
-            <p className="text-muted-foreground text-lg">
-              Depoimentos de famílias que confiaram no Nosso Pediatra
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {TESTIMONIALS.map((testimonial, idx) => (
-              <motion.div
-                key={idx}
-                className="card-base p-6 md:p-7 border-t-4 border-blue/30"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                custom={idx + 1}
-              >
-                <div className="flex items-center gap-0.5 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-5 italic leading-relaxed text-sm">
-                  "{testimonial.text}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-golden/20 rounded-full flex items-center justify-center text-lg">
-                    {testimonial.emoji}
-                  </div>
-                  <p className="font-bold text-foreground text-sm font-display">
-                    {testimonial.name}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials - Resgate da página principal */}
+      <TestimonialsSection />
 
       {/* CTA */}
       <section className="section-spacing relative overflow-hidden bg-teal">
