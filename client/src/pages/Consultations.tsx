@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Star, ArrowRight, Sparkles, Heart, Stethoscope, FileText, Clock } from "lucide-react";
 import { TestimonialsSection } from "@/components/testimonials-section";
 
+const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_hero_bg-L2bcXukaEp8T537j9dHZXM.webp";
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
 
@@ -67,9 +68,10 @@ export default function Consultations() {
       <section
         className="relative min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden"
         style={{
-          backgroundImage: `url('${PATTERN_BG}')`,
-          backgroundSize: '400px',
-          backgroundRepeat: 'repeat',
+          backgroundImage: `url('${HERO_BG}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-blue/10 via-white/70 to-emerald/10" />
