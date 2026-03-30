@@ -21,14 +21,14 @@ const data = {
     contato: '/contato',
   },
   services: {
-    consultas: '/consultas',
+    consultas: '/sobre',
     telemedicina: '/telemedicina',
     artigos: '/blog',
     diagnostico: '/diagnostico',
   },
   help: {
     faqs: '/diagnostico#faq',
-    agendamento: '/consultas',
+    agendamento: '/sobre',
     suporte: '/contato',
   },
   contact: {

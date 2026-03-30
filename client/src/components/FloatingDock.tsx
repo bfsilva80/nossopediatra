@@ -26,7 +26,7 @@ const dockItems = [
   {
     title: 'Consultas',
     icon: <Calendar className='h-full w-full text-pink-600 dark:text-pink-400' />,
-    href: '/consultas',
+    href: '/sobre',
   },
   {
     title: 'Sobre',

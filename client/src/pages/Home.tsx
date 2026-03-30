@@ -298,7 +298,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                <Link href="/consultas" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all" title="Agendar consulta com gastropediatra em Uberaba">
+                <Link href="/sobre" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all" title="Agendar consulta com gastropediatra em Uberaba">
                   Agendar consulta
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
@@ -525,7 +525,7 @@ export default function Home() {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Agende uma consulta e vamos descobrir juntos o que está acontecendo com seu filho.
             </p>
-            <Link href="/consultas" className="btn-primary">
+            <Link href="/sobre" className="btn-primary">
               Agendar Consulta Agora
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>

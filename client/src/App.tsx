@@ -15,7 +15,7 @@ import Home from "./pages/Home";
 import SymptomAtlas from "./pages/SymptomAtlas";
 import Library from "./pages/Library";
 import Article from "./pages/Article";
-import Consultations from "./pages/Consultations";
+
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import SymptomChecker from "./pages/SymptomChecker";
@@ -47,7 +47,9 @@ function Router() {
       <Route path="/conteudo/:slug">
         {({ slug }) => <Redirect to={`/artigo/${slug}`} />}
       </Route>
-      <Route path="/consultas" component={Consultations} />
+      <Route path="/consultas">
+        {() => <Redirect to="/sobre" />}
+      </Route>
       <Route path="/contato" component={Contact} />
       <Route path="/sobre" component={About} />
       <Route path="/diagnostico" component={SymptomChecker} />

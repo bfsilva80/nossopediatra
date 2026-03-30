@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Heart, Award, Users, BookOpen } from "lucide-react";
+import { Heart, Award, Users, BookOpen, Stethoscope, FileText, Clock, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import { firstColumn, secondColumn, thirdColumn } from "@/data/testimonials";
@@ -16,8 +16,6 @@ const fadeUp = {
     transition: { delay: i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
-
-
 
 const CREDENTIALS = [
   {
@@ -41,6 +39,34 @@ const CREDENTIALS = [
     description: "Abordagem que coloca o paciente e sua família no centro, unindo excelência clínica com acolhimento genuíno",
   },
 ];
+
+const STEPS = [
+  {
+    emoji: "📋",
+    color: "bg-coral/15",
+    title: "Avaliação Completa",
+    description: "Histórico detalhado, exame físico minucioso e investigação cuidadosa dos sintomas.",
+  },
+  {
+    emoji: "💬",
+    color: "bg-blue/10",
+    title: "Explicação Clara",
+    description: "Você entenderá o raciocínio clínico por trás de cada recomendação.",
+  },
+  {
+    emoji: "🎯",
+    color: "bg-emerald/10",
+    title: "Plano Personalizado",
+    description: "Estratégia adaptada às necessidades do seu filho e à realidade da sua família.",
+  },
+  {
+    emoji: "🤝",
+    color: "bg-golden/20",
+    title: "Acompanhamento",
+    description: "Suporte contínuo e ajustes conforme necessário. Você não estará sozinho.",
+  },
+];
+
 export default function About() {
   useEffect(() => {
     SEOHead({
@@ -107,7 +133,7 @@ export default function About() {
 
               {/* Credentials */}
               <motion.div
-                className="mb-10 pb-8 border-b border-blue/10"
+                className="mb-10 pb-8 border-b border-teal/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
@@ -130,7 +156,7 @@ export default function About() {
                 <Link href="/contato" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
                   Conversar Agora
                 </Link>
-                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-blue/5 transition-all">
+                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all">
                   Explorar Sintomas
                 </Link>
               </motion.div>
@@ -158,7 +184,7 @@ export default function About() {
       </section>
 
       {/* ═══════════ BIOGRAPHY ═══════════ */}
-      <section className="section-spacing bg-cream">
+      <section className="section-spacing bg-background">
         <div className="container max-w-4xl">
           <motion.div
             initial="hidden"
@@ -238,8 +264,123 @@ export default function About() {
         </div>
       </section>
 
+      {/* ═══════════ CONSULTATION PROCESS ═══════════ */}
+      <section className="section-spacing bg-background">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left Column - Como é a Consulta */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={fadeUp}
+              custom={0}
+            >
+              <h2 className="mb-8">Como é a <span className="text-coral">Consulta</span></h2>
+              <div className="space-y-5">
+                {STEPS.map((step, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-golden/15 hover:border-teal/20 transition-all duration-300 hover:shadow-md group"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    custom={idx + 1}
+                  >
+                    <div className={`w-14 h-14 ${step.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
+                      {step.emoji}
+                    </div>
+                    <div>
+                      <h4 className="font-display font-bold text-foreground mb-1">
+                        {step.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Column - Informações Práticas */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={fadeUp}
+              custom={1}
+            >
+              <h2 className="mb-8">Informações <span className="text-teal">Práticas</span></h2>
+              <div className="card-base p-6 md:p-8 space-y-6">
+                {/* Quando Procurar */}
+                <div>
+                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
+                    <Stethoscope className="w-5 h-5 text-teal" />
+                    Quando Procurar
+                  </h4>
+                  <ul className="space-y-2 text-muted-foreground text-sm">
+                    {[
+                      "Refluxo persistente ou com sinais de alerta",
+                      "Suspeita de alergia alimentar (APLV)",
+                      "Constipação ou diarreia crônica",
+                      "Dor abdominal recorrente",
+                      "Dificuldades na alimentação ou ganho de peso",
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-coral mt-0.5">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t-2 border-teal/10 pt-6">
+                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-teal" />
+                    O que Levar
+                  </h4>
+                  <ul className="space-y-2 text-muted-foreground text-sm">
+                    {[
+                      "Cartão de vacinação atualizado",
+                      "Histórico médico e exames anteriores",
+                      "Exames recentes (se houver)",
+                      "Diário alimentar dos últimos 3 dias",
+                      "Anotações de sintomas observados",
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-emerald font-bold mt-0.5">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t-2 border-teal/10 pt-6">
+                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-teal" />
+                    Duração
+                  </h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-coral/10 p-4 rounded-2xl text-center">
+                      <p className="text-2xl font-display font-bold text-coral">60</p>
+                      <p className="text-xs text-muted-foreground mt-1">min — Primeira consulta</p>
+                    </div>
+                    <div className="bg-emerald/10 p-4 rounded-2xl text-center">
+                      <p className="text-2xl font-display font-bold text-teal">30-45</p>
+                      <p className="text-xs text-muted-foreground mt-1">min — Acompanhamento</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════ TESTIMONIALS ═══════════ */}
-      <section className="section-spacing bg-cream relative overflow-hidden">
+      <section className="section-spacing bg-background relative overflow-hidden">
         <div className="container max-w-6xl">
           <motion.div
             className="text-center mb-16"
@@ -266,25 +407,45 @@ export default function About() {
       </section>
 
       {/* ═══════════ FINAL CTA ═══════════ */}
-      <section className="section-spacing bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
-        <div className="container max-w-3xl">
+      <section className="section-spacing relative overflow-hidden bg-teal">
+        <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
+          <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
+            <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
+          </svg>
+        </div>
+
+        <div className="absolute top-16 left-[10%] text-2xl animate-float opacity-15">💛</div>
+        <div className="absolute bottom-12 right-[8%] text-xl animate-float-slow opacity-15">⭐</div>
+
+        <div className="container max-w-2xl text-center relative z-10">
           <motion.div
-            className="text-center"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true }}
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-6">
-              Pronto para conhecer melhor?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Agende uma consulta e vamos conversar sobre a saúde digestiva do seu filho. Estou aqui para ajudar.
+            <Heart className="w-10 h-10 text-white/40 mx-auto mb-4 animate-pulse-soft" />
+            <h2 className="!text-white mb-4">Pronto para Agendar?</h2>
+            <p className="text-lg mb-8 text-white/85 font-display">
+              Escolha a forma mais conveniente para você
             </p>
-            <Link href="/contato" className="btn-primary">
-              Conversar Agora
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://wa.me/553499709226"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary !bg-white !text-teal"
+              >
+                💬 WhatsApp
+              </a>
+              <Link
+                href="/contato"
+                className="btn-outline !border-white !text-white hover:!bg-white/10"
+              >
+                📅 Agenda Online
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
