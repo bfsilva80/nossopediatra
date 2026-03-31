@@ -7,7 +7,6 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import { FloatingDock } from '@/components/FloatingDock';
 import { StickyWhatsAppCTA } from '@/components/StickyWhatsAppCTA';
 import { injectSchema, generateOrganizationSchema } from "@/lib/seo-schema";
 import { initializePerformanceOptimizations } from "@/lib/performance";
@@ -80,7 +79,6 @@ function App() {
               <Router />
             </main>
             <Footer />
-            <FloatingDock />
             <StickyWhatsAppCTA />
           </div>
         </TooltipProvider>
