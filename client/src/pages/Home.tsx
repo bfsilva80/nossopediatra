@@ -239,19 +239,19 @@ export default function Home() {
   return (
     <div className="w-full overflow-hidden">
       {/* ═══════════ HERO ═══════════ */}
-      <section className="relative min-h-[90vh] md:min-h-[95vh] flex items-center overflow-hidden bg-background">
+      <section className="relative min-h-screen md:min-h-[95vh] flex items-center overflow-hidden bg-background">
         {/* Clean background with subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-teal/5" />
 
         {/* Decorative elements removed for minimalist design */}
 
         <div className="relative z-10 container">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-8 lg:gap-12 items-center">
             {/* Text Content */}
             <div className="lg:col-span-2 max-w-2xl">
               {/* Sobrancelha - Eyebrow */}
               <motion.p
-                className="text-sm font-semibold text-teal/80 tracking-wide uppercase mb-6"
+                className="text-xs md:text-sm font-semibold text-teal/80 tracking-wide uppercase mb-3 md:mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -259,9 +259,9 @@ export default function Home() {
                 Gastropediatra em Uberaba
               </motion.p>
 
-              {/* H1 - Main Title */}
+              {/* H1 - Main Title - Responsive sizing */}
               <motion.h1
-                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-6 text-foreground"
+                className="text-3xl md:text-5xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-3 md:mb-6 text-foreground"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
@@ -269,9 +269,9 @@ export default function Home() {
                 Entender o que seu filho tem muda <span className="text-coral">tudo.</span>
               </motion.h1>
 
-              {/* H2 - Subtitle with Clarity */}
+              {/* H2 - Subtitle with Clarity - Responsive sizing */}
               <motion.h2
-                className="text-lg md:text-xl font-normal mb-10 text-foreground/75 leading-relaxed max-w-2xl font-sans"
+                className="text-sm md:text-lg lg:text-xl font-normal mb-6 md:mb-10 text-foreground/75 leading-relaxed max-w-2xl font-sans"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
@@ -279,9 +279,9 @@ export default function Home() {
                 Ajudo você a entender refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância com mais clareza e segurança.
               </motion.h2>
 
-              {/* Credentials Line */}
+              {/* Credentials Line - Hidden on mobile */}
               <motion.div
-                className="mb-12 pb-10 border-b border-teal/10"
+                className="hidden md:block mb-8 md:mb-12 pb-8 md:pb-10 border-b border-teal/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
@@ -291,25 +291,25 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              {/* CTAs */}
+              {/* CTAs - Full width stack on mobile, side-by-side on desktop */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 mb-8"
+                className="flex flex-col md:flex-row gap-3 md:gap-4 mb-6 md:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                <Link href="/sobre" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all" title="Agendar consulta com gastropediatra em Uberaba">
+                <Link href="/sobre" className="btn-primary text-sm md:text-base font-semibold px-6 md:px-8 py-4 md:py-3 rounded-lg shadow-lg hover:shadow-xl transition-all w-full md:w-auto text-center" title="Agendar consulta com gastropediatra em Uberaba">
                   Agendar consulta
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <ArrowRight className="hidden md:inline ml-2 w-5 h-5" />
                 </Link>
-                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all" title="Começar a entender os sintomas do seu filho">
+                <Link href="/diagnostico" className="btn-outline text-sm md:text-base font-semibold px-6 md:px-8 py-4 md:py-3 rounded-lg border-2 hover:bg-teal/5 transition-all w-full md:w-auto text-center" title="Começar a entender os sintomas do seu filho">
                   Por onde começar
                 </Link>
               </motion.div>
 
-              {/* Microtexto */}
+              {/* Microtexto - Mobile only */}
               <motion.p
-                className="text-sm text-foreground/50 font-light"
+                className="text-xs md:text-sm text-foreground/50 font-light"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
@@ -318,16 +318,16 @@ export default function Home() {
               </motion.p>
             </div>
 
-            {/* Animated Doctor Scenes Carousel */}
+            {/* Animated Doctor Scenes Carousel - Reduced height on mobile */}
             <motion.div
-              className="hidden lg:flex justify-center lg:col-span-3"
+              className="flex justify-center lg:col-span-3 mt-4 md:mt-0"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             >
               <div className="relative w-full" style={{ maxWidth: '500px' }}>
-                {/* Carousel container */}
-                <div className="relative h-[600px] rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+                {/* Carousel container - Responsive height */}
+                <div className="relative h-[280px] md:h-[400px] lg:h-[600px] rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
                   {DOCTOR_SCENES.map((scene, idx) => (
                     <motion.img
                       key={idx}
@@ -345,12 +345,12 @@ export default function Home() {
 
 
                 {/* Scene indicators */}
-                <div className="flex justify-center gap-2 mt-6">
+                <div className="flex justify-center gap-2 mt-3 md:mt-6">
                   {DOCTOR_SCENES.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentScene(idx)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      className={`hidden md:block w-2 h-2 rounded-full transition-all duration-300 ${
                         currentScene === idx ? "bg-teal w-6" : "bg-teal/30 hover:bg-teal/50"
                       }`}
                       aria-label={`Ir para cena ${idx + 1}`}

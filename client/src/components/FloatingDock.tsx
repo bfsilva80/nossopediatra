@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 const dockItems = [
   {
     title: 'Home',
-    icon: <Home className='h-full w-full text-blue-600 dark:text-blue-400' />,
+    icon: <Home className='h-full w-full text-teal-600 dark:text-teal-400' />,
     href: '/',
   },
   {
@@ -25,12 +25,12 @@ const dockItems = [
   },
   {
     title: 'Consultas',
-    icon: <Calendar className='h-full w-full text-pink-600 dark:text-pink-400' />,
+    icon: <Calendar className='h-full w-full text-coral-600 dark:text-coral-400' />,
     href: '/sobre',
   },
   {
     title: 'Sobre',
-    icon: <Phone className='h-full w-full text-red-600 dark:text-red-400' />,
+    icon: <Phone className='h-full w-full text-teal-600 dark:text-teal-400' />,
     href: '/sobre',
     hideOnMobile: true,
   },
@@ -55,10 +55,20 @@ export function FloatingDock() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Prevent scrolling when dock is visible on mobile
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.paddingBottom = '80px';
+      return () => {
+        document.body.style.paddingBottom = '0';
+      };
+    }
+  }, [isMobile]);
+
   return (
-    <div className='fixed bottom-0 left-0 right-0 z-50 flex justify-center pb-4 pointer-events-none'>
+    <div className='fixed bottom-0 left-0 right-0 z-50 flex justify-center pb-3 md:pb-4 pointer-events-none'>
       <div className='pointer-events-auto'>
-        <Dock className='items-end pb-2'>
+        <Dock className='items-end pb-2 md:pb-3 gap-1 md:gap-2'>
           {dockItems.map((item, idx) => {
             if (item.hideOnMobile && isMobile) return null;
             if (item.showOnMobileOnly && !isMobile) return null;
@@ -66,21 +76,21 @@ export function FloatingDock() {
             return (
               <DockItem
                 key={idx}
-                className='aspect-square rounded-full bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 hover:shadow-lg transition-shadow'
+                className='aspect-square rounded-full bg-gradient-to-br from-teal/10 to-teal/20 hover:from-teal/20 hover:to-teal/30 dark:from-teal/20 dark:to-teal/30 hover:shadow-lg transition-all duration-200 border border-teal/30 hover:border-teal/50'
               >
-                <DockLabel>{item.title}</DockLabel>
+                <DockLabel className='text-xs md:text-sm font-medium'>{item.title}</DockLabel>
                 <DockIcon>
                   {item.href.startsWith('http') ? (
                     <a
                       href={item.href}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='w-full h-full flex items-center justify-center'
+                      className='w-full h-full flex items-center justify-center hover:scale-110 transition-transform duration-200'
                     >
                       {item.icon}
                     </a>
                   ) : (
-                    <Link href={item.href} className='w-full h-full flex items-center justify-center'>
+                    <Link href={item.href} className='w-full h-full flex items-center justify-center hover:scale-110 transition-transform duration-200'>
                       {item.icon}
                     </Link>
                   )}
