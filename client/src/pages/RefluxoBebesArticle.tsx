@@ -9,12 +9,7 @@ import {
   CheckCircle,
   Phone,
   MessageCircle,
-  Heart,
-  Star,
-  Clock,
-  User,
   ArrowRight,
-  Search,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -27,19 +22,11 @@ interface DecisionNode {
   explanation: string;
 }
 
-interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  location: string;
-  topic: string;
-}
-
 const RefluxoBebesArticle = () => {
   const [expandedDecision, setExpandedDecision] = useState<string | null>(
-    "primeiras-semanas"
+    "ganhando-peso"
   );
-  const [activeTab, setActiveTab] = useState<string>("fisiologico");
+  const [activeTab, setActiveTab] = useState<string>("conservador");
   const [searchQuery, setSearchQuery] = useState("");
 
   const whatsappNumber = "+55 34 99709-9226";
@@ -62,7 +49,7 @@ const RefluxoBebesArticle = () => {
       emoji: "🤫",
       label: "Difícil de detectar",
       title: "Refluxo Silencioso",
-      description: "Sem vômito visível",
+      description: "Quando os sintomas levantam a hipótese de refluxo mas os vômitos e regurgitações não são frequentes",
       details: ["Choro e irritabilidade", "Recusa alimentar", "Desconforto"],
     },
     {
@@ -78,9 +65,9 @@ const RefluxoBebesArticle = () => {
     },
     {
       emoji: "🥛",
-      label: "Relacionado à dieta",
-      title: "Refluxo Alimentar",
-      description: "Associado a alergias",
+      label: "Relacionado à alimentação",
+      title: "Refluxo associado à alimentação",
+      description: "Quando os sintomas levantam hipótese de relação com leite, fórmula ou outros gatilhos alimentares.",
       details: [
         "Intolerância à lactose",
         "Alergia à proteína do leite",
@@ -103,8 +90,8 @@ const RefluxoBebesArticle = () => {
   // Tabela Comparativa
   const treatmentApproaches = [
     {
-      id: "fisiologico",
-      name: "Medidas Conservadoras",
+      id: "conservador",
+      name: "Cuidados em casa",
       timeframe: "2–4 semanas",
       atHome:
         "Bebê regurgita após mamar mas está ganhando peso, dormindo e se desenvolvendo normalmente. Parece incomodado mas se acalma rapidamente.",
@@ -116,7 +103,7 @@ const RefluxoBebesArticle = () => {
     },
     {
       id: "medicamentoso",
-      name: "Tratamento Medicamentoso",
+      name: "Quando considerar medicação",
       timeframe: "2–4 semanas",
       atHome:
         "Bebê regurgita após mamar mas está ganhando peso, dormindo e se desenvolvendo normalmente. Parece incomodado mas se acalma rapidamente.",
@@ -128,7 +115,7 @@ const RefluxoBebesArticle = () => {
     },
     {
       id: "especialista",
-      name: "Encaminhamento ao Gastro",
+      name: "Quando procurar especialista",
       timeframe: "2–4 semanas",
       atHome:
         "Bebê regurgita após mamar mas está ganhando peso, dormindo e se desenvolvendo normalmente. Parece incomodado mas se acalma rapidamente.",
@@ -140,53 +127,53 @@ const RefluxoBebesArticle = () => {
     },
   ];
 
-  // Árvore de Decisão
+  // Árvore de Decisão - Simplificada para linguagem leiga
   const decisionNodes: DecisionNode[] = [
     {
-      id: "primeiras-semanas",
-      stage: "Primeiras semanas",
+      id: "ganhando-peso",
+      stage: "Se está ganhando peso e parece bem",
       condition:
-        "SE Bebê cospe após mamar mas está ganhando peso e parece confortável entre as mamadas",
+        "Bebê cospe após mamar mas está ganhando peso e parece confortável entre as mamadas",
       action: "Medidas posturais — sem medicação",
       actionType: "home",
       explanation:
         "Mantenha o bebê em posição vertical por 20–30 minutos após cada mamada. Ofereça mamadas menores e mais frequentes. Evite pressão na barriga após alimentação. Na maioria dos casos, o refluxo fisiológico melhora sozinho com o amadurecimento do esfíncter esofágico inferior — geralmente entre 6 e 12 meses de vida.",
     },
     {
-      id: "semanas-2-6",
-      stage: "Semanas 2–6",
+      id: "chora-muito",
+      stage: "Se chora muito ou recusa mamadas",
       condition:
-        "SE Bebê chora excessivamente após mamar, arqueia as costas, recusa o seio ou a mamadeira",
+        "Bebê chora excessivamente após mamar, arqueia as costas, recusa o seio ou a mamadeira",
       action: "Ligue para o pediatra hoje",
       actionType: "call",
       explanation:
         "Esses sinais podem indicar refluxo silencioso (sem vômito visível) ou DRGE. O pediatra avaliará se há necessidade de medicação como omeprazol ou ranitidina. Também investigará possíveis alergias alimentares. Não espere — quanto mais cedo diagnosticado, melhor a resposta ao tratamento.",
     },
     {
-      id: "com-tratamento",
-      stage: "Com tratamento em curso",
+      id: "sem-melhora",
+      stage: "Se já está usando medicação sem melhora",
       condition:
-        "SE Sem melhora após 2 semanas de medicação, ou bebê continua perdendo peso",
+        "Sem melhora após 2 semanas de medicação, ou bebê continua perdendo peso",
       action: "Retorne ao pediatra — ajuste necessário",
       actionType: "call",
       explanation:
         "A medicação pode precisar de ajuste de dose ou mudança de classe. Também é importante investigar se há alergia alimentar não diagnosticada, especialmente intolerância à lactose ou alergia à proteína do leite. O pediatra pode indicar testes adicionais ou encaminhamento ao gastroenterologista pediátrico.",
     },
     {
-      id: "emergencia",
-      stage: "Qualquer momento",
+      id: "alerta",
+      stage: "Se aparecer sinal de alerta",
       condition:
-        "SE Sangue no vômito, apneia (pausa na respiração), engasgos graves, ou perda de peso significativa",
+        "Sangue no vômito, apneia (pausa na respiração), engasgos graves, ou perda de peso significativa",
       action: "Vá à emergência imediatamente",
       actionType: "emergency",
       explanation:
         "Esses são sinais de alerta que requerem avaliação urgente. Podem indicar complicações como esofagite erosiva, aspiração, ou outras condições que precisam de investigação imediata. Não hesite — procure o pronto-socorro mais próximo.",
     },
     {
-      id: "apos-3-meses",
-      stage: "Após 3 meses de tratamento",
+      id: "continua",
+      stage: "Se o problema continua mesmo com cuidado adequado",
       condition:
-        "SE Refluxo persiste apesar do tratamento adequado, com impacto no crescimento ou qualidade de vida",
+        "Refluxo persiste apesar do tratamento adequado, com impacto no crescimento ou qualidade de vida",
       action: "Solicitar encaminhamento ao gastroenterologista pediátrico",
       actionType: "specialist",
       explanation:
@@ -194,35 +181,7 @@ const RefluxoBebesArticle = () => {
     },
   ];
 
-  // Testimonials
-  const testimonials: Testimonial[] = [
-    {
-      quote:
-        "Minha filha chorava inconsolavelmente após cada mamada. Eu achava que era cólica. Depois de ler sobre refluxo silencioso aqui, fui ao pediatra com as perguntas certas. Ela mudou completamente.",
-      author: "Camila Ferreira",
-      role: "Mãe de primeira viagem",
-      location: "São Paulo, SP",
-      topic: "Refluxo Silencioso",
-    },
-    {
-      quote:
-        "Sou enfermeira pediátrica. Uso as tabelas de comparação para orientar mães na maternidade. Antes eu improvisava. Agora tenho um framework que bate com o que os pediatras recomendam.",
-      author: "Renata Oliveira",
-      role: "Enfermeira pediátrica",
-      location: "Hospital das Clínicas, Belo Horizonte MG",
-      topic: "DRGE em Bebês",
-    },
-    {
-      quote:
-        "Meu filho e eu tínhamos opiniões diferentes sobre o refluxo do nosso filho. Depois que os dois lemos a mesma página aqui, chegamos à consulta alinhados. O pediatra ficou impressionado com as perguntas que fizemos.",
-      author: "Juliana e Pedro Santos",
-      role: "Pais",
-      location: "Curitiba, PR",
-      topic: "Refluxo Fisiológico",
-    },
-  ];
-
-  // FAQ
+  // FAQ - Expandida
   const faqs = [
     {
       question: "Com quantos meses o refluxo geralmente melhora?",
@@ -238,6 +197,26 @@ const RefluxoBebesArticle = () => {
       question: "Qual é a diferença entre refluxo e vômito?",
       answer:
         "Refluxo é o retorno passivo do conteúdo gástrico — o bebê cospe sem esforço. Vômito é ativo — há contração muscular. O refluxo fisiológico é normal. Vômito frequente ou forçado pode indicar problema.",
+    },
+    {
+      question: "Posso amamentar se meu bebê tem DRGE?",
+      answer:
+        "Sim. Amamentação é segura e recomendada. Leite materno é mais fácil de digerir. Se há suspeita de alergia alimentar, a mãe pode fazer exclusão dietética (sem leite de vaca, por exemplo) sob orientação do pediatra.",
+    },
+    {
+      question: "Refluxo pode causar tosse?",
+      answer:
+        "Pode estar associado em alguns casos, principalmente quando há irritação, engasgos ou sintomas respiratórios. Quando isso se repete, vale avaliação pediátrica.",
+    },
+    {
+      question: "Todo bebê que golfa tem alergia ao leite?",
+      answer:
+        "Não. A maioria dos bebês que regurgita não tem alergia. A suspeita depende do conjunto de sintomas, da evolução e da resposta ao manejo.",
+    },
+    {
+      question: "Quando o refluxo deixa de ser esperado?",
+      answer:
+        "Quando passa a atrapalhar alimentação, sono, ganho de peso, conforto ou desenvolvimento do bebê.",
     },
     {
       question: "Posso amamentar se meu bebê tem DRGE?",
@@ -264,69 +243,50 @@ const RefluxoBebesArticle = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
       {/* Navigation */}
       <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <a href="/biblioteca" className="text-teal-600 hover:text-teal-700 font-medium text-sm">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+          <a href="/biblioteca" className="text-teal-600 font-semibold text-sm hover:text-teal-700">
             ← Voltar para Biblioteca
           </a>
-          <span className="text-slate-600 text-sm">🍼 REFLUXO</span>
+          <span className="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+            REFLUXO
+          </span>
         </div>
       </nav>
 
       <main className="max-w-4xl mx-auto px-4 py-12">
         {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <motion.section
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-4 leading-tight">
-            Refluxo em Bebê:<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-700">
-              Quando é Normal, Quando é Problema
-            </span>
-          </h1>
-          <div className="flex items-center gap-6 text-slate-600 mb-8">
-            <div className="flex items-center gap-2">
-              <User size={16} />
-              <span className="text-sm">Dr. Bruno Fernandes</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock size={16} />
-              <span className="text-sm">12 min de leitura</span>
+          <div className="mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Refluxo em Bebê:<br />
+              <span className="text-teal-600">Quando é Normal, Quando é Problema</span>
+            </h1>
+            <div className="flex items-center gap-3 text-slate-600 mb-8">
+              <span>Dr. Bruno Fernandes</span>
+              <span>•</span>
+              <span>12 min de leitura</span>
             </div>
           </div>
 
-          {/* Intro Box */}
+          {/* Box-Resumo Inicial (Novo) */}
           <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 border-l-4 border-teal-600 p-6 rounded-lg mb-8">
-            <p className="text-slate-700 leading-relaxed">
-              O refluxo é uma das queixas mais frequentes nos consultórios de gastropediatria. Quase todos os bebês regurgitam nos primeiros meses de vida, e a grande maioria não precisa de tratamento. Mas como saber quando o refluxo deixa de ser fisiológico e passa a ser doença? Neste artigo, vamos entender juntos o raciocínio clínico que guia essa avaliação.
+            <p className="text-slate-900 leading-relaxed">
+              <strong>A maioria dos bebês regurgita e melhora com o tempo.</strong> O ponto importante é saber quando isso é esperado e quando merece investigação.
             </p>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { label: "Bebês com refluxo", value: "1 em 3" },
-              { label: "Melhora até 12 meses", value: "95%" },
-              { label: "Tipos identificados", value: "5" },
-              { label: "Diretrizes atualizadas", value: "2026" },
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white rounded-lg p-4 border border-slate-200 text-center"
-              >
-                <div className="text-2xl font-bold text-teal-600">{stat.value}</div>
-                <div className="text-xs text-slate-600 mt-1">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+          {/* Intro Paragraph */}
+          <p className="text-slate-700 leading-relaxed text-lg">
+            O refluxo é uma das queixas mais frequentes nos consultórios de gastropediatria. Quase todos os bebês regurgitam nos primeiros meses de vida, e a grande maioria não precisa de tratamento. Mas como saber quando o refluxo deixa de ser fisiológico e passa a ser doença? Neste artigo, vamos entender juntos o raciocínio clínico que guia essa avaliação.
+          </p>
+        </motion.section>
 
-        {/* Section: O que é Refluxo */}
+        {/* Section: O que é Refluxo Gastroesofágico */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -336,15 +296,28 @@ const RefluxoBebesArticle = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             O que é Refluxo Gastroesofágico?
           </h2>
+
           <p className="text-slate-700 leading-relaxed mb-4">
-            O refluxo gastroesofágico (RGE) é o retorno involuntário do conteúdo gástrico para o esôfago. Em bebês, acontece porque o esfíncter esofágico inferior — a "válvula" entre o esôfago e o estômago — ainda está amadurecendo. Isso é absolutamente normal nos primeiros meses de vida. <strong>Cerca de 70% dos bebês de 4 meses regurgitam pelo menos uma vez ao dia.</strong> A maioria melhora espontaneamente entre 12 e 18 meses, quando o esfíncter amadurece e a criança passa mais tempo em posição vertical.
+            O refluxo gastroesofágico (RGE) é o retorno involuntário do conteúdo gástrico para o esôfago. Em bebês, acontece porque o esfíncter esofágico inferior — a "válvula" entre o esôfago e o estômago — ainda está amadurecendo. Isso é absolutamente normal nos primeiros meses de vida.
           </p>
+
+          <p className="text-slate-700 leading-relaxed mb-6">
+            <strong>Cerca de 70% dos bebês de 4 meses regurgitam pelo menos uma vez ao dia.</strong> A maioria melhora espontaneamente entre 12 e 18 meses, quando o esfíncter amadurece e a criança passa mais tempo em posição vertical.
+          </p>
+
+          {/* Key Highlight */}
+          <div className="bg-slate-100 border-l-4 border-slate-400 p-6 rounded-lg mb-8 italic">
+            <p className="text-slate-900">
+              <strong>O que separa o refluxo esperado do problema não é só o leite voltar. É o impacto que isso causa na criança.</strong>
+            </p>
+          </div>
+
           <p className="text-slate-700 leading-relaxed">
             O bebê que "golfou feliz" — regurgita, mas ganha peso adequadamente, se alimenta bem e não apresenta desconforto significativo — é o exemplo clássico de refluxo fisiológico. Esse é o cenário mais comum, e nesses casos, paciência e medidas simples são suficientes.
           </p>
         </motion.section>
 
-        {/* Section: 5 Tipos de Refluxo */}
+        {/* Section: Tipos e Categorias */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -354,34 +327,35 @@ const RefluxoBebesArticle = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Tipos e Categorias
           </h2>
+
           <p className="text-slate-700 leading-relaxed mb-8">
             Cada tipo de refluxo que seu bebê pode ter. Organizado da forma que um pediatra pensa — por tipo, causa e gravidade.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {refluxTypes.map((type, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 className="bg-white rounded-lg p-6 border border-slate-200 hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="text-4xl">{type.emoji}</div>
+                  <span className="text-3xl">{type.emoji}</span>
                   <div>
                     <div className="inline-block bg-teal-100 text-teal-700 text-xs font-semibold px-2 py-1 rounded mb-2">
                       {type.label}
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900">
+                    <h3 className="font-bold text-slate-900 text-lg">
                       {type.title}
                     </h3>
-                    <p className="text-sm text-slate-600">{type.description}</p>
                   </div>
                 </div>
+                <p className="text-sm text-slate-600 mb-4">{type.description}</p>
                 <ul className="space-y-2">
-                  {type.details.map((detail, didx) => (
-                    <li key={didx} className="flex items-center gap-2 text-sm text-slate-700">
+                  {type.details.map((detail, i) => (
+                    <li key={i} className="flex items-center gap-2 text-slate-700">
                       <CheckCircle size={16} className="text-teal-600 flex-shrink-0" />
                       {detail}
                     </li>
@@ -389,6 +363,13 @@ const RefluxoBebesArticle = () => {
                 </ul>
               </motion.div>
             ))}
+          </div>
+
+          {/* Clinical Safety Note */}
+          <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-lg">
+            <p className="text-slate-700">
+              <strong>Nota importante:</strong> Essas categorias ajudam a organizar o raciocínio clínico, mas a avaliação de cada bebê depende do contexto, da evolução e dos sinais associados.
+            </p>
           </div>
         </motion.section>
 
@@ -399,14 +380,20 @@ const RefluxoBebesArticle = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
             Refluxo Fisiológico vs. Doença do Refluxo
           </h2>
-          <p className="text-slate-700 leading-relaxed mb-6">
-            A diferença fundamental está no impacto clínico. O refluxo fisiológico é o "bebê que golfou feliz" — regurgita, mas ganha peso adequadamente, se alimenta bem e não apresenta desconforto significativo. Já a Doença do Refluxo Gastroesofágico (DRGE) causa sintomas que afetam a qualidade de vida: recusa alimentar, choro excessivo durante as mamadas, arqueamento do corpo, irritabilidade persistente, ganho de peso insuficiente ou sintomas respiratórios recorrentes.
+
+          <p className="text-slate-700 leading-relaxed mb-6 italic">
+            O que separa o normal do problema não é apenas o refluxo. É o impacto que ele causa na alimentação, no conforto, no sono, no crescimento e na qualidade de vida do bebê.
           </p>
-          <p className="text-slate-700 leading-relaxed">
+
+          <p className="text-slate-700 leading-relaxed mb-6">
             A investigação é indicada quando há sinais de alerta ou quando os sintomas impactam o desenvolvimento. Essa é a linha que separa o "normal" do "problema".
+          </p>
+
+          <p className="text-slate-700 leading-relaxed">
+            Quando há suspeita de DRGE, o pediatra pode indicar investigação adicional e, em alguns casos, tratamento medicamentoso. Mas atenção: <strong>medicação sem indicação precisa pode trazer mais riscos que benefícios.</strong>
           </p>
         </motion.section>
 
@@ -420,6 +407,7 @@ const RefluxoBebesArticle = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Comparação de Tratamentos
           </h2>
+
           <p className="text-slate-700 leading-relaxed mb-8">
             Três caminhos. Lado a lado. Sem esconder nada. Esta é a mesma comparação que seu pediatra faz mentalmente durante a consulta.
           </p>
@@ -430,10 +418,10 @@ const RefluxoBebesArticle = () => {
               <button
                 key={approach.id}
                 onClick={() => setActiveTab(approach.id)}
-                className={`px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-all ${
+                className={`px-4 py-2 rounded-lg font-semibold whitespace-nowrap transition-all ${
                   activeTab === approach.id
                     ? "bg-teal-600 text-white"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                    : "bg-slate-200 text-slate-700 hover:bg-slate-300"
                 }`}
               >
                 {approach.name}
@@ -441,57 +429,44 @@ const RefluxoBebesArticle = () => {
             ))}
           </div>
 
-          {/* Table */}
-          <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
-            {treatmentApproaches.map((approach) => (
-              activeTab === approach.id && (
-                <motion.div
-                  key={approach.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="p-6"
-                >
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="font-bold text-slate-900 mb-2">
-                        Tempo de resposta
-                      </h4>
-                      <p className="text-slate-700">{approach.timeframe}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 mb-2">
-                        O que você vai notar em casa
-                      </h4>
-                      <p className="text-slate-700">{approach.atHome}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 mb-2">
-                        Ligue se...
-                      </h4>
-                      <p className="text-slate-700">{approach.whenToCall}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 mb-2">
-                        Custo e cobertura
-                      </h4>
-                      <p className="text-slate-700">{approach.cost}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 mb-2">
-                        Tipicamente recomendado quando
-                      </h4>
-                      <p className="text-slate-700">{approach.recommended}</p>
-                    </div>
+          {/* Tab Content */}
+          {treatmentApproaches.map((approach) => (
+            activeTab === approach.id && (
+              <motion.div
+                key={approach.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-lg border border-slate-200 p-8"
+              >
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-2">Tempo de resposta</h4>
+                    <p className="text-slate-700">{approach.timeframe}</p>
                   </div>
-                </motion.div>
-              )
-            ))}
-          </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-2">O que você vai notar em casa</h4>
+                    <p className="text-slate-700">{approach.atHome}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-2">Ligue se...</h4>
+                    <p className="text-slate-700">{approach.whenToCall}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-2">Custo e cobertura</h4>
+                    <p className="text-slate-700">{approach.cost}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-2">Tipicamente recomendado quando</h4>
+                    <p className="text-slate-700">{approach.recommended}</p>
+                  </div>
+                </div>
+              </motion.div>
+            )
+          ))}
 
-          <p className="text-xs text-slate-500 mt-6">
-            Todas as informações são revisadas com base nas diretrizes da{" "}
-            <strong>Sociedade Brasileira de Pediatria (SBP)</strong>, atualizadas em 2026.
+          <p className="text-slate-700 leading-relaxed mt-8 p-4 bg-slate-50 rounded-lg">
+            <strong>Resumo:</strong> Na maioria dos bebês saudáveis, o primeiro passo é observar bem, ajustar o manejo e evitar medicação sem indicação.
           </p>
         </motion.section>
 
@@ -505,18 +480,56 @@ const RefluxoBebesArticle = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Manejo Prático: O que Funciona
           </h2>
-          <p className="text-slate-700 leading-relaxed mb-6">
-            Para o refluxo fisiológico, medidas posturais são o pilar do tratamento: manter o bebê em posição vertical por 20-30 minutos após as mamadas, oferecer volumes menores e mais frequentes, e elevar a cabeceira do berço em 30 graus. Evitar roupas apertadas na região abdominal e não movimentar o bebê bruscamente após a alimentação também ajudam.
-          </p>
-          <p className="text-slate-700 leading-relaxed mb-6">
-            Quando há suspeita de DRGE, o pediatra pode indicar investigação adicional e, em alguns casos, tratamento medicamentoso. Mas atenção: <strong>medicação sem indicação precisa pode trazer mais riscos que benefícios.</strong>
-          </p>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "Após as mamadas",
+                description: "Manter o bebê em posição vertical por 20 a 30 minutos costuma ajudar.",
+              },
+              {
+                title: "Posição",
+                description: "O refluxo tende a incomodar mais quando o bebê é colocado deitado logo após mamar.",
+              },
+              {
+                title: "Volume e frequência",
+                description: "Mamadas menores e mais frequentes podem reduzir desconforto em alguns casos.",
+              },
+              {
+                title: "O que evitar",
+                description: "Evite roupas apertadas na barriga e movimentos bruscos logo após a alimentação.",
+              },
+              {
+                title: "Quando voltar ao pediatra",
+                description: "Se o bebê estiver piorando, recusando mamadas, perdendo peso ou com sinais de alerta, a reavaliação é necessária.",
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white rounded-lg p-6 border border-slate-200"
+              >
+                <h4 className="font-bold text-slate-900 mb-3">{item.title}</h4>
+                <p className="text-slate-700">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Section: Quando Procurar o Pediatra */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
           <div className="bg-gradient-to-br from-coral-50 to-coral-100/50 border-l-4 border-coral-600 p-6 rounded-lg">
             <div className="flex gap-4">
               <AlertTriangle className="text-coral-600 flex-shrink-0" size={24} />
               <div>
-                <h3 className="font-bold text-slate-900 mb-3">
+                <h3 className="font-bold text-slate-900 mb-3 text-lg">
                   ⚠️ Quando Procurar o Pediatra
                 </h3>
                 <ul className="space-y-2 text-slate-700">
@@ -557,7 +570,7 @@ const RefluxoBebesArticle = () => {
             Árvore de Decisão Clínica
           </h2>
           <p className="text-slate-700 leading-relaxed mb-8">
-            A lógica se-então que seu pediatra usa. Nada escondido atrás de autoridade médica. Este é o caminho de decisão real para Refluxo Gastroesofágico em Bebês.
+            Esse é um jeito simples de organizar a decisão: o que pode ser observado, o que merece reavaliação e o que pede ajuda mais rápida.
           </p>
 
           <div className="space-y-4">
@@ -634,78 +647,6 @@ const RefluxoBebesArticle = () => {
           </div>
         </motion.section>
 
-        {/* Section: Testimonials */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl font-bold text-slate-900 mb-2">
-            O que os pais dizem
-          </h2>
-          <p className="text-slate-600 mb-8">Clareza no momento mais difícil.</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white rounded-lg p-6 border border-slate-200"
-              >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={16}
-                      className="fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-slate-700 italic mb-4">"{testimonial.quote}"</p>
-                <div className="border-t border-slate-200 pt-4">
-                  <p className="font-semibold text-slate-900">
-                    {testimonial.author}
-                  </p>
-                  <p className="text-sm text-slate-600">{testimonial.role}</p>
-                  <p className="text-xs text-slate-500 mt-1">
-                    {testimonial.location}
-                  </p>
-                  <div className="mt-3 inline-block bg-teal-100 text-teal-700 text-xs font-semibold px-2 py-1 rounded">
-                    {testimonial.topic}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Section: Credibilidade */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 bg-gradient-to-r from-teal-50 to-teal-100/50 rounded-lg p-8 border border-teal-200"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { number: "48", label: "Pediatras revisores" },
-              { number: "120+", label: "Revisões de diretrizes SBP" },
-              { number: "340+", label: "Referências clínicas citadas" },
-              { number: "2026", label: "Última auditoria" },
-            ].map((item, idx) => (
-              <div key={idx}>
-                <div className="text-3xl font-bold text-teal-600">
-                  {item.number}
-                </div>
-                <p className="text-sm text-slate-600 mt-2">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
         {/* Section: FAQ */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -733,7 +674,7 @@ const RefluxoBebesArticle = () => {
           </div>
         </motion.section>
 
-        {/* Section: CTA */}
+        {/* Section: CTA - Rewritten */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -741,8 +682,8 @@ const RefluxoBebesArticle = () => {
           className="mb-16 bg-gradient-to-br from-teal-600 to-teal-700 rounded-lg p-8 text-white"
         >
           <h2 className="text-3xl font-bold mb-4">Pronto para o próximo passo?</h2>
-          <p className="mb-6 text-teal-100">
-            A informação foi gratuita. O raciocínio é seu para guardar. Agora, se você precisa de um pediatra — tornamos essa parte fácil também.
+          <p className="mb-6 text-teal-100 leading-relaxed">
+            Se você precisa de ajuda para entender melhor o caso do seu filho, posso te ajudar a organizar essa história com mais clareza. Você pode falar comigo pelo WhatsApp e dar o próximo passo com mais segurança.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
@@ -780,18 +721,18 @@ const RefluxoBebesArticle = () => {
             {[
               {
                 emoji: "🥛",
-                title: "Alergia Alimentar",
+                title: "Alergia à Proteína do Leite",
                 link: "/artigo/alergia-alimentar",
               },
               {
-                emoji: "💪",
-                title: "Constipação Infantil",
-                link: "/artigo/constipacao",
+                emoji: "🤢",
+                title: "Vômitos em Lactentes",
+                link: "/artigo/vomitos",
               },
               {
-                emoji: "💧",
-                title: "Diarreia Crônica",
-                link: "/artigo/diarreia",
+                emoji: "💪",
+                title: "Cólica e Desconforto",
+                link: "/artigo/colica",
               },
             ].map((article, idx) => (
               <a
@@ -819,7 +760,7 @@ const RefluxoBebesArticle = () => {
           className="text-center text-sm text-slate-600 py-8 border-t border-slate-200"
         >
           <p>
-            Este artigo é informativo e educativo. Não substitui avaliação médica profissional. Sempre consulte um pediatra para diagnóstico e tratamento adequado.
+            Conteúdo informativo construído com base em diretrizes pediátricas atuais, revisão técnica e raciocínio clínico aplicado à prática. Sempre consulte um pediatra para diagnóstico e tratamento adequado.
           </p>
         </motion.div>
       </main>
