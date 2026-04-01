@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { href: "/diagnostico", label: "Entender Meu Filho" },
+  { href: "/biblioteca", label: "Biblioteca" },
   { href: "/sobre", label: "Conhecer Dr. Bruno" },
 ];
 

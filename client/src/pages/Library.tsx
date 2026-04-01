@@ -1,8 +1,102 @@
+import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Clock, ArrowRight, ExternalLink, BookOpen, Sparkles } from "lucide-react";
+import { Clock, ArrowRight, ExternalLink, BookOpen, Sparkles, Search, Filter, Phone, MessageCircle } from "lucide-react";
 
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
+
+interface Condition {
+  id: string;
+  name: string;
+  category: string;
+  emoji: string;
+  description: string;
+  slug: string;
+}
+
+const CONDITIONS: Condition[] = [
+  {
+    id: '1',
+    name: 'Refluxo Gastroesofágico',
+    category: 'Digestivo',
+    emoji: '🔄',
+    description: 'Regurgitação frequente e desconforto após alimentação',
+    slug: 'refluxo-infantil',
+  },
+  {
+    id: '2',
+    name: 'Alergia Alimentar (APLV)',
+    category: 'Digestivo',
+    emoji: '🥛',
+    description: 'Reação alérgica a proteínas do leite de vaca',
+    slug: 'alergia-alimentar',
+  },
+  {
+    id: '3',
+    name: 'Constipação Intestinal',
+    category: 'Digestivo',
+    emoji: '💩',
+    description: 'Dificuldade para evacuar ou evacuações infrequentes',
+    slug: 'constipacao-infantil',
+  },
+  {
+    id: '4',
+    name: 'Diarreia Crônica',
+    category: 'Digestivo',
+    emoji: '🌊',
+    description: 'Evacuações frequentes e líquidas por mais de 2 semanas',
+    slug: 'diarreia-cronica',
+  },
+  {
+    id: '5',
+    name: 'Intolerância à Lactose',
+    category: 'Digestivo',
+    emoji: '🥤',
+    description: 'Dificuldade para digerir lactose presente no leite',
+    slug: 'intolerancia-lactose',
+  },
+  {
+    id: '6',
+    name: 'Doença Inflamatória Intestinal',
+    category: 'Digestivo',
+    emoji: '🔥',
+    description: 'Inflamação crônica do trato digestivo',
+    slug: 'doenca-inflamatoria-intestinal',
+  },
+  {
+    id: '7',
+    name: 'Doença Celíaca',
+    category: 'Digestivo',
+    emoji: '🌾',
+    description: 'Intolerância ao glúten com danos ao intestino',
+    slug: 'doenca-celiaca',
+  },
+  {
+    id: '8',
+    name: 'Sangue nas Fezes',
+    category: 'Digestivo',
+    emoji: '⚠️',
+    description: 'Presença de sangue nas evacuações',
+    slug: 'sangue-fezes',
+  },
+];
+
+const CATEGORIES = [
+  { name: 'Digestivo', emoji: '🍽️', color: 'bg-amber-50' },
+  { name: 'Respiratório', emoji: '💨', color: 'bg-blue-50' },
+  { name: 'Pele', emoji: '🩹', color: 'bg-pink-50' },
+  { name: 'Ouvido e Garganta', emoji: '👂', color: 'bg-purple-50' },
+  { name: 'Olhos', emoji: '👁️', color: 'bg-green-50' },
+  { name: 'Neurológico', emoji: '🧠', color: 'bg-indigo-50' },
+];
+
+const QUICK_SEARCHES = [
+  'Refluxo em bebê',
+  'Alergia alimentar',
+  'Constipação infantil',
+  'Diarreia',
+  'Sangue nas fezes',
+];
 
 const ARTICLES = [
   {
@@ -35,26 +129,6 @@ const ARTICLES = [
     color: "border-emerald/40",
     bgColor: "bg-emerald/10",
   },
-  {
-    slug: "introducao-alimentar",
-    title: "Introdução Alimentar: Guia Completo para Pais",
-    excerpt: "Tudo que você precisa saber para começar a introdução alimentar com segurança, confiança e sem neuras",
-    category: "Alimentação",
-    readTime: "12 min",
-    emoji: "🥑",
-    color: "border-golden/50",
-    bgColor: "bg-golden/15",
-  },
-  {
-    slug: "coco-crianca",
-    title: "Cocô de Criança: Tudo que Você Precisa Saber",
-    excerpt: "Cores, consistências, frequência: o que é normal e quando procurar o pediatra. Sem tabu, com ciência.",
-    category: "Desenvolvimento",
-    readTime: "7 min",
-    emoji: "🔍",
-    color: "border-teal/40",
-    bgColor: "bg-teal/10",
-  },
 ];
 
 const fadeUp = {
@@ -67,9 +141,27 @@ const fadeUp = {
 };
 
 export default function Library() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const filteredConditions = useMemo(() => {
+    return CONDITIONS.filter((condition) => {
+      const matchesSearch =
+        condition.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        condition.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = !selectedCategory || condition.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, selectedCategory]);
+
+  const handleQuickSearch = (query: string) => {
+    setSearchQuery(query);
+    setSelectedCategory(null);
+  };
+
   return (
     <div className="w-full">
-      {/* Header */}
+      {/* Hero Section with Search */}
       <section
         className="section-spacing relative overflow-hidden"
         style={{
@@ -82,28 +174,164 @@ export default function Library() {
         <div className="absolute top-10 right-[10%] text-3xl animate-float opacity-40 pointer-events-none">📚</div>
         <div className="absolute bottom-8 left-[8%] text-2xl animate-float-slow opacity-30 pointer-events-none">✨</div>
 
-        <div className="container max-w-3xl text-center relative z-10">
+        <div className="container max-w-4xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="text-center mb-8"
           >
-            <div className="inline-flex items-center gap-2 bg-blue/10 rounded-full px-4 py-1.5 mb-4">
-              <BookOpen className="w-4 h-4 text-blue" />
-              <span className="text-sm font-bold text-blue font-display">Conteúdo Educativo</span>
+            <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-1.5 mb-4">
+              <BookOpen className="w-4 h-4 text-primary" />
+              <span className="text-sm font-bold text-primary font-display">Biblioteca de Condições</span>
             </div>
-            <h1 className="mb-4">Biblioteca <span className="text-coral">Educativa</span></h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Conteúdo profundo e confiável sobre temas que importam para a saúde digestiva do seu filho
+            <h1 className="mb-4">Entenda o que está <span className="text-accent">acontecendo</span></h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Explore as principais condições pediátricas com explicações claras, sem jargão técnico. 
+              Cada condição é explicada como o Dr. Bruno faria com você.
             </p>
+          </motion.div>
+
+          {/* Search Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="space-y-6"
+          >
+            {/* Search Input */}
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Digite um sintoma, condição ou pergunta..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-primary/20 bg-white text-foreground placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+            </div>
+
+            {/* Quick Search Tags */}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {QUICK_SEARCHES.map((query) => (
+                <button
+                  key={query}
+                  onClick={() => handleQuickSearch(query)}
+                  className="px-3 py-1.5 rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors text-sm font-medium"
+                >
+                  {query}
+                </button>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-4 justify-center">
+              <Link href="/contato">
+                <a className="flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                  <Phone className="w-5 h-5" />
+                  Agendar Consulta
+                </a>
+              </Link>
+              <a
+                href="https://wa.me/5534997099226"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Articles Grid */}
+      {/* Categories Section */}
+      <section className="px-4 py-12 md:py-16 bg-white">
+        <div className="container max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-8 text-center">
+            Categorias de Condições
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category.name}
+                onClick={() =>
+                  setSelectedCategory(
+                    selectedCategory === category.name ? null : category.name
+                  )
+                }
+                className={`p-4 rounded-lg text-center transition-all ${
+                  selectedCategory === category.name
+                    ? `${category.color} ring-2 ring-primary`
+                    : `${category.color} hover:ring-2 hover:ring-primary/50`
+                }`}
+              >
+                <div className="text-3xl mb-2">{category.emoji}</div>
+                <p className="text-sm font-semibold text-foreground">{category.name}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Conditions List Section */}
+      <section className="px-4 py-12 md:py-16 bg-foreground/5">
+        <div className="container max-w-6xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+              {selectedCategory ? `${selectedCategory}` : 'Todas as Condições'}
+            </h2>
+            <span className="text-sm font-semibold text-primary">
+              {filteredConditions.length} resultado{filteredConditions.length !== 1 ? 's' : ''}
+            </span>
+          </div>
+
+          {filteredConditions.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredConditions.map((condition) => (
+                <Link key={condition.id} href={`/artigo/${condition.slug}`}>
+                  <a className="block p-6 rounded-lg bg-white border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all group">
+                    <div className="flex items-start gap-4">
+                      <span className="text-4xl">{condition.emoji}</span>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {condition.name}
+                        </h3>
+                        <p className="text-sm text-foreground/60 mt-1">{condition.description}</p>
+                        <span className="inline-block mt-3 text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
+                          {condition.category}
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-foreground/60 mb-4">Nenhuma condição encontrada.</p>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setSelectedCategory(null);
+                }}
+                className="text-primary hover:text-primary/80 font-semibold"
+              >
+                Limpar filtros
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Featured Articles */}
       <section className="section-spacing bg-cream">
         <div className="container max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-8 text-center">
+            Artigos Destacados
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {ARTICLES.map((article, idx) => (
               <motion.div
                 key={article.slug}
@@ -122,7 +350,7 @@ export default function Library() {
                       <div className={`w-12 h-12 ${article.bgColor} rounded-2xl flex items-center justify-center text-2xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
                         {article.emoji}
                       </div>
-                      <span className="inline-block px-2.5 py-1 bg-blue/10 text-blue text-xs font-bold rounded-full uppercase tracking-wider font-display">
+                      <span className="inline-block px-2.5 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-wider font-display">
                         {article.category}
                       </span>
                     </div>
@@ -131,13 +359,13 @@ export default function Library() {
                       {article.readTime}
                     </span>
                   </div>
-                  <h3 className="text-lg md:text-xl mb-3 group-hover:text-blue transition-colors leading-snug">
+                  <h3 className="text-lg md:text-xl mb-3 group-hover:text-primary transition-colors leading-snug">
                     {article.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {article.excerpt}
                   </p>
-                  <span className="text-blue font-bold text-sm inline-flex items-center gap-1 font-display">
+                  <span className="text-primary font-bold text-sm inline-flex items-center gap-1 font-display">
                     Ler artigo
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -148,60 +376,36 @@ export default function Library() {
         </div>
       </section>
 
-      {/* Guia Alimentar Destaque */}
-      <section className="section-spacing bg-white">
-        <div className="container max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <a
-              href="https://guiabebes-xlauyfmx.manus.space"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group"
-            >
-              <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald/10 via-golden/15 to-blue/10 border-3 border-emerald/20 p-6 md:p-8 hover:shadow-xl transition-all duration-500">
-                <div className="absolute top-4 right-6 text-3xl animate-float opacity-50">🥑</div>
-                <div className="absolute bottom-4 right-16 text-2xl animate-float-slow opacity-40">🍌</div>
-
-                <div className="flex flex-col md:flex-row md:items-center gap-6 relative z-10">
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-emerald/15 rounded-2xl flex items-center justify-center text-3xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform">
-                      🥑
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 rounded-full">
-                        <Sparkles className="w-3 h-3 text-emerald" />
-                        <span className="text-xs font-bold text-emerald font-display uppercase tracking-wider">Guia Interativo</span>
-                      </div>
-                      <ExternalLink className="w-3.5 h-3.5 text-emerald" />
-                    </div>
-                    <h3 className="text-lg md:text-xl mb-2 group-hover:text-teal transition-colors leading-snug">
-                      1ª Papinha? O Guia que Todo Pai Queria Ter Recebido Antes
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      O que oferecer, o que evitar, e os erros mais comuns que ninguém te conta.
-                    </p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <span className="btn-secondary text-sm inline-flex items-center gap-1.5">
-                      Acessar Guia
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </div>
-                </div>
+      {/* Trust Section */}
+      <section className="px-4 py-12 md:py-16 bg-white">
+        <div className="container max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg p-8 md:p-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
+              Confiança Baseada em Expertise
+            </h2>
+            <p className="text-foreground/75 mb-8">
+              Todas as condições nesta biblioteca foram revisadas e validadas pelo Dr. Bruno Fernandes, 
+              gastroenterologista pediátrico com mais de 15 anos de experiência clínica.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="text-center">
+                <p className="text-3xl font-bold text-primary">8+</p>
+                <p className="text-sm text-foreground/60">Condições Revisadas</p>
               </div>
-            </a>
-          </motion.div>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-primary">15+</p>
+                <p className="text-sm text-foreground/60">Anos de Experiência</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-primary">500+</p>
+                <p className="text-sm text-foreground/60">Famílias Atendidas</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Newsletter CTA */}
+      {/* CTA Section */}
       <section className="section-spacing relative overflow-hidden bg-teal">
         {/* Wavy top */}
         <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
@@ -220,27 +424,28 @@ export default function Library() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="!text-white mb-4">Receba Novos Artigos por Email</h2>
+            <h2 className="!text-white mb-4">Pronto para conversar com o Dr. Bruno?</h2>
             <p className="text-lg mb-8 text-white/85 font-display">
-              Inscreva-se para receber conteúdo exclusivo e atualizado sobre saúde pediátrica digestiva
+              Agende uma consulta e esclareça todas as suas dúvidas sobre a saúde digestiva do seu filho.
             </p>
-            <form
-              className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Obrigado! Você será notificado sobre novos artigos.");
-              }}
-            >
-              <input
-                type="email"
-                placeholder="Seu melhor email"
-                className="flex-1 px-5 py-3 rounded-full text-foreground bg-white border-0 focus:outline-none focus:ring-2 focus:ring-white/50 font-sans"
-                required
-              />
-              <button type="submit" className="btn-secondary !bg-white !text-teal whitespace-nowrap">
-                Inscrever
-              </button>
-            </form>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://wa.me/5534997099226"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp
+              </a>
+              <a
+                href="tel:+5534997099226"
+                className="flex items-center justify-center gap-2 bg-white text-teal px-8 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+                Ligar Agora
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
