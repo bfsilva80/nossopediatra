@@ -97,33 +97,30 @@ const RefluxoBebesArticle = () => {
         "Bebê regurgita após mamar mas está ganhando peso, dormindo e se desenvolvendo normalmente. Parece incomodado mas se acalma rapidamente.",
       whenToCall:
         "Bebê para de ganhar peso, vômitos se tornam forçados, há sangue no vômito, ou sinais de dificuldade respiratória.",
-      cost: "Sem medicação. Ajustes posturais e de alimentação sem custo adicional.",
       recommended:
         "Bebês com refluxo fisiológico, ganho de peso adequado e sem sinais de complicação.",
     },
     {
       id: "medicamentoso",
       name: "Quando considerar medicação",
-      timeframe: "2–4 semanas",
+      timeframe: "1–2 semanas",
       atHome:
-        "Bebê regurgita após mamar mas está ganhando peso, dormindo e se desenvolvendo normalmente. Parece incomodado mas se acalma rapidamente.",
+        "Bebê chora muito após mamar, arqueia as costas, recusa alimentação ou não ganha peso apesar dos cuidados posturais. Pode haver refluxo silencioso sem vômitos visíveis.",
       whenToCall:
-        "Bebê para de ganhar peso, vômitos se tornam forçados, há sangue no vômito, ou sinais de dificuldade respiratória.",
-      cost: "Medicação conforme prescrição. Custos variam conforme cobertura.",
+        "Se após 2 semanas de medicação não houver melhora, ou se aparecerem novos sintomas. Medicações comuns: omeprazol, ranitidina ou alginato de sódio.",
       recommended:
-        "Bebês com DRGE confirmada ou sintomas que não melhoram com medidas conservadoras.",
+        "Bebês com DRGE confirmada, sintomas que não melhoram com medidas conservadoras, ou suspeita de alergia alimentar.",
     },
     {
       id: "especialista",
       name: "Quando procurar especialista",
-      timeframe: "2–4 semanas",
+      timeframe: "Avaliação urgente",
       atHome:
-        "Bebê regurgita após mamar mas está ganhando peso, dormindo e se desenvolvendo normalmente. Parece incomodado mas se acalma rapidamente.",
+        "Bebê apresenta sinais de alerta: sangue no vômito, apneia (pausas na respiração), engasgos graves, perda de peso significativa, ou irritabilidade extrema.",
       whenToCall:
-        "Bebê para de ganhar peso, vômitos se tornam forçados, há sangue no vômito, ou sinais de dificuldade respiratória.",
-      cost: "Consulta especializada. Custos conforme plano de saúde.",
+        "Procure o gastroenterologista pediátrico se há suspeita de complicações (esofagite, estenose), falha de tratamento prévio, ou necessidade de investigação adicional (endoscopia, pH-metria).",
       recommended:
-        "Casos complexos, suspeita de complicações, ou falha de tratamento prévio.",
+        "Casos complexos, complicações suspeitas, falha de tratamento medicamentoso, ou quando há necessidade de investigação diagnóstica avançada.",
     },
   ];
 
@@ -451,10 +448,6 @@ const RefluxoBebesArticle = () => {
                   <div>
                     <h4 className="font-bold text-slate-900 mb-2">Ligue se...</h4>
                     <p className="text-slate-700">{approach.whenToCall}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 mb-2">Custo e cobertura</h4>
-                    <p className="text-slate-700">{approach.cost}</p>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-2">Tipicamente recomendado quando</h4>
