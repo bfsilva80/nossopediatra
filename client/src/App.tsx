@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { StickyWhatsAppCTA } from '@/components/StickyWhatsAppCTA';
+import { FloatingDock } from '@/components/FloatingDock';
 import { injectSchema, generateOrganizationSchema } from "@/lib/seo-schema";
 import { initializePerformanceOptimizations } from "@/lib/performance";
 import Home from "./pages/Home";
@@ -79,6 +80,7 @@ function App() {
               <Router />
             </main>
             <Footer />
+            <FloatingDock />
             <StickyWhatsAppCTA />
           </div>
         </TooltipProvider>
