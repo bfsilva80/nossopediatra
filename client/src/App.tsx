@@ -22,6 +22,7 @@ import SymptomChecker from "./pages/SymptomChecker";
 import SymptomDetail from "./pages/SymptomDetail";
 import Blog from "./pages/Blog";
 import ArticleDetail from "./pages/ArticleDetail";
+import RefluxoBebesArticle from "./pages/RefluxoBebesArticle";
 
 function Router() {
   const [location] = useLocation();
@@ -44,6 +45,7 @@ function Router() {
       <Route path="/atlas-sintomas" component={SymptomAtlas} />
       <Route path="/biblioteca" component={Library} />
       <Route path="/artigo/:slug" component={Article} />
+      <Route path="/refluxo-bebes" component={RefluxoBebesArticle} />
       <Route path="/conteudo/:slug">
         {({ slug }) => <Redirect to={`/artigo/${slug}`} />}
       </Route>

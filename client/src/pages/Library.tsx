@@ -100,6 +100,16 @@ const QUICK_SEARCHES = [
 
 const ARTICLES = [
   {
+    slug: "refluxo-bebes",
+    title: "Refluxo em Bebês: Guia Completo com Árvore de Decisão",
+    excerpt: "Entenda os tipos de refluxo, compare tratamentos e siga a árvore de decisão clínica que seu pediatra usa",
+    category: "Refluxo",
+    readTime: "12 min",
+    emoji: "🍼",
+    color: "border-coral/40",
+    bgColor: "bg-coral/10",
+  },
+  {
     slug: "refluxo-bebe",
     title: "Refluxo em Bebê: Quando é Normal, Quando é Problema",
     excerpt: "Entenda o raciocínio clínico por trás do refluxo infantil, quando é fisiológico e quando merece investigação",
@@ -342,7 +352,7 @@ export default function Library() {
                 custom={idx}
               >
                 <Link
-                  href={`/artigo/${article.slug}`}
+                  href={article.slug === "refluxo-bebes" ? `/refluxo-bebes` : `/artigo/${article.slug}`}
                   className={`card-base p-6 md:p-7 block group h-full border-t-4 ${article.color}`}
                 >
                   <div className="flex items-start justify-between mb-4">
