@@ -236,11 +236,9 @@ export default function Library() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4 justify-center">
-              <Link href="/contato">
-                <a className="flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
-                  <Phone className="w-5 h-5" />
-                  Agendar Consulta
-                </a>
+              <Link href="/contato" className="flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                <Phone className="w-5 h-5" />
+                Agendar Consulta
               </Link>
               <a
                 href="https://wa.me/5534997099226"
@@ -300,21 +298,19 @@ export default function Library() {
           {filteredConditions.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredConditions.map((condition) => (
-                <Link key={condition.id} href={`/artigo/${condition.slug}`}>
-                  <a className="block p-6 rounded-lg bg-white border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all group">
-                    <div className="flex items-start gap-4">
-                      <span className="text-4xl">{condition.emoji}</span>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                          {condition.name}
-                        </h3>
-                        <p className="text-sm text-foreground/60 mt-1">{condition.description}</p>
-                        <span className="inline-block mt-3 text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
-                          {condition.category}
-                        </span>
-                      </div>
+                <Link key={condition.id} href={`/artigo/${condition.slug}`} className="block p-6 rounded-lg bg-white border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all group">
+                  <div className="flex items-start gap-4">
+                    <span className="text-4xl">{condition.emoji}</span>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {condition.name}
+                      </h3>
+                      <p className="text-sm text-foreground/60 mt-1">{condition.description}</p>
+                      <span className="inline-block mt-3 text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
+                        {condition.category}
+                      </span>
                     </div>
-                  </a>
+                  </div>
                 </Link>
               ))}
             </div>
