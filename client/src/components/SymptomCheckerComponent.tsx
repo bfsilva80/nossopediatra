@@ -265,11 +265,40 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
           severity={result.condition.urgency === "high" ? "high" : "medium"}
         />
 
+        {/* Secao de Sinais de Alerta */}
+        <div className="bg-coral/5 rounded-2xl p-8 border-2 border-coral/20">
+          <h3 className="font-display font-bold text-foreground mb-4 flex items-center gap-2">
+            <AlertCircle className="w-5 h-5 text-coral" />
+            Sinais de Alerta
+          </h3>
+          <p className="text-foreground/70 mb-4">
+            Procure atendimento de emergencia se observar:
+          </p>
+          <ul className="space-y-2">
+            <li className="flex gap-3 text-foreground/80">
+              <span className="text-coral font-bold flex-shrink-0">•</span>
+              <span>Dificuldade para respirar ou engasgo persistente</span>
+            </li>
+            <li className="flex gap-3 text-foreground/80">
+              <span className="text-coral font-bold flex-shrink-0">•</span>
+              <span>Sangue no vomito ou nas fezes</span>
+            </li>
+            <li className="flex gap-3 text-foreground/80">
+              <span className="text-coral font-bold flex-shrink-0">•</span>
+              <span>Dor abdominal intensa e subita</span>
+            </li>
+            <li className="flex gap-3 text-foreground/80">
+              <span className="text-coral font-bold flex-shrink-0">•</span>
+              <span>Febre alta ou sintomas de infeccao</span>
+            </li>
+          </ul>
+        </div>
+
         {/* CTA Final */}
-        <div className="bg-white rounded-2xl p-8 border-2 border-blue/20 text-center">
+        <div className="bg-gradient-to-br from-teal/10 via-blue/10 to-emerald/10 rounded-2xl p-8 border-2 border-teal/20 text-center">
           <h3 className="text-xl font-display font-bold text-foreground mb-3">Pronto para conversar com um especialista?</h3>
           <p className="text-foreground/70 mb-6">
-            Agendaremos uma consulta para avaliar seu filho com atenção e cuidado
+            Esta ferramenta organizou a história dos sintomas. Agora, uma avaliação profissional pode oferecer clareza e segurança.
           </p>
           <Button className="bg-blue hover:bg-blue/90 text-white px-8 py-3 rounded-lg font-semibold">
             Agendar Consulta Agora
@@ -325,19 +354,25 @@ export const SymptomChecker: React.FC<SymptomCheckerProps> = ({ onComplete }) =>
         currentQuestionId={currentQuestionId}
       />
 
-      {/* Barra de Progresso */}
+      {/* Barra de Progresso com Descrição */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="w-full h-2 bg-blue/10 rounded-full overflow-hidden"
+        className="space-y-2"
       >
-        <motion.div
-          className="h-full bg-gradient-to-r from-teal to-blue"
-          initial={{ width: 0 }}
-          animate={{ width: `${((history.length + 1) / 10) * 100}%` }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        />
+        <div className="flex justify-between items-center">
+          <p className="text-sm font-medium text-foreground/70">Você está no caminho certo</p>
+          <p className="text-xs text-foreground/50">Etapa {Math.min(history.length + 1, 5)} de 5</p>
+        </div>
+        <div className="w-full h-2 bg-blue/10 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-teal to-blue"
+            initial={{ width: 0 }}
+            animate={{ width: `${((history.length + 1) / 10) * 100}%` }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+        </div>
       </motion.div>
 
       {/* Pergunta */}

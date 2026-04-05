@@ -192,6 +192,7 @@ export default function Home() {
                 </Link>
                 <Link href="/diagnostico" className="btn-outline text-sm md:text-base font-semibold px-6 md:px-8 py-4 md:py-3 rounded-lg border-2 hover:bg-teal/5 transition-all w-full md:w-auto text-center" title="Começar a entender os sintomas do seu filho">
                   Por onde começar
+                  <ArrowRight className="hidden md:inline ml-2 w-5 h-5" />
                 </Link>
               </motion.div>
 
