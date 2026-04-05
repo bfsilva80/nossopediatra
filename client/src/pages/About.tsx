@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, Award, Users, BookOpen, Stethoscope, FileText, Sparkles, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
-import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
-import { instagramTestimonials } from "@/data/instagram-testimonials";
+import { Testimonial } from "@/components/ui/design-testimonial";
 import { SEOHead } from "@/components/SEOHead";
 import { useEffect } from "react";
 
@@ -218,28 +217,7 @@ export default function About() {
       </section>
 
       {/* ═══════════ TESTIMONIALS ═══════════ */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="container max-w-5xl">
-          <motion.div
-            className="text-center mb-16 md:mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            custom={0}
-          >
-            <h2 className="mb-4">O que algumas famílias levam da consulta</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Mais do que respostas prontas, muitas vezes o que muda tudo é finalmente entender o que está acontecendo.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <TestimonialsColumn testimonials={instagramTestimonials.slice(0, 3).map(t => ({ text: t.quote, image: t.image, name: t.name, role: t.role || '' }))} />
-            <TestimonialsColumn testimonials={instagramTestimonials.slice(3, 6).map(t => ({ text: t.quote, image: t.image, name: t.name, role: t.role || '' }))} />
-          </div>
-        </div>
-      </section>
+      <Testimonial />
     </div>
   );
 }

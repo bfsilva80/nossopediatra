@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Sparkles, Heart, BookOpen } from "lucide-react";
 import { Link } from "wouter";
-import { TestimonialsSection } from "@/components/testimonials-section";
+import { Testimonial } from "@/components/ui/design-testimonial";
 import { injectSchema, generateLocalBusinessSchema } from "@/lib/seo-schema";
 import { SEOHead } from "@/components/SEOHead";
 
@@ -361,7 +361,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ TESTIMONIALS ═══════════ */}
-      <TestimonialsSection />
+      <Testimonial />
 
       {/* ═══════════ FINAL CTA ═══════════ */}
       <section className="py-20 md:py-32 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
