@@ -21,8 +21,8 @@ export default function SymptomCheckerPage() {
   useEffect(() => {
     // Set SEO meta tags
     SEOHead({
-      title: "Verificador de Sintomas | Entender Meu Filho",
-      description: "Ferramenta interativa para diagnosticar sintomas digestivos em criancas. Refluxo, constipacao, alergias alimentares e dor abdominal. Diagnostico personalizado em menos de 2 minutos.",
+      title: "Entender os Sintomas do Seu Filho | Nosso Pediatra",
+      description: "Ferramenta para organizar melhor a historia dos sintomas digestivos. Refluxo, constipacao, alergias alimentares e dor abdominal. Orientacao inicial em menos de 2 minutos.",
       image: "https://nossopediatra.com.br/logo.png",
       url: "https://nossopediatra.com.br/diagnostico",
       type: "website",
@@ -59,25 +59,20 @@ export default function SymptomCheckerPage() {
             className="text-center mb-12"
           >
             {/* Sobrancelha */}
-            <div className="inline-block mb-4 px-4 py-2 bg-teal/10 rounded-full">
-              <span className="text-sm font-medium text-teal uppercase tracking-wide">Orientação inicial por sintomas</span>
-            </div>
-            
             {/* H1 */}
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Entenda melhor os sintomas digestivos do seu filho
+              Entender os sintomas do seu filho já ajuda a cuidar melhor.
             </h1>
             
             {/* Subtítulo */}
             <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-              Responda algumas perguntas simples e receba uma orientação inicial para entender melhor o que observar, o que merece mais atenção e qual pode ser o próximo passo.
+              Nem sempre é fácil saber o que é esperado, o que merece atenção e o que já pede uma avaliação mais cuidadosa. Esta ferramenta foi feita para ajudar a organizar a história com mais clareza.
             </p>
             
             {/* Texto de Apoio */}
             <div className="bg-white/60 backdrop-blur rounded-lg p-6 mb-8 border border-slate-200/50">
               <p className="text-base text-slate-700 leading-relaxed">
-                Nem sempre é fácil saber o que pode esperar e o que precisa ser investigado.<br />
-                <span className="font-medium">A gente criou esta ferramenta para ajudar a organizar a história com mais clareza, sem pressa e sem alarmismo.</span>
+                Você não precisa acertar o nome do problema. Basta contar o que está acontecendo. A ideia aqui é ajudar a dar forma à dúvida.
               </p>
             </div>
           </motion.div>
@@ -255,20 +250,20 @@ export default function SymptomCheckerPage() {
             className="p-8 bg-white rounded-lg border-2 border-blue/20 text-center"
           >
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
-              Ainda ficou em dúvida?
+              O objetivo aqui não é fechar diagnóstico. É deixar a história mais clara.
             </h3>
             <p className="text-slate-600 mb-6">
-              Às vezes, a família não precisa de mais informação. Precisa de clareza. Se você quiser, o próximo passo pode ser uma avaliação mais individualizada para entender melhor o que os sintomas do seu filho estão tentando contar.
-            </p>
-            <p className="text-sm text-slate-500 mb-6">
-              Resposta em até 2 horas
+              Com esse primeiro mapa, fica mais fácil entender o que pode estar acontecendo, o que merece atenção e quando vale procurar uma avaliação especializada.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/biblioteca" className="inline-block px-8 py-3 bg-slate-100 text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-colors">
-                Explorar Biblioteca
+                Ler mais sobre isso
               </Link>
               <Link href="/contato" className="inline-block px-8 py-3 bg-white text-teal border-2 border-teal rounded-lg font-semibold hover:bg-teal/5 transition-colors">
                 Agendar Consulta
+              </Link>
+              <Link href="/diagnostico" className="inline-block px-8 py-3 bg-slate-50 text-slate-900 border-2 border-slate-200 rounded-lg font-semibold hover:bg-slate-100 transition-colors">
+                Voltar ao Início
               </Link>
             </div>
           </motion.div>

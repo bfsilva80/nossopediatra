@@ -211,14 +211,12 @@ export default function Library() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-1.5 mb-4">
-              <BookOpen className="w-4 h-4 text-primary" />
-              <span className="text-sm font-bold text-primary font-display">Biblioteca de Condições</span>
-            </div>
-            <h1 className="mb-4">Entenda o que está <span className="text-accent">acontecendo</span></h1>
+            <h1 className="mb-4">Conteúdos para entender melhor</h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Explore as principais condições pediátricas com explicações claras, sem jargão técnico. 
-              Cada condição é explicada como o Dr. Bruno faria com você.
+              Aqui você encontra textos sobre sintomas, dúvidas comuns e problemas digestivos da infância escritos de um jeito claro, direto e sem alarde. A ideia não é transformar pai e mãe em especialistas. É ajudar a fazer a pergunta certa, reconhecer o que merece atenção e entender melhor o caminho.
+            </p>
+            <p className="text-sm text-muted-foreground/70 mt-6 italic">
+              O que a barriga da criança pode estar tentando contar.
             </p>
           </motion.div>
 

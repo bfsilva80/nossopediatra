@@ -58,16 +58,16 @@ const aboutLinks = [
 ];
 
 const serviceLinks = [
-  { text: 'Consultas Presenciais', href: data.services.consultas },
+  { text: 'Consulta em Uberaba', href: data.services.consultas },
   { text: 'Telemedicina', href: data.services.telemedicina },
-  { text: 'Biblioteca de Artigos', href: data.services.artigos },
-  { text: 'Verificador de Sintomas', href: data.services.diagnostico },
+  { text: 'Biblioteca', href: data.services.artigos },
+  { text: 'Entender Meu Filho', href: data.services.diagnostico },
 ];
 
 const helpfulLinks = [
   { text: 'Perguntas Frequentes', href: data.help.faqs },
   { text: 'Agendar Consulta', href: data.help.agendamento, hasIndicator: true },
-  { text: 'Suporte', href: data.help.suporte },
+  { text: 'Fale com a Equipe', href: data.help.suporte },
 ];
 
 const contactInfo = [

@@ -75,7 +75,7 @@ export default function Navigation() {
             href="/contato"
             className="btn-primary text-sm !py-2 !px-6 ml-2"
           >
-            Conversar Agora
+            Agendar Consulta
           </Link>
         </div>
 
@@ -127,7 +127,7 @@ export default function Navigation() {
                 transition={{ delay: 0.2 }}
               >
                 <Link href="/contato" className="btn-primary w-full text-center text-sm block">
-                  Conversar Agora
+                  Agendar Consulta
                 </Link>
               </motion.div>
             </div>

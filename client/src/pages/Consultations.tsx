@@ -1,56 +1,11 @@
-import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Star, ArrowRight, Sparkles, Heart, Stethoscope, FileText, Clock } from "lucide-react";
+import { Link } from "wouter";
 import { TestimonialsSection } from "@/components/testimonials-section";
 
 const DOCTOR_PORTRAIT = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png";
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png";
-
-const STEPS = [
-  {
-    emoji: "📋",
-    color: "bg-coral/15",
-    title: "Avaliação Completa",
-    description: "Histórico detalhado, exame físico minucioso e investigação cuidadosa dos sintomas.",
-  },
-  {
-    emoji: "💬",
-    color: "bg-blue/10",
-    title: "Explicação Clara",
-    description: "Você entenderá o raciocínio clínico por trás de cada recomendação.",
-  },
-  {
-    emoji: "🎯",
-    color: "bg-emerald/10",
-    title: "Plano Personalizado",
-    description: "Estratégia adaptada às necessidades do seu filho e à realidade da sua família.",
-  },
-  {
-    emoji: "🤝",
-    color: "bg-golden/20",
-    title: "Acompanhamento",
-    description: "Suporte contínuo e ajustes conforme necessário. Você não estará sozinho.",
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    name: "Maria Silva",
-    text: "Finalmente entendi o que estava acontecendo com meu filho. O Dr. Bruno explicou tudo com clareza e paciência, e o tratamento funcionou!",
-    emoji: "💛",
-  },
-  {
-    name: "João Santos",
-    text: "Consultei vários pediatras antes. Aqui consegui respostas reais e um plano que realmente funciona. A diferença está na escuta atenta.",
-    emoji: "⭐",
-  },
-  {
-    name: "Ana Costa",
-    text: "A empatia e profissionalismo fizeram toda a diferença. Minha filha melhorou muito. Finalmente encontrei um médico que ouve e explica.",
-    emoji: "🌟",
-  },
-];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -82,14 +37,14 @@ export default function Consultations() {
               transition={{ duration: 0.7 }}
               className="max-w-lg"
             >
-              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 border-2 border-teal/15">
-                <Sparkles className="w-4 h-4 text-teal" />
-                <span className="text-sm font-bold text-foreground/80 font-display">Atendimento Especializado</span>
-              </div>
-              <h1 className="mb-4">Consultas <span className="text-coral">Especializadas</span></h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Atendimento focado em gastroenterologia pediátrica, com escuta atenta e ciência de verdade
+              <h1 className="mb-6 text-white">Consulta que ajuda a entender e decidir melhor</h1>
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-8">
+                Quando os sintomas digestivos confundem, uma boa consulta não serve apenas para dizer o que fazer. Serve para organizar a história e mostrar com mais clareza o caminho.
               </p>
+              <Link href="/contato" className="btn-primary inline-block">
+                Agendar Consulta
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
             </motion.div>
 
             <motion.div
@@ -98,179 +53,83 @@ export default function Consultations() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              <div className="relative">
-                <div className="w-80 h-96 rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl">
-                  <img src={DOCTOR_PORTRAIT} alt="Dr. Bruno Fernandes - Retrato Profissional" className="w-full h-full object-cover" />
-                </div>
-                <div className="absolute -top-3 -left-3 w-10 h-10 bg-golden/40 rounded-full opacity-60 animate-pulse-soft" />
-                <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-emerald/20 rounded-2xl opacity-50 animate-float-slow" />
-              </div>
+              <img src={DOCTOR_IMG} alt="Dr. Bruno" className="w-full max-w-sm" />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="section-spacing bg-background">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left Column - O que Esperar */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={fadeUp}
-              custom={0}
-            >
-              <h2 className="mb-8">O que <span className="text-coral">Esperar</span></h2>
-              <div className="space-y-5">
-                {STEPS.map((step, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-golden/15 hover:border-teal/20 transition-all duration-300 hover:shadow-md group"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
-                    custom={idx + 1}
-                  >
-                    <div className={`w-14 h-14 ${step.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
-                      {step.emoji}
-                    </div>
-                    <div>
-                      <h4 className="font-display font-bold text-foreground mb-1">
-                        {step.title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right Column - Informações Práticas */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={fadeUp}
-              custom={1}
-            >
-              <h2 className="mb-8">Informações <span className="text-teal">Práticas</span></h2>
-              <div className="card-base p-6 md:p-8 space-y-6">
-                {/* Quando Procurar */}
-                <div>
-                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Stethoscope className="w-5 h-5 text-teal" />
-                    Quando Procurar
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground text-sm">
-                    {[
-                      "Refluxo persistente ou com sinais de alerta",
-                      "Suspeita de alergia alimentar (APLV)",
-                      "Constipação ou diarreia crônica",
-                      "Dor abdominal recorrente",
-                      "Dificuldades na alimentação ou ganho de peso",
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-coral mt-0.5">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="border-t-2 border-teal/10 pt-6">
-                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-teal" />
-                    O que Levar
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground text-sm">
-                    {[
-                      "Cartão de vacinação atualizado",
-                      "Histórico médico e exames anteriores",
-                      "Exames recentes (se houver)",
-                      "Diário alimentar dos últimos 3 dias",
-                      "Anotações de sintomas observados",
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-emerald font-bold mt-0.5">✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="border-t-2 border-teal/10 pt-6">
-                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-teal" />
-                    Duração
-                  </h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-coral/10 p-4 rounded-2xl text-center">
-                      <p className="text-2xl font-display font-bold text-coral">60</p>
-                      <p className="text-xs text-muted-foreground mt-1">min — Primeira consulta</p>
-                    </div>
-                    <div className="bg-emerald/10 p-4 rounded-2xl text-center">
-                      <p className="text-2xl font-display font-bold text-teal">30-45</p>
-                      <p className="text-xs text-muted-foreground mt-1">min — Acompanhamento</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials - Resgate da página principal */}
-      <TestimonialsSection />
-
-      {/* CTA */}
-      <section className="section-spacing relative overflow-hidden bg-teal">
-        <div className="absolute top-0 left-0 right-0 overflow-hidden leading-[0] rotate-180">
-          <svg viewBox="0 0 1440 60" className="w-full h-10 md:h-14" preserveAspectRatio="none">
-            <path fill="white" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" />
-          </svg>
-        </div>
-
-        <div className="absolute top-16 left-[10%] text-2xl animate-float opacity-15">💛</div>
-        <div className="absolute bottom-12 right-[8%] text-xl animate-float-slow opacity-15">⭐</div>
-
-        <div className="container max-w-2xl text-center relative z-10">
+      {/* Como é a consulta */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="container max-w-4xl">
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
+            className="bg-white rounded-lg p-8 md:p-12 border border-teal/10"
           >
-            <Heart className="w-10 h-10 text-white/40 mx-auto mb-4 animate-pulse-soft" />
-            <h2 className="!text-white mb-4">Pronto para Agendar?</h2>
-            <p className="text-lg mb-8 text-white/85 font-display">
-              Escolha a forma mais conveniente para você
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">Na consulta, eu procuro entender o quadro por inteiro</h2>
+            
+            <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+              Como os sintomas começaram, o que já foi tentado, o que piora, o que melhora e o que, naquela história, realmente chama atenção.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://wa.me/553499709226"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary !bg-white !text-teal"
-              >
-                💬 WhatsApp
-              </a>
-              <Link
-                href="/contato"
-                className="btn-outline !border-white !text-white hover:!bg-white/10"
-              >
-                📅 Agenda Online
-              </Link>
-            </div>
+            
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              A partir disso, a gente constrói um plano. Às vezes ele inclui exames. Às vezes não. Às vezes o mais importante é tratar. Em outras, é observar melhor. O ponto é: a família sai entendendo mais.
+            </p>
           </motion.div>
         </div>
       </section>
+
+      {/* Para quem essa consulta ajuda */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
+        <div className="container max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeUp}
+            custom={0}
+            className="bg-white rounded-lg p-8 md:p-12 border border-teal/10"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">Para quem essa consulta costuma ajudar</h2>
+            
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Essa consulta costuma ser especialmente útil quando a criança tem refluxo, vômitos, constipação, dor abdominal recorrente, suspeita de alergia alimentar, dificuldade para evacuar, alteração do cocô ou sintomas digestivos que já vêm se repetindo sem uma explicação clara.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Fecho e CTA */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="container max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeUp}
+            custom={0}
+            className="bg-white rounded-lg p-8 md:p-12 border border-teal/10 text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Se você sente que está faltando clareza</h2>
+            
+            <p className="text-lg text-foreground/80 leading-relaxed mb-8">
+              Se você sente que está faltando clareza para entender o que seu filho tem, talvez este já seja o momento de organizar essa história com mais cuidado.
+            </p>
+
+            <Link href="/contato" className="btn-primary inline-block">
+              Agendar Consulta
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <TestimonialsSection />
     </div>
   );
 }

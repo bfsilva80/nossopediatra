@@ -61,19 +61,19 @@ const WHY_TRUST = [
     icon: "🔬",
     color: "bg-emerald/15",
     title: "Medicina que Explica",
-    description: "Você entenderá o raciocínio clínico por trás de cada orientação.",
+    description: "Aqui, a consulta não termina na conduta. Eu explico o que estou pensando, o que faz sentido investigar e o que pode ser acompanhado com mais tranquilidade.",
   },
   {
     icon: "🎯",
     color: "bg-coral/15",
     title: "Gastropediatra Especializado",
-    description: "Especialização em refluxo, APLV, constipação e dor abdominal infantil.",
+    description: "Quando o sintoma digestivo se repete, confunde ou foge do esperado, uma avaliação especializada ajuda a organizar melhor a história e escolher o caminho com mais segurança.",
   },
   {
     icon: "💛",
     color: "bg-golden/20",
     title: "Linguagem Humana",
-    description: "Ciência com acolhimento. A medida certa para pais que querem entender.",
+    description: "Nem sempre a família precisa de mais informação. Muitas vezes, precisa de clareza. Meu trabalho também é traduzir a medicina sem assustar e sem simplificar demais.",
   },
 ];
 
@@ -81,23 +81,23 @@ const WHY_TRUST = [
 const CONSULTATION_STEPS = [
   {
     number: "1",
-    title: "Você Descreve",
-    description: "Conte a história dos sintomas do seu filho com detalhes.",
+    title: "Você Conta",
+    description: "Quero entender com calma o que está acontecendo, desde o começo.",
   },
   {
     number: "2",
     title: "Eu Escuto",
-    description: "Faço perguntas para entender melhor o contexto clínico.",
+    description: "Faço as perguntas certas para separar o que parece importante do que pode estar confundindo a história.",
   },
   {
     number: "3",
     title: "Nós Organizamos",
-    description: "Estruturamos um plano de ação claro e personalizado.",
+    description: "Juntos, colocamos os sintomas em ordem e construímos um plano claro.",
   },
   {
     number: "4",
-    title: "Você Avança",
-    description: "Com clareza, você sabe exatamente o próximo passo.",
+    title: "Você Sai com Direção",
+    description: "A família vai embora entendendo melhor o quadro e sabendo qual é o próximo passo.",
   },
 ];
 
@@ -298,9 +298,6 @@ export default function Home() {
             custom={0}
           >
             <h2 className="mb-4">Como Posso Ajudar</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Minha abordagem em três pilares
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -335,9 +332,6 @@ export default function Home() {
             custom={0}
           >
             <h2 className="mb-4">Como Funciona a Consulta</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Um processo simples e claro em 4 passos
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
@@ -381,18 +375,18 @@ export default function Home() {
             custom={0}
           >
             <h2 className="mb-8">
-              Pronto para entender melhor?
+              Quando a historia comeca a fazer sentido, tudo fica mais leve.
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Comece com nosso verificador de sintomas ou explore nossa biblioteca de condicoes.
+              Voce pode comecar entendendo melhor os sintomas do seu filho ou, se preferir, seguir direto para a consulta.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/diagnostico" className="btn-outline text-sm md:text-base font-semibold px-6 md:px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all text-center">
-                Verificador de Sintomas
+                Entender os Sintomas
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
               <Link href="/biblioteca" className="btn-outline text-sm md:text-base font-semibold px-6 md:px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all text-center">
-                Explorar Biblioteca
+                Ir para a Biblioteca
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
               <Link href="/contato" className="btn-primary text-sm md:text-base font-semibold px-6 md:px-8 py-3 rounded-lg text-center">

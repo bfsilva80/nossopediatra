@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Heart, Award, Users, BookOpen, Stethoscope, FileText, Sparkles, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import { firstColumn } from "@/data/testimonials";
 import { SEOHead } from "@/components/SEOHead";
+import { useEffect } from "react";
 
 const DOCTOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png";
 
@@ -17,100 +17,15 @@ const fadeUp = {
   }),
 };
 
-const CARE_VALUES = [
-  {
-    icon: Heart,
-    title: "Humanidade",
-    description: "Cada criança é única. Ouço com atenção, compreendo a realidade da sua família e construo soluções juntos.",
-  },
-  {
-    icon: BookOpen,
-    title: "Conhecimento Científico",
-    description: "Formação contínua, protocolos atualizados e evidências clínicas guiam cada decisão que tomo.",
-  },
-  {
-    icon: Sparkles,
-    title: "Clareza",
-    description: "Explico tudo de forma simples. Você entenderá o raciocínio clínico e terá segurança para agir.",
-  },
-];
-
-const SPECIALTIES = [
-  {
-    emoji: "🍼",
-    title: "Refluxo e Vômitos",
-    description: "Desde o refluxo fisiológico até DRGE complexa, com orientação prática e medicação quando necessária.",
-  },
-  {
-    emoji: "🥛",
-    title: "Alergia Alimentar (APLV)",
-    description: "Diagnóstico cuidadoso e orientação nutricional para garantir desenvolvimento saudável.",
-  },
-  {
-    emoji: "💪",
-    title: "Constipação",
-    description: "Abordagem que combina cuidados em casa, educação e medicação quando indicado.",
-  },
-  {
-    emoji: "💧",
-    title: "Diarreia Crônica",
-    description: "Investigação das causas e manejo para restabelecer o bem-estar digestivo.",
-  },
-  {
-    emoji: "🤕",
-    title: "Dor Abdominal",
-    description: "Escuta atenta para entender a origem e oferecer alívio com segurança.",
-  },
-];
-
-const STEPS = [
-  {
-    emoji: "📋",
-    color: "bg-coral/15",
-    title: "Avaliação Completa",
-    description: "Histórico detalhado, exame físico minucioso e investigação cuidadosa dos sintomas.",
-  },
-  {
-    emoji: "💬",
-    color: "bg-blue/10",
-    title: "Explicação Clara",
-    description: "Você entenderá o raciocínio clínico por trás de cada recomendação.",
-  },
-  {
-    emoji: "🎯",
-    color: "bg-emerald/10",
-    title: "Plano Personalizado",
-    description: "Estratégia adaptada às necessidades do seu filho e à realidade da sua família.",
-  },
-  {
-    emoji: "🤝",
-    color: "bg-golden/20",
-    title: "Acompanhamento",
-    description: "Suporte contínuo e ajustes conforme necessário. Você não estará sozinho.",
-  },
-];
-
-const CREDENTIALS = [
-  {
-    icon: Award,
-    title: "Formação Especializada",
-    description: "Graduado em Medicina pela UFMS, especializado em Pediatria e Gastroenterologia & Hepatologia Pediátrica pela USP Ribeirão Preto",
-  },
-  {
-    icon: Users,
-    title: "Experiência Clínica",
-    description: "Mais de 15 anos de experiência em assistência clínica, com expertise em casos de alta complexidade digestiva",
-  },
-  {
-    icon: BookOpen,
-    title: "Liderança em Saúde",
-    description: "MBA em Gestão de Serviços de Saúde pelo Hospital Israelita Albert Einstein, com atuação como docente convidado",
-  },
-  {
-    icon: Heart,
-    title: "Visão Humanizada",
-    description: "Abordagem que coloca o paciente e sua família no centro, unindo excelência clínica com acolhimento genuíno",
-  },
+const CREDENTIALS_BADGES = [
+  "CRM MG 93321",
+  "RQE 63639",
+  "Graduação UFMS",
+  "Especialização USP Ribeirão Preto",
+  "Gastropediatria",
+  "Hepatologia Pediátrica",
+  "Consulta em Uberaba",
+  "Telemedicina disponível",
 ];
 
 export default function About() {
@@ -149,49 +64,35 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="inline-flex items-center gap-2.5 bg-blue/8 backdrop-blur-md rounded-full px-5 py-2.5 mb-8 border border-blue/20 hover:border-blue/40 transition-colors"
-              >
-                <Heart className="w-4 h-4 text-blue flex-shrink-0" />
-                <span className="text-xs font-semibold tracking-wide text-blue uppercase">
-                  Conhecer Dr. Bruno
-                </span>
-              </motion.div>
-
               <motion.h1
-                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-6"
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[1.1] tracking-tight mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
               >
-                Dr. Bruno Fernandes
+                Sou o Dr. Bruno Fernandes.
+                <br />
+                <span className="text-coral">Gastropediatra.</span>
               </motion.h1>
 
               <motion.p
-                className="text-xl md:text-2xl font-semibold mb-6 text-foreground/80 leading-relaxed max-w-2xl"
+                className="text-xl md:text-2xl font-semibold mb-8 text-foreground/80 leading-relaxed max-w-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
               >
-                <strong>Gastropediatra</strong> com mais de 15 anos de experiência, dedicado a transformar a saúde digestiva de crianças com ciência, humanidade e fé.
+                Meu trabalho é ajudar famílias a entender, com mais clareza, o que a barriga da criança está tentando contar.
               </motion.p>
 
-              {/* Credentials */}
               <motion.div
                 className="mb-10 pb-8 border-b border-teal/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                <p className="text-sm font-bold text-foreground mb-3 tracking-wide">CREDENCIAIS</p>
-                <div className="space-y-2 text-sm text-foreground/70 font-light leading-relaxed">
-                  <p>CRM MG 93321 | RQE 63639</p>
-                  <p>Especialista em Gastroenterologia e Hepatologia Pediátrica</p>
-                  <p>Faculdade de Medicina de Ribeirão Preto – USP</p>
-                </div>
+                <p className="text-base text-foreground/80 leading-relaxed mb-6">
+                  Atendo em Uberaba, MG, e também por telemedicina. Mas já trabalhei em lugares onde a distância até o hospital mais próximo se media em horas de barco. Essa vivência me ensinou duas coisas: ouvir melhor e não desperdiçar uma consulta.
+                </p>
               </motion.div>
 
               {/* CTA */}
@@ -202,10 +103,7 @@ export default function About() {
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
                 <Link href="/contato" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
-                  Conversar Agora
-                </Link>
-                <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all">
-                  Explorar Sintomas
+                  Agendar Consulta
                 </Link>
               </motion.div>
             </motion.div>
@@ -231,226 +129,97 @@ export default function About() {
         </div>
       </section>
 
-      {/* ═══════════ COMO EU CUIDO ═══════════ */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="container max-w-5xl">
+      {/* ═══════════ FORMAÇÃO ═══════════ */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
+        <div className="container max-w-4xl">
           <motion.div
-            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             custom={0}
+            className="bg-white rounded-lg p-8 md:p-12 border border-teal/10"
           >
-            <h2 className="mb-4">Como <span className="text-coral">Eu Cuido</span></h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Minha abordagem é fundamentada em três pilares que guiam cada consulta
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Formação</h2>
+            <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+              Fiz minha residência em Pediatria e, depois, a especialização em Gastroenterologia e Hepatologia Pediátrica no Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da USP.
+            </p>
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Digo isso porque a família tem o direito de saber de onde vem o raciocínio clínico que orienta o cuidado do seu filho. Ciência, para mim, não é detalhe. É o que sustenta uma escuta mais precisa, uma investigação mais criteriosa e decisões mais seguras.
             </p>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {CARE_VALUES.map((item, idx) => {
-              const Icon = item.icon;
-              return (
+      {/* ═══════════ O QUE ME MOVE ═══════════ */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="container max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeUp}
+            custom={0}
+            className="bg-white rounded-lg p-8 md:p-12 border border-teal/10"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">O que me move</h2>
+            <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+              Sou pai de três filhos. Já estive do lado de cá da consulta: o lado de quem chega preocupado e quer sair entendendo melhor o que está acontecendo.
+            </p>
+            <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+              Isso mudou a forma como pratico medicina. Cada criança tem uma história. Cada família chega com um medo, uma esperança, uma pergunta. Procuro escutar com atenção, explicar com clareza e cuidar com respeito.
+            </p>
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Sou também um homem de fé. E talvez por isso eu me lembre todos os dias de que, por trás de cada diagnóstico, existe uma vida inteira pedindo cuidado.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════ FECHO ═══════════ */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
+        <div className="container max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeUp}
+            custom={0}
+            className="bg-white rounded-lg p-8 md:p-12 border border-teal/10 text-center"
+          >
+            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-8">
+              Se você chegou até aqui, talvez esteja procurando alguém que ajude a entender melhor o que seu filho tem e a escolher com mais clareza o que fazer agora.
+            </p>
+            <p className="text-lg md:text-xl font-semibold text-foreground mb-8">
+              É exatamente esse o meu trabalho.
+            </p>
+
+            {/* Credentials Badges */}
+            <div className="flex flex-wrap gap-3 justify-center mb-8">
+              {CREDENTIALS_BADGES.map((badge, idx) => (
                 <motion.div
                   key={idx}
-                  className="card-base p-8 border-2 border-transparent hover:border-teal/20 transition-colors"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  variants={fadeUp}
-                  custom={idx + 1}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="px-4 py-2 bg-teal/10 text-teal rounded-full text-sm font-medium"
                 >
-                  <Icon className="w-10 h-10 text-teal mb-4" />
-                  <h3 className="font-display font-bold text-xl mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  {badge}
                 </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+              ))}
+            </div>
 
-      {/* ═══════════ EM QUE SITUAÇÕES POSSO AJUDAR ═══════════ */}
-      <section className="py-20 md:py-32">
-        <div className="container max-w-5xl">
-          <motion.div
-            className="text-center mb-16 md:mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            custom={0}
-          >
-            <h2 className="mb-4">Em que Situações <span className="text-teal">Posso Ajudar</span></h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Especialidades que cobro com profundidade e dedicação
-            </p>
+            {/* CTA */}
+            <Link href="/contato" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all inline-block">
+              Agendar Consulta
+            </Link>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SPECIALTIES.map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="card-base p-6 border-2 border-transparent hover:border-coral/20 transition-colors group"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                custom={idx + 1}
-              >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {item.emoji}
-                </div>
-                <h3 className="font-display font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════ COMO É A CONSULTA ═══════════ */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left Column - Como é a Consulta */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={fadeUp}
-              custom={0}
-            >
-              <h2 className="mb-8">Como é a <span className="text-coral">Consulta</span></h2>
-              <div className="space-y-5">
-                {STEPS.map((step, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="flex gap-4 bg-white rounded-2xl p-5 border-2 border-golden/15 hover:border-teal/20 transition-all duration-300 hover:shadow-md group"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
-                    custom={idx + 1}
-                  >
-                    <div className={`w-14 h-14 ${step.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl rotate-[-3deg] group-hover:rotate-[3deg] transition-transform duration-300`}>
-                      {step.emoji}
-                    </div>
-                    <div>
-                      <h4 className="font-display font-bold text-foreground mb-1">
-                        {step.title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right Column - Informações Práticas */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={fadeUp}
-              custom={1}
-            >
-              <h2 className="mb-8">Informações <span className="text-teal">Práticas</span></h2>
-              <div className="card-base p-6 md:p-8 space-y-6">
-                {/* Quando Procurar */}
-                <div>
-                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <Stethoscope className="w-5 h-5 text-teal" />
-                    Quando Procurar
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground text-sm">
-                    {[
-                      "Refluxo persistente ou com sinais de alerta",
-                      "Suspeita de alergia alimentar (APLV)",
-                      "Constipação ou diarreia crônica",
-                      "Dor abdominal recorrente",
-                      "Dificuldades na alimentação ou ganho de peso",
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-coral mt-0.5 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="border-t-2 border-teal/10 pt-6">
-                  <h4 className="font-display font-bold text-foreground mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-teal" />
-                    O que Levar
-                  </h4>
-                  <ul className="space-y-2 text-muted-foreground text-sm">
-                    {[
-                      "Cartão de vacinação atualizado",
-                      "Histórico médico e exames anteriores",
-                      "Exames recentes (se houver)",
-                      "Diário alimentar dos últimos 3 dias",
-                      "Anotações de sintomas observados",
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-teal mt-0.5 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════ FORMAÇÃO E TRAJETÓRIA ═══════════ */}
-      <section className="py-20 md:py-32">
-        <div className="container max-w-5xl">
-          <motion.div
-            className="text-center mb-16 md:mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            custom={0}
-          >
-            <h2 className="mb-4">Formação e <span className="text-coral">Experiência</span></h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Uma base sólida construída através de dedicação, aprendizado contínuo e compromisso com a excelência
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {CREDENTIALS.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  className="card-base p-8 border-2 border-transparent hover:border-teal/20 transition-colors"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  variants={fadeUp}
-                  custom={idx + 1}
-                >
-                  <Icon className="w-10 h-10 text-teal mb-4" />
-                  <h3 className="font-display font-bold text-xl mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
         </div>
       </section>
 
       {/* ═══════════ TESTIMONIALS ═══════════ */}
       <section className="py-20 md:py-32 bg-background">
-        <div className="container max-w-6xl">
+        <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-16 md:mb-20"
             initial="hidden"
@@ -459,42 +228,15 @@ export default function About() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-4">O que <span className="text-teal">os Pais Dizem</span></h2>
+            <h2 className="mb-4">O que algumas famílias levam da consulta</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Histórias reais de famílias que encontraram respostas e conforto
+              Mais do que respostas prontas, muitas vezes o que muda tudo é finalmente entender o que está acontecendo.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <TestimonialsColumn testimonials={firstColumn.slice(0, 3)} />
+            <TestimonialsColumn testimonials={firstColumn} />
           </div>
-        </div>
-      </section>
-
-      {/* ═══════════ FINAL CTA ═══════════ */}
-      <section className="py-20 md:py-32">
-        <div className="container max-w-3xl">
-          <motion.div
-            className="card-base p-8 md:p-12 bg-gradient-to-br from-teal/5 via-white to-coral/5 border-2 border-teal/20 text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            custom={0}
-          >
-            <h2 className="mb-6">Pronto para Entender Melhor?</h2>
-            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Cada criança merece compreensão e cada pai merece segurança. Vamos conversar sobre a saúde do seu filho.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contato" className="btn-primary text-base font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
-                Agendar Consulta
-              </Link>
-              <Link href="/diagnostico" className="btn-outline text-base font-semibold px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all">
-                Explorar Sintomas
-              </Link>
-            </div>
-          </motion.div>
         </div>
       </section>
     </div>
