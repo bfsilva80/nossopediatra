@@ -116,19 +116,21 @@ const CREDENTIALS = [
 export default function About() {
   useEffect(() => {
     SEOHead({
-      title: "Conhecer Dr. Bruno Fernandes | Gastroenterologista Pediátrico",
-      description: "Conheça Dr. Bruno Fernandes, especialista em gastroenterologia pediátrica com mais de 15 anos de experiência. Formado pela USP, MBA em Gestão de Saúde, com abordagem humanizada e acolhedora para crianças e famílias.",
+      title: "Dr. Bruno Fernandes - Gastropediatra Especializado | Refluxo, Constipacao, Alergias",
+      description: "Dr. Bruno Fernandes - Gastropediatra com 15+ anos de experiencia em refluxo infantil, constipacao e alergias alimentares. Formado pela USP, especialista em gastroenterologia pediatrica com abordagem humanizada para criancas e familias.",
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/ChatGPTImage30dejun.de2025,21_56_13_d914da2d.png",
       url: "https://nossopediatra.com.br/sobre",
       type: "website",
       author: "Dr. Bruno Fernandes",
       keywords: [
         "Dr. Bruno Fernandes",
-        "gastroenterologista pediátrico",
-        "especialista em pediatria",
+        "gastropediatra",
+        "gastroenterologista pediatrico",
+        "especialista refluxo infantil",
         "CRM 93321",
         "RQE 63639",
-        "USP Ribeirão Preto",
+        "USP Ribeirao Preto",
+        "gastropediatria Uberaba",
       ],
     });
   }, []);

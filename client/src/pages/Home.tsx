@@ -104,18 +104,20 @@ const CONSULTATION_STEPS = [
 export default function Home() {
   useEffect(() => {
     SEOHead({
-      title: "Gastropediatra em Uberaba | Dr. Bruno Fernandes | Nosso Pediatra",
-      description: "Consulta com gastropediatra em Uberaba para refluxo, constipação, alergias alimentares e dor abdominal infantil. Atendimento presencial e telemedicina.",
+      title: "Gastropediatra em Uberaba | Refluxo, Constipacao e Alergias Infantis | Dr. Bruno",
+      description: "Gastropediatra especializado em refluxo infantil, constipacao, alergias alimentares e doencas digestivas. Consultas presenciais em Uberaba e telemedicina. Entenda os sintomas do seu filho com clareza e seguranca.",
       image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/dr_bruno_watercolor_a674df2f.png",
       url: "https://nossopediatra.com.br",
       type: "website",
       keywords: [
-        "gastroenterologista pediátrico",
+        "gastropediatra",
         "refluxo infantil",
-        "constipação em crianças",
-        "alergias alimentares",
-        "pediatra em Uberaba",
-        "telemedicina pediátrica",
+        "constipacao crianca",
+        "alergia alimentar bebe",
+        "pediatra Uberaba",
+        "doencas digestivas infantis",
+        "telemedicina pediatrica",
+        "gastropediatria",
       ],
     });
 
@@ -382,12 +384,22 @@ export default function Home() {
               Pronto para entender melhor?
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Agende uma consulta e vamos descobrir juntos o que está acontecendo com seu filho.
+              Comece com nosso verificador de sintomas ou explore nossa biblioteca de condicoes.
             </p>
-            <Link href="/contato" className="btn-primary">
-              Agendar Consulta
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/diagnostico" className="btn-outline text-sm md:text-base font-semibold px-6 md:px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all text-center">
+                Verificador de Sintomas
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+              <Link href="/biblioteca" className="btn-outline text-sm md:text-base font-semibold px-6 md:px-8 py-3 rounded-lg border-2 hover:bg-teal/5 transition-all text-center">
+                Explorar Biblioteca
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+              <Link href="/contato" className="btn-primary text-sm md:text-base font-semibold px-6 md:px-8 py-3 rounded-lg text-center">
+                Agendar Consulta
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

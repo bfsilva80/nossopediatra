@@ -209,17 +209,17 @@ export default function SymptomCheckerPage() {
             {[
               {
                 title: "Ler sobre refluxo",
-                href: "/blog/refluxo-infantil-causas-sintomas",
+                href: "/artigo/refluxo-bebes",
                 icon: "🔄",
               },
               {
                 title: "Ler sobre constipação",
-                href: "/blog",
+                href: "/artigo/constipacao-infantil",
                 icon: "🚽",
               },
               {
                 title: "Ler sobre alergias alimentares",
-                href: "/blog",
+                href: "/artigo/alergia-alimentar",
                 icon: "🍎",
               },
             ].map((item, i) => (
@@ -264,11 +264,11 @@ export default function SymptomCheckerPage() {
               Resposta em até 2 horas
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/" className="inline-block px-8 py-3 bg-teal text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors">
-                Conversar no WhatsApp
+              <Link href="/biblioteca" className="inline-block px-8 py-3 bg-slate-100 text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-colors">
+                Explorar Biblioteca
               </Link>
-              <Link href="/" className="inline-block px-8 py-3 bg-white text-teal border-2 border-teal rounded-lg font-semibold hover:bg-teal/5 transition-colors">
-                Agendar consulta
+              <Link href="/contato" className="inline-block px-8 py-3 bg-white text-teal border-2 border-teal rounded-lg font-semibold hover:bg-teal/5 transition-colors">
+                Agendar Consulta
               </Link>
             </div>
           </motion.div>

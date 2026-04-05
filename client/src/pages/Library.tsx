@@ -1,7 +1,8 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Clock, ArrowRight, ExternalLink, BookOpen, Sparkles, Search, Filter, Phone, MessageCircle } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
 
 const PATTERN_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/np_pattern_bg-34yacUnjfmHmqkqTqfFYVg.webp";
 
@@ -153,6 +154,25 @@ const fadeUp = {
 export default function Library() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  useEffect(() => {
+    SEOHead({
+      title: "Biblioteca de Condicoes Pediatricas | Refluxo, Alergias, Constipacao",
+      description: "Biblioteca completa de condicoes digestivas infantis. Entenda refluxo, APLV, constipacao, diarreia e outras doencas. Explicacoes clinicas simples do Dr. Bruno Fernandes.",
+      url: "https://nossopediatra.com.br/biblioteca",
+      type: "website",
+      keywords: [
+        "condicoes pediatricas",
+        "refluxo infantil",
+        "APLV",
+        "constipacao crianca",
+        "diarreia infantil",
+        "doenca celiaca",
+        "alergias alimentares",
+        "saude digestiva infantil",
+      ],
+    });
+  }, []);
 
   const filteredConditions = useMemo(() => {
     return CONDITIONS.filter((condition) => {
