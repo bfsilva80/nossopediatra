@@ -66,7 +66,7 @@ const WHY_TRUST = [
   {
     icon: "🎯",
     color: "bg-coral/15",
-    title: "Foco Especializado",
+    title: "Gastropediatra Especializado",
     description: "Especialização em refluxo, APLV, constipação e dor abdominal infantil.",
   },
   {
@@ -166,7 +166,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
               >
-                Ajudo você a entender refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância com mais clareza e segurança.
+                Como <strong>gastropediatra</strong>, ajudo você a entender refluxo, constipação, alergias alimentares e outros sintomas digestivos da infância com clareza e segurança.
               </motion.h2>
 
               <motion.div

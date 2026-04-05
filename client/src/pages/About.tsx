@@ -174,7 +174,7 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
               >
-                Gastropediatra com mais de 15 anos de experiência, dedicado a transformar a saúde digestiva de crianças com ciência, humanidade e fé.
+                <strong>Gastropediatra</strong> com mais de 15 anos de experiência, dedicado a transformar a saúde digestiva de crianças com ciência, humanidade e fé.
               </motion.p>
 
               {/* Credentials */}
