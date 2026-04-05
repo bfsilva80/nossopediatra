@@ -238,6 +238,73 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* ═══════════ CONSULTATION TYPES ═══════════ */}
+      <section className="section-spacing bg-gradient-to-b from-teal/5 to-white">
+        <div className="container max-w-3xl">
+          <motion.div
+            className="text-center mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={0}
+          >
+            <h2 className="mb-4">
+              Como Funciona o <span className="text-coral">Atendimento</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Oferecemos flexibilidade para que você escolha o formato que melhor se encaixa na sua rotina
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Presencial */}
+            <motion.div
+              className="card-base p-8 border-2 border-teal/20 hover:border-teal/50 transition-all"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              custom={1}
+            >
+              <div className="text-4xl mb-4">🏥</div>
+              <h3 className="text-2xl font-display font-bold mb-3">Consulta Presencial</h3>
+              <p className="text-muted-foreground mb-4">
+                Atendimento no consultório em <strong>Uberaba, MG</strong>
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>✓ Avaliação clínica completa</li>
+                <li>✓ Exame físico detalhado</li>
+                <li>✓ Orientação personalizada</li>
+                <li>✓ Prescrição de medicações</li>
+              </ul>
+            </motion.div>
+
+            {/* Telemedicina */}
+            <motion.div
+              className="card-base p-8 border-2 border-coral/20 hover:border-coral/50 transition-all"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              custom={2}
+            >
+              <div className="text-4xl mb-4">💻</div>
+              <h3 className="text-2xl font-display font-bold mb-3">Telemedicina</h3>
+              <p className="text-muted-foreground mb-4">
+                Consulta online de qualquer lugar
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>✓ Consultas de acompanhamento</li>
+                <li>✓ Orientação e esclarecimentos</li>
+                <li>✓ Seguimento de tratamento</li>
+                <li>✓ Comodidade e flexibilidade</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════ FAQ ═══════════ */}
       <section className="section-spacing bg-white">
         <div className="container max-w-3xl">

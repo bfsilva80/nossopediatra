@@ -186,12 +186,12 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                <Link href="/sobre" className="btn-primary text-sm md:text-base font-semibold px-6 md:px-8 py-4 md:py-3 rounded-lg shadow-lg hover:shadow-xl transition-all w-full md:w-auto text-center" title="Agendar consulta com gastropediatra em Uberaba">
-                  Agendar consulta
+                <Link href="/contato" className="btn-primary text-sm md:text-base font-semibold px-6 md:px-8 py-4 md:py-3 rounded-lg shadow-lg hover:shadow-xl transition-all w-full md:w-auto text-center" title="Agendar consulta com gastropediatra em Uberaba">
+                  Agendar Consulta
                   <ArrowRight className="hidden md:inline ml-2 w-5 h-5" />
                 </Link>
                 <Link href="/diagnostico" className="btn-outline text-sm md:text-base font-semibold px-6 md:px-8 py-4 md:py-3 rounded-lg border-2 hover:bg-teal/5 transition-all w-full md:w-auto text-center" title="Começar a entender os sintomas do seu filho">
-                  Por onde começar
+                  Entender Sintomas
                   <ArrowRight className="hidden md:inline ml-2 w-5 h-5" />
                 </Link>
               </motion.div>
@@ -384,8 +384,8 @@ export default function Home() {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Agende uma consulta e vamos descobrir juntos o que está acontecendo com seu filho.
             </p>
-            <Link href="/sobre" className="btn-primary">
-              Agendar Consulta Agora
+            <Link href="/contato" className="btn-primary">
+              Agendar Consulta
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </motion.div>
