@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Heart, Award, Users, BookOpen, Stethoscope, FileText, Sparkles, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
-import { firstColumn } from "@/data/testimonials";
+import { instagramTestimonials } from "@/data/instagram-testimonials";
 import { SEOHead } from "@/components/SEOHead";
 import { useEffect } from "react";
 
@@ -234,8 +234,9 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <TestimonialsColumn testimonials={firstColumn} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <TestimonialsColumn testimonials={instagramTestimonials.slice(0, 3).map(t => ({ text: t.quote, image: t.image, name: t.name, role: t.role || '' }))} />
+            <TestimonialsColumn testimonials={instagramTestimonials.slice(3, 6).map(t => ({ text: t.quote, image: t.image, name: t.name, role: t.role || '' }))} />
           </div>
         </div>
       </section>
