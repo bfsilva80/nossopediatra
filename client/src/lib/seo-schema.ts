@@ -102,7 +102,7 @@ export const generateLocalBusinessSchema = (): LocalBusinessSchema => {
     "@type": "MedicalBusiness",
     name: "Nosso Pediatra - Dr. Bruno Fernandes",
     description: "Gastropediatra especializado em refluxo infantil, constipação, alergias alimentares e doenças digestivas infantis. Atendimento presencial em Uberaba e telemedicina.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/logo-hires_c3083669.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Untitleddesign_30b1d84e.svg",
     telephone: "+55 (34) 99709-9226",
     address: {
       "@type": "PostalAddress",
@@ -209,7 +209,7 @@ export const generateOrganizationSchema = (): OrganizationSchema => {
     "@type": "MedicalBusiness",
     name: "Nosso Pediatra - Dr. Bruno Fernandes",
     url: "https://nossopediatra.com.br",
-    logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/logo-hires_c3083669.png",
+    logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Untitleddesign_30b1d84e.svg",
     description: "Gastropediatra especializado em refluxo infantil, constipação, alergias alimentares e doenças digestivas. Consultas presenciais em Uberaba e telemedicina.",
     sameAs: [
       "https://www.instagram.com/nossopediatra",

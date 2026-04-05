@@ -41,8 +41,8 @@ export default function Navigation() {
           className="flex items-center gap-2.5 hover:scale-105 transition-transform duration-300"
         >
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/logo-hires_c3083669.png"
-            alt="Nosso Pediatra"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Untitleddesign_30b1d84e.svg"
+            alt="Nosso Pediatra - Gastropediatria"
             className="w-12 h-12 object-contain"
           />
           <div className="hidden sm:block">

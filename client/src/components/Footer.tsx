@@ -86,9 +86,11 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex justify-center gap-2 sm:justify-start">
-              <div className="h-8 w-8 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-sm">NP</span>
-              </div>
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032144186/PuMdTu4TNdQ4HP2G9zPMa2/Untitleddesign_30b1d84e.svg"
+                alt="Nosso Pediatra"
+                className="h-10 w-10 object-contain"
+              />
               <span className="text-2xl font-semibold text-white">
                 {data.company.name}
               </span>
