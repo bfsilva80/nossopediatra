@@ -28,7 +28,7 @@ export const TestimonialsColumn = (props: {
         className="flex flex-col gap-6 pb-6"
       >
         {[
-          ...new Array(2).fill(0).map((_, index) => (
+          ...new Array(1).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
                 <div

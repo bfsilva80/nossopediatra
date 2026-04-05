@@ -105,7 +105,6 @@ export function InfiniteSlider({
         {...hoverProps}
       >
         {children}
-        {children}
       </motion.div>
     </div>
   );
