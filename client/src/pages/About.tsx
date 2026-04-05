@@ -230,10 +230,10 @@ export default function About() {
       </section>
 
       {/* ═══════════ COMO EU CUIDO ═══════════ */}
-      <section className="section-spacing bg-background">
+      <section className="py-20 md:py-32 bg-background">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -270,10 +270,10 @@ export default function About() {
       </section>
 
       {/* ═══════════ EM QUE SITUAÇÕES POSSO AJUDAR ═══════════ */}
-      <section className="section-spacing">
+      <section className="py-20 md:py-32">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -286,7 +286,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SPECIALTIES.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -309,7 +309,7 @@ export default function About() {
       </section>
 
       {/* ═══════════ COMO É A CONSULTA ═══════════ */}
-      <section className="section-spacing bg-background">
+      <section className="py-20 md:py-32 bg-background">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left Column - Como é a Consulta */}
@@ -407,10 +407,10 @@ export default function About() {
       </section>
 
       {/* ═══════════ FORMAÇÃO E TRAJETÓRIA ═══════════ */}
-      <section className="section-spacing">
+      <section className="py-20 md:py-32">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -447,10 +447,10 @@ export default function About() {
       </section>
 
       {/* ═══════════ TESTIMONIALS ═══════════ */}
-      <section className="section-spacing bg-background">
+      <section className="py-20 md:py-32 bg-background">
         <div className="container max-w-6xl">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -470,7 +470,7 @@ export default function About() {
       </section>
 
       {/* ═══════════ FINAL CTA ═══════════ */}
-      <section className="section-spacing">
+      <section className="py-20 md:py-32">
         <div className="container max-w-3xl">
           <motion.div
             className="card-base p-8 md:p-12 bg-gradient-to-br from-teal/5 via-white to-coral/5 border-2 border-teal/20 text-center"
@@ -480,8 +480,8 @@ export default function About() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-4">Pronto para Entender Melhor?</h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <h2 className="mb-6">Pronto para Entender Melhor?</h2>
+            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
               Cada criança merece compreensão e cada pai merece segurança. Vamos conversar sobre a saúde do seu filho.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -173,7 +173,7 @@ export default function Library() {
     <div className="w-full">
       {/* Hero Section with Search */}
       <section
-        className="section-spacing relative overflow-hidden"
+        className="py-20 md:py-32 relative overflow-hidden"
         style={{
           backgroundImage: `url('${PATTERN_BG}')`,
           backgroundSize: '400px',
@@ -189,7 +189,7 @@ export default function Library() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8"
+            className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-1.5 mb-4">
               <BookOpen className="w-4 h-4 text-primary" />
@@ -255,12 +255,12 @@ export default function Library() {
       </section>
 
       {/* Categories Section */}
-      <section className="px-4 py-12 md:py-16 bg-white">
+      <section className="px-4 py-16 md:py-24 bg-white">
         <div className="container max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-12 text-center">
             Categorias de Condições
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {CATEGORIES.map((category) => (
               <button
                 key={category.name}
@@ -284,9 +284,9 @@ export default function Library() {
       </section>
 
       {/* Conditions List Section */}
-      <section className="px-4 py-12 md:py-16 bg-foreground/5">
+      <section className="px-4 py-16 md:py-24 bg-foreground/5">
         <div className="container max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-12">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground">
               {selectedCategory ? `${selectedCategory}` : 'Todas as Condições'}
             </h2>
@@ -296,7 +296,7 @@ export default function Library() {
           </div>
 
           {filteredConditions.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredConditions.map((condition) => (
                 <Link key={condition.id} href={`/artigo/${condition.slug}`} className="block p-6 rounded-lg bg-white border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all group">
                   <div className="flex items-start gap-4">
@@ -332,12 +332,12 @@ export default function Library() {
       </section>
 
       {/* Featured Articles */}
-      <section className="section-spacing bg-cream">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="container max-w-5xl">
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-12 text-center">
             Artigos Destacados
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {ARTICLES.map((article, idx) => (
               <motion.div
                 key={article.slug}

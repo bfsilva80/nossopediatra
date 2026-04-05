@@ -247,10 +247,10 @@ export default function Home() {
       </section>
 
       {/* ═══════════ PRINCIPAIS SINTOMAS ═══════════ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-20 md:py-32 bg-background">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -263,7 +263,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {MAIN_SYMPTOMS.map((symptom, idx) => (
               <Link key={idx} href={`/artigo/${symptom.slug}`}>
                 <motion.div
@@ -285,10 +285,10 @@ export default function Home() {
       </section>
 
       {/* ═══════════ COMO POSSO AJUDAR ═══════════ */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
+      <section className="py-20 md:py-32 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -301,7 +301,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {WHY_TRUST.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -322,10 +322,10 @@ export default function Home() {
       </section>
 
       {/* ═══════════ COMO FUNCIONA A CONSULTA ═══════════ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-20 md:py-32 bg-background">
         <div className="container max-w-5xl">
           <motion.div
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-16 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -338,7 +338,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
             {CONSULTATION_STEPS.map((step, idx) => (
               <motion.div
                 key={idx}
@@ -368,7 +368,7 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* ═══════════ FINAL CTA ═══════════ */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
+      <section className="py-20 md:py-32 bg-gradient-to-br from-teal/5 via-blue/5 to-emerald/5">
         <div className="container max-w-3xl">
           <motion.div
             className="text-center"
@@ -378,10 +378,10 @@ export default function Home() {
             variants={fadeUp}
             custom={0}
           >
-            <h2 className="mb-6">
+            <h2 className="mb-8">
               Pronto para entender melhor?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
               Agende uma consulta e vamos descobrir juntos o que está acontecendo com seu filho.
             </p>
             <Link href="/contato" className="btn-primary">

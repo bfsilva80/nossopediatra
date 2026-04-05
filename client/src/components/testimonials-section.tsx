@@ -26,26 +26,26 @@ const testimonials: Testimonial[] = instagramTestimonials.map(t => ({
 
 const firstColumn = testimonials.slice(0, 3);
 const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+// Removed thirdColumn - now showing only 2 columns for premium feel
 
 export function TestimonialsSection() {
-	return (
-		<section className="relative py-10">
-			<div className="mx-auto max-w-5xl">
-				<div className="mx-auto flex max-w-sm flex-col items-center justify-center gap-4">
+		return (
+			<section className="relative py-20 md:py-32">
+				<div className="mx-auto max-w-5xl">
+					<div className="mx-auto flex max-w-sm flex-col items-center justify-center gap-4 mb-16">
 
 
-					<h2 className="font-bold text-3xl tracking-tighter lg:text-4xl">
-						O que os pais dizem
-					</h2>
-					<p className="text-center text-muted-foreground text-sm">
-						Histórias reais de famílias que confiam no Dr. Bruno
-					</p>
-				</div>
+						<h2 className="font-bold text-3xl tracking-tighter lg:text-4xl">
+							O que os pais dizem
+						</h2>
+						<p className="text-center text-muted-foreground text-sm">
+							Histórias reais de famílias que confiam no Dr. Bruno
+						</p>
+					</div>
 
-				<div
-					className={cn(
-						"mt-10 flex max-h-160 justify-center gap-6 overflow-hidden",
+					<div
+						className={cn(
+							"mt-12 flex max-h-160 justify-center gap-6 overflow-hidden",
 						"mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]"
 					)}
 				>
@@ -57,32 +57,19 @@ export function TestimonialsSection() {
 						/>
 					))}
 					</InfiniteSlider>
-					<InfiniteSlider
-						className="hidden md:block"
-						direction="vertical"
-						speed={50}
-						speedOnHover={25}
-					>
-						{secondColumn.map((testimonial) => (
-							<TestimonialsCard
-								key={testimonial.id}
-								testimonial={testimonial}
-							/>
-						))}
-					</InfiniteSlider>
-					<InfiniteSlider
-						className="hidden lg:block"
-						direction="vertical"
-						speed={35}
-						speedOnHover={17}
-					>
-						{thirdColumn.map((testimonial) => (
-							<TestimonialsCard
-								key={testimonial.id}
-								testimonial={testimonial}
-							/>
-						))}
-					</InfiniteSlider>
+						<InfiniteSlider
+							className="hidden md:block"
+							direction="vertical"
+							speed={50}
+							speedOnHover={25}
+						>
+							{secondColumn.map((testimonial) => (
+								<TestimonialsCard
+									key={testimonial.id}
+									testimonial={testimonial}
+								/>
+							))}
+						</InfiniteSlider>
 				</div>
 			</div>
 		</section>
