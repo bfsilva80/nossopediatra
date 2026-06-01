@@ -9,7 +9,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { StickyWhatsAppCTA } from '@/components/StickyWhatsAppCTA';
 import { FloatingDock } from '@/components/FloatingDock';
-import { injectSchema, generateOrganizationSchema } from "@/lib/seo-schema";
+import { injectSchema, generateOrganizationSchema } rom "@/lib/seo-schema";
 import { SEOHead } from "@/seo/SEOHead";
 import { initializePerformanceOptimizations } from "@/lib/performance";
 import Home from "./pages/Home";
@@ -48,6 +48,7 @@ function Router() {
           <Route path="/" component={Home} />
         <Route path="/atlas-sintomas" component={SymptomAtlas} />
         <Route path="/biblioteca" component={Library} />
+                  <Redirect from="/artigo/refluxo-gastroesofagico" to="/artigo/refluxo-infantil-causas-sintomas" />
         <Route path="/artigo/:slug" component={Article} />
         <Route path="/refluxo-bebes" component={RefluxoBebesArticle} />
         <Route path="/conteudo/:slug">
