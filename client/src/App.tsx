@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import { StickyWhatsAppCTA } from '@/components/StickyWhatsAppCTA';
 import { FloatingDock } from '@/components/FloatingDock';
 import { injectSchema, generateOrganizationSchema } from "@/lib/seo-schema";
+import { SEOHead } from "@/seo/SEOHead";
 import { initializePerformanceOptimizations } from "@/lib/performance";
 import Home from "./pages/Home";
 import SymptomAtlas from "./pages/SymptomAtlas";
@@ -23,6 +24,7 @@ import SymptomDetail from "./pages/SymptomDetail";
 import Blog from "./pages/Blog";
 import ArticleDetail from "./pages/ArticleDetail";
 import RefluxoBebesArticle from "./pages/RefluxoBebesArticle";
+import Consultations from "./pages/Consultations";
 
 function Router() {
   const [location] = useLocation();
@@ -40,27 +42,28 @@ function Router() {
   }, []);
 
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/atlas-sintomas" component={SymptomAtlas} />
-      <Route path="/biblioteca" component={Library} />
-      <Route path="/artigo/:slug" component={Article} />
-      <Route path="/refluxo-bebes" component={RefluxoBebesArticle} />
-      <Route path="/conteudo/:slug">
-        {({ slug }) => <Redirect to={`/artigo/${slug}`} />}
-      </Route>
-      <Route path="/consultas">
-        {() => <Redirect to="/sobre" />}
-      </Route>
-      <Route path="/contato" component={Contact} />
-      <Route path="/sobre" component={About} />
-      <Route path="/diagnostico" component={SymptomChecker} />
-      <Route path="/sintoma/:slug" component={SymptomDetail} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug" component={ArticleDetail} />
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <SEOHead path={location} />
+        <Switch>
+          <Route path="/" component={Home} />
+        <Route path="/atlas-sintomas" component={SymptomAtlas} />
+        <Route path="/biblioteca" component={Library} />
+        <Route path="/artigo/:slug" component={Article} />
+        <Route path="/refluxo-bebes" component={RefluxoBebesArticle} />
+        <Route path="/conteudo/:slug">
+          {({ slug }) => <Redirect to={`/artigo/${slug}`} />}
+        </Route>
+        <Route path="/consultas" component={Consultations} />
+        <Route path="/contato" component={Contact} />
+        <Route path="/sobre" component={About} />
+        <Route path="/diagnostico" component={SymptomChecker} />
+        <Route path="/sintoma/:slug" component={SymptomDetail} />
+        <Route path="/blog" component={Blog} />
+        <Route path="/blog/:slug" component={ArticleDetail} />
+        <Route path="/404" component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 
