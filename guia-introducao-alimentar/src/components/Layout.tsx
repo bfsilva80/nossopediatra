@@ -1,12 +1,12 @@
-import { AlertTriangle, BookOpen, ChefHat, Home, NotebookPen } from 'lucide-react';
+import { AlertTriangle, ChefHat, Home, NotebookPen, Search } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
 
 const abas = [
-  { href: '/', rotulo: 'Começar', Icone: Home },
-  { href: '/fases', rotulo: 'Fases', Icone: BookOpen },
-  { href: '/seguranca', rotulo: 'Segurança', Icone: AlertTriangle },
+  { href: '/', rotulo: 'Início', Icone: Home },
+  { href: '/alimentos', rotulo: 'Alimentos', Icone: Search },
   { href: '/receitas', rotulo: 'Receitas', Icone: ChefHat },
+  { href: '/seguranca', rotulo: 'Segurança', Icone: AlertTriangle },
   { href: '/diario', rotulo: 'Diário', Icone: NotebookPen },
 ];
 
@@ -22,14 +22,10 @@ export default function Layout({ children }: { children: ReactNode }) {
             <span className="text-xs text-ink-soft">Introdução Alimentar</span>
           </Link>
           <Link
-            href="/seguranca"
-            className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
-              rota === '/seguranca'
-                ? 'bg-danger text-white'
-                : 'bg-danger-soft text-danger'
-            }`}
+            href="/emergencia"
+            className="rounded-full bg-danger px-3 py-1.5 text-xs font-bold text-white hover:opacity-90"
           >
-            🚨 Emergência
+            🚨 Engasgo
           </Link>
         </div>
       </header>

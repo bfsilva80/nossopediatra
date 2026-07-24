@@ -15,6 +15,7 @@ import {
 } from '@/content/seguranca';
 import { usePersistido } from '@/lib/storage';
 import { Phone, ShieldAlert } from 'lucide-react';
+import { Link } from 'wouter';
 
 type StatusAlergenico = 'nao' | 'ok' | 'reacao';
 type RegistroAlergenicos = Record<string, { status: StatusAlergenico; data: string }>;
@@ -112,6 +113,12 @@ export default function Seguranca() {
           <ShieldAlert className="mr-1 inline h-4 w-4 text-warn" aria-hidden />
           {avisoTreinamento}
         </p>
+        <Link
+          href="/emergencia"
+          className="mb-4 block rounded-2xl bg-danger p-4 text-center text-lg font-extrabold text-white hover:opacity-90"
+        >
+          🚨 Abrir modo emergência (passo a passo em tela cheia)
+        </Link>
         <div className="space-y-3">
           <Expansivel
             titulo="Bebês MENORES de 1 ano"

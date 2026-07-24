@@ -1,0 +1,18 @@
+{
+  "name": "Introdução Alimentar — Nosso Pediatra",
+  "short_name": "Intro Alimentar",
+  "description": "Guia prático de introdução alimentar para bebês de 6 a 24 meses.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fdfbf7",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "icone.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
