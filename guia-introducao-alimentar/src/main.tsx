@@ -13,6 +13,6 @@ createRoot(document.getElementById('root')!).render(
 // (falha silenciosa em demos hospedadas fora da raiz, ex.: artifact).
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
 }
