@@ -1,3 +1,4 @@
+import logo from '@/assets/logo.svg';
 import AvisoTeste from '@/components/AvisoTeste';
 import { APP_VERSAO, linkFeedback } from '@/lib/feedback';
 import { AlertTriangle, ChefHat, Home, NotebookPen, Search } from 'lucide-react';
@@ -19,9 +20,12 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="min-h-screen pb-24">
       <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-          <Link href="/" className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-primary">Nosso Pediatra</span>
-            <span className="text-xs text-ink-soft">Introdução Alimentar</span>
+          <Link href="/" className="flex items-center gap-2.5">
+            <img src={logo} alt="" aria-hidden className="h-9 w-9" />
+            <span className="leading-tight">
+              <span className="block text-base font-bold text-primary">Nosso Pediatra</span>
+              <span className="block text-[11px] text-ink-soft">Introdução Alimentar</span>
+            </span>
           </Link>
           <Link
             href="/emergencia"
@@ -52,7 +56,10 @@ export default function Layout({ children }: { children: ReactNode }) {
             Enviar feedback
           </a>
         </p>
-        <p>© {new Date().getFullYear()} Nosso Pediatra · Amor de pai. Ciência de médico.</p>
+        <p>
+          Este app faz parte do projeto <strong>Nosso Pediatra</strong> · Amor de pai. Ciência
+          de médico. © {new Date().getFullYear()}
+        </p>
       </footer>
 
       <AvisoTeste />

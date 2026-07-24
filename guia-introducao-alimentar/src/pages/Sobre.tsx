@@ -1,3 +1,4 @@
+import logo from '@/assets/logo.svg';
 import BannerBebe from '@/components/BannerBebe';
 import { APP_VERSAO, linkFeedback } from '@/lib/feedback';
 import { MessageCircle, ShieldCheck } from 'lucide-react';
@@ -15,12 +16,16 @@ export default function Sobre() {
     <div className="space-y-8">
       <BannerBebe />
 
-      <div>
-        <h1 className="mb-2 text-2xl font-bold">Sobre este guia</h1>
-        <p className="text-ink-soft">
-          Um app do NossoPediatra para acompanhar famílias na introdução alimentar, dos 6 aos 24
-          meses — feito para ser consultado na cozinha, com uma mão só.
-        </p>
+      <div className="flex items-start gap-4">
+        <img src={logo} alt="Logo do Nosso Pediatra" className="h-16 w-16 shrink-0" />
+        <div>
+          <h1 className="mb-2 text-2xl font-bold">Sobre este guia</h1>
+          <p className="text-ink-soft">
+            Este app faz parte do projeto <strong>Nosso Pediatra</strong> e acompanha famílias na
+            introdução alimentar, dos 6 aos 24 meses — feito para ser consultado na cozinha, com
+            uma mão só.
+          </p>
+        </div>
       </div>
 
       <section className="rounded-2xl border-2 border-warn bg-warn-soft p-5">

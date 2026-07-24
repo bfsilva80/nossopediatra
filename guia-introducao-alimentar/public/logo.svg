@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!--
+    Marca Nosso Pediatra — recriação vetorial fiel do logo original
+    (coração com família amparado por uma mão, estilo paper-cut).
+    Para usar o arquivo raster original no lugar, substitua os usos de
+    logo.svg por ele (mesmas dimensões quadradas).
+  -->
+  <!-- coração externo -->
+  <path
+    fill="#4B8FB0"
+    d="M256 425 C150 342 60 268 60 170 C60 92 130 43 200 66 C232 77 250 98 256 116 C262 98 280 77 312 66 C382 43 452 92 452 170 C452 268 362 342 256 425 Z"
+  />
+  <!-- coração interno -->
+  <g transform="translate(256 224) scale(0.82) translate(-256 -224)">
+    <path
+      fill="#CFE4EC"
+      d="M256 425 C150 342 60 268 60 170 C60 92 130 43 200 66 C232 77 250 98 256 116 C262 98 280 77 312 66 C382 43 452 92 452 170 C452 268 362 342 256 425 Z"
+    />
+  </g>
+  <!-- adulto à esquerda -->
+  <circle cx="222" cy="168" r="34" fill="#2E7292"/>
+  <rect x="178" y="212" width="88" height="190" rx="34" fill="#2E7292"/>
+  <!-- adulto à direita -->
+  <circle cx="318" cy="144" r="40" fill="#1D5C7C"/>
+  <rect x="270" y="196" width="98" height="214" rx="38" fill="#1D5C7C"/>
+  <!-- criança ao centro -->
+  <circle cx="266" cy="258" r="27" fill="#57A3C4"/>
+  <rect x="234" y="292" width="64" height="116" rx="26" fill="#57A3C4"/>
+  <!-- mão que ampara -->
+  <path
+    fill="#E3C49E"
+    d="M30 385 C33 340 80 318 130 328 C210 345 290 348 365 330 C420 316 462 288 478 296 C492 306 470 348 428 382 C360 438 262 470 178 456 C105 444 40 425 30 385 Z"
+  />
+  <path
+    fill="#C9A87E"
+    d="M66 398 C130 372 235 366 310 380 C350 388 368 400 362 410 C350 428 300 435 240 430 C160 424 95 416 66 398 Z"
+  />
+  <path
+    fill="#E3C49E"
+    d="M62 390 C126 364 231 358 306 372 C346 380 364 392 358 402 C346 420 296 427 236 422 C156 416 91 408 62 390 Z"
+  />
+</svg>

@@ -5,11 +5,11 @@
   "lang": "pt-BR",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#fdfbf7",
-  "theme_color": "#0f766e",
+  "background_color": "#f7fafb",
+  "theme_color": "#17506f",
   "icons": [
     {
-      "src": "icone.svg",
+      "src": "logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

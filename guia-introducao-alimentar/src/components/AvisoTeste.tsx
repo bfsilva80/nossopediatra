@@ -1,5 +1,5 @@
+import logo from '@/assets/logo.svg';
 import { usePersistido } from '@/lib/storage';
-import { ShieldCheck } from 'lucide-react';
 import { useLocation } from 'wouter';
 
 /**
@@ -21,11 +21,14 @@ export default function AvisoTeste() {
       className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50 p-4 sm:items-center"
     >
       <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
-        <div className="mb-3 flex items-center gap-2">
-          <ShieldCheck className="h-6 w-6 text-primary" aria-hidden />
+        <div className="mb-4 flex flex-col items-center text-center">
+          <img src={logo} alt="" aria-hidden className="mb-2 h-16 w-16" />
           <h2 id="titulo-aviso" className="text-lg font-bold">
             Antes de começar
           </h2>
+          <p className="text-xs text-ink-soft">
+            Este app faz parte do projeto <strong>Nosso Pediatra</strong>
+          </p>
         </div>
         <ul className="mb-5 space-y-2.5 text-sm text-ink">
           <li>
