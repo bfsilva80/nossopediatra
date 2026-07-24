@@ -325,7 +325,7 @@ export default function Diario() {
       <p className="rounded-xl bg-stone-100 p-4 text-sm text-ink-soft">
         💡 Registrou algum sintoma repetido com o mesmo alimento? Leve o diário na próxima
         consulta — padrões valem mais que episódios isolados. E se a refeição virou briga,{' '}
-        <Link href="/metodos" className="font-medium text-primary underline">
+        <Link href="/metodos/ajuda" className="font-medium text-primary underline">
           veja quando simplificar
         </Link>
         .

@@ -34,8 +34,10 @@ function AppRoutes() {
         <Route path="/fases" component={Fases} />
         <Route path="/comecando" component={Comecando} />
         <Route path="/metodos" component={Metodos} />
+        <Route path="/metodos/:secao" component={Metodos} />
         <Route path="/duvidas" component={Duvidas} />
         <Route path="/seguranca" component={Seguranca} />
+        <Route path="/seguranca/:secao" component={Seguranca} />
         <Route path="/emergencia" component={Emergencia} />
         <Route path="/sobre" component={Sobre} />
         <Route path="/receitas" component={Receitas} />

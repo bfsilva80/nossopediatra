@@ -12,7 +12,8 @@ import {
   type Metodo,
 } from '@/content/metodos';
 import { Handshake, LifeBuoy, Scale, ShieldCheck, Utensils } from 'lucide-react';
-import { Link } from 'wouter';
+import { useEffect } from 'react';
+import { Link, useRoute } from 'wouter';
 
 function ListaMarcada({
   itens,
@@ -121,6 +122,15 @@ function CardMetodo({ metodo }: { metodo: Metodo }) {
 }
 
 export default function Metodos() {
+  const [, params] = useRoute('/metodos/:secao');
+  useEffect(() => {
+    if (params?.secao === 'ajuda') {
+      requestAnimationFrame(() =>
+        document.getElementById('ajuda')?.scrollIntoView({ block: 'start', behavior: 'instant' })
+      );
+    }
+  }, [params?.secao]);
+
   return (
     <div className="space-y-10">
       <BannerBebe />
@@ -229,7 +239,7 @@ export default function Metodos() {
       </section>
 
       {/* Quando simplificar ou pedir ajuda */}
-      <section id="ajuda" aria-labelledby="titulo-ajuda">
+      <section id="ajuda" aria-labelledby="titulo-ajuda" className="scroll-mt-20">
         <h2 id="titulo-ajuda" className="mb-3 flex items-center gap-2 text-xl font-bold">
           <LifeBuoy className="h-5 w-5 text-warn" aria-hidden />
           Quando simplificar — ou pedir orientação

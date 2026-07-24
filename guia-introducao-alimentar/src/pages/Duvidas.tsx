@@ -79,7 +79,7 @@ export default function Duvidas() {
 
       <p className="rounded-xl bg-stone-100 p-4 text-sm text-ink-soft">
         A refeição virou briga, ou o método não está funcionando?{' '}
-        <Link href="/metodos" className="font-medium text-primary underline">
+        <Link href="/metodos/ajuda" className="font-medium text-primary underline">
           Veja quando simplificar, no guia de métodos
         </Link>
         . E não achou sua dúvida? Leve a pergunta para a consulta com o pediatra.

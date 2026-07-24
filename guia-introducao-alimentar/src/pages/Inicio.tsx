@@ -293,7 +293,7 @@ export default function Inicio() {
             <p className="mt-1 text-sm font-semibold">alimentos experimentados</p>
             <p className="text-xs text-ink-soft">toque para marcar mais</p>
           </Link>
-          <Link href="/seguranca" className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm hover:border-primary">
+          <Link href="/seguranca/rastreador" className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm hover:border-primary">
             <p className="text-3xl font-extrabold text-primary">
               {alergenicosOfertados}
               <span className="text-base font-semibold text-ink-soft">/{alergenicos.length}</span>

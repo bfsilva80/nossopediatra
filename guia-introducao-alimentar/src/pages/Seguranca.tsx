@@ -14,7 +14,8 @@ import {
 } from '@/content/seguranca';
 import { usePersistido } from '@/lib/storage';
 import { AlertTriangle, Phone, ShieldAlert } from 'lucide-react';
-import { Link } from 'wouter';
+import { useEffect } from 'react';
+import { Link, useRoute } from 'wouter';
 
 type StatusAlergenico = 'nao' | 'ok' | 'reacao';
 type RegistroAlergenicos = Record<string, { status: StatusAlergenico; data: string }>;
@@ -57,6 +58,20 @@ function ListaPassos({ passos }: { passos: PassoSocorro[] }) {
 
 export default function Seguranca() {
   const [registro, setRegistro] = usePersistido<RegistroAlergenicos>('alergenicos', {});
+
+  // Deep-link por seção (/seguranca/alergenicos etc.) — âncora #id não
+  // funciona com o roteamento por hash, então rolamos ao montar.
+  const [, params] = useRoute('/seguranca/:secao');
+  useEffect(() => {
+    const alvo = params?.secao ? `sec-${params.secao}` : null;
+    const alvosValidos = [...secoes.map(s => s.id), 'sec-rastreador'];
+    if (alvo && alvosValidos.includes(alvo)) {
+      // instantâneo: em aterrissagem de rota, animar a rolagem só atrasa
+      requestAnimationFrame(() =>
+        document.getElementById(alvo)?.scrollIntoView({ block: 'start', behavior: 'instant' })
+      );
+    }
+  }, [params?.secao]);
 
   const marcar = (id: string, status: StatusAlergenico) =>
     setRegistro(prev => ({
@@ -255,7 +270,7 @@ export default function Seguranca() {
           </div>
         </div>
 
-        <div>
+        <div id="sec-rastreador" className="scroll-mt-20">
           <h3 className="mb-3 text-lg font-bold">Rastreador — marque conforme for oferecendo</h3>
           <ul className="space-y-2">
             {alergenicos.map(a => {

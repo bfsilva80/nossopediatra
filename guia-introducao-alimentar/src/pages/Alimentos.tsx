@@ -214,7 +214,7 @@ export default function Alimentos() {
                     <p className="rounded-xl bg-warn-soft p-3">
                       <strong>Alergênico ({a.alergenico}): </strong>
                       primeira oferta pequena e observada; sem reação, mantenha na rotina.{' '}
-                      <Link href="/seguranca" className="font-medium text-primary underline">
+                      <Link href="/seguranca/alergenicos" className="font-medium text-primary underline">
                         Ver orientações
                       </Link>
                     </p>
