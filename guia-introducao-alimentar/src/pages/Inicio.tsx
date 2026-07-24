@@ -1,4 +1,5 @@
 import { useNascimento } from '@/components/BannerBebe';
+import DicaInstalar from '@/components/DicaInstalar';
 import { alergenicos } from '@/content/seguranca';
 import { alimentos } from '@/content/alimentos';
 import { fases } from '@/content/fases';
@@ -168,6 +169,7 @@ export default function Inicio() {
           ))}
           </ul>
         </section>
+        <DicaInstalar />
         <GradeAtalhos
           atalhos={[
             { href: '/comecando', titulo: 'Como começar', descricao: 'Sinais de prontidão', Icone: Sprout },
@@ -243,6 +245,21 @@ export default function Inicio() {
         </div>
       </section>
 
+      {meses <= 7 && (
+        <Link
+          href="/comecando"
+          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4"
+        >
+          <Sprout className="h-8 w-8 shrink-0 text-primary" aria-hidden />
+          <span className="flex-1">
+            <span className="block font-bold">Começando agora?</span>
+            <span className="block text-sm text-ink-soft">
+              A primeira semana passo a passo — e o que é normal acontecer.
+            </span>
+          </span>
+        </Link>
+      )}
+
       {ideiaDoDia && (
         <Link
           href="/alimentos"
@@ -300,6 +317,8 @@ export default function Inicio() {
           ]}
         />
       </section>
+
+      <DicaInstalar />
 
       <section className="grid grid-cols-2 gap-3 text-center text-sm">
         <Link href="/fases" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">

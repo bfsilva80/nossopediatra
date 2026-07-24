@@ -65,6 +65,7 @@ export const fases: Fase[] = [
       'Sem sal e sem açúcar (nem mel). Tempere com cebola, alho e ervas frescas',
       'Engasgos e caretas fazem parte do aprendizado — conheça a diferença entre reflexo de proteção e engasgo real na tela Segurança',
       'O bebê pode comer pouco no começo. O objetivo agora é aprender, não substituir o leite',
+      'Fruta rica em vitamina C de sobremesa (laranja, acerola, goiaba) ajuda a absorver o ferro da refeição',
     ],
   },
   {

@@ -1,6 +1,7 @@
 import BannerBebe from '@/components/BannerBebe';
 import { usePersistido } from '@/lib/storage';
 import { Download, Plus, Share2, Trash2 } from 'lucide-react';
+import { Link } from 'wouter';
 import { useState } from 'react';
 
 interface Registro {
@@ -16,6 +17,7 @@ interface Registro {
 const tiposRefeicao = ['Café da manhã', 'Lanche da manhã', 'Almoço', 'Lanche da tarde', 'Jantar', 'Outro'];
 
 const sintomasComuns = [
+  'Recusou a refeição',
   'Vermelhidão / urticária',
   'Coceira',
   'Inchaço',
@@ -232,6 +234,14 @@ export default function Diario() {
             </div>
           </fieldset>
 
+          {form.sintomas.includes('Recusou a refeição') && (
+            <p className="rounded-xl bg-primary-soft p-3 text-sm">
+              <strong>Recusa faz parte do treino:</strong> podem ser precisas 8–10 ofertas em dias
+              diferentes até um alimento ser aceito. Sem pressão — registre e ofereça de novo
+              outro dia.
+            </p>
+          )}
+
           <div>
             <label htmlFor="d-notas" className="mb-1 block text-sm font-semibold">
               Observações
@@ -314,7 +324,11 @@ export default function Diario() {
 
       <p className="rounded-xl bg-stone-100 p-4 text-sm text-ink-soft">
         💡 Registrou algum sintoma repetido com o mesmo alimento? Leve o diário na próxima
-        consulta — padrões valem mais que episódios isolados.
+        consulta — padrões valem mais que episódios isolados. E se a refeição virou briga,{' '}
+        <Link href="/metodos" className="font-medium text-primary underline">
+          veja quando simplificar
+        </Link>
+        .
       </p>
     </div>
   );

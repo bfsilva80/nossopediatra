@@ -53,6 +53,15 @@ export default function Sobre() {
       </section>
 
       <section>
+        <h2 className="mb-3 text-lg font-bold">Levar na cozinha (funciona offline)</h2>
+        <p className="rounded-xl bg-white p-4 text-sm shadow-sm">
+          Adicione o app à tela inicial do celular e ele abre em um toque, mesmo sem internet:
+          no Android, menu do navegador (⋮) → "Adicionar à tela inicial"; no iPhone, botão de
+          compartilhar → "Adicionar à Tela de Início".
+        </p>
+      </section>
+
+      <section>
         <h2 className="mb-3 text-lg font-bold">Seus dados</h2>
         <p className="rounded-xl bg-white p-4 text-sm shadow-sm">
           Tudo o que você registra — data de nascimento, diário, alimentos experimentados,

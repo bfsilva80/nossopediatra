@@ -1,4 +1,5 @@
-import BannerBebe from '@/components/BannerBebe';
+import BannerBebe, { useNascimento } from '@/components/BannerBebe';
+import { calcularIdade } from '@/lib/idade';
 import {
   alimentos,
   normalizar,
@@ -35,18 +36,30 @@ const corQuando: Record<QuandoPode, string> = {
 export default function Alimentos() {
   const [busca, setBusca] = useState('');
   const [grupo, setGrupo] = useState<GrupoAlimento | 'Todos'>('Todos');
+  const [soEvitar, setSoEvitar] = useState(false);
+  const [nascimento] = useNascimento();
+  const meses = calcularIdade(nascimento)?.meses ?? null;
   const [aberto, setAberto] = useState<string | null>(null);
   const [experimentados, setExperimentados] = usePersistido<string[]>('alimentos-experimentados', []);
 
   const termo = normalizar(busca.trim());
 
+  // "O que evitar": itens 24m+/nunca sempre; 12m e 9m entram conforme a idade do bebê
+  const evitarAgora = (a: (typeof alimentos)[number]) =>
+    a.quando === '24m' ||
+    a.quando === 'nao' ||
+    (meses !== null && meses < 12 && a.quando === '12m') ||
+    (meses !== null && meses < 9 && a.quando === '9m');
+
   const filtrados = useMemo(() => {
     return alimentos.filter(a => {
+      if (soEvitar && !evitarAgora(a)) return false;
       if (grupo !== 'Todos' && a.grupo !== grupo) return false;
       if (!termo) return true;
       return normalizar(`${a.nome} ${a.grupo} ${a.alergenico ?? ''}`).includes(termo);
     });
-  }, [termo, grupo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [termo, grupo, soEvitar, meses]);
 
   const faqRelacionadas = useMemo(
     () =>
@@ -97,7 +110,18 @@ export default function Alimentos() {
         />
       </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Grupos de alimentos">
+      <div className="flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Filtros de alimentos">
+        <button
+          aria-pressed={soEvitar}
+          onClick={() => setSoEvitar(v => !v)}
+          className={`shrink-0 rounded-full border-2 px-3.5 py-1.5 text-sm font-semibold transition-colors ${
+            soEvitar
+              ? 'border-danger bg-danger text-white'
+              : 'border-danger/40 bg-white text-danger hover:border-danger'
+          }`}
+        >
+          🚫 O que evitar
+        </button>
         {grupos.map(g => (
           <button
             key={g}
@@ -118,6 +142,14 @@ export default function Alimentos() {
         {filtrados.length} alimento{filtrados.length === 1 ? '' : 's'} ·{' '}
         <span className="font-semibold text-primary">{experimentados.length} já experimentados</span>
       </p>
+
+      {soEvitar && (
+        <p className="rounded-xl bg-danger-soft p-3 text-sm">
+          {meses !== null
+            ? `Lista do que NÃO oferecer na idade atual do seu bebê (${meses} meses) — boa para mostrar a avós e cuidadores.`
+            : 'Lista do que não oferecer antes dos 2 anos. Informe a data de nascimento no Início para ajustá-la à idade do seu bebê.'}
+        </p>
+      )}
 
       <div className="space-y-2">
         {filtrados.map(a => {

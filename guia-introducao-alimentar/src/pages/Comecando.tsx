@@ -114,6 +114,21 @@ export default function Comecando() {
           </Link>
           .
         </p>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <p className="rounded-xl border-2 border-primary bg-primary-soft p-4 text-sm">
+            <strong>Vai acontecer e é normal:</strong> careta, ânsia e tosse barulhenta são o
+            reflexo de proteção treinando. Não intervenha — deixe o bebê resolver.
+          </p>
+          <p className="rounded-xl border-2 border-danger bg-danger-soft p-4 text-sm">
+            <strong>Engasgo real é silencioso:</strong> sem tosse, sem choro, lábios arroxeados.
+            Aí é agir:{' '}
+            <Link href="/emergencia" className="font-bold text-danger underline">
+              passo a passo aqui
+            </Link>
+            .
+          </p>
+        </div>
       </section>
 
       {/* Métodos */}
