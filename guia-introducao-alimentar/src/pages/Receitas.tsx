@@ -26,14 +26,13 @@ export default function Receitas() {
         </p>
       </div>
 
-      <div role="tablist" aria-label="Fase das receitas" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <div role="group" aria-label="Fase das receitas" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {fases.map(f => {
           const ativa = f.id === faseId;
           return (
             <button
               key={f.id}
-              role="tab"
-              aria-selected={ativa}
+              aria-pressed={ativa}
               onClick={() => setFaseId(f.id)}
               className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold transition-colors ${
                 ativa

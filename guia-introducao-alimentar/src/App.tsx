@@ -8,6 +8,7 @@ import Fases from '@/pages/Fases';
 import Inicio from '@/pages/Inicio';
 import Receitas from '@/pages/Receitas';
 import Seguranca from '@/pages/Seguranca';
+import Sobre from '@/pages/Sobre';
 import { Route, Router, Switch } from 'wouter';
 import { useHashLocation } from 'wouter/use-hash-location';
 
@@ -34,6 +35,7 @@ function AppRoutes() {
         <Route path="/duvidas" component={Duvidas} />
         <Route path="/seguranca" component={Seguranca} />
         <Route path="/emergencia" component={Emergencia} />
+        <Route path="/sobre" component={Sobre} />
         <Route path="/receitas" component={Receitas} />
         <Route path="/diario" component={Diario} />
         <Route>

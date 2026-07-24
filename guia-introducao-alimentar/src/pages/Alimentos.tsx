@@ -97,12 +97,11 @@ export default function Alimentos() {
         />
       </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Grupos de alimentos">
+      <div className="flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Grupos de alimentos">
         {grupos.map(g => (
           <button
             key={g}
-            role="tab"
-            aria-selected={grupo === g}
+            aria-pressed={grupo === g}
             onClick={() => setGrupo(g)}
             className={`shrink-0 rounded-full border-2 px-3.5 py-1.5 text-sm font-semibold transition-colors ${
               grupo === g

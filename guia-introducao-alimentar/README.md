@@ -69,3 +69,16 @@ Buscar por `[VALIDAR]` em `src/content/`:
 3. Exceções na introdução de alergênicos (dermatite atópica grave / alergia diagnosticada).
 4. O rodapé exibe "Versão em revisão clínica" até o pediatra revisor assinar; após a revisão,
    substituir por "Revisado por Dr. — CRM — em [data]" em `src/components/Layout.tsx`.
+
+## MVP de teste (v0.3)
+
+Adições para o teste com famílias reais:
+- **Aviso de primeira visita**: modal único deixando claro que é versão de teste em revisão
+  clínica, que o app não substitui o pediatra, e que os dados ficam no aparelho.
+- **Canal de feedback sem backend**: links "Enviar feedback" (rodapé e tela Sobre) abrem o
+  WhatsApp do NossoPediatra com mensagem pré-preenchida (`src/lib/feedback.ts`).
+- **Tela Sobre** (`/sobre`): status da revisão, fontes com ano, política de dados locais.
+- **Ideia para hoje** no painel: sugere um alimento ainda não experimentado, adequado à idade,
+  rotacionando por dia — motivo simples para abrir o app amanhã de novo.
+- Acessibilidade: seletores de fase/grupo agora usam `aria-pressed` (padrão correto para
+  filtros), aviso como `role="dialog"`.

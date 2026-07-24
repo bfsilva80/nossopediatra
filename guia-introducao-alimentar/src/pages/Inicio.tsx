@@ -207,6 +207,16 @@ export default function Inicio() {
   const indiceFase = fases.findIndex(f => f.id === fase.id);
   const proximaFase = fases[indiceFase + 1];
 
+  // Ideia do dia: um alimento ainda não experimentado, adequado à idade,
+  // escolhido de forma determinística pelo dia do ano (muda a cada dia).
+  const candidatos = alimentos.filter(
+    a => (a.quando === '6m' || (a.quando === '9m' && meses >= 9)) && !experimentados.includes(a.id)
+  );
+  const diaDoAno = Math.floor(
+    (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86_400_000
+  );
+  const ideiaDoDia = candidatos.length > 0 ? candidatos[diaDoAno % candidatos.length] : null;
+
   return (
     <div className="space-y-8">
       <section className="rounded-2xl bg-primary p-5 text-white">
@@ -229,6 +239,26 @@ export default function Inicio() {
           )}
         </div>
       </section>
+
+      {ideiaDoDia && (
+        <Link
+          href="/alimentos"
+          className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-primary bg-primary-soft p-4 hover:border-solid"
+        >
+          <span className="text-3xl" aria-hidden>
+            {ideiaDoDia.emoji}
+          </span>
+          <span className="flex-1">
+            <span className="block text-xs font-bold uppercase tracking-wide text-primary">
+              Ideia para hoje
+            </span>
+            <span className="block text-sm">
+              Que tal oferecer <strong>{ideiaDoDia.nome.toLowerCase()}</strong>? Toque para ver
+              como.
+            </span>
+          </span>
+        </Link>
+      )}
 
       <section aria-labelledby="titulo-progresso">
         <h2 id="titulo-progresso" className="mb-3 text-lg font-bold">

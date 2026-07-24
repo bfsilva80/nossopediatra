@@ -22,14 +22,13 @@ export default function Fases() {
         </p>
       </div>
 
-      <div role="tablist" aria-label="Fases" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <div role="group" aria-label="Fases" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {fases.map(f => {
           const ativa = f.id === selecionada;
           return (
             <button
               key={f.id}
-              role="tab"
-              aria-selected={ativa}
+              aria-pressed={ativa}
               onClick={() => setSelecionada(f.id)}
               className={`rounded-xl border-2 px-3 py-3 text-center transition-colors ${
                 ativa

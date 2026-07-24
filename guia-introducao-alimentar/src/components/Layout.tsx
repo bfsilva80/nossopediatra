@@ -1,3 +1,5 @@
+import AvisoTeste from '@/components/AvisoTeste';
+import { APP_VERSAO, linkFeedback } from '@/lib/feedback';
 import { AlertTriangle, ChefHat, Home, NotebookPen, Search } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
@@ -33,15 +35,27 @@ export default function Layout({ children }: { children: ReactNode }) {
       <main className="mx-auto max-w-3xl px-4 py-6">{children}</main>
 
       <footer className="mx-auto max-w-3xl px-4 pb-6 pt-10 text-center text-xs text-ink-soft">
-        <p className="mb-1">
-          Conteúdo baseado no Guia Alimentar para Crianças Brasileiras Menores de 2 Anos
-          (Ministério da Saúde, 2019) e no Manual de Alimentação da SBP.
-        </p>
         <p className="mb-1 font-medium text-warn">
-          Versão em revisão clínica — não substitui a orientação do seu pediatra.
+          {APP_VERSAO} em revisão clínica — não substitui a orientação do seu pediatra.
+        </p>
+        <p className="mb-2">
+          <Link href="/sobre" className="font-medium text-primary underline">
+            Sobre este guia e fontes
+          </Link>
+          {' · '}
+          <a
+            href={linkFeedback('rodapé')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-primary underline"
+          >
+            Enviar feedback
+          </a>
         </p>
         <p>© {new Date().getFullYear()} Nosso Pediatra · Amor de pai. Ciência de médico.</p>
       </footer>
+
+      <AvisoTeste />
 
       <nav
         aria-label="Navegação principal"
