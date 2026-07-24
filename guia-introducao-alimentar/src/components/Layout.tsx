@@ -2,7 +2,7 @@ import logo from '@/assets/logo.svg';
 import AvisoTeste from '@/components/AvisoTeste';
 import { APP_VERSAO, linkFeedback } from '@/lib/feedback';
 import { AlertTriangle, ChefHat, Home, NotebookPen, Search } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
 
 const abas = [
@@ -15,6 +15,13 @@ const abas = [
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [rota] = useLocation();
+
+  // Toda troca de tela começa do topo — sem isto, navegar a partir de uma
+  // posição rolada abre a próxima tela no meio. Os deep-links de seção
+  // (/seguranca/:secao, /metodos/:secao) rolam depois, via rAF, e prevalecem.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [rota]);
 
   return (
     <div className="min-h-screen pb-24">
