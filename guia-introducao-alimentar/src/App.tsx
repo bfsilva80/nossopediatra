@@ -6,6 +6,7 @@ import Duvidas from '@/pages/Duvidas';
 import Emergencia from '@/pages/Emergencia';
 import Fases from '@/pages/Fases';
 import Inicio from '@/pages/Inicio';
+import Metodos from '@/pages/Metodos';
 import Receitas from '@/pages/Receitas';
 import Seguranca from '@/pages/Seguranca';
 import Sobre from '@/pages/Sobre';
@@ -32,6 +33,7 @@ function AppRoutes() {
         <Route path="/alimentos" component={Alimentos} />
         <Route path="/fases" component={Fases} />
         <Route path="/comecando" component={Comecando} />
+        <Route path="/metodos" component={Metodos} />
         <Route path="/duvidas" component={Duvidas} />
         <Route path="/seguranca" component={Seguranca} />
         <Route path="/emergencia" component={Emergencia} />

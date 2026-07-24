@@ -11,6 +11,7 @@ import {
   ChefHat,
   HelpCircle,
   NotebookPen,
+  Scale,
   Search,
   Sprout,
 } from 'lucide-react';
@@ -298,10 +299,14 @@ export default function Inicio() {
         />
       </section>
 
-      <section className="grid grid-cols-3 gap-3 text-center text-sm">
+      <section className="grid grid-cols-2 gap-3 text-center text-sm">
         <Link href="/fases" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
           <BookOpen className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
           Fases
+        </Link>
+        <Link href="/metodos" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
+          <Scale className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
+          Colher, BLW ou BLISS?
         </Link>
         <Link href="/comecando" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
           <Sprout className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />

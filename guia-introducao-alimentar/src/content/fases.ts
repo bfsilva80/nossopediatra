@@ -176,53 +176,8 @@ export const fases: Fase[] = [
   },
 ];
 
-/** Métodos de oferta — descritos sem eleger um "oficialmente recomendado". */
-export interface Metodo {
-  id: string;
-  nome: string;
-  icone: string;
-  descricao: string;
-  pontos: string[];
-}
-
-export const metodos: Metodo[] = [
-  {
-    id: 'tradicional',
-    nome: 'Colher (tradicional)',
-    icone: '🥄',
-    descricao: 'O cuidador oferece a comida amassada na colher, evoluindo a textura ao longo dos meses.',
-    pontos: [
-      'Facilita acompanhar o quanto o bebê comeu',
-      'Exige atenção para respeitar os sinais de saciedade (não "empurrar" colheres)',
-      'A textura precisa evoluir — papa lisa por muitos meses atrasa a mastigação',
-    ],
-  },
-  {
-    id: 'blw',
-    nome: 'BLW (o bebê se serve)',
-    icone: '🥕',
-    descricao:
-      'Desde o início (por volta dos 6 meses), o bebê pega alimentos macios em tiras e leva à boca sozinho.',
-    pontos: [
-      'Estimula autonomia, mastigação e aceitação de texturas',
-      'Estudos não mostram mais engasgo que o método tradicional, desde que os formatos sejam seguros e haja supervisão',
-      'Mais difícil estimar quantidades — atenção especial ao ferro',
-    ],
-  },
-  {
-    id: 'misto',
-    nome: 'Misto (participativo)',
-    icone: '👨‍👩‍👧',
-    descricao: 'Combina colher e alimentos na mão na mesma refeição, conforme o momento e o bebê.',
-    pontos: [
-      'Flexível para a rotina real das famílias',
-      'Une o controle da colher com a exploração do BLW',
-      'Na prática, é o caminho de muitas famílias brasileiras',
-    ],
-  },
-];
-
 /** Sinais de prontidão para iniciar a introdução alimentar. */
+/* Os métodos (tradicional, BLW, BLISS) vivem em ./metodos.ts */
 export const sinaisProntidao = [
   { id: 'senta', label: 'Senta com pouco ou nenhum apoio' },
   { id: 'cabeca', label: 'Sustenta bem a cabeça e o tronco' },

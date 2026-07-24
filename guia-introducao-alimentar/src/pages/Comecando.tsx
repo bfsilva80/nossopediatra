@@ -1,6 +1,5 @@
 import BannerBebe, { useNascimento } from '@/components/BannerBebe';
-import Expansivel from '@/components/Expansivel';
-import { metodos, sinaisProntidao } from '@/content/fases';
+import { sinaisProntidao } from '@/content/fases';
 import { calcularIdade } from '@/lib/idade';
 import { usePersistido } from '@/lib/storage';
 import { CheckCircle2 } from 'lucide-react';
@@ -120,28 +119,27 @@ export default function Comecando() {
       {/* Métodos */}
       <section aria-labelledby="titulo-metodos">
         <h2 id="titulo-metodos" className="mb-2 text-xl font-bold">
-          Colher, BLW ou os dois?
+          Colher, BLW ou BLISS?
         </h2>
         <p className="mb-4 text-sm text-ink-soft">
-          Não existe método único certo — existe o que funciona para o seu bebê e a sua rotina, com
-          segurança.
+          Não existe método vencedor — existe o que cabe na sua família, aplicado com segurança. E
+          combinar é permitido.
         </p>
-        <div className="space-y-3">
-          {metodos.map(metodo => (
-            <Expansivel key={metodo.id} titulo={`${metodo.icone} ${metodo.nome}`} subtitulo={metodo.descricao}>
-              <ul className="space-y-2 text-sm">
-                {metodo.pontos.map((ponto, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span aria-hidden className="text-primary">
-                      •
-                    </span>
-                    {ponto}
-                  </li>
-                ))}
-              </ul>
-            </Expansivel>
-          ))}
-        </div>
+        <Link
+          href="/metodos"
+          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4 hover:border-solid"
+        >
+          <span className="text-3xl" aria-hidden>
+            🥄🥕🧩
+          </span>
+          <span className="flex-1">
+            <span className="block font-bold">Guia dos métodos</span>
+            <span className="block text-sm text-ink-soft">
+              O que é cada um, quando faz sentido, pratos de exemplo, BLW × BLISS e quando pedir
+              orientação
+            </span>
+          </span>
+        </Link>
       </section>
     </div>
   );
