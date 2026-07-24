@@ -4,9 +4,22 @@ import Diario from '@/pages/Diario';
 import Fases from '@/pages/Fases';
 import Receitas from '@/pages/Receitas';
 import Seguranca from '@/pages/Seguranca';
-import { Route, Switch } from 'wouter';
+import { Route, Router, Switch } from 'wouter';
+import { useHashLocation } from 'wouter/use-hash-location';
 
+/**
+ * Roteamento por hash (#/fases): o app roda em qualquer hospedagem
+ * estática sem precisar de fallback de SPA no servidor.
+ */
 export default function App() {
+  return (
+    <Router hook={useHashLocation}>
+      <AppRoutes />
+    </Router>
+  );
+}
+
+function AppRoutes() {
   return (
     <Layout>
       <Switch>
