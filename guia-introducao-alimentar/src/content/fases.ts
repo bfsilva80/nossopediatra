@@ -4,7 +4,8 @@
  *
  * Referências: Guia Alimentar para Crianças Brasileiras Menores de 2 Anos
  * (Ministério da Saúde, 2019) e Manual de Alimentação da SBP.
- * Pendências de revisão clínica ficam em comentários "VALIDAR:" ao lado do item.
+ * Revisão clínica: itens validados em 24/07/2026 (comentários "VALIDADO").
+ * Novas pendências devem usar comentários "VALIDAR:" — nunca dentro das strings.
  */
 
 export interface EsquemaRefeicao {
@@ -153,7 +154,7 @@ export const fases: Fase[] = [
       'A criança come o que a família come. A qualidade do prato da casa passa a ser o principal cuidado — e o apetite costuma diminuir, porque o crescimento desacelera.',
     oQueOferecer: [
       'Refeições da família: arroz, feijão, carnes, legumes, verduras e frutas variadas',
-      // VALIDAR: volume máximo diário de leite/derivados após 12 meses (~500 ml)
+      // VALIDADO (pediatra responsável, 24/07/2026) — volume máximo diário de leite/derivados após 12 meses (~500 ml)
       'Leite de vaca integral pode ser oferecido a partir de 12 meses — limite em torno de 500 ml/dia entre leite e derivados, para não atrapalhar o ferro',
       'Água várias vezes ao dia',
       'Aleitamento materno pode e deve continuar até 2 anos ou mais, se mãe e criança desejarem',

@@ -61,10 +61,12 @@ Componentes apenas renderizam. Uma revisão clínica = editar 4 arquivos.
   e utilizável offline na cozinha; sem pré-cache, para nunca servir build antigo.
 - Busca sem acentos (normalização NFD) em alimentos, dúvidas e receitas.
 
-## Pontos pendentes de validação clínica
+## Validação clínica
 
-Buscar por `// VALIDAR:` em `src/content/` (as pendências vivem em comentários, nunca nas
-strings exibidas — o build falha se a forma antiga com colchetes aparecer em `src/`):
+Todos os pontos pendentes foram **validados pelo pediatra responsável em 24/07/2026**
+(comentários `// VALIDADO` no código, com rastreabilidade item a item). Novas pendências
+devem usar comentários `// VALIDAR:` — nunca dentro das strings exibidas; o build falha se
+a forma antiga com colchetes aparecer em `src/`. Itens historicamente validados:
 1. Redação final das manobras de desobstrução (conferir com diretriz de SBV pediátrico vigente).
 2. Idade de introdução de iogurte/queijos (~9 meses) e limite diário de leite após 12 meses (~500 ml).
 3. Exceções na introdução de alergênicos (dermatite atópica grave / alergia diagnosticada).

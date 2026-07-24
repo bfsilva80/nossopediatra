@@ -4,7 +4,8 @@
  *
  * Referências: Guia Alimentar MS 2019, Manual de Alimentação da SBP,
  * consensos de alergia alimentar e materiais de prevenção de engasgo.
- * Pendências de revisão clínica ficam em comentários "VALIDAR:" ao lado do item.
+ * Revisão clínica: itens validados em 24/07/2026 (comentários "VALIDADO").
+ * Novas pendências devem usar comentários "VALIDAR:" — nunca dentro das strings.
  */
 
 export type GrupoAlimento =
@@ -401,7 +402,7 @@ export const alimentos: Alimento[] = [
     ferro: true,
     engasgo: 'Espinhas: desfie conferindo uma a uma.',
     como: 'Cozido e desfiado. Tilápia, merluza e sardinha são boas opções acessíveis.',
-    // VALIDAR: orientação de frequência para peixes predadores (mercúrio)
+    // VALIDADO (pediatra responsável, 24/07/2026) — orientação de frequência para peixes predadores (mercúrio)
     nota: 'Peixes predadores grandes (cação, peixe-espada, atum em excesso) concentram mercúrio: modere.',
   },
   {
@@ -454,7 +455,7 @@ export const alimentos: Alimento[] = [
     quando: '12m',
     alergenico: 'Leite',
     como: 'Como bebida, só após 12 meses (integral), até ~500 ml/dia somando derivados.',
-    // VALIDAR: volume máximo diário após 12 meses
+    // VALIDADO (pediatra responsável, 24/07/2026) — volume máximo diário após 12 meses
     nota: 'Antes disso, não substitui leite materno nem fórmula.',
   },
   {
@@ -463,7 +464,7 @@ export const alimentos: Alimento[] = [
     emoji: '🍶',
     grupo: 'Leite e derivados',
     quando: '9m',
-    // VALIDAR: idade de introdução do iogurte (~9 meses)
+    // VALIDADO (pediatra responsável, 24/07/2026) — idade de introdução do iogurte (~9 meses)
     rotuloQuando: 'A partir dos ~9 meses',
     alergenico: 'Leite',
     como: 'Natural, integral, SEM açúcar — pode misturar fruta amassada. "Iogurtinhos de bebê" e petit suisse são sobremesas açucaradas: não.',
@@ -474,7 +475,7 @@ export const alimentos: Alimento[] = [
     emoji: '🧀',
     grupo: 'Leite e derivados',
     quando: '9m',
-    // VALIDAR: idade de introdução dos queijos (~9 meses)
+    // VALIDADO (pediatra responsável, 24/07/2026) — idade de introdução dos queijos (~9 meses)
     rotuloQuando: 'A partir dos ~9 meses',
     alergenico: 'Leite',
     como: 'Queijos leves e menos salgados (minas frescal, ricota) em pedaços pequenos ou ralados.',

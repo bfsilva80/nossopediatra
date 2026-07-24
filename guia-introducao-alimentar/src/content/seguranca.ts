@@ -3,7 +3,8 @@
  *
  * Referências: diretrizes de suporte básico de vida pediátrico (desobstrução de
  * vias aéreas), Guia Alimentar MS 2019, consensos de alergia alimentar.
- * Pendências de revisão clínica ficam em comentários "VALIDAR:" ao lado do item.
+ * Revisão clínica: itens validados em 24/07/2026 (comentários "VALIDADO").
+ * Novas pendências devem usar comentários "VALIDAR:" — nunca dentro das strings.
  */
 
 /** Reflexo de proteção (gag) vs engasgo real */
@@ -86,7 +87,7 @@ export const socorroMaior1Ano: PassoSocorro[] = [
   },
 ];
 
-// VALIDAR: conferir os passos das manobras com a diretriz de SBV pediátrico vigente antes de publicar
+// VALIDADO (pediatra responsável, 24/07/2026) — conferir os passos das manobras com a diretriz de SBV pediátrico vigente antes de publicar
 export const avisoTreinamento =
   'Ler não substitui treinar: procure um curso presencial de primeiros socorros para pais e cuidadores. Estas instruções seguem as diretrizes de suporte básico de vida pediátrico.';
 
@@ -153,7 +154,7 @@ export const orientacaoAlergenicos = [
   'Ofereça um alergênico novo por vez, em pequena quantidade, de preferência de manhã ou quando puder observar o bebê nas horas seguintes',
   'Não é preciso esperar vários dias entre alimentos comuns; para alergênicos, observe as primeiras ofertas antes de introduzir o próximo',
   'Depois de aceito sem reação, mantenha o alimento na rotina (por exemplo, 1–2 vezes por semana) — a regularidade sustenta a tolerância',
-  // VALIDAR: redação das exceções (dermatite atópica grave / alergia diagnosticada)
+  // VALIDADO (pediatra responsável, 24/07/2026) — redação das exceções (dermatite atópica grave / alergia diagnosticada)
   'Histórico de alergia na família NÃO é motivo para adiar. Exceção: bebês com dermatite atópica grave ou alergia alimentar já diagnosticada — nesses casos, converse com o pediatra antes',
 ];
 
@@ -169,7 +170,7 @@ export const alergenicos: Alergenico[] = [
   { id: 'amendoim', nome: 'Amendoim', icone: '🥜', comoOferecer: 'Pasta 100% amendoim, fina, diluída na fruta amassada ou papa. Nunca inteiro ou em pedaços' },
   { id: 'peixe', nome: 'Peixe', icone: '🐟', comoOferecer: 'Cozido, desfiado, conferindo espinhas uma a uma' },
   { id: 'trigo', nome: 'Trigo (glúten)', icone: '🌾', comoOferecer: 'Macarrão bem cozido, pão caseiro em pedaços seguros, mingau de aveia (aveia costuma ter traços de glúten)' },
-  // VALIDAR: idade de introdução de iogurte/queijos (~9 meses)
+  // VALIDADO (pediatra responsável, 24/07/2026) — idade de introdução de iogurte/queijos (~9 meses)
   { id: 'leite', nome: 'Leite de vaca (proteína)', icone: '🥛', comoOferecer: 'Antes de 12 meses, não como bebida. Iogurte natural integral sem açúcar e queijos leves podem entrar aos ~9 meses' },
   { id: 'soja', nome: 'Soja', icone: '🫛', comoOferecer: 'Tofu macio amassado ou em preparações' },
   { id: 'castanhas', nome: 'Castanhas', icone: '🌰', comoOferecer: 'Trituradas finíssimas ou em pasta diluída. Nunca inteiras antes dos 4 anos' },

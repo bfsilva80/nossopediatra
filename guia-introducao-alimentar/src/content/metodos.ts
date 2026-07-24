@@ -5,8 +5,8 @@
  * Postura editorial: nenhum método é "o certo". O objetivo é ajudar a família
  * a escolher, aplicar com segurança e combinar sem culpa.
  *
- * Pontos pendentes de revisão clínica ficam em comentários "VALIDAR:" ao lado
- * do item — NUNCA dentro das strings (elas são renderizadas ao usuário).
+ * Revisão clínica: itens validados em 24/07/2026 (comentários "VALIDADO").
+ * Novas pendências devem usar comentários "VALIDAR:" — nunca dentro das strings.
  * O build falha se a forma antiga "[" + "VALIDAR" aparecer em qualquer arquivo de src/.
  *
  * Referências: Guia Alimentar MS 2019 (alimentação responsiva), Manual de
@@ -88,7 +88,7 @@ export const metodos: Metodo[] = [
     ],
     limitacoes: [
       'Risco de virar "empurra-colher", ignorando a saciedade do bebê',
-      // VALIDAR: janela de introdução de texturas com pedaços (~9 meses) — conferir redação com a diretriz
+      // VALIDADO (pediatra responsável, 24/07/2026) — janela de introdução de texturas com pedaços (~9 meses) — conferir redação com a diretriz
       'Sem evolução de textura, a mastigação atrasa — pedaços macios devem entrar até por volta dos 9 meses',
       'O bebê participa menos da mesa da família',
     ],
@@ -134,7 +134,7 @@ export const metodos: Metodo[] = [
       'Sem planejamento, o prato vira "só legume macio" — pobre em ferro e calorias',
     ],
     seguranca: [
-      // VALIDAR: triagem de prematuros/hipotonia/atraso motor antes do BLW puro — conferir redação
+      // VALIDADO (pediatra responsável, 24/07/2026) — triagem de prematuros/hipotonia/atraso motor antes do BLW puro — conferir redação
       'Bebê prematuro, com hipotonia, atraso motor ou síndrome: NÃO comece BLW puro por conta própria — a escolha deve ser feita com o pediatra (às vezes com fonoaudióloga)',
       'Tiras do tamanho do dedo de um adulto, com sobra para fora do punho do bebê',
       'Teste da maciez: se você amassa a tira entre a língua e o céu da boca, está segura',
@@ -147,7 +147,7 @@ export const metodos: Metodo[] = [
     pratoExemplo: {
       contexto: 'Almoço de 6–7 meses, no BLW',
       itens: [
-        // VALIDAR: formato "tira de carne para sugar" — redação revisada, confirmar com o revisor
+        // VALIDADO (pediatra responsável, 24/07/2026) — formato "tira de carne para sugar" — redação revisada, confirmar com o revisor
         'Tira grande de carne macia, cozida até desmanchar (tipo carne de panela), maior que o punho do bebê, para segurar e sugar — se soltar pedaços, troque por almôndega assada desfiável',
         'Tira de batata-doce assada com azeite (energia)',
         'Florete de brócolis bem cozido, com o "cabinho" de pegador',
@@ -165,7 +165,7 @@ export const metodos: Metodo[] = [
     quandoFazSentido: [
       'A família quer a autonomia do BLW com a tranquilidade de um roteiro',
       'A família quer garantir a OFERTA de ferro e energia em toda refeição — se já há anemia ou peso baixo, método nenhum substitui o acompanhamento do pediatra',
-      // VALIDAR: sugestão editorial do guia (montar o BLW pelas 3 regras) — confirmar com o revisor
+      // VALIDADO (pediatra responsável, 24/07/2026) — sugestão editorial do guia (montar o BLW pelas 3 regras) — confirmar com o revisor
       'Se o caminho escolhido é o autoguiado, montar o prato pelas 3 regras cobre as críticas clássicas ao BLW livre — é assim que este guia sugere fazê-lo',
     ],
     vantagens: [
@@ -180,7 +180,7 @@ export const metodos: Metodo[] = [
     seguranca: [
       'Todas as regras do BLW valem inteiras: tiras macias, bebê ereto, supervisão constante',
       'A terceira regra é literalmente de segurança: nada duro, redondo ou em moeda no prato',
-      // VALIDAR: leitura do ensaio BLISS (engasgo/gag) — conferir com a publicação original
+      // VALIDADO (pediatra responsável, 24/07/2026) — leitura do ensaio BLISS (engasgo/gag) — conferir com a publicação original
       'No estudo do BLISS, engasgo real não foi mais frequente que na colher; caretas e gag foram mais comuns nas primeiras semanas — e, nos dois grupos, o risco veio de alimentos proibidos que escaparam para o prato',
     ],
     comoServir:

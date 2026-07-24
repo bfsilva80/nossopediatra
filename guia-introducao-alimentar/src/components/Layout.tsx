@@ -36,7 +36,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       <footer className="mx-auto max-w-3xl px-4 pb-6 pt-10 text-center text-xs text-ink-soft">
         <p className="mb-1 font-medium text-warn">
-          {APP_VERSAO} em revisão clínica — não substitui a orientação do seu pediatra.
+          {APP_VERSAO} · conteúdo revisado clinicamente (jul/2026) — não substitui a orientação do seu pediatra.
         </p>
         <p className="mb-2">
           <Link href="/sobre" className="font-medium text-primary underline">

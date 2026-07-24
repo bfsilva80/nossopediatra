@@ -29,8 +29,8 @@ export default function AvisoTeste() {
         </div>
         <ul className="mb-5 space-y-2.5 text-sm text-ink">
           <li>
-            • Esta é uma <strong>versão de teste, em revisão clínica</strong> — o conteúdo segue as
-            diretrizes brasileiras, mas ainda será validado pelo pediatra responsável.
+            • Esta é uma <strong>versão de teste</strong> — o conteúdo segue as diretrizes
+            brasileiras e foi revisado pelo pediatra responsável (jul/2026).
           </li>
           <li>
             • O app <strong>não substitui</strong> a consulta com o pediatra que acompanha o seu

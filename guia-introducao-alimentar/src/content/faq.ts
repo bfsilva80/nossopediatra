@@ -1,6 +1,7 @@
 /**
  * FONTE ÚNICA da FAQ — respostas revisadas e alinhadas com fases.ts e seguranca.ts.
- * Pendências de revisão clínica ficam em comentários "VALIDAR:" ao lado do item.
+ * Revisão clínica: itens validados em 24/07/2026 (comentários "VALIDADO").
+ * Novas pendências devem usar comentários "VALIDAR:" — nunca dentro das strings.
  */
 
 export interface PerguntaFAQ {
@@ -67,7 +68,7 @@ export const perguntasFAQ: PerguntaFAQ[] = [
     resposta:
       'Quase sempre o que assusta é o reflexo de proteção (gag): o bebê tosse, fica vermelho, faz barulho — e resolve sozinho. Isso é treino, não emergência; não bata nas costas nem coloque o dedo na boca. Engasgo real é SILENCIOSO: sem tosse, sem choro, lábios arroxeados — aí é agir na hora com as manobras (veja a tela Segurança) e acionar o 192.',
   },
-  // VALIDAR: afirmação sobre estudos de engasgo no BLW (evidência observacional)
+  // VALIDADO (pediatra responsável, 24/07/2026) — afirmação sobre estudos de engasgo no BLW (evidência observacional)
   {
     id: 'blw-seguro',
     categoria: 'Segurança',
@@ -95,7 +96,7 @@ export const perguntasFAQ: PerguntaFAQ[] = [
     pergunta: 'Quando entra o leite de vaca?',
     resposta:
       'Como bebida, a partir de 12 meses (integral), limitado a cerca de 500 ml/dia somando derivados — excesso de leite atrapalha o ferro. Antes dos 12 meses, o leite de vaca não deve substituir leite materno ou fórmula. Iogurte natural integral sem açúcar e queijos leves costumam ser liberados um pouco antes, por volta dos 9 meses.',
-    // VALIDAR: idade de iogurte/queijos (~9 meses) e teto de 500 ml/dia
+    // VALIDADO (pediatra responsável, 24/07/2026) — idade de iogurte/queijos (~9 meses) e teto de 500 ml/dia
   },
   {
     id: 'mel-acucar',

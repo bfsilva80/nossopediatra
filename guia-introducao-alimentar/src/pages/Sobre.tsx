@@ -26,12 +26,11 @@ export default function Sobre() {
       <section className="rounded-2xl border-2 border-warn bg-warn-soft p-5">
         <h2 className="mb-2 flex items-center gap-2 font-bold">
           <ShieldCheck className="h-5 w-5 text-warn" aria-hidden />
-          Status: versão de teste, em revisão clínica
+          Status: versão de teste — conteúdo revisado clinicamente
         </h2>
         <p className="text-sm">
-          O conteúdo foi escrito a partir das diretrizes brasileiras listadas abaixo, mas ainda
-          passa por revisão final do pediatra responsável — os pontos em confirmação estão
-          marcados para validação no material de origem. Este app é educativo e{' '}
+          O conteúdo foi escrito a partir das diretrizes brasileiras listadas abaixo e revisado
+          pelo pediatra responsável em julho/2026. Este app é educativo e{' '}
           <strong>não substitui a consulta com o pediatra que acompanha o seu bebê</strong>. Em
           emergência, ligue 192.
         </p>

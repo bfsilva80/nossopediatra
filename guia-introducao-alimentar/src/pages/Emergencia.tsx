@@ -1,4 +1,9 @@
-import { socorroMaior1Ano, socorroMenor1Ano, type PassoSocorro } from '@/content/seguranca';
+import {
+  sinaisReacaoAlergica,
+  socorroMaior1Ano,
+  socorroMenor1Ano,
+  type PassoSocorro,
+} from '@/content/seguranca';
 import { ArrowLeft, ArrowRight, Phone, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'wouter';
@@ -6,12 +11,13 @@ import { Link } from 'wouter';
 /**
  * Modo emergência: tela cheia, um passo por vez, letras grandes.
  * Pensado para ser operado em pânico, com uma mão, sem rolagem.
+ * Cobre as duas emergências alimentares: engasgo e anafilaxia.
  */
 export default function Emergencia() {
-  const [faixa, setFaixa] = useState<'menor' | 'maior' | null>(null);
+  const [modo, setModo] = useState<'menor' | 'maior' | 'alergia' | null>(null);
   const [indice, setIndice] = useState(0);
 
-  const passos: PassoSocorro[] = faixa === 'menor' ? socorroMenor1Ano : socorroMaior1Ano;
+  const passos: PassoSocorro[] = modo === 'menor' ? socorroMenor1Ano : socorroMaior1Ano;
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-danger text-white">
@@ -33,7 +39,7 @@ export default function Emergencia() {
         </a>
       </div>
 
-      {faixa === null ? (
+      {modo === null ? (
         <div className="flex flex-1 flex-col justify-center gap-4 p-6">
           <h1 className="text-center text-2xl font-extrabold">Engasgo: qual a idade?</h1>
           <p className="text-center text-white/85">
@@ -42,7 +48,7 @@ export default function Emergencia() {
           </p>
           <button
             onClick={() => {
-              setFaixa('menor');
+              setModo('menor');
               setIndice(0);
             }}
             className="rounded-2xl bg-white p-6 text-2xl font-extrabold text-danger hover:opacity-90"
@@ -51,18 +57,48 @@ export default function Emergencia() {
           </button>
           <button
             onClick={() => {
-              setFaixa('maior');
+              setModo('maior');
               setIndice(0);
             }}
             className="rounded-2xl bg-white/15 p-6 text-2xl font-extrabold hover:bg-white/25"
           >
             MAIS de 1 ano
           </button>
+          <button
+            onClick={() => setModo('alergia')}
+            className="rounded-2xl border-2 border-white/40 p-4 text-lg font-bold hover:bg-white/10"
+          >
+            Não é engasgo — é reação alérgica
+          </button>
+        </div>
+      ) : modo === 'alergia' ? (
+        <div className="flex flex-1 flex-col justify-center p-6">
+          <h1 className="mb-4 text-2xl font-extrabold">{sinaisReacaoAlergica.grave.titulo}</h1>
+          <ul className="mb-6 space-y-3 text-xl leading-snug">
+            {sinaisReacaoAlergica.grave.sinais.map((s, i) => (
+              <li key={i} className="flex gap-3">
+                <span aria-hidden>•</span>
+                {s}
+              </li>
+            ))}
+          </ul>
+          <p className="mb-6 text-lg text-white/95">{sinaisReacaoAlergica.grave.conduta}</p>
+          <button
+            onClick={() => setModo(null)}
+            className="flex items-center justify-center gap-2 rounded-2xl bg-white/15 py-5 text-lg font-bold hover:bg-white/25"
+          >
+            <ArrowLeft className="h-6 w-6" aria-hidden />
+            Voltar
+          </button>
+          <p className="mt-4 text-center text-sm text-white/70">
+            Sinais leves (vermelhidão local, coceira discreta): suspenda o alimento, registre no
+            Diário e fale com o pediatra antes de oferecer de novo.
+          </p>
         </div>
       ) : (
         <div className="flex flex-1 flex-col p-6">
           <p className="mb-2 text-sm font-bold uppercase tracking-wide text-white/70">
-            {faixa === 'menor' ? 'Menos de 1 ano — sem Heimlich' : 'Mais de 1 ano'} · passo{' '}
+            {modo === 'menor' ? 'Menos de 1 ano — sem Heimlich' : 'Mais de 1 ano'} · passo{' '}
             {indice + 1} de {passos.length}
           </p>
           <div className="flex flex-1 flex-col justify-center">
@@ -72,7 +108,7 @@ export default function Emergencia() {
 
           <div className="mt-6 grid grid-cols-2 gap-3">
             <button
-              onClick={() => (indice === 0 ? setFaixa(null) : setIndice(i => i - 1))}
+              onClick={() => (indice === 0 ? setModo(null) : setIndice(i => i - 1))}
               className="flex items-center justify-center gap-2 rounded-2xl bg-white/15 py-5 text-lg font-bold hover:bg-white/25"
             >
               <ArrowLeft className="h-6 w-6" aria-hidden />
