@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             href="/emergencia"
             className="rounded-full bg-danger px-3 py-1.5 text-xs font-bold text-white hover:opacity-90"
           >
-            🚨 Engasgo
+            <span aria-hidden>🚨</span> Engasgo
           </Link>
         </div>
       </header>

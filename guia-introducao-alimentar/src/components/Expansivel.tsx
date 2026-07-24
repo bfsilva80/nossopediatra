@@ -20,7 +20,7 @@ export default function Expansivel({ titulo, subtitulo, children, abertoInicial 
         aria-expanded={aberto}
         aria-controls={idConteudo}
         onClick={() => setAberto(a => !a)}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left hover:bg-stone-50"
+        className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left hover:bg-stone-50 focus-visible:outline-2 focus-visible:outline-primary"
       >
         <span className="flex-1">
           <span className="block font-semibold text-ink">{titulo}</span>
@@ -31,11 +31,9 @@ export default function Expansivel({ titulo, subtitulo, children, abertoInicial 
           className={`h-5 w-5 shrink-0 text-primary transition-transform ${aberto ? 'rotate-180' : ''}`}
         />
       </button>
-      {aberto && (
-        <div id={idConteudo} className="border-t border-stone-100 px-4 py-4">
-          {children}
-        </div>
-      )}
+      <div id={idConteudo} hidden={!aberto} className="border-t border-stone-100 px-4 py-4">
+        {children}
+      </div>
     </div>
   );
 }

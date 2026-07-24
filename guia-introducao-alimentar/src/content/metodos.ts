@@ -5,18 +5,30 @@
  * Postura editorial: nenhum método é "o certo". O objetivo é ajudar a família
  * a escolher, aplicar com segurança e combinar sem culpa.
  *
+ * Pontos pendentes de revisão clínica ficam em comentários "VALIDAR:" ao lado
+ * do item — NUNCA dentro das strings (elas são renderizadas ao usuário).
+ * O build falha se a forma antiga "[" + "VALIDAR" aparecer em qualquer arquivo de src/.
+ *
  * Referências: Guia Alimentar MS 2019 (alimentação responsiva), Manual de
- * Alimentação da SBP, literatura do BLISS (Baby-Led Introduction to SolidS,
- * Univ. de Otago/NZ). Itens com [VALIDAR] aguardam o pediatra revisor.
+ * Alimentação da SBP, ensaios do BLISS (Univ. de Otago/NZ — ver tela Sobre).
  */
+
+import { regrasDeOuroEngasgo } from './seguranca';
+
+export type MetodoId = 'tradicional' | 'blw' | 'bliss';
 
 export interface PratoExemplo {
   contexto: string;
   itens: string[];
+  /** true = os itens são regras ordenadas (renderizar numerado) */
+  ordenado?: boolean;
+  exemploFinal?: string;
+  /** exibe link para a aba Receitas quando há receita correspondente */
+  temReceita?: boolean;
 }
 
 export interface Metodo {
-  id: string;
+  id: MetodoId;
   nome: string;
   subtitulo: string;
   icone: string;
@@ -29,6 +41,32 @@ export interface Metodo {
   pratoExemplo: PratoExemplo;
 }
 
+/** Frase-âncora, usada na tela de métodos e nos pontos de entrada. */
+export const resumoMetodos =
+  'Não existe método vencedor — existe o que cabe na sua família, aplicado com segurança.';
+
+/** Atalho de decisão: uma linha por método, antes de qualquer detalhe. */
+export const decisaoRapida: Array<{ id: MetodoId; icone: string; linha: string }> = [
+  {
+    id: 'tradicional',
+    icone: '🥄',
+    linha: 'Colher — você controla o que entra. Bom para creche e para começar com calma.',
+  },
+  {
+    id: 'blw',
+    icone: '🥕',
+    linha: 'BLW — o bebê come sozinho, em tiras. Pede estudo dos formatos e tolerância à bagunça.',
+  },
+  {
+    id: 'bliss',
+    icone: '🧩',
+    linha: 'BLISS — o BLW com receita pronta de prato: ferro + energia + segurança.',
+  },
+];
+
+export const naDuvida =
+  'Na dúvida? Combine. Colher na creche, tiras em casa — é o que a maioria das famílias faz.';
+
 export const metodos: Metodo[] = [
   {
     id: 'tradicional',
@@ -36,38 +74,40 @@ export const metodos: Metodo[] = [
     subtitulo: 'A comida vai na colher, oferecida pelo adulto',
     icone: '🥄',
     oQueE:
-      'O cuidador prepara a comida amassada com garfo e oferece na colher, evoluindo a textura ao longo das semanas: amassado liso → amassado com pedacinhos → picado. É o formato mais conhecido pelas famílias brasileiras e o mais comum em creches.',
+      'O adulto oferece a comida amassada na colher, evoluindo a textura ao longo das semanas: amassado espesso com garfo → amassado com pedacinhos → picado.',
     quandoFazSentido: [
-      'Quando a família se sente mais segura começando com controle total do que entra',
-      'Quando a creche ou outra cuidadora só consegue oferecer na colher',
-      'Quando o pediatra pediu acompanhamento mais fino de quantidade (por exemplo, ganho de peso baixo)',
-      'Como porta de entrada para famílias muito ansiosas com engasgo — desde que treinem as manobras mesmo assim',
+      'A família quer começar com controle total do que entra',
+      'A creche ou a cuidadora só consegue oferecer na colher',
+      'O pediatra pediu acompanhamento fino de quantidade (ex.: ganho de peso baixo)',
+      'O medo de engasgo ainda é grande — começar pela colher é legítimo, desde que a família treine as manobras mesmo assim',
     ],
     vantagens: [
       'Fácil saber quanto o bebê comeu — útil para garantir o ferro do dia',
-      'Menos bagunça e refeições um pouco mais rápidas',
+      'Menos bagunça, refeições mais rápidas',
       'Simples de delegar para avós e cuidadoras',
     ],
     limitacoes: [
-      'Risco de virar "empurra-colher": o adulto decide o ritmo e ignora os sinais de saciedade do bebê',
-      'Se a papa ficar lisa por tempo demais, a mastigação atrasa — bebês que só conhecem purê até perto dos 9 meses tendem a aceitar pior os pedaços depois [VALIDAR redação]',
-      'O bebê participa menos da refeição da família',
+      'Risco de virar "empurra-colher", ignorando a saciedade do bebê',
+      // VALIDAR: janela de introdução de texturas com pedaços (~9 meses) — conferir redação com a diretriz
+      'Sem evolução de textura, a mastigação atrasa — pedaços macios devem entrar até por volta dos 9 meses',
+      'O bebê participa menos da mesa da família',
     ],
     seguranca: [
       'Colher responsiva: aproxime e ESPERE o bebê abrir a boca — nunca force nem "raspe" a sobra no lábio',
-      'Evolua a textura a cada semana; papa lisa é ponto de partida, não de chegada',
-      'Pare quando o bebê virar o rosto, fechar a boca ou empurrar a colher: saciedade não se negocia',
+      'Evolua a textura a cada semana: papa amassada é ponto de partida, não de chegada',
+      'Pare quando o bebê virar o rosto ou fechar a boca — saciedade não se negocia',
       'Sem telas e sem "aviãozinho de distração" para fazer comer mais',
     ],
     comoServir:
-      'Textura: amassada com garfo, espessa (não escorre da colher), nunca peneirada ou batida. Corte: os pedacinhos crescem semana a semana. Supervisão: adulto presente e atento, bebê sentado ereto — engasgo também acontece com colher.',
+      'Textura: amassada com garfo, espessa, nunca peneirada ou batida. Corte: os pedacinhos crescem semana a semana. Supervisão: adulto presente e atento — engasgo também acontece com colher.',
     pratoExemplo: {
-      contexto: 'Almoço de um bebê de 6–7 meses, na colher',
+      contexto: 'Almoço de 6–7 meses, na colher',
       itens: [
-        'Frango desfiado bem fininho amassado junto com abóbora (ferro + legume)',
-        'Arroz bem cozido amassado com grãos de feijão (energia + mais ferro)',
+        'Frango desfiado fininho amassado com abóbora (ferro + legume)',
+        'Arroz bem cozido amassado com feijão amassado e um pouco do caldo (energia + mais ferro)',
         'Sobremesa: mamão amassado; água no copo',
       ],
+      temReceita: true,
     },
   },
   {
@@ -76,83 +116,89 @@ export const metodos: Metodo[] = [
     subtitulo: 'Baby-Led Weaning: o bebê se serve com as mãos',
     icone: '🥕',
     oQueE:
-      'Desde o início (por volta dos 6 meses), o bebê pega sozinho alimentos macios em tiras e leva à boca, comendo junto com a família — sem papa e sem colher do adulto. Quem decide o quê e o formato é o adulto; quem decide se come e quanto é o bebê.',
+      'Desde os 6 meses, o bebê pega sozinho alimentos macios em tiras e come junto com a família. O adulto decide o quê e o formato; o bebê decide se come e quanto.',
     quandoFazSentido: [
-      'Quando o bebê mostra bom controle de tronco e coordenação para pegar e levar à boca',
-      'Quando a família consegue fazer refeições junto com o bebê e tolera bagunça',
-      'Quando os cuidadores estudaram os formatos seguros e treinaram as manobras de engasgo',
-      'Bebês prematuros, com hipotonia ou dificuldades motoras: converse com o pediatra antes de optar pelo BLW puro [VALIDAR]',
+      'O bebê senta firme e leva objetos à boca com facilidade',
+      'A família consegue comer junto com o bebê e tolera bagunça',
+      'Os cuidadores estudaram os formatos seguros e treinaram as manobras de engasgo',
     ],
     vantagens: [
-      'Autonomia e coordenação: o bebê treina mastigar antes de engolir',
-      'Respeito natural à saciedade — dificilmente alguém come demais pelo bebê',
-      'Contato precoce com texturas variadas e com a comida da família',
+      'O bebê treina mastigar antes de engolir',
+      'Respeito natural à saciedade',
+      'Texturas variadas e comida da família desde cedo',
       'Refeição vira momento social, não procedimento',
     ],
     limitacoes: [
-      'Nas primeiras semanas o bebê explora mais do que engole: é difícil saber quanto ferro e energia entraram',
+      'Nas primeiras semanas o bebê explora mais do que engole — difícil saber quanto ferro e energia entraram',
       'Exige preparo: formatos certos, paciência e chão lavável',
-      'Sem planejamento, o prato pode virar "só legumes macios" — pobre em ferro e calorias',
+      'Sem planejamento, o prato vira "só legume macio" — pobre em ferro e calorias',
     ],
     seguranca: [
-      'Formato: tiras do tamanho do dedo de um adulto, que o bebê consiga segurar com sobra para fora do punho',
-      'Teste da maciez: se você amassa a tira entre a língua e o céu da boca (ou entre dois dedos), está segura',
-      'Bebê sentado ereto no cadeirão, nunca reclinado, nunca comendo sozinho',
-      'Fora do prato: tudo que é duro, redondo ou em moeda (uva inteira, cenoura crua, castanhas, pipoca)',
-      'Náusea e caretas (gag) fazem parte do aprendizado — engasgo real é silencioso; saiba diferenciar na tela Segurança',
+      // VALIDAR: triagem de prematuros/hipotonia/atraso motor antes do BLW puro — conferir redação
+      'Bebê prematuro, com hipotonia, atraso motor ou síndrome: NÃO comece BLW puro por conta própria — a escolha deve ser feita com o pediatra (às vezes com fonoaudióloga)',
+      'Tiras do tamanho do dedo de um adulto, com sobra para fora do punho do bebê',
+      'Teste da maciez: se você amassa a tira entre a língua e o céu da boca, está segura',
+      'Sentado ereto no cadeirão, nunca reclinado, nunca sozinho',
+      'Fora do prato: tudo que é duro, redondo ou em moeda',
+      'Caretas e gag barulhento fazem parte do aprendizado — engasgo real é silencioso',
     ],
     comoServir:
-      'Textura: cozidos até "macio de amassar", assados macios, frutas maduras. Corte: tiras grandes no início (mais seguras que cubinhos pequenos!); quando a pinça com os dedos aparecer (~9 meses), pedaços menores. Supervisão: braço de distância, sempre.',
+      'Textura: cozidos até "macio de amassar", frutas maduras. Corte: tiras grandes no início — mais seguras que cubinhos, porque o bebê ainda não controla pedaços soltos na boca; pedaços menores quando a pinça aparecer (~9 meses). Supervisão: a um braço de distância, sempre.',
     pratoExemplo: {
-      contexto: 'Almoço de um bebê de 6–7 meses, no BLW',
+      contexto: 'Almoço de 6–7 meses, no BLW',
       itens: [
-        'Tira de carne bovina macia e bem cozida, para segurar e "chupar" (ferro) [VALIDAR formato]',
+        // VALIDAR: formato "tira de carne para sugar" — redação revisada, confirmar com o revisor
+        'Tira grande de carne macia, cozida até desmanchar (tipo carne de panela), maior que o punho do bebê, para segurar e sugar — se soltar pedaços, troque por almôndega assada desfiável',
         'Tira de batata-doce assada com azeite (energia)',
-        'Florete de brócolis bem cozido com o "cabinho" de pegador',
-        'Meia banana com a casca cortada como "cabo"; água no copo',
+        'Florete de brócolis bem cozido, com o "cabinho" de pegador',
+        'Meia banana com a casca bem lavada, cortada como "cabo"; água no copo',
       ],
     },
   },
   {
     id: 'bliss',
     nome: 'BLISS',
-    subtitulo: 'O BLW com três regras fixas por refeição',
+    subtitulo: 'O BLW com uma receita fixa de prato',
     icone: '🧩',
     oQueE:
-      'O BLISS (Baby-Led Introduction to SolidS) é uma versão estruturada do BLW, criada por pesquisadoras na Nova Zelândia justamente para responder às três críticas ao BLW: ferro, energia e engasgo. A autonomia é a mesma — o bebê se serve —, mas TODA refeição segue uma receita de montagem.',
+      'A autonomia é a mesma do BLW — o bebê se serve — mas toda refeição segue três regras de montagem, criadas para cobrir os pontos fracos mais estudados do BLW: ferro, energia e engasgo.',
     quandoFazSentido: [
-      'Quando a família quer a autonomia do BLW com a tranquilidade de um roteiro',
-      'Quando há preocupação específica com ferro ou ganho de peso, mas o bebê come bem sozinho',
-      'É, na prática, a forma mais segura de "fazer BLW" — e a que este guia recomenda para quem escolhe o caminho autoguiado [VALIDAR recomendação]',
+      'A família quer a autonomia do BLW com a tranquilidade de um roteiro',
+      'A família quer garantir a OFERTA de ferro e energia em toda refeição — se já há anemia ou peso baixo, método nenhum substitui o acompanhamento do pediatra',
+      // VALIDAR: sugestão editorial do guia (montar o BLW pelas 3 regras) — confirmar com o revisor
+      'Se o caminho escolhido é o autoguiado, montar o prato pelas 3 regras cobre as críticas clássicas ao BLW livre — é assim que este guia sugere fazê-lo',
     ],
     vantagens: [
-      'Garante oferta de ferro e de energia em toda refeição — os dois calcanhares do BLW livre',
-      'Lista explícita de alimentos proibidos por risco de engasgo, sem depender de improviso',
-      'Mantém todas as vantagens do BLW: autonomia, saciedade, texturas, mesa em família',
+      'Garante a oferta de ferro e energia — os dois pontos fracos clássicos do BLW livre',
+      'Lista explícita do que fica fora do prato por risco de engasgo',
+      'Mantém autonomia, saciedade, texturas e mesa em família',
     ],
     limitacoes: [
       'Exige montar o prato com método — menos improviso que o BLW livre',
-      'Menos conhecido no Brasil; o nome confunde ("é outro método?" — não: é BLW com regras)',
+      'Pouco conhecido no Brasil',
     ],
     seguranca: [
-      'As mesmas regras do BLW valem inteiras: tiras macias, bebê ereto, supervisão constante',
-      'A terceira regra do BLISS é literalmente de segurança: nenhum alimento duro, redondo ou em moeda no prato',
-      'Estudos do BLISS não mostraram mais engasgo do que o método tradicional [VALIDAR]',
+      'Todas as regras do BLW valem inteiras: tiras macias, bebê ereto, supervisão constante',
+      'A terceira regra é literalmente de segurança: nada duro, redondo ou em moeda no prato',
+      // VALIDAR: leitura do ensaio BLISS (engasgo/gag) — conferir com a publicação original
+      'No estudo do BLISS, engasgo real não foi mais frequente que na colher; caretas e gag foram mais comuns nas primeiras semanas — e, nos dois grupos, o risco veio de alimentos proibidos que escaparam para o prato',
     ],
     comoServir:
-      'Igual ao BLW (tiras macias → pedaços menores com a pinça), com a montagem do prato obedecendo às três regras abaixo, em toda refeição — café, almoço e jantar.',
+      'Igual ao BLW (tiras macias → pedaços menores com a pinça). O que muda é a montagem do prato: as 3 regras abaixo, em toda refeição.',
     pratoExemplo: {
-      contexto: 'A "receita" BLISS — as 3 regras em todo prato',
+      contexto: 'Monte o prato: as 3 regras, em toda refeição',
+      ordenado: true,
       itens: [
-        '1️⃣ Um alimento RICO EM FERRO: carne/frango em tira macia, almôndega assada desfiável, ovo inteiro em omelete de forno, bolinho de feijão assado',
-        '2️⃣ Um alimento RICO EM ENERGIA: batata-doce com azeite, abacate, aipim macio, arroz em bolinho',
-        '3️⃣ Uma fruta ou legume macio: brócolis, abóbora, banana, mamão — nunca itens de alto risco de engasgo',
+        'Um alimento rico em FERRO: carne ou frango em tira macia, almôndega assada desfiável, ovo em omelete de forno, bolinho de feijão',
+        'Um alimento rico em ENERGIA: batata-doce com azeite, abacate, aipim macio',
+        'Uma fruta ou legume macio: brócolis, abóbora, banana, mamão',
       ],
+      exemploFinal: 'Ex.: tira de carne desmanchando + batata-doce com azeite + brócolis bem cozido.',
     },
   },
 ];
 
-/** BLW × BLISS lado a lado — as três diferenças que importam. */
+/** BLW × BLISS lado a lado — células curtas; a nuance vive nos cards. */
 export interface LinhaComparacao {
   criterio: string;
   blw: string;
@@ -162,18 +208,18 @@ export interface LinhaComparacao {
 export const comparacaoBlwBliss: LinhaComparacao[] = [
   {
     criterio: 'Ferro',
-    blw: 'Fica por conta do planejamento da família — sem atenção, o prato vira só legume e fruta',
-    bliss: 'Regra fixa: um alimento rico em ferro em TODA refeição',
+    blw: 'Depende do planejamento da família',
+    bliss: 'Regra fixa: ferro em toda refeição',
   },
   {
-    criterio: 'Energia (calorias)',
-    blw: 'Bebê que só explora pode ingerir pouco nas primeiras semanas',
-    bliss: 'Regra fixa: um alimento calórico em toda refeição (tubérculo com azeite, abacate…)',
+    criterio: 'Energia',
+    blw: 'Bebê que só explora pode ingerir pouco',
+    bliss: 'Regra fixa: um alimento calórico por refeição',
   },
   {
     criterio: 'Engasgo',
-    blw: 'Depende de a família conhecer e aplicar os formatos seguros',
-    bliss: 'Lista explícita de alimentos excluídos por risco; estudos não mostraram mais engasgo que a colher [VALIDAR]',
+    blw: 'Depende de aplicar os formatos seguros',
+    bliss: 'Lista explícita do que fica fora do prato',
   },
 ];
 
@@ -181,7 +227,7 @@ export const comparacaoBlwBliss: LinhaComparacao[] = [
 export const combinarSemCulpa = {
   titulo: 'Combinar é permitido (e é o que a maioria faz)',
   texto:
-    'Não existe fidelidade a método — existe refeição segura e responsiva. Papa na colher no almoço da creche e jantar estilo BLW em casa é uma combinação excelente, não uma traição. O bebê não fica "confuso": ele aprende dos dois jeitos.',
+    'Não existe fidelidade a método — existe refeição segura e responsiva. O bebê não fica "confuso": ele aprende dos dois jeitos.',
   exemplos: [
     'Almoço na creche na colher + jantar em casa com tiras para pegar',
     'Papa de colher com uma tira de legume ao lado para explorar, na mesma refeição',
@@ -189,25 +235,24 @@ export const combinarSemCulpa = {
   ],
 };
 
-/** Regras que valem para qualquer método. */
+/** Regras que valem para qualquer método — as 4 primeiras vêm da tela Segurança (fonte única). */
 export const regrasComuns = [
-  'Bebê sentado ereto no cadeirão, à mesa com a família sempre que possível',
-  'Adulto presente e a um braço de distância, da primeira à última garfada',
-  'Sem telas na refeição — nem para distrair, nem para "fazer comer"',
+  ...regrasDeOuroEngasgo,
   'Ferro todos os dias, seja na papa ou na tira',
   'O adulto decide O QUE, QUANDO e ONDE; o bebê decide SE come e QUANTO',
-  'Aprenda as manobras de desobstrução antes da primeira refeição, seja qual for o método',
 ];
 
 /** Quando simplificar ou procurar ajuda profissional. */
 export const sinaisDeAjuda = [
   {
     sinal: 'A refeição virou briga, choro ou negociação diária',
-    conduta: 'Simplifique: volte alguns dias para o formato mais tranquilo para a família, sem meta de quantidade. Pressão piora a aceitação.',
+    conduta:
+      'Simplifique: volte alguns dias para o formato mais tranquilo para a família, sem meta de quantidade. Pressão piora a aceitação.',
   },
   {
     sinal: 'Engasgos REAIS repetidos (silêncio, arroxeamento — não caretas e tosse)',
-    conduta: 'Pare os formatos que causaram, reveja os cortes na tela Segurança e converse com o pediatra antes de retomar.',
+    conduta:
+      'Pare os formatos que causaram e reveja os cortes na tela Segurança. Depois de qualquer engasgo real — principalmente se você precisou fazer as manobras — leve o bebê para avaliação médica no mesmo dia, mesmo que pareça bem.',
   },
   {
     sinal: 'Recusa de quase tudo por mais de 1–2 semanas, com peso parado ou caindo',
@@ -215,10 +260,12 @@ export const sinaisDeAjuda = [
   },
   {
     sinal: 'Bebê prematuro, com hipotonia, atraso motor ou síndrome',
-    conduta: 'A escolha do método deve ser feita COM o pediatra (às vezes com fonoaudióloga) — não pelo app [VALIDAR redação].',
+    conduta:
+      'A escolha do método deve ser feita COM o pediatra (às vezes com fonoaudióloga) — não pelo app.',
   },
   {
     sinal: 'Ansiedade dos pais dominando a mesa',
-    conduta: 'Treine as manobras (isso reduz o medo de verdade), simplifique o cardápio e divida a mesa com outro adulto por uns dias.',
+    conduta:
+      'Treine as manobras (isso reduz o medo de verdade), simplifique o cardápio e divida a mesa com outro adulto por uns dias.',
   },
 ];

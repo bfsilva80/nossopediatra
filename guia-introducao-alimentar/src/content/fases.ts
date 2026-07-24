@@ -4,7 +4,7 @@
  *
  * Referências: Guia Alimentar para Crianças Brasileiras Menores de 2 Anos
  * (Ministério da Saúde, 2019) e Manual de Alimentação da SBP.
- * Itens marcados com [VALIDAR] aguardam confirmação do pediatra revisor.
+ * Pendências de revisão clínica ficam em comentários "VALIDAR:" ao lado do item.
  */
 
 export interface EsquemaRefeicao {
@@ -86,7 +86,7 @@ export const fases: Fase[] = [
       'Água no copo junto com as refeições',
     ],
     quantidades:
-      'Aumente gradualmente até cerca de meia xícara (250 ml) por refeição principal, sempre guiado pelos sinais do bebê.',
+      'Aumente gradualmente até cerca de metade de uma xícara de 250 ml por refeição principal, sempre guiado pelos sinais do bebê.',
     esquemaDia: [
       { refeicao: 'Ao acordar', oferta: 'Leite materno em livre demanda (ou fórmula)' },
       { refeicao: 'Lanche da manhã', oferta: 'Fruta' },
@@ -122,7 +122,7 @@ export const fases: Fase[] = [
       'Alimentos para comer com as mãos em quase toda refeição',
     ],
     quantidades:
-      'Cerca de meia xícara (250 ml) por refeição principal, podendo chegar perto de ¾ de xícara. O apetite varia de dia para dia — isso é normal.',
+      'Cerca de metade de uma xícara de 250 ml por refeição principal, chegando perto de ¾ de xícara. O apetite varia de dia para dia — isso é normal.',
     esquemaDia: [
       { refeicao: 'Café da manhã', oferta: 'Fruta + leite materno (ou fórmula); pode incluir mingau simples ou pão caseiro sem recheio' },
       { refeicao: 'Lanche da manhã', oferta: 'Fruta' },
@@ -153,7 +153,8 @@ export const fases: Fase[] = [
       'A criança come o que a família come. A qualidade do prato da casa passa a ser o principal cuidado — e o apetite costuma diminuir, porque o crescimento desacelera.',
     oQueOferecer: [
       'Refeições da família: arroz, feijão, carnes, legumes, verduras e frutas variadas',
-      'Leite de vaca integral pode ser oferecido a partir de 12 meses — limite em torno de 500 ml/dia entre leite e derivados, para não atrapalhar o ferro [VALIDAR: volume máximo com o pediatra revisor]',
+      // VALIDAR: volume máximo diário de leite/derivados após 12 meses (~500 ml)
+      'Leite de vaca integral pode ser oferecido a partir de 12 meses — limite em torno de 500 ml/dia entre leite e derivados, para não atrapalhar o ferro',
       'Água várias vezes ao dia',
       'Aleitamento materno pode e deve continuar até 2 anos ou mais, se mãe e criança desejarem',
     ],

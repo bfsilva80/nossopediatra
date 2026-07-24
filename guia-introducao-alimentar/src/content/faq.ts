@@ -1,6 +1,6 @@
 /**
  * FONTE ÚNICA da FAQ — respostas revisadas e alinhadas com fases.ts e seguranca.ts.
- * Itens marcados com [VALIDAR] aguardam confirmação do pediatra revisor.
+ * Pendências de revisão clínica ficam em comentários "VALIDAR:" ao lado do item.
  */
 
 export interface PerguntaFAQ {
@@ -37,7 +37,7 @@ export const perguntasFAQ: PerguntaFAQ[] = [
     categoria: 'Quantidade',
     pergunta: 'Quanto oferecer em cada refeição?',
     resposta:
-      'Guia aproximado: aos 6 meses, comece com 2–3 colheres de sopa e aumente conforme a aceitação; dos 7 aos 11 meses, algo em torno de meia xícara (250 ml) por refeição principal; após 1 ano, de ¾ a 1 xícara. Mas a régua verdadeira é o bebê: quem decide QUANTO come é ele; você decide O QUE é oferecido.',
+      'Guia aproximado: aos 6 meses, comece com 2–3 colheres de sopa e aumente conforme a aceitação; dos 7 aos 11 meses, algo em torno de metade de uma xícara de 250 ml por refeição principal; após 1 ano, de ¾ a 1 xícara. Mas a régua verdadeira é o bebê: quem decide QUANTO come é ele; você decide O QUE é oferecido.',
   },
   {
     id: 'alergenicos-como',
@@ -67,6 +67,7 @@ export const perguntasFAQ: PerguntaFAQ[] = [
     resposta:
       'Quase sempre o que assusta é o reflexo de proteção (gag): o bebê tosse, fica vermelho, faz barulho — e resolve sozinho. Isso é treino, não emergência; não bata nas costas nem coloque o dedo na boca. Engasgo real é SILENCIOSO: sem tosse, sem choro, lábios arroxeados — aí é agir na hora com as manobras (veja a tela Segurança) e acionar o 192.',
   },
+  // VALIDAR: afirmação sobre estudos de engasgo no BLW (evidência observacional)
   {
     id: 'blw-seguro',
     categoria: 'Segurança',
@@ -93,7 +94,8 @@ export const perguntasFAQ: PerguntaFAQ[] = [
     categoria: 'Bebidas e extras',
     pergunta: 'Quando entra o leite de vaca?',
     resposta:
-      'Como bebida, a partir de 12 meses (integral), limitado a cerca de 500 ml/dia somando derivados — excesso de leite atrapalha o ferro. Antes dos 12 meses, o leite de vaca não deve substituir leite materno ou fórmula. Iogurte natural integral sem açúcar e queijos leves costumam ser liberados um pouco antes, por volta dos 9 meses [VALIDAR idade com o pediatra revisor].',
+      'Como bebida, a partir de 12 meses (integral), limitado a cerca de 500 ml/dia somando derivados — excesso de leite atrapalha o ferro. Antes dos 12 meses, o leite de vaca não deve substituir leite materno ou fórmula. Iogurte natural integral sem açúcar e queijos leves costumam ser liberados um pouco antes, por volta dos 9 meses.',
+    // VALIDAR: idade de iogurte/queijos (~9 meses) e teto de 500 ml/dia
   },
   {
     id: 'mel-acucar',

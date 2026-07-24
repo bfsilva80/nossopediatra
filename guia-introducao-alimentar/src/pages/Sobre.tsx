@@ -6,6 +6,7 @@ const fontes = [
   'Guia Alimentar para Crianças Brasileiras Menores de 2 Anos — Ministério da Saúde, 2019',
   'Manual de Alimentação: orientações para alimentação do lactente ao adolescente — Sociedade Brasileira de Pediatria',
   'Consensos brasileiros e internacionais sobre introdução precoce de alimentos alergênicos',
+  'Ensaios do método BLISS (Baby-Led Introduction to SolidS) — Universidade de Otago, Nova Zelândia',
   'Diretrizes de suporte básico de vida pediátrico (desobstrução de vias aéreas)',
 ];
 
@@ -30,7 +31,7 @@ export default function Sobre() {
         <p className="text-sm">
           O conteúdo foi escrito a partir das diretrizes brasileiras listadas abaixo, mas ainda
           passa por revisão final do pediatra responsável — os pontos em confirmação estão
-          marcados como [VALIDAR] no material. Este app é educativo e{' '}
+          marcados para validação no material de origem. Este app é educativo e{' '}
           <strong>não substitui a consulta com o pediatra que acompanha o seu bebê</strong>. Em
           emergência, ligue 192.
         </p>

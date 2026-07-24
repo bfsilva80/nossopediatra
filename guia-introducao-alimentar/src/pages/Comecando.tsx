@@ -2,7 +2,7 @@ import BannerBebe, { useNascimento } from '@/components/BannerBebe';
 import { sinaisProntidao } from '@/content/fases';
 import { calcularIdade } from '@/lib/idade';
 import { usePersistido } from '@/lib/storage';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Scale } from 'lucide-react';
 import { Link } from 'wouter';
 
 const primeiraSemana = [
@@ -118,25 +118,18 @@ export default function Comecando() {
 
       {/* Métodos */}
       <section aria-labelledby="titulo-metodos">
-        <h2 id="titulo-metodos" className="mb-2 text-xl font-bold">
+        <h2 id="titulo-metodos" className="mb-4 text-xl font-bold">
           Colher, BLW ou BLISS?
         </h2>
-        <p className="mb-4 text-sm text-ink-soft">
-          Não existe método vencedor — existe o que cabe na sua família, aplicado com segurança. E
-          combinar é permitido.
-        </p>
         <Link
           href="/metodos"
-          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4 hover:border-solid"
+          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4"
         >
-          <span className="text-3xl" aria-hidden>
-            🥄🥕🧩
-          </span>
+          <Scale className="h-8 w-8 shrink-0 text-primary" aria-hidden />
           <span className="flex-1">
             <span className="block font-bold">Guia dos métodos</span>
             <span className="block text-sm text-ink-soft">
-              O que é cada um, quando faz sentido, pratos de exemplo, BLW × BLISS e quando pedir
-              orientação
+              O que é cada um, como escolher — e por que combinar é permitido.
             </span>
           </span>
         </Link>

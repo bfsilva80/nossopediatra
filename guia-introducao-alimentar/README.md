@@ -63,7 +63,8 @@ Componentes apenas renderizam. Uma revisão clínica = editar 4 arquivos.
 
 ## Pontos pendentes de validação clínica
 
-Buscar por `[VALIDAR]` em `src/content/`:
+Buscar por `// VALIDAR:` em `src/content/` (as pendências vivem em comentários, nunca nas
+strings exibidas — o build falha se a forma antiga com colchetes aparecer em `src/`):
 1. Redação final das manobras de desobstrução (conferir com diretriz de SBV pediátrico vigente).
 2. Idade de introdução de iogurte/queijos (~9 meses) e limite diário de leite após 12 meses (~500 ml).
 3. Exceções na introdução de alergênicos (dermatite atópica grave / alergia diagnosticada).

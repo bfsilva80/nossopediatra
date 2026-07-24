@@ -4,6 +4,7 @@ import { perguntasFAQ } from '@/content/faq';
 import { normalizar } from '@/content/alimentos';
 import { Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import { Link } from 'wouter';
 
 export default function Duvidas() {
   const [busca, setBusca] = useState('');
@@ -77,7 +78,11 @@ export default function Duvidas() {
       </div>
 
       <p className="rounded-xl bg-stone-100 p-4 text-sm text-ink-soft">
-        Não achou sua dúvida? Cada bebê é único — leve a pergunta para a consulta com o pediatra.
+        A refeição virou briga, ou o método não está funcionando?{' '}
+        <Link href="/metodos" className="font-medium text-primary underline">
+          Veja quando simplificar, no guia de métodos
+        </Link>
+        . E não achou sua dúvida? Leve a pergunta para a consulta com o pediatra.
       </p>
     </div>
   );

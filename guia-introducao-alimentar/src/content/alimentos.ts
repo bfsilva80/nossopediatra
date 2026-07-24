@@ -4,7 +4,7 @@
  *
  * Referências: Guia Alimentar MS 2019, Manual de Alimentação da SBP,
  * consensos de alergia alimentar e materiais de prevenção de engasgo.
- * Itens com [VALIDAR] aguardam confirmação do pediatra revisor.
+ * Pendências de revisão clínica ficam em comentários "VALIDAR:" ao lado do item.
  */
 
 export type GrupoAlimento =
@@ -401,7 +401,8 @@ export const alimentos: Alimento[] = [
     ferro: true,
     engasgo: 'Espinhas: desfie conferindo uma a uma.',
     como: 'Cozido e desfiado. Tilápia, merluza e sardinha são boas opções acessíveis.',
-    nota: 'Peixes predadores grandes (cação, peixe-espada, atum em excesso) concentram mercúrio: modere. [VALIDAR orientação de frequência]',
+    // VALIDAR: orientação de frequência para peixes predadores (mercúrio)
+    nota: 'Peixes predadores grandes (cação, peixe-espada, atum em excesso) concentram mercúrio: modere.',
   },
   {
     id: 'ovo',
@@ -453,7 +454,8 @@ export const alimentos: Alimento[] = [
     quando: '12m',
     alergenico: 'Leite',
     como: 'Como bebida, só após 12 meses (integral), até ~500 ml/dia somando derivados.',
-    nota: 'Antes disso, não substitui leite materno nem fórmula. [VALIDAR volume máximo]',
+    // VALIDAR: volume máximo diário após 12 meses
+    nota: 'Antes disso, não substitui leite materno nem fórmula.',
   },
   {
     id: 'iogurte',
@@ -461,7 +463,8 @@ export const alimentos: Alimento[] = [
     emoji: '🍶',
     grupo: 'Leite e derivados',
     quando: '9m',
-    rotuloQuando: 'A partir dos ~9 meses [VALIDAR]',
+    // VALIDAR: idade de introdução do iogurte (~9 meses)
+    rotuloQuando: 'A partir dos ~9 meses',
     alergenico: 'Leite',
     como: 'Natural, integral, SEM açúcar — pode misturar fruta amassada. "Iogurtinhos de bebê" e petit suisse são sobremesas açucaradas: não.',
   },
@@ -471,7 +474,8 @@ export const alimentos: Alimento[] = [
     emoji: '🧀',
     grupo: 'Leite e derivados',
     quando: '9m',
-    rotuloQuando: 'A partir dos ~9 meses [VALIDAR]',
+    // VALIDAR: idade de introdução dos queijos (~9 meses)
+    rotuloQuando: 'A partir dos ~9 meses',
     alergenico: 'Leite',
     como: 'Queijos leves e menos salgados (minas frescal, ricota) em pedaços pequenos ou ralados.',
   },

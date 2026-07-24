@@ -2,6 +2,7 @@ import BannerBebe, { useNascimento } from '@/components/BannerBebe';
 import { fases } from '@/content/fases';
 import { calcularIdade, faseParaMeses } from '@/lib/idade';
 import { useState } from 'react';
+import { Link } from 'wouter';
 
 export default function Fases() {
   const [nascimento] = useNascimento();
@@ -65,6 +66,12 @@ export default function Fases() {
         <section>
           <h3 className="mb-1 font-semibold text-primary">Consistência</h3>
           <p className="text-sm">{fase.consistencia}</p>
+          <p className="mt-2 text-sm">
+            Papa, tiras ou os dois?{' '}
+            <Link href="/metodos" className="font-medium text-primary underline">
+              Veja o guia Colher, BLW ou BLISS
+            </Link>
+          </p>
         </section>
 
         <section>

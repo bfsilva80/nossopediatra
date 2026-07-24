@@ -33,7 +33,7 @@ export default function BannerBebe() {
       <Link
         href="/"
         aria-label="Alterar data de nascimento"
-        className="flex shrink-0 items-center gap-1 text-xs font-medium text-primary hover:underline"
+        className="-my-2 flex shrink-0 items-center gap-1 px-2 py-3 text-xs font-medium text-primary hover:underline"
       >
         <Pencil className="h-3.5 w-3.5" aria-hidden />
         alterar

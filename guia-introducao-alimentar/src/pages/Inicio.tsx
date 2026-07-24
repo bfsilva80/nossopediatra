@@ -155,22 +155,24 @@ export default function Inicio() {
         </div>
         <section className="space-y-3">
           <h2 className="text-lg font-bold">Preparação para a chegada da comida</h2>
+          <ul className="space-y-3">
           {[
             'Aprenda as manobras de engasgo com calma agora, antes da primeira papa (procure também um curso presencial)',
             'Observe os sinais de prontidão aparecerem — a lista está em "Como começar"',
             'Providencie cadeira de alimentação em que o bebê fique sentado e ereto',
             'Nada de papinha antes da hora: antecipar só com indicação expressa do pediatra',
           ].map((item, i) => (
-            <p key={i} className="rounded-xl bg-white p-4 text-sm shadow-sm">
+            <li key={i} className="list-none rounded-xl bg-white p-4 text-sm shadow-sm">
               {item}
-            </p>
+            </li>
           ))}
+          </ul>
         </section>
         <GradeAtalhos
           atalhos={[
             { href: '/comecando', titulo: 'Como começar', descricao: 'Sinais de prontidão', Icone: Sprout },
             { href: '/emergencia', titulo: 'Engasgo', descricao: 'Aprenda antes de precisar', Icone: AlertTriangle, destaque: true },
-            { href: '/alimentos', titulo: 'Posso dar…?', descricao: 'Explore o banco de alimentos', Icone: Search },
+            { href: '/metodos', titulo: 'Colher, BLW ou BLISS?', descricao: 'Decida com calma antes da primeira papa', Icone: Scale },
             { href: '/duvidas', titulo: 'Dúvidas', descricao: 'Perguntas frequentes', Icone: HelpCircle },
           ]}
         />
@@ -184,7 +186,7 @@ export default function Inicio() {
     return (
       <div className="space-y-8">
         <div className="rounded-2xl bg-primary-soft p-5">
-          <h1 className="mb-1 text-xl font-bold">Missão cumprida 🎉</h1>
+          <h1 className="mb-1 text-xl font-bold">Missão cumprida <span aria-hidden>🎉</span></h1>
           <p className="text-sm">
             Com {descreverIdade(idade)}, seu bebê já atravessou a introdução alimentar — agora a
             criança come a comida da família. As regras que seguem valendo: sem ultraprocessados,
@@ -223,7 +225,7 @@ export default function Inicio() {
       <section className="rounded-2xl bg-primary p-5 text-white">
         <p className="text-sm text-white/80">Seu bebê tem {descreverIdade(idade)}</p>
         <h1 className="mt-1 text-2xl font-bold">
-          {fase.icone} {fase.nome}
+          <span aria-hidden>{fase.icone}</span> {fase.nome}
         </h1>
         <p className="mt-2 text-sm text-white/90">{fase.resumo}</p>
         <div className="mt-4 flex flex-wrap gap-2">

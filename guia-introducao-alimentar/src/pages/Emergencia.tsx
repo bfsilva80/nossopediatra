@@ -96,7 +96,8 @@ export default function Emergencia() {
             )}
           </div>
           <p className="mt-4 text-center text-sm text-white/70">
-            Continue alternando as manobras até desobstruir ou o socorro chegar.
+            Continue alternando as manobras até desobstruir ou o socorro chegar. Desobstruiu? Leve
+            o bebê para avaliação médica no mesmo dia, mesmo que pareça bem.
           </p>
         </div>
       )}
