@@ -31,9 +31,14 @@ export const gagVsEngasgo = {
   },
 };
 
+/** Quadros ilustrados aprovados pelo pediatra responsável (25/07/2026). */
+export type QuadroManobra = 'decisao' | 'golpes' | 'compressoes' | 'heimlich' | 'sinal' | 'cadeirao';
+
 export interface PassoSocorro {
   passo: string;
   detalhe: string;
+  /** ilustração correspondente, quando houver */
+  ilustracao?: QuadroManobra;
 }
 
 /** Desobstrução em MENORES de 1 ano — NÃO usar a manobra de Heimlich clássica. */
@@ -41,6 +46,7 @@ export const socorroMenor1Ano: PassoSocorro[] = [
   {
     passo: 'Confirme que é engasgo real',
     detalhe: 'Se o bebê tosse ou chora, NÃO faça manobras: incentive a tosse e observe.',
+    ilustracao: 'decisao',
   },
   {
     passo: 'Peça ajuda',
@@ -50,11 +56,13 @@ export const socorroMenor1Ano: PassoSocorro[] = [
     passo: '5 golpes nas costas',
     detalhe:
       'Apoie o bebê de bruços sobre seu antebraço, cabeça mais baixa que o corpo, sustentando a mandíbula. Dê 5 golpes firmes com a base da mão entre as escápulas.',
+    ilustracao: 'golpes',
   },
   {
     passo: '5 compressões no peito',
     detalhe:
       'Vire o bebê de barriga para cima, ainda com a cabeça mais baixa. Com 2 dedos no centro do peito (logo abaixo da linha dos mamilos), faça 5 compressões.',
+    ilustracao: 'compressoes',
   },
   {
     passo: 'Alterne até desobstruir',
@@ -71,11 +79,13 @@ export const socorroMaior1Ano: PassoSocorro[] = [
   {
     passo: 'Confirme que é engasgo real',
     detalhe: 'Se a criança tosse ou fala, incentive a tosse e não faça manobras.',
+    ilustracao: 'decisao',
   },
   {
     passo: 'Manobra de Heimlich',
     detalhe:
       'Por trás da criança, uma mão fechada entre o umbigo e o fim do osso do peito, a outra por cima. Comprima para dentro e para cima, com firmeza, repetidamente.',
+    ilustracao: 'heimlich',
   },
   {
     passo: 'Ligue 192',

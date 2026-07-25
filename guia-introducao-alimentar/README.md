@@ -124,3 +124,13 @@ consumo de fontes de ferro em 6–11 meses; decaimento de habilidades de socorro
 - **Transferência entre celulares** (`/transferir`): dados viram código `NPIA1.…` (base64)
   que viaja por WhatsApp e é importado no outro aparelho — sem servidor; QR foi descartado
   de propósito (leitor de câmera pesa mais que o problema).
+
+## Onda C2 (v0.11) — manobras ilustradas
+
+Os 6 quadros esquemáticos (aprovados quadro a quadro pelo pediatra responsável em 25/07/2026)
+entraram no app via `src/components/IlustracaoManobra.tsx`. O conteúdo declara qual quadro
+cada passo usa (`ilustracao?: QuadroManobra` em `seguranca.ts`) — componentes só renderizam:
+- **Emergência**: um quadro por passo (decisão → golpes → compressões; decisão → Heimlich).
+- **Treino e Segurança**: os mesmos quadros nas seções de manobras; decisão + sinal universal
+  no topo do gag vs. engasgo; cadeirão na prevenção.
+Geometria alterada = nova aprovação (regra registrada no componente).

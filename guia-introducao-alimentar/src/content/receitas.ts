@@ -368,7 +368,8 @@ export function contarMatches(receita: Receita, despensa: string[]): number {
  * Batch cooking: cozinhar uma vez, congelar certo, descongelar seguro.
  * Fontes: orientações de segurança alimentar do Guia MS 2019 e boas
  * práticas de manipulação (ANVISA).
- * VALIDAR: prazos de congelamento/geladeira e regra das 2 horas.
+ * VALIDADO (pediatra responsável, 25/07/2026): prazos (carnes 1 mês, purês
+ * 2 meses, geladeira 24h), regra das 2 horas e "sobra de prato não".
  */
 export const batchCooking = {
   titulo: 'Cozinhou uma vez, resolveu a semana',

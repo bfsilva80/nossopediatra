@@ -7,7 +7,10 @@
  * porção dele ANTES de sal, temperos prontos e pimenta, ajustar textura e
  * formato ao momento, e deixar de fora embutidos e frituras.
  *
- * VALIDAR: revisão pediátrica prato a prato (porções, idades e exclusões).
+ * VALIDADO (pediatra responsável, 25/07/2026): revisão prato a prato dos 10
+ * pratos, incluindo creme de leite/queijos em preparações a partir de 9
+ * meses, leite de coco desde 6m / dendê após 1 ano, "parte interna" no
+ * churrasco e pizza como participação ocasional a partir de ~12 meses.
  */
 
 export interface PratoFamilia {
@@ -21,8 +24,6 @@ export interface PratoFamilia {
   comoAdaptar: string[];
   /** o que NÃO vai para o prato do bebê */
   ficaDeFora: string[];
-  /** observação de idade/momento, quando houver */
-  nota?: string;
 }
 
 export const principioFamilia =
@@ -90,7 +91,6 @@ export const pratosFamilia: PratoFamilia[] = [
       'Batata palha (frita, dura e salgada)',
       'Versões com muito ketchup/mostarda — açúcar e sal escondidos',
     ],
-    nota: 'VALIDAR: idade mínima para creme de leite em preparações (9 meses é a referência usada para laticínios em preparo).',
   },
   {
     id: 'macarronada',
@@ -151,7 +151,6 @@ export const pratosFamilia: PratoFamilia[] = [
       'Camarão inteiro NÃO é proibido por ser alergênico (ofereça como os demais alergênicos: cedo e um por vez), mas o formato borrachudo exige picar muito fino',
       'Pimenta e caldo muito temperado',
     ],
-    nota: 'VALIDAR: orientação sobre dendê e leite de coco em preparações por faixa etária.',
   },
   {
     id: 'canja',
@@ -209,7 +208,6 @@ export const pratosFamilia: PratoFamilia[] = [
       'Presunto e outros frios do recheio (embutidos)',
       'Lasanha industrializada como refeição do bebê',
     ],
-    nota: 'VALIDAR: queijos em preparações a partir de 9 meses (mesma referência de iogurte/queijos).',
   },
   {
     id: 'sopa-feijao',
@@ -247,6 +245,5 @@ export const pratosFamilia: PratoFamilia[] = [
       'Coberturas com embutidos (calabresa, presunto, peperoni)',
       'Borda recheada, catupiry em excesso, refrigerante na mesa para a criança',
     ],
-    nota: 'VALIDAR: recorte de idade e enquadramento "participação ocasional" para pizza.',
   },
 ];

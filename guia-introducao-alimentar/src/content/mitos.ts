@@ -3,7 +3,8 @@
  * Tom: acolher quem acredita (quase sempre foi orientação médica de outra
  * época), corrigir sem humilhar. Fontes: Guia Alimentar MS 2019, SBP.
  *
- * VALIDAR: revisão pediátrica item a item (redação das "verdades").
+ * VALIDADO (pediatra responsável, 25/07/2026): os 10 verbetes, incluindo a
+ * atribuição histórica do mito manga-com-leite (mantida com "provavelmente").
  */
 
 export interface Mito {

@@ -1,3 +1,4 @@
+import IlustracaoManobra from '@/components/IlustracaoManobra';
 import {
   sinaisReacaoAlergica,
   socorroMaior1Ano,
@@ -101,9 +102,18 @@ export default function Emergencia() {
             {modo === 'menor' ? 'Menos de 1 ano — sem Heimlich' : 'Mais de 1 ano'} · passo{' '}
             {indice + 1} de {passos.length}
           </p>
-          <div className="flex flex-1 flex-col justify-center">
-            <h2 className="mb-4 text-3xl font-extrabold leading-tight">{passos[indice].passo}</h2>
-            <p className="text-xl leading-relaxed text-white/95">{passos[indice].detalhe}</p>
+          <div className="flex min-h-0 flex-1 flex-col justify-center">
+            {passos[indice].ilustracao && (
+              <div className="mx-auto mb-4 w-full max-w-72 rounded-2xl bg-white p-2">
+                <IlustracaoManobra quadro={passos[indice].ilustracao} />
+              </div>
+            )}
+            <h2 className="mb-3 text-2xl font-extrabold leading-tight sm:text-3xl">
+              {passos[indice].passo}
+            </h2>
+            <p className="text-lg leading-relaxed text-white/95 sm:text-xl">
+              {passos[indice].detalhe}
+            </p>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">

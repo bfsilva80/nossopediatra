@@ -11,8 +11,10 @@ import { Link } from 'wouter';
  * registro é para a reação leve, que é a que precisa de memória (padrões
  * valem mais que episódios para o diagnóstico no consultório).
  *
- * VALIDAR: redação das orientações "enquanto o socorro chega" e da
- * conduta pós-reação leve.
+ * VALIDADO (pediatra responsável, 25/07/2026): arquitetura da triagem
+ * (grave-primeiro, "na dúvida trate como grave"), orientações "enquanto o
+ * socorro não chega" (sem posicionamento e sem antialérgico, de propósito)
+ * e conduta pós-reação leve (suspender até conversar com o pediatra).
  */
 
 interface RegistroDiario {
