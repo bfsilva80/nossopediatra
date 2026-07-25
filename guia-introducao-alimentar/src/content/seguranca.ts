@@ -259,3 +259,48 @@ export const telefonesEmergencia = [
   { nome: 'SAMU', numero: '192' },
   { nome: 'Bombeiros', numero: '193' },
 ];
+
+/**
+ * Quiz do modo treino — cada questão reafirma condutas já validadas acima
+ * (gag vs engasgo, manobras por idade, avaliação pós-episódio).
+ * O erro mais comum dos pais é intervir no gag: por isso ele abre o quiz.
+ */
+export interface QuestaoTreino {
+  cenario: string;
+  opcoes: string[];
+  corretaIdx: number;
+  explicacao: string;
+}
+
+export const quizEngasgo: QuestaoTreino[] = [
+  {
+    cenario: 'O bebê está comendo, faz careta, fica vermelho e tosse COM FORÇA, fazendo barulho.',
+    opcoes: ['Dar tapas nas costas agora', 'Não intervir: deixar tossir e observar de perto', 'Colocar o dedo na boca para tirar o pedaço'],
+    corretaIdx: 1,
+    explicacao: 'Tosse barulhenta é o reflexo de proteção funcionando. Intervir pode empurrar o alimento e piorar. Fique por perto e deixe o bebê resolver.',
+  },
+  {
+    cenario: 'O bebê fica em SILÊNCIO de repente: não tosse, não chora, e os lábios começam a arroxear.',
+    opcoes: ['Correr com ele para o hospital', 'Oferecer água', 'Iniciar as manobras AGORA e pedir que alguém ligue 192'],
+    corretaIdx: 2,
+    explicacao: 'Silêncio + arroxeamento = obstrução real. Não há tempo de deslocamento: as manobras começam na hora, com o 192 acionado.',
+  },
+  {
+    cenario: 'Bebê de 8 meses com engasgo real. Qual é a manobra correta?',
+    opcoes: ['Manobra de Heimlich (compressões abdominais)', '5 golpes nas costas + 5 compressões no peito, alternando', 'Sacudir o bebê de cabeça para baixo'],
+    corretaIdx: 1,
+    explicacao: 'Em MENORES de 1 ano nunca se faz Heimlich. É golpes dorsais + compressões torácicas, em ciclos, até desobstruir.',
+  },
+  {
+    cenario: 'Criança de 2 anos com engasgo real (sem tosse, sem som). O que fazer?',
+    opcoes: ['Manobra de Heimlich (compressões abdominais) e 192', '5 golpes nas costas apenas', 'Esperar para ver se melhora'],
+    corretaIdx: 0,
+    explicacao: 'Acima de 1 ano a manobra é a de Heimlich: compressões abdominais para dentro e para cima, com o 192 acionado.',
+  },
+  {
+    cenario: 'Você fez as manobras, o pedaço saiu e o bebê chorou. Agora parece bem.',
+    opcoes: ['Tudo resolvido, seguir o dia normalmente', 'Levar para avaliação médica no mesmo dia, mesmo parecendo bem', 'Dar água e observar por 1 hora'],
+    corretaIdx: 1,
+    explicacao: 'Depois de qualquer engasgo real com manobras, a avaliação médica no mesmo dia é obrigatória — mesmo que o bebê pareça ótimo.',
+  },
+];

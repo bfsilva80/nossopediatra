@@ -13,7 +13,8 @@ import {
   type PassoSocorro,
 } from '@/content/seguranca';
 import { usePersistido } from '@/lib/storage';
-import { AlertTriangle, Phone, ShieldAlert } from 'lucide-react';
+import { useTreino } from '@/pages/Treino';
+import { AlertTriangle, GraduationCap, Phone, ShieldAlert } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link, useRoute } from 'wouter';
 
@@ -58,6 +59,7 @@ function ListaPassos({ passos }: { passos: PassoSocorro[] }) {
 
 export default function Seguranca() {
   const [registro, setRegistro] = usePersistido<RegistroAlergenicos>('alergenicos', {});
+  const [treino] = useTreino();
 
   // Deep-link por seção (/seguranca/alergenicos etc.) — âncora #id não
   // funciona com o roteamento por hash, então rolamos ao montar.
@@ -185,6 +187,22 @@ export default function Seguranca() {
               <ListaPassos passos={socorroMaior1Ano} />
             </Expansivel>
           </div>
+          <Link
+            href="/treino"
+            className="mt-3 flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4 hover:opacity-90"
+          >
+            <GraduationCap className="h-6 w-6 shrink-0 text-primary" aria-hidden />
+            <span className="text-sm">
+              <span className="block font-bold text-primary">
+                Treinar as manobras (3 minutos)
+              </span>
+              <span className="text-ink-soft">
+                {treino.ultimoTreino
+                  ? `Último treino: ${treino.ultimoTreino.split('-').reverse().join('/')}. Habilidades se perdem em ~3 meses.`
+                  : 'Ler não é o mesmo que saber fazer — teste-se em 5 cenários rápidos.'}
+              </span>
+            </span>
+          </Link>
         </div>
 
         <div>

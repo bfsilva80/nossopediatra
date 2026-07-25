@@ -5,18 +5,22 @@ import { alimentos } from '@/content/alimentos';
 import { fases } from '@/content/fases';
 import { calcularIdade, descreverIdade, faseParaMeses } from '@/lib/idade';
 import { lerStorage, usePersistido } from '@/lib/storage';
+import { useTreino } from '@/pages/Treino';
 import {
   AlertTriangle,
   Baby,
   BookOpen,
   ChefHat,
+  GraduationCap,
   HelpCircle,
   NotebookPen,
   Scale,
   Search,
   Sprout,
+  Users,
+  X,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 
 interface FormNascimentoProps {
@@ -107,6 +111,17 @@ export default function Inicio() {
   const formNascimento = <FormNascimento nascimento={nascimento} setNascimento={setNascimento} />;
   const [experimentados] = usePersistido<string[]>('alimentos-experimentados', []);
   const registroAlergenicos = lerStorage<Record<string, { status: string }>>('alergenicos', {});
+  const [ferroDias, setFerroDias] = usePersistido<string[]>('ferro-dias', []);
+  const [treino, setTreino] = useTreino();
+
+  // Chegou pelo link do cartão do cuidador (?bb=data): configura a idade
+  // sozinho, para a avó/babá abrir o app já na fase certa, sem digitar nada.
+  useEffect(() => {
+    if (nascimento) return;
+    const bb = new URLSearchParams(window.location.search).get('bb');
+    if (bb && calcularIdade(bb)) setNascimento(bb);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const elegiveis = alimentos.filter(a => a.quando === '6m' || a.quando === '9m').length;
   const alergenicosOfertados = alergenicos.filter(
@@ -212,15 +227,32 @@ export default function Inicio() {
   const indiceFase = fases.findIndex(f => f.id === fase.id);
   const proximaFase = fases[indiceFase + 1];
 
+  // Ferro: marcação leve, sem sequências nem cobrança — só o positivo.
+  // ENANI-2019: quase metade dos bebês de 6–11 meses não consumiu
+  // carne/ovo no dia anterior; o widget existe para puxar esse número.
+  const hojeISO = new Date().toISOString().slice(0, 10);
+  const ferroHoje = ferroDias.includes(hojeISO);
+  const ferroUltimos7 = ferroDias.filter(
+    d => (Date.now() - new Date(`${d}T12:00:00`).getTime()) / 86_400_000 < 7
+  ).length;
+
+  const diasDesde = (iso: string | null) =>
+    iso === null ? Infinity : (Date.now() - new Date(`${iso}T12:00:00`).getTime()) / 86_400_000;
+  const mostrarNudgeTreino =
+    diasDesde(treino.ultimoTreino) > 90 && diasDesde(treino.dispensadoEm) > 30;
+
   // Ideia do dia: um alimento ainda não experimentado, adequado à idade,
   // escolhido de forma determinística pelo dia do ano (muda a cada dia).
+  // Enquanto o ferro de hoje não foi marcado, priorizamos fontes de ferro.
   const candidatos = alimentos.filter(
     a => (a.quando === '6m' || (a.quando === '9m' && meses >= 9)) && !experimentados.includes(a.id)
   );
+  const candidatosFerro = candidatos.filter(a => a.ferro);
+  const pool = !ferroHoje && candidatosFerro.length > 0 ? candidatosFerro : candidatos;
   const diaDoAno = Math.floor(
     (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86_400_000
   );
-  const ideiaDoDia = candidatos.length > 0 ? candidatos[diaDoAno % candidatos.length] : null;
+  const ideiaDoDia = pool.length > 0 ? pool[diaDoAno % pool.length] : null;
 
   return (
     <div className="space-y-8">
@@ -280,6 +312,50 @@ export default function Inicio() {
         </Link>
       )}
 
+      <section
+        aria-labelledby="titulo-ferro"
+        className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm"
+      >
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h2 id="titulo-ferro" className="font-bold">
+              Ferro hoje <span aria-hidden>🥩</span>
+            </h2>
+            <p className="text-sm text-ink-soft">
+              {ferroHoje
+                ? 'Marcado! Uma fruta com vitamina C de sobremesa ajuda a absorver.'
+                : 'O bebê comeu carne, frango, ovo, peixe, feijão ou lentilha hoje?'}
+            </p>
+          </div>
+          <button
+            onClick={() =>
+              setFerroDias(dias =>
+                ferroHoje ? dias.filter(d => d !== hojeISO) : [...dias, hojeISO]
+              )
+            }
+            aria-pressed={ferroHoje}
+            className={`shrink-0 rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors ${
+              ferroHoje
+                ? 'border-primary bg-primary text-white'
+                : 'border-primary text-primary hover:bg-primary-soft'
+            }`}
+          >
+            {ferroHoje ? 'Sim ✓' : 'Sim!'}
+          </button>
+        </div>
+        {ferroUltimos7 > 0 && (
+          <p className="mt-2 text-xs text-ink-soft">
+            {ferroUltimos7 === 1
+              ? '1 dia com ferro nos últimos 7'
+              : `${ferroUltimos7} dias com ferro nos últimos 7`}{' '}
+            — cada um conta.
+          </p>
+        )}
+        <p className="mt-2 text-xs text-ink-soft">
+          A marcação não substitui a suplementação de ferro prescrita pelo pediatra.
+        </p>
+      </section>
+
       <section aria-labelledby="titulo-progresso">
         <h2 id="titulo-progresso" className="mb-3 text-lg font-bold">
           Progresso da jornada
@@ -303,6 +379,45 @@ export default function Inicio() {
           </Link>
         </div>
       </section>
+
+      {mostrarNudgeTreino && (
+        <div className="flex items-start gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm">
+          <GraduationCap className="mt-0.5 h-6 w-6 shrink-0 text-primary" aria-hidden />
+          <Link href="/treino" className="flex-1">
+            <span className="block font-bold">
+              {treino.ultimoTreino
+                ? 'Faz mais de 3 meses do seu último treino de engasgo'
+                : 'Você saberia agir num engasgo?'}
+            </span>
+            <span className="block text-sm text-ink-soft">
+              Treine as manobras em 3 minutos — sem pressa, sem emergência.
+            </span>
+          </Link>
+          <button
+            aria-label="Dispensar lembrete de treino"
+            onClick={() =>
+              setTreino(prev => ({ ...prev, dispensadoEm: new Date().toISOString().slice(0, 10) }))
+            }
+            className="-m-1 p-1 text-ink-soft hover:text-ink"
+          >
+            <X className="h-5 w-5" aria-hidden />
+          </button>
+        </div>
+      )}
+
+      <Link
+        href="/cuidador"
+        className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm hover:border-primary"
+      >
+        <Users className="h-6 w-6 shrink-0 text-primary" aria-hidden />
+        <span className="flex-1">
+          <span className="block font-bold">Vai deixar com a avó, babá ou creche?</span>
+          <span className="block text-sm text-ink-soft">
+            Gere o cartão do cuidador: o essencial da idade atual em 15 linhas, pronto para o
+            WhatsApp.
+          </span>
+        </span>
+      </Link>
 
       <section aria-labelledby="titulo-atalhos">
         <h2 id="titulo-atalhos" className="mb-3 text-lg font-bold">

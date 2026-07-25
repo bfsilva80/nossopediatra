@@ -1,8 +1,16 @@
 import BannerBebe, { useNascimento } from '@/components/BannerBebe';
 import Expansivel from '@/components/Expansivel';
+import { alimentos } from '@/content/alimentos';
 import { fases } from '@/content/fases';
-import { principiosReceitas, receitas } from '@/content/receitas';
+import {
+  chipsComFerro,
+  contarMatches,
+  ingredientesCozinha,
+  principiosReceitas,
+  receitas,
+} from '@/content/receitas';
 import { calcularIdade, faseParaMeses } from '@/lib/idade';
+import { usePersistido } from '@/lib/storage';
 import { Clock } from 'lucide-react';
 import { useState } from 'react';
 
@@ -12,7 +20,21 @@ export default function Receitas() {
   const faseDoBebe = idade ? faseParaMeses(idade.meses) : null;
 
   const [faseId, setFaseId] = useState<string>(faseDoBebe?.id ?? fases[0].id);
-  const daFase = receitas.filter(r => r.faseId === faseId);
+  const [despensa, setDespensa] = usePersistido<string[]>('despensa', []);
+
+  const alternarItem = (id: string) =>
+    setDespensa(atual =>
+      atual.includes(id) ? atual.filter(x => x !== id) : [...atual, id]
+    );
+
+  const temFerroNaDespensa = despensa.some(id => chipsComFerro.includes(id));
+
+  // Ranking por casamento parcial: nunca zera a lista — receitas sem match
+  // continuam visíveis, só descem. Família cansada não pode receber "nada".
+  const daFase = receitas
+    .filter(r => r.faseId === faseId)
+    .map(receita => ({ receita, matches: contarMatches(receita, despensa) }))
+    .sort((a, b) => b.matches - a.matches);
 
   return (
     <div className="space-y-6">
@@ -25,6 +47,53 @@ export default function Receitas() {
           fonte de ferro.
         </p>
       </div>
+
+      <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="mb-1 font-bold">O que tem na sua cozinha?</h2>
+        <p className="mb-3 text-sm text-ink-soft">
+          Toque no que você já tem em casa — as receitas que mais aproveitam esses ingredientes
+          sobem para o topo.
+        </p>
+        <div role="group" aria-label="Ingredientes que tenho em casa" className="flex flex-wrap gap-2">
+          {ingredientesCozinha.map(id => {
+            const alimento = alimentos.find(a => a.id === id);
+            if (!alimento) return null;
+            const ativo = despensa.includes(id);
+            return (
+              <button
+                key={id}
+                aria-pressed={ativo}
+                onClick={() => alternarItem(id)}
+                className={`rounded-full border-2 px-3 py-1.5 text-sm font-medium transition-colors ${
+                  ativo
+                    ? 'border-primary bg-primary text-white'
+                    : 'border-stone-200 bg-white hover:border-primary'
+                }`}
+              >
+                {alimento.nome}
+              </button>
+            );
+          })}
+        </div>
+        {despensa.length > 0 && (
+          <div className="mt-3 flex items-center justify-between gap-3">
+            {!temFerroNaDespensa ? (
+              <p className="rounded-xl bg-warn-soft px-3 py-2 text-sm">
+                Nenhuma fonte de ferro selecionada — vale incluir carne, frango, ovo, peixe,
+                feijão ou lentilha na refeição principal.
+              </p>
+            ) : (
+              <span />
+            )}
+            <button
+              onClick={() => setDespensa([])}
+              className="shrink-0 text-sm font-medium text-primary underline"
+            >
+              Limpar seleção
+            </button>
+          </div>
+        )}
+      </section>
 
       <div role="group" aria-label="Fase das receitas" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {fases.map(f => {
@@ -50,7 +119,7 @@ export default function Receitas() {
       </div>
 
       <div className="space-y-3">
-        {daFase.map(receita => (
+        {daFase.map(({ receita, matches }) => (
           <Expansivel
             key={receita.id}
             titulo={`${receita.icone} ${receita.nome}`}
@@ -61,6 +130,11 @@ export default function Receitas() {
                   <Clock className="h-3.5 w-3.5" aria-hidden />
                   {receita.tempo}
                 </span>
+                {matches > 0 && (
+                  <span className="rounded-full bg-primary-soft px-2 py-0.5 text-xs font-bold text-primary">
+                    usa {matches} do que você tem
+                  </span>
+                )}
               </span>
             }
           >

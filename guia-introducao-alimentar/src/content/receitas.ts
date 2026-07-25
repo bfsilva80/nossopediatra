@@ -9,6 +9,8 @@
 export interface Receita {
   id: string;
   faseId: string;
+  /** ids de alimentos.ts usados no casamento "o que tenho em casa" */
+  ingredientesChave: string[];
   nome: string;
   tipo: 'Refeição' | 'Lanche';
   tempo: string;
@@ -22,6 +24,7 @@ export const receitas: Receita[] = [
   // ——— Fase 1 · 6 meses ———
   {
     id: 'f1-frango-abobora',
+    ingredientesChave: ['frango', 'abobora', 'arroz', 'feijao'],
     faseId: 'fase1',
     nome: 'Papa de frango com abóbora e arroz',
     tipo: 'Refeição',
@@ -44,6 +47,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f1-carne-batata',
+    ingredientesChave: ['carne', 'batata', 'cenoura', 'lentilha'],
     faseId: 'fase1',
     nome: 'Papa de carne com batata e cenoura',
     tipo: 'Refeição',
@@ -66,6 +70,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f1-ovo-batatadoce',
+    ingredientesChave: ['ovo', 'batatadoce'],
     faseId: 'fase1',
     nome: 'Ovo inteiro com purê de batata-doce',
     tipo: 'Refeição',
@@ -85,6 +90,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f1-frutas',
+    ingredientesChave: ['banana'],
     faseId: 'fase1',
     nome: 'Frutas amassadas do dia a dia',
     tipo: 'Lanche',
@@ -102,6 +108,7 @@ export const receitas: Receita[] = [
   // ——— Fase 2 · 7–8 meses ———
   {
     id: 'f2-peixe-batatadoce',
+    ingredientesChave: ['peixe', 'batatadoce', 'brocolis'],
     faseId: 'fase2',
     nome: 'Peixe com batata-doce e brócolis',
     tipo: 'Refeição',
@@ -123,6 +130,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f2-lentilha',
+    ingredientesChave: ['lentilha', 'batata', 'cenoura', 'ovo'],
     faseId: 'fase2',
     nome: 'Lentilha cremosa com legumes e ovo',
     tipo: 'Refeição',
@@ -144,6 +152,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f2-mingau-aveia',
+    ingredientesChave: ['aveia', 'banana'],
     faseId: 'fase2',
     nome: 'Mingau de aveia com banana',
     tipo: 'Lanche',
@@ -164,6 +173,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f2-tiras',
+    ingredientesChave: ['batatadoce', 'cenoura', 'banana'],
     faseId: 'fase2',
     nome: 'Tiras para comer com a mão',
     tipo: 'Lanche',
@@ -184,6 +194,7 @@ export const receitas: Receita[] = [
   // ——— Fase 3 · 9–11 meses ———
   {
     id: 'f3-arroz-feijao',
+    ingredientesChave: ['arroz', 'feijao', 'carne', 'abobora', 'cenoura'],
     faseId: 'fase3',
     nome: 'Arroz, feijão e carne desfiada (prato da casa)',
     tipo: 'Refeição',
@@ -204,6 +215,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f3-omelete-forno',
+    ingredientesChave: ['ovo', 'cenoura', 'brocolis'],
     faseId: 'fase3',
     nome: 'Omelete de forno com legumes',
     tipo: 'Refeição',
@@ -225,6 +237,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f3-bolinho-arroz',
+    ingredientesChave: ['arroz', 'ovo', 'aveia', 'cenoura'],
     faseId: 'fase3',
     nome: 'Bolinho de arroz ASSADO',
     tipo: 'Lanche',
@@ -246,6 +259,7 @@ export const receitas: Receita[] = [
   // ——— Fase 4 · 12–24 meses ———
   {
     id: 'f4-moqueca',
+    ingredientesChave: ['peixe', 'arroz'],
     faseId: 'fase4',
     nome: 'Moqueca suave de peixe',
     tipo: 'Refeição',
@@ -268,6 +282,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f4-bolo-banana',
+    ingredientesChave: ['banana', 'ovo', 'aveia'],
     faseId: 'fase4',
     nome: 'Bolo de banana sem açúcar',
     tipo: 'Lanche',
@@ -289,6 +304,7 @@ export const receitas: Receita[] = [
   },
   {
     id: 'f4-feijao-completo',
+    ingredientesChave: ['feijao', 'carne', 'abobora'],
     faseId: 'fase4',
     nome: 'Feijão completo da família',
     tipo: 'Refeição',
@@ -318,3 +334,32 @@ export const principiosReceitas = [
   'Congele em porções pequenas e identifique com data (até 1 mês)',
   'Esfrie e teste a temperatura antes de servir',
 ];
+
+/** Chips do "o que tem na sua cozinha?" — ids canônicos de alimentos.ts. */
+export const ingredientesCozinha = [
+  'frango',
+  'carne',
+  'ovo',
+  'peixe',
+  'feijao',
+  'lentilha',
+  'arroz',
+  'aveia',
+  'batata',
+  'batatadoce',
+  'cenoura',
+  'abobora',
+  'brocolis',
+  'banana',
+];
+
+/** Ids de chips que contam como fonte de ferro (espelho de alimentos.ts). */
+export const chipsComFerro = ['frango', 'carne', 'ovo', 'peixe', 'feijao', 'lentilha'];
+
+/**
+ * Ranking por compatibilidade parcial: receitas que casam sobem,
+ * nenhuma some — zero-resultado é impossível por construção.
+ */
+export function contarMatches(receita: Receita, despensa: string[]): number {
+  return receita.ingredientesChave.filter(i => despensa.includes(i)).length;
+}

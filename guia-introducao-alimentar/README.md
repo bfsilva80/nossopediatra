@@ -85,3 +85,25 @@ Adições para o teste com famílias reais:
   rotacionando por dia — motivo simples para abrir o app amanhã de novo.
 - Acessibilidade: seletores de fase/grupo agora usam `aria-pressed` (padrão correto para
   filtros), aviso como `role="dialog"`.
+
+## Primeira leva do comitê (v0.9)
+
+Quatro funcionalidades novas, todas sem backend, priorizadas por impacto × esforço × risco
+(fundamentação e arbitragens na conversa do comitê; dados-âncora: ENANI-2019 sobre baixo
+consumo de fontes de ferro em 6–11 meses; decaimento de habilidades de socorro em ~3 meses):
+
+- **Cartão do cuidador** (`/cuidador`): resumo em texto puro (≤15 linhas) para avó/babá/creche —
+  o que pode agora, a lista NUNCA, reações já registradas, gag vs. engasgo e 192. Compartilha
+  via `navigator.share` com fallback de cópia. O link do cartão carrega `?bb=<nascimento>`:
+  quem abre cai no app já configurado (bootstrap em `Inicio.tsx`).
+- **Modo treino de engasgo** (`/treino`): releitura das manobras + 5 cenários com feedback
+  imediato. Visualmente o oposto do modo emergência (azul, selo "MODO TREINO") para nunca
+  serem confundidos. Salva a data do último treino, sugere revisão trimestral e gera lembrete
+  `.ics` recorrente. Card de entrada em Segurança + lembrete dispensável no Início após 90 dias.
+- **"O que tem na sua cozinha?"** (Receitas): chips de ingredientes persistidos; as receitas
+  são ranqueadas por casamento parcial (`contarMatches`) — nunca zeram a lista, só reordenam —
+  com selo "usa N do que você tem" e aviso quando nenhuma fonte de ferro está selecionada.
+- **Ferro hoje** (Início): marcação diária leve, só reforço positivo (sem sequências/cobranças,
+  por decisão de red-team contra ansiedade de rastreador), contagem dos últimos 7 dias e nota
+  fixa de que não substitui a suplementação prescrita. Enquanto o dia não está marcado, a
+  "Ideia para hoje" prioriza alimentos ricos em ferro.
