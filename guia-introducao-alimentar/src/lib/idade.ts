@@ -5,15 +5,26 @@ export interface Idade {
   dias: number;
 }
 
+/** Nascimento há mais de 10 anos é tratado como erro de digitação (ex.: ano "0006"). */
+export const MAX_ANOS_NASCIMENTO = 10;
+
+export function nascimentoMinimoISO(hoje: Date = new Date()): string {
+  const limite = new Date(hoje);
+  limite.setFullYear(limite.getFullYear() - MAX_ANOS_NASCIMENTO);
+  return limite.toISOString().slice(0, 10);
+}
+
 /**
  * Idade em meses completos + dias, considerando o dia do mês
  * (um bebê de 5 meses e 20 dias tem 5 meses, não 6).
- * Retorna null para datas inválidas ou futuras.
+ * Retorna null para datas inválidas, futuras ou implausíveis (>10 anos):
+ * um ano digitado errado (ex.: "0006") não pode contaminar o app inteiro.
  */
 export function calcularIdade(nascimentoISO: string, hoje: Date = new Date()): Idade | null {
   if (!nascimentoISO) return null;
   const nascimento = new Date(`${nascimentoISO}T00:00:00`);
   if (Number.isNaN(nascimento.getTime()) || nascimento > hoje) return null;
+  if (nascimentoISO < nascimentoMinimoISO(hoje)) return null;
 
   let meses =
     (hoje.getFullYear() - nascimento.getFullYear()) * 12 +

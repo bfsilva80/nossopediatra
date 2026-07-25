@@ -3,7 +3,7 @@ import DicaInstalar from '@/components/DicaInstalar';
 import { alergenicos } from '@/content/seguranca';
 import { alimentos } from '@/content/alimentos';
 import { fases } from '@/content/fases';
-import { calcularIdade, descreverIdade, faseParaMeses } from '@/lib/idade';
+import { calcularIdade, descreverIdade, faseParaMeses, nascimentoMinimoISO } from '@/lib/idade';
 import { lerStorage, usePersistido } from '@/lib/storage';
 import { useTreino } from '@/pages/Treino';
 import {
@@ -29,14 +29,25 @@ interface FormNascimentoProps {
 }
 
 function FormNascimento({ nascimento, setNascimento }: FormNascimentoProps) {
-  const [rascunho, setRascunho] = useState(nascimento);
+  // Uma data gravada mas implausível (ex.: ano "0006") não pode voltar para o
+  // seletor: o picker nativo reabriria travado no ano errado, sem saída no celular.
+  const [rascunho, setRascunho] = useState(calcularIdade(nascimento) ? nascimento : '');
   const [erro, setErro] = useState('');
   const hojeISO = new Date().toISOString().slice(0, 10);
+  const minISO = nascimentoMinimoISO();
 
   const salvar = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!rascunho || !calcularIdade(rascunho)) {
-      setErro('Confira a data — ela não pode estar vazia nem no futuro.');
+    if (!rascunho) {
+      setErro('Escolha a data de nascimento.');
+      return;
+    }
+    if (!calcularIdade(rascunho)) {
+      setErro(
+        rascunho > hojeISO
+          ? 'A data não pode estar no futuro.'
+          : `Confira o ano — digite os 4 dígitos (ex.: ${hojeISO.slice(0, 4)}). Datas antes de ${minISO.slice(0, 4)} não são aceitas.`
+      );
       return;
     }
     setErro('');
@@ -44,7 +55,11 @@ function FormNascimento({ nascimento, setNascimento }: FormNascimentoProps) {
   };
 
   return (
-    <form onSubmit={salvar} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+    <form
+      onSubmit={salvar}
+      noValidate // a validação nativa do min/max bloquearia o submit com mensagem do navegador; a nossa é em português e mais específica
+      className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm"
+    >
       <label htmlFor="nascimento" className="mb-2 flex items-center gap-2 text-sm font-semibold">
         <Baby className="h-4 w-4 text-primary" aria-hidden />
         Data de nascimento do bebê
@@ -53,6 +68,7 @@ function FormNascimento({ nascimento, setNascimento }: FormNascimentoProps) {
         <input
           id="nascimento"
           type="date"
+          min={minISO}
           max={hojeISO}
           value={rascunho}
           onChange={e => setRascunho(e.target.value)}
