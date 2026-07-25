@@ -363,3 +363,31 @@ export const chipsComFerro = ['frango', 'carne', 'ovo', 'peixe', 'feijao', 'lent
 export function contarMatches(receita: Receita, despensa: string[]): number {
   return receita.ingredientesChave.filter(i => despensa.includes(i)).length;
 }
+
+/**
+ * Batch cooking: cozinhar uma vez, congelar certo, descongelar seguro.
+ * Fontes: orientações de segurança alimentar do Guia MS 2019 e boas
+ * práticas de manipulação (ANVISA).
+ * VALIDAR: prazos de congelamento/geladeira e regra das 2 horas.
+ */
+export const batchCooking = {
+  titulo: 'Cozinhou uma vez, resolveu a semana',
+  intro:
+    'Congelar bem feito é o superpoder da família cansada: a papa de terça tem a mesma qualidade da de domingo. As regras abaixo são as que separam praticidade de risco.',
+  congelar: [
+    'Esfrie rápido: porções rasas, panela destampada — comida pronta não deve ficar mais de 2 horas em temperatura ambiente',
+    'Congele em porções de UMA refeição (formas de gelo grandes ou potinhos) — descongela só o que vai usar',
+    'Rotule tudo: nome + data. Sem rótulo, toda comida congelada vira "mistério de 6 meses"',
+    'Prazos práticos: refeições com carne/frango/peixe até 1 mês; purês de legumes e frutas até 2 meses; na geladeira, comida pronta por até 24 horas',
+  ],
+  descongelar: [
+    'O jeito certo: de véspera na geladeira, ou em banho-maria / micro-ondas na hora',
+    'No micro-ondas, MEXA bem e espere: o aquecimento é desigual e forma pontos muito quentes que queimam a boca',
+    'Aqueça até sair vapor (bem quente no centro) e deixe amornar antes de servir',
+  ],
+  nunca: [
+    'Nunca recongele o que já descongelou',
+    'Nunca descongele em temperatura ambiente (bancada, pia)',
+    'Nunca guarde a sobra DO PRATO do bebê — a saliva no talher estraga a comida; sobra de panela pode, sobra de prato não',
+  ],
+};

@@ -107,3 +107,20 @@ consumo de fontes de ferro em 6–11 meses; decaimento de habilidades de socorro
   por decisão de red-team contra ansiedade de rastreador), contagem dos últimos 7 dias e nota
   fixa de que não substitui a suplementação prescrita. Enquanto o dia não está marcado, a
   "Ideia para hoje" prioriza alimentos ricos em ferro.
+
+## Ondas A + B (v0.10)
+
+**Onda A — conteúdo clínico (marcado `// VALIDAR`, pacote de revisão enviado ao pediatra):**
+- **"Hoje tem feijoada?"** (`/comida-da-familia`): 10 pratos brasileiros com "vai para o
+  prato / como adaptar / fica de fora" — o bebê come a comida da família, adaptada.
+- **Registro guiado de reação** (`/reacao`): triagem primeiro (qualquer sinal grave → 192,
+  sem formulário no caminho); o caminho leve registra no diário com foto da pele lembrada.
+- **Mitos** (`/mitos`): 10 verbetes no formato mito → ciência → por que pegou (acolhe a avó).
+- **Batch cooking** (Receitas): congelar/rotular/descongelar com prazos e as regras "nunca".
+
+**Onda B — código puro:**
+- **Relatório para a consulta** (`/relatorio`): síntese estruturada (reações no topo,
+  alergênicos, ferro 30d, refeições recentes) com compartilhar/copiar/baixar.
+- **Transferência entre celulares** (`/transferir`): dados viram código `NPIA1.…` (base64)
+  que viaja por WhatsApp e é importado no outro aparelho — sem servidor; QR foi descartado
+  de propósito (leitor de câmera pesa mais que o problema).

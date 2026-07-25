@@ -16,6 +16,7 @@ import {
   NotebookPen,
   Scale,
   Search,
+  Sparkles,
   Sprout,
   Users,
   X,
@@ -452,6 +453,14 @@ export default function Inicio() {
       <DicaInstalar />
 
       <section className="grid grid-cols-2 gap-3 text-center text-sm">
+        <Link href="/comida-da-familia" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
+          <ChefHat className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
+          Hoje tem feijoada?
+        </Link>
+        <Link href="/mitos" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
+          <Sparkles className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
+          Mitos
+        </Link>
         <Link href="/fases" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
           <BookOpen className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
           Fases

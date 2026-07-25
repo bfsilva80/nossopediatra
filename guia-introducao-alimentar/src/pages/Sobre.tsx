@@ -1,7 +1,8 @@
 import logo from '@/assets/logo.svg';
 import BannerBebe from '@/components/BannerBebe';
 import { APP_VERSAO, linkFeedback } from '@/lib/feedback';
-import { MessageCircle, ShieldCheck } from 'lucide-react';
+import { ArrowLeftRight, MessageCircle, ShieldCheck } from 'lucide-react';
+import { Link } from 'wouter';
 
 const fontes = [
   'Guia Alimentar para Crianças Brasileiras Menores de 2 Anos — Ministério da Saúde, 2019',
@@ -69,6 +70,13 @@ export default function Sobre() {
           Nada é enviado a servidores, não há cadastro e não há rastreamento de uso. Se você limpar
           os dados do navegador, os registros são apagados.
         </p>
+        <Link
+          href="/transferir"
+          className="mt-3 flex items-center gap-2 rounded-xl border-2 border-primary p-3 text-sm font-bold text-primary hover:bg-primary-soft"
+        >
+          <ArrowLeftRight className="h-5 w-5 shrink-0" aria-hidden />
+          Trocou de celular? Levar os dados para outro aparelho
+        </Link>
       </section>
 
       <section>

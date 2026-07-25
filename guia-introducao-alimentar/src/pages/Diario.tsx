@@ -1,6 +1,6 @@
 import BannerBebe from '@/components/BannerBebe';
 import { usePersistido } from '@/lib/storage';
-import { Download, Plus, Share2, Trash2 } from 'lucide-react';
+import { AlertTriangle, Download, FileText, Plus, Share2, Trash2 } from 'lucide-react';
 import { Link } from 'wouter';
 import { useState } from 'react';
 
@@ -118,6 +118,23 @@ export default function Diario() {
           Registre refeições e reações para levar à consulta. Tudo fica salvo somente neste
           aparelho.
         </p>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Link
+          href="/reacao"
+          className="flex items-center gap-2 rounded-xl border-2 border-warn bg-warn-soft px-4 py-3 text-sm font-bold hover:opacity-90"
+        >
+          <AlertTriangle className="h-5 w-5 shrink-0 text-warn" aria-hidden />
+          Teve reação agora? Registro guiado
+        </Link>
+        <Link
+          href="/relatorio"
+          className="flex items-center gap-2 rounded-xl border-2 border-primary px-4 py-3 text-sm font-bold text-primary hover:bg-primary-soft"
+        >
+          <FileText className="h-5 w-5 shrink-0" aria-hidden />
+          Relatório para a consulta
+        </Link>
       </div>
 
       <div className="flex flex-wrap gap-3">

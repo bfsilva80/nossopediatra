@@ -3,6 +3,7 @@ import Expansivel from '@/components/Expansivel';
 import { alimentos } from '@/content/alimentos';
 import { fases } from '@/content/fases';
 import {
+  batchCooking,
   chipsComFerro,
   contarMatches,
   ingredientesCozinha,
@@ -11,8 +12,9 @@ import {
 } from '@/content/receitas';
 import { calcularIdade, faseParaMeses } from '@/lib/idade';
 import { usePersistido } from '@/lib/storage';
-import { Clock } from 'lucide-react';
+import { ChefHat, Clock, Snowflake } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'wouter';
 
 export default function Receitas() {
   const [nascimento] = useNascimento();
@@ -166,6 +168,19 @@ export default function Receitas() {
         ))}
       </div>
 
+      <Link
+        href="/comida-da-familia"
+        className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4 hover:opacity-90"
+      >
+        <ChefHat className="h-6 w-6 shrink-0 text-primary" aria-hidden />
+        <span>
+          <span className="block font-bold text-primary">Hoje tem feijoada?</span>
+          <span className="text-sm text-ink-soft">
+            O bebê come a comida da família — veja como adaptar cada prato.
+          </span>
+        </span>
+      </Link>
+
       <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
         <h2 className="mb-3 font-bold">Princípios de todas as receitas</h2>
         <ul className="space-y-2 text-sm">
@@ -178,6 +193,39 @@ export default function Receitas() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+        <h2 className="mb-1 flex items-center gap-2 font-bold">
+          <Snowflake className="h-5 w-5 text-primary" aria-hidden />
+          {batchCooking.titulo}
+        </h2>
+        <p className="mb-4 text-sm text-ink-soft">{batchCooking.intro}</p>
+        <div className="space-y-4 text-sm">
+          <div>
+            <h3 className="mb-2 font-semibold text-primary">Para congelar bem</h3>
+            <ul className="space-y-1.5">
+              {batchCooking.congelar.map((item, i) => (
+                <li key={i}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-2 font-semibold text-primary">Para descongelar com segurança</h3>
+            <ul className="space-y-1.5">
+              {batchCooking.descongelar.map((item, i) => (
+                <li key={i}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+          <ul className="space-y-1.5 rounded-xl bg-warn-soft p-3">
+            {batchCooking.nunca.map((item, i) => (
+              <li key={i} className="font-medium">
+                ✗ {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </div>
   );

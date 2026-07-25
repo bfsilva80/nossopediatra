@@ -8,9 +8,14 @@ import Fases from '@/pages/Fases';
 import Inicio from '@/pages/Inicio';
 import Metodos from '@/pages/Metodos';
 import Receitas from '@/pages/Receitas';
+import ComidaDaFamilia from '@/pages/ComidaDaFamilia';
 import Cuidador from '@/pages/Cuidador';
+import Mitos from '@/pages/Mitos';
+import Reacao from '@/pages/Reacao';
+import Relatorio from '@/pages/Relatorio';
 import Seguranca from '@/pages/Seguranca';
 import Sobre from '@/pages/Sobre';
+import Transferir from '@/pages/Transferir';
 import Treino from '@/pages/Treino';
 import { Route, Router, Switch } from 'wouter';
 import { useHashLocation } from 'wouter/use-hash-location';
@@ -44,6 +49,11 @@ function AppRoutes() {
         <Route path="/sobre" component={Sobre} />
         <Route path="/treino" component={Treino} />
         <Route path="/cuidador" component={Cuidador} />
+        <Route path="/comida-da-familia" component={ComidaDaFamilia} />
+        <Route path="/mitos" component={Mitos} />
+        <Route path="/reacao" component={Reacao} />
+        <Route path="/relatorio" component={Relatorio} />
+        <Route path="/transferir" component={Transferir} />
         <Route path="/receitas" component={Receitas} />
         <Route path="/diario" component={Diario} />
         <Route>

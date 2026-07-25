@@ -288,6 +288,19 @@ export default function Seguranca() {
           </div>
         </div>
 
+        <Link
+          href="/reacao"
+          className="flex items-center gap-3 rounded-2xl border-2 border-warn bg-warn-soft p-4 hover:opacity-90"
+        >
+          <AlertTriangle className="h-6 w-6 shrink-0 text-warn" aria-hidden />
+          <span className="text-sm">
+            <span className="block font-bold">O bebê reagiu a um alimento?</span>
+            <span className="text-ink-soft">
+              Triagem rápida (leve ou grave?) e registro guiado para a consulta.
+            </span>
+          </span>
+        </Link>
+
         <div id="sec-rastreador" className="scroll-mt-20">
           <h3 className="mb-3 text-lg font-bold">Rastreador — marque conforme for oferecendo</h3>
           <ul className="space-y-2">

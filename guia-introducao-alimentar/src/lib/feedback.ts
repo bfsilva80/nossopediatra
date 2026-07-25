@@ -3,7 +3,7 @@
  * abre o WhatsApp do NossoPediatra com mensagem pré-preenchida.
  */
 
-export const APP_VERSAO = 'v0.9.1 · teste';
+export const APP_VERSAO = 'v0.10 · teste';
 
 const NUMERO_WHATSAPP = '5516981112555';
 
