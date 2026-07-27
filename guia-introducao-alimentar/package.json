@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "check": "node scripts/checar-conteudo.mjs && tsc --noEmit",
+    "check:release": "STRICT_CLINICAL=1 node scripts/checar-conteudo.mjs && tsc --noEmit",
     "build": "node scripts/checar-conteudo.mjs && tsc --noEmit && vite build",
+    "build:release": "STRICT_CLINICAL=1 node scripts/checar-conteudo.mjs && tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
