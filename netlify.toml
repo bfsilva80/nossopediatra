@@ -1,0 +1,32 @@
+# Publicação do app de Introdução Alimentar (Nosso Pediatra).
+# O app é 100% estático: o build gera guia-introducao-alimentar/dist,
+# que é servido na raiz do site.
+
+[build]
+  base = "guia-introducao-alimentar"
+  publish = "dist"
+  command = "npm run build"
+
+# Roteamento por hash (#/fases) dispensa fallback de SPA, mas a regra
+# abaixo garante que qualquer caminho direto caia no app em vez de 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# O HTML e o service worker nunca podem ficar presos em cache:
+# é o que garante que a família receba a versão nova do conteúdo clínico.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

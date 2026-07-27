@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+/*
+ * Paleta derivada da marca Nosso Pediatra (logo: coração azul + mão areia).
+ * Contrastes verificados: primary sobre branco 8,7:1; branco sobre primary 8,7:1;
+ * primary sobre primary-soft ~5:1; accent sobre branco ~4,6:1.
+ * danger/warn preservados: semântica clínica de emergência não muda com a marca.
+ */
+@theme {
+  --color-primary: #17506f;
+  --color-primary-soft: #d9e8f0;
+  --color-accent: #9c6b3a;
+  --color-accent-soft: #f4e7d4;
+  --color-cream: #f7fafb;
+  --color-ink: #1a2b33;
+  --color-ink-soft: #506470;
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fee2e2;
+  --color-warn: #b45309;
+  --color-warn-soft: #fef3c7;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
