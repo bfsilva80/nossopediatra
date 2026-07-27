@@ -2,10 +2,8 @@ import type { QuadroManobra } from '@/content/seguranca';
 import type { ReactElement } from 'react';
 
 /**
- * Os 6 quadros ilustrados das manobras e da prevenção de engasgo, em traço
- * esquemático (estilo cartão de segurança de avião). Geometria idêntica à
- * página de aprovação — APROVADOS quadro a quadro pelo pediatra responsável
- * em 25/07/2026. Qualquer alteração de posição/zonas exige nova aprovação.
+ * Quadros esquemáticos das manobras e da prevenção de engasgo.
+ * Alterações de posição, pontos de contato ou vetores exigem nova revisão clínica.
  */
 
 const INK = '#1a2b33';
@@ -50,6 +48,26 @@ function Golpes() {
   );
 }
 
+function GolpesMaior1Ano() {
+  return (
+    <svg viewBox="0 0 400 300" role="img" aria-label="Cuidador ao lado e ligeiramente atrás da criança, sustentando o tórax e inclinando-a para a frente enquanto aplica cinco golpes firmes entre as escápulas">
+      <circle {...tr} fill={BABY} cx="150" cy="76" r="25" />
+      <path {...tr} d="M150 102 Q146 148 132 202" />
+      <path {...tr} d="M132 202 L108 274 M132 202 L158 274" />
+      <path {...trFino} d="M145 118 L108 174 M153 118 L170 168" />
+      <circle {...tr} fill={SKIN} cx="286" cy="70" r="27" />
+      <path {...tr} d="M280 98 Q258 146 250 208 L278 274 M250 212 L214 274" />
+      <path {...tr} d="M266 128 Q214 132 158 152" />
+      <path {...tr} d="M256 160 Q210 182 150 176" />
+      <path {...tr} fill={SKIN} d="M252 108 L286 118 L270 146 L242 136 Z" />
+      <ellipse fill={DANGER} opacity="0.85" cx="142" cy="144" rx="12" ry="9" />
+      <path {...acao} d="M302 110 Q250 116 182 142" />
+      <path fill={DANGER} d="M182 142 L197 132 L194 148 Z" />
+      <text {...rotulo} x="304" y="104">5×</text>
+    </svg>
+  );
+}
+
 function Compressoes() {
   return (
     <svg viewBox="0 0 400 300" role="img" aria-label="Bebê de barriga para cima no antebraço do adulto, cabeça mais baixa, dois dedos comprimindo o centro do peito logo abaixo da linha dos mamilos">
@@ -72,23 +90,24 @@ function Compressoes() {
 
 function Heimlich() {
   return (
-    <svg viewBox="0 0 400 300" role="img" aria-label="Adulto ajoelhado atrás da criança em pé, punho fechado acima do umbigo e abaixo das costelas, movimento para dentro e para cima">
-      <circle {...tr} fill={BABY} cx="150" cy="66" r="25" />
-      <path {...tr} d="M150 92 L150 200" />
-      <path {...tr} d="M150 200 L128 272 M150 200 L172 272" />
-      <path {...trFino} d="M147 112 L120 168 M153 112 L128 176" />
-      <path {...trFino} d="M136 128 L164 128" strokeDasharray="2 7" />
+    <svg viewBox="0 0 400 300" role="img" aria-label="Cuidador ajoelhado atrás da criança, punho fechado na linha média acima do umbigo e abaixo da extremidade inferior do esterno, segunda mão envolvendo o punho, movimento para dentro e para cima">
+      <circle {...tr} fill={BABY} cx="150" cy="62" r="25" />
+      <path {...tr} d="M150 88 L150 204" />
+      <path {...tr} d="M150 204 L128 274 M150 204 L174 274" />
+      <path {...trFino} d="M138 126 L162 126" strokeDasharray="3 7" />
       <circle {...trFino} fill={INK} cx="150" cy="172" r="3.5" />
-      <circle {...tr} fill={SKIN} cx="268" cy="64" r="27" />
-      <path {...tr} d="M262 92 Q244 140 240 188 L268 258 M240 200 L204 262" />
-      <path {...tr} d="M250 116 Q192 122 158 150" />
-      <path {...tr} d="M244 146 Q200 168 162 158" />
-      <circle {...tr} fill={SKIN} cx="150" cy="152" r="13" />
-      <circle fill={DANGER} opacity="0.85" cx="150" cy="152" r="5" />
-      <path {...acao} d="M92 208 Q108 176 130 154" />
-      <path fill={DANGER} d="M130 154 L116 157 L126 170 Z" />
-      <text {...rotulo} fontSize={17} x="30" y="248">para dentro</text>
-      <text {...rotulo} fontSize={17} x="30" y="270">e para cima</text>
+      <circle {...tr} fill={SKIN} cx="284" cy="62" r="27" />
+      <path {...tr} d="M278 90 Q258 142 252 196 L282 270 M252 204 L214 270" />
+      <path {...tr} d="M268 120 Q220 126 176 150" />
+      <path {...tr} d="M260 150 Q218 170 180 164" />
+      <path {...tr} fill={SKIN} d="M132 150 Q150 138 168 150 Q170 160 162 170 Q150 176 138 170 Q130 162 132 150 Z" />
+      <path {...trFino} d="M140 152 Q150 146 160 152" />
+      <path {...tr} fill={SKIN} d="M120 146 Q148 128 180 146 Q190 162 176 180 Q146 192 120 174 Q108 160 120 146 Z" />
+      <ellipse fill={DANGER} opacity="0.9" cx="150" cy="160" rx="8" ry="6" />
+      <path {...acao} d="M86 216 Q106 182 134 166" />
+      <path fill={DANGER} d="M134 166 L119 168 L128 181 Z" />
+      <text {...rotulo} fontSize={17} x="26" y="248">para dentro</text>
+      <text {...rotulo} fontSize={17} x="26" y="270">e para cima</text>
     </svg>
   );
 }
@@ -160,6 +179,7 @@ function Cadeirao() {
 
 const quadros: Record<QuadroManobra, () => ReactElement> = {
   golpes: Golpes,
+  golpesMaior1Ano: GolpesMaior1Ano,
   compressoes: Compressoes,
   heimlich: Heimlich,
   sinal: Sinal,
