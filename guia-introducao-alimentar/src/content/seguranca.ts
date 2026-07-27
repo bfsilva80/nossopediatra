@@ -31,8 +31,15 @@ export const gagVsEngasgo = {
   },
 };
 
-/** Quadros ilustrados aprovados pelo pediatra responsável (25/07/2026). */
-export type QuadroManobra = 'decisao' | 'golpes' | 'compressoes' | 'heimlich' | 'sinal' | 'cadeirao';
+/** Quadros das manobras. Alterações geométricas exigem nova revisão clínica. */
+export type QuadroManobra =
+  | 'decisao'
+  | 'golpes'
+  | 'golpesMaior1Ano'
+  | 'compressoes'
+  | 'heimlich'
+  | 'sinal'
+  | 'cadeirao';
 
 export interface PassoSocorro {
   passo: string;
@@ -82,22 +89,34 @@ export const socorroMaior1Ano: PassoSocorro[] = [
     ilustracao: 'decisao',
   },
   {
-    passo: 'Manobra de Heimlich',
+    passo: 'Peça ajuda',
+    detalhe: 'Peça que alguém ligue 192 (SAMU) enquanto você inicia as manobras.',
+  },
+  {
+    passo: '5 golpes nas costas',
     detalhe:
-      'Por trás da criança, uma mão fechada entre o umbigo e o fim do osso do peito, a outra por cima. Comprima para dentro e para cima, com firmeza, repetidamente.',
+      'Fique ao lado e ligeiramente atrás da criança. Apoie o tórax, incline-a para a frente e dê 5 golpes firmes entre as escápulas com a base da mão.',
+    ilustracao: 'golpesMaior1Ano',
+  },
+  {
+    passo: '5 compressões abdominais',
+    detalhe:
+      'Fique atrás da criança, ajustado à altura dela. Posicione o punho fechado na linha média, acima do umbigo e abaixo da extremidade inferior do esterno. Segure o punho com a outra mão e faça 5 compressões rápidas para dentro e para cima.',
     ilustracao: 'heimlich',
   },
   {
-    passo: 'Ligue 192',
-    detalhe: 'Peça que alguém acione o SAMU enquanto você realiza a manobra.',
+    passo: 'Alterne as manobras',
+    detalhe:
+      'Repita 5 golpes nas costas e 5 compressões abdominais até o objeto sair, a criança voltar a respirar ou ficar inconsciente.',
   },
   {
     passo: 'Se ficar inconsciente',
-    detalhe: 'Deite a criança e inicie reanimação (RCP) até a chegada do socorro.',
+    detalhe:
+      'Coloque a criança em uma superfície firme, inicie reanimação começando pelas compressões e mantenha o 192 na linha. Retire da boca somente um objeto claramente visível e fácil de alcançar.',
   },
 ];
 
-// VALIDADO (pediatra responsável, 24/07/2026) — conferir os passos das manobras com a diretriz de SBV pediátrico vigente antes de publicar
+// VALIDAR: sequência e técnica final das manobras após atualização clínica de 27/07/2026
 export const avisoTreinamento =
   'Ler não substitui treinar: procure um curso presencial de primeiros socorros para pais e cuidadores. Estas instruções seguem as diretrizes de suporte básico de vida pediátrico.';
 
@@ -219,98 +238,3 @@ export interface SinalAlerta {
   descricao: string;
   gravidade: 'emergencia' | 'consulta';
 }
-
-export const sinaisAlerta: SinalAlerta[] = [
-  {
-    id: 'engasgo',
-    titulo: 'Engasgo com obstrução',
-    descricao: 'Bebê sem tossir, sem som, arroxeado: inicie as manobras de desobstrução AGORA e acione o 192. Não se desloque ao hospital com o bebê obstruído.',
-    gravidade: 'emergencia',
-  },
-  {
-    id: 'anafilaxia',
-    titulo: 'Reação alérgica grave',
-    descricao: 'Inchaço de rosto/língua, dificuldade para respirar, urticária espalhada, vômitos repetidos ou moleza logo após um alimento: ligue 192.',
-    gravidade: 'emergencia',
-  },
-  {
-    id: 'desidratacao',
-    titulo: 'Sinais de desidratação',
-    descricao: 'Vômitos ou diarreia persistentes com boca seca, choro sem lágrimas, fralda seca por muitas horas, moleza ou olhos fundos: procure atendimento no mesmo dia.',
-    gravidade: 'emergencia',
-  },
-  {
-    id: 'sangue',
-    titulo: 'Sangue nas fezes ou no vômito',
-    descricao: 'Merece avaliação médica rápida, principalmente se o bebê estiver abatido.',
-    gravidade: 'emergencia',
-  },
-  {
-    id: 'peso',
-    titulo: 'Recusa persistente + peso parado',
-    descricao: 'Recusar quase tudo por mais de 1–2 semanas, com perda de peso, apatia ou queda das curvas de crescimento: agende consulta.',
-    gravidade: 'consulta',
-  },
-  {
-    id: 'intestino',
-    titulo: 'Intestino muito preso',
-    descricao: 'Ficar dias sem evacuar pode ser normal (principalmente em bebês amamentados). Preocupe-se com fezes duras e ressecadas (bolinhas), dor e esforço com choro, sangue vivo ou barriga muito distendida — nesses casos, fale com o pediatra.',
-    gravidade: 'consulta',
-  },
-  {
-    id: 'pele',
-    titulo: 'Reações leves repetidas',
-    descricao: 'Vermelhidão ou coceira que se repete sempre com o mesmo alimento: registre no diário e leve à consulta.',
-    gravidade: 'consulta',
-  },
-];
-
-export const telefonesEmergencia = [
-  { nome: 'SAMU', numero: '192' },
-  { nome: 'Bombeiros', numero: '193' },
-];
-
-/**
- * Quiz do modo treino — cada questão reafirma condutas já validadas acima
- * (gag vs engasgo, manobras por idade, avaliação pós-episódio).
- * O erro mais comum dos pais é intervir no gag: por isso ele abre o quiz.
- */
-export interface QuestaoTreino {
-  cenario: string;
-  opcoes: string[];
-  corretaIdx: number;
-  explicacao: string;
-}
-
-export const quizEngasgo: QuestaoTreino[] = [
-  {
-    cenario: 'O bebê está comendo, faz careta, fica vermelho e tosse COM FORÇA, fazendo barulho.',
-    opcoes: ['Dar tapas nas costas agora', 'Não intervir: deixar tossir e observar de perto', 'Colocar o dedo na boca para tirar o pedaço'],
-    corretaIdx: 1,
-    explicacao: 'Tosse barulhenta é o reflexo de proteção funcionando. Intervir pode empurrar o alimento e piorar. Fique por perto e deixe o bebê resolver.',
-  },
-  {
-    cenario: 'O bebê fica em SILÊNCIO de repente: não tosse, não chora, e os lábios começam a arroxear.',
-    opcoes: ['Correr com ele para o hospital', 'Oferecer água', 'Iniciar as manobras AGORA e pedir que alguém ligue 192'],
-    corretaIdx: 2,
-    explicacao: 'Silêncio + arroxeamento = obstrução real. Não há tempo de deslocamento: as manobras começam na hora, com o 192 acionado.',
-  },
-  {
-    cenario: 'Bebê de 8 meses com engasgo real. Qual é a manobra correta?',
-    opcoes: ['Manobra de Heimlich (compressões abdominais)', '5 golpes nas costas + 5 compressões no peito, alternando', 'Sacudir o bebê de cabeça para baixo'],
-    corretaIdx: 1,
-    explicacao: 'Em MENORES de 1 ano nunca se faz Heimlich. É golpes dorsais + compressões torácicas, em ciclos, até desobstruir.',
-  },
-  {
-    cenario: 'Criança de 2 anos com engasgo real (sem tosse, sem som). O que fazer?',
-    opcoes: ['Manobra de Heimlich (compressões abdominais) e 192', '5 golpes nas costas apenas', 'Esperar para ver se melhora'],
-    corretaIdx: 0,
-    explicacao: 'Acima de 1 ano a manobra é a de Heimlich: compressões abdominais para dentro e para cima, com o 192 acionado.',
-  },
-  {
-    cenario: 'Você fez as manobras, o pedaço saiu e o bebê chorou. Agora parece bem.',
-    opcoes: ['Tudo resolvido, seguir o dia normalmente', 'Levar para avaliação médica no mesmo dia, mesmo parecendo bem', 'Dar água e observar por 1 hora'],
-    corretaIdx: 1,
-    explicacao: 'Depois de qualquer engasgo real com manobras, a avaliação médica no mesmo dia é obrigatória — mesmo que o bebê pareça ótimo.',
-  },
-];
