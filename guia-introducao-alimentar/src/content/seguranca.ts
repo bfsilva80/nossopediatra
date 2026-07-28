@@ -116,7 +116,8 @@ export const socorroMaior1Ano: PassoSocorro[] = [
   },
 ];
 
-// VALIDAR: sequência e técnica final das manobras após atualização clínica de 27/07/2026
+// VALIDADO (pediatra responsável, 28/07/2026) — sequência de maior de 1 ano: alternar
+// 5 golpes dorsais e 5 compressões abdominais até desobstruir ou perder consciência
 export const avisoTreinamento =
   'Ler não substitui treinar: procure um curso presencial de primeiros socorros para pais e cuidadores. Estas instruções seguem as diretrizes de suporte básico de vida pediátrico.';
 
@@ -301,9 +302,8 @@ export interface QuestaoTreino {
   explicacao: string;
 }
 
-// VALIDAR: a questão de maior de 1 ano ainda ensina "só Heimlich" e marca os golpes
-// nas costas como errados, contradizendo socorroMaior1Ano, que passou a alternar
-// 5 golpes dorsais + 5 compressões abdominais. Rever com o pediatra responsável.
+// VALIDADO (pediatra responsável, 28/07/2026) — questão de maior de 1 ano alinhada a
+// socorroMaior1Ano: alternância de golpes dorsais e compressões abdominais
 export const quizEngasgo: QuestaoTreino[] = [
   {
     cenario: 'O bebê está comendo, faz careta, fica vermelho e tosse COM FORÇA, fazendo barulho.',
@@ -325,9 +325,9 @@ export const quizEngasgo: QuestaoTreino[] = [
   },
   {
     cenario: 'Criança de 2 anos com engasgo real (sem tosse, sem som). O que fazer?',
-    opcoes: ['Manobra de Heimlich (compressões abdominais) e 192', '5 golpes nas costas apenas', 'Esperar para ver se melhora'],
+    opcoes: ['Alternar 5 golpes nas costas e 5 compressões abdominais, com o 192 acionado', 'Somente compressões abdominais, sem golpes nas costas', 'Esperar para ver se melhora'],
     corretaIdx: 0,
-    explicacao: 'Acima de 1 ano a manobra é a de Heimlich: compressões abdominais para dentro e para cima, com o 192 acionado.',
+    explicacao: 'Acima de 1 ano, alterne 5 golpes firmes entre as escápulas e 5 compressões abdominais para dentro e para cima, até o objeto sair ou a criança ficar inconsciente. O 192 é acionado desde o início.',
   },
   {
     cenario: 'Você fez as manobras, o pedaço saiu e o bebê chorou. Agora parece bem.',

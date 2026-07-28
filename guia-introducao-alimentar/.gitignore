@@ -1,2 +1,6 @@
 node_modules/
 dist/
+
+# Ilustrações de origem (PNG pesado, não entra no build — o app usa SVG inline).
+# Guardar fora do git; o Vite só empacota asset importado.
+src/assets/ilustracoes-novas/

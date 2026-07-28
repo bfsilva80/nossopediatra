@@ -201,9 +201,12 @@ export default function Seguranca() {
             </Expansivel>
             <Expansivel
               titulo="Crianças MAIORES de 1 ano"
-              subtitulo="Manobra de Heimlich (compressões abdominais)"
+              subtitulo="Golpes nas costas + compressões abdominais, alternando"
             >
-              <IlustracaoManobra quadro="heimlich" className="mx-auto mb-4 max-w-72 rounded-xl bg-cream p-1" />
+              <div className="mb-4 grid gap-3 sm:grid-cols-2">
+                <IlustracaoManobra quadro="golpesMaior1Ano" className="rounded-xl bg-cream p-1" />
+                <IlustracaoManobra quadro="heimlich" className="rounded-xl bg-cream p-1" />
+              </div>
               <ListaPassos passos={socorroMaior1Ano} />
             </Expansivel>
           </div>
