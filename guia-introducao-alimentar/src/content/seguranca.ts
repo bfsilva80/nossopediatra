@@ -1,8 +1,8 @@
 /**
  * FONTE ÚNICA do conteúdo de segurança: engasgo, alergênicos e sinais de alerta.
  *
- * Referências: diretrizes de suporte básico de vida pediátrico (desobstrução de
- * vias aéreas), Guia Alimentar MS 2019, consensos de alergia alimentar.
+ * Referências: 2025 AHA/AAP Guidelines for CPR and ECC, Part 6 — Pediatric Basic Life
+ * Support (Circulation, 22/10/2025), Guia Alimentar MS 2019, consensos de alergia alimentar.
  * Revisão clínica: itens validados em 24/07/2026 (comentários "VALIDADO").
  * Novas pendências devem usar comentários "VALIDAR:" — nunca dentro das strings.
  */
@@ -49,6 +49,13 @@ export interface PassoSocorro {
 }
 
 /** Desobstrução em MENORES de 1 ano — NÃO usar a manobra de Heimlich clássica. */
+// VALIDAR: compressões torácicas passaram de "2 dedos" para "base de uma das mãos".
+// Fonte: 2025 AHA/AAP Guidelines for CPR and ECC, Part 6 — Pediatric Basic Life Support
+// (Circulation, 22/10/2025). A técnica de 2 dedos foi eliminada por não atingir a
+// profundidade eficaz; para engasgo em lactente a diretriz indica 5 golpes dorsais
+// alternados com 5 compressões torácicas com a base de uma das mãos. Compressões
+// abdominais seguem contraindicadas em menores de 1 ano.
+// Redação alterada por pesquisa em fonte oficial, PENDENTE de aval do pediatra responsável.
 export const socorroMenor1Ano: PassoSocorro[] = [
   {
     passo: 'Confirme que é engasgo real',
@@ -68,7 +75,7 @@ export const socorroMenor1Ano: PassoSocorro[] = [
   {
     passo: '5 compressões no peito',
     detalhe:
-      'Vire o bebê de barriga para cima, ainda com a cabeça mais baixa. Com 2 dedos no centro do peito (logo abaixo da linha dos mamilos), faça 5 compressões.',
+      'Vire o bebê de barriga para cima, ainda com a cabeça mais baixa. Com a base de uma das mãos no centro do peito (logo abaixo da linha dos mamilos), faça 5 compressões.',
     ilustracao: 'compressoes',
   },
   {

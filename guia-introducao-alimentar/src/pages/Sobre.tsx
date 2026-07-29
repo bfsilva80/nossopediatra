@@ -9,7 +9,7 @@ const fontes = [
   'Manual de Alimentação: orientações para alimentação do lactente ao adolescente — Sociedade Brasileira de Pediatria',
   'Consensos brasileiros e internacionais sobre introdução precoce de alimentos alergênicos',
   'Ensaios do método BLISS (Baby-Led Introduction to SolidS) — Universidade de Otago, Nova Zelândia',
-  'Diretrizes de suporte básico de vida pediátrico (desobstrução de vias aéreas)',
+  'Diretrizes de suporte básico de vida pediátrico — 2025 AHA/AAP Guidelines for CPR and ECC, Part 6: Pediatric Basic Life Support (Circulation, out/2025)',
 ];
 
 export default function Sobre() {

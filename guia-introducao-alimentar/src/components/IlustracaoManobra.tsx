@@ -70,7 +70,7 @@ function GolpesMaior1Ano() {
 
 function Compressoes() {
   return (
-    <svg viewBox="0 0 400 300" role="img" aria-label="Bebê de barriga para cima no antebraço do adulto, cabeça mais baixa, dois dedos comprimindo o centro do peito logo abaixo da linha dos mamilos">
+    <svg viewBox="0 0 400 300" role="img" aria-label="Bebê de barriga para cima no antebraço do adulto, cabeça mais baixa, a base de uma das mãos comprimindo o centro do peito logo abaixo da linha dos mamilos">
       <path {...tr} d="M338 168 L152 238" />
       <ellipse {...tr} fill={SKIN} cx="140" cy="252" rx="17" ry="12" transform="rotate(-18 140 252)" />
       <path {...tr} d="M348 210 L142 278" />
@@ -79,11 +79,12 @@ function Compressoes() {
       <path {...trFino} d="M130 230 L138 228 M144 226 L152 224" />
       <path {...trFino} d="M200 181 L232 197" strokeDasharray="5 6" />
       <ellipse fill={DANGER} opacity="0.85" cx="212" cy="198" rx="10" ry="8" />
-      <path {...tr} d="M206 150 L208 190 M222 146 L220 188" />
-      <path {...tr} fill={SKIN} d="M200 128 L230 122 L226 150 L204 154 Z" />
-      <path {...acao} d="M258 128 L232 168" />
-      <path fill={DANGER} d="M232 168 L244 160 L228 152 Z" />
-      <text {...rotulo} x="272" y="118">5×</text>
+      {/* Base da palma no ponto de contato; dedos erguidos, sem tocar o tórax (AHA 2025). */}
+      <path {...tr} fill={SKIN} d="M186 160 Q212 142 238 160 Q243 180 228 191 Q206 199 192 189 Q181 174 186 160 Z" />
+      <path {...trFino} d="M195 153 L186 131 M212 145 L211 123 M229 152 L240 133" />
+      <path {...acao} d="M268 128 L240 164" />
+      <path fill={DANGER} d="M240 164 L252 156 L236 148 Z" />
+      <text {...rotulo} x="282" y="118">5×</text>
     </svg>
   );
 }
