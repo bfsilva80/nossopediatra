@@ -2,10 +2,14 @@
 # O app é 100% estático: o build gera guia-introducao-alimentar/dist,
 # que é servido na raiz do site.
 
+# build:release roda o gate clínico estrito (STRICT_CLINICAL=1): o deploy FALHA
+# se houver "// VALIDAR:" pendente em src/. É proposital — conteúdo clínico não
+# revisado não chega às famílias. Para destravar, valide o item e troque a marca
+# por "// VALIDADO (pediatra responsável, DD/MM/AAAA)".
 [build]
   base = "guia-introducao-alimentar"
   publish = "dist"
-  command = "npm run build"
+  command = "npm run build:release"
 
 # Roteamento por hash (#/fases) dispensa fallback de SPA, mas a regra
 # abaixo garante que qualquer caminho direto caia no app em vez de 404.

@@ -1,6 +1,6 @@
 import logo from '@/assets/logo.svg';
 import BannerBebe from '@/components/BannerBebe';
-import { APP_VERSAO, linkFeedback } from '@/lib/feedback';
+import { APP_VERSAO, BUILD_INFO, linkFeedback } from '@/lib/feedback';
 import { ArrowLeftRight, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Link } from 'wouter';
 
@@ -98,6 +98,10 @@ export default function Sobre() {
 
       <p className="text-center text-xs text-ink-soft">
         {APP_VERSAO} · NossoPediatra · Amor de pai. Ciência de médico.
+      </p>
+      <p className="text-center text-[11px] text-ink-soft/70">
+        publicado de <code>{BUILD_INFO.commit}</code> ({BUILD_INFO.branch}) em{' '}
+        {BUILD_INFO.data} UTC
       </p>
     </div>
   );

@@ -2,7 +2,7 @@
 # aponta para esta pasta quando o deploy parte do repositório inteiro.
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "npm run build:release"
 
 [[redirects]]
   from = "/*"
