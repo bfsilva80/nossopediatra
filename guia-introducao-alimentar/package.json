@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "check": "node scripts/checar-conteudo.mjs && tsc --noEmit",
-    "check:release": "STRICT_CLINICAL=1 node scripts/checar-conteudo.mjs && tsc --noEmit",
-    "build": "node scripts/checar-conteudo.mjs && tsc --noEmit && vite build",
-    "build:release": "STRICT_CLINICAL=1 node scripts/checar-conteudo.mjs && tsc --noEmit && vite build",
+    "invariantes": "node --experimental-strip-types --no-warnings scripts/checar-invariantes.mjs",
+    "check": "node scripts/checar-conteudo.mjs && npm run invariantes && tsc --noEmit",
+    "check:release": "STRICT_CLINICAL=1 node scripts/checar-conteudo.mjs && npm run invariantes && tsc --noEmit",
+    "build": "node scripts/checar-conteudo.mjs && npm run invariantes && tsc --noEmit && vite build",
+    "build:release": "STRICT_CLINICAL=1 node scripts/checar-conteudo.mjs && npm run invariantes && tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

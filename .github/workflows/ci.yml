@@ -1,0 +1,32 @@
+name: CI
+
+# Existe por causa de uma falha real: um PR mesclado em main deixou seguranca.ts
+# truncado, a main parou de compilar e o deploy ficou dias sem publicar — sem
+# nenhum sinal. Aqui o PR quebra antes de chegar na main.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: guia-introducao-alimentar
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: guia-introducao-alimentar/package-lock.json
+
+      - run: npm ci
+
+      # Mesmo comando que o Netlify roda para publicar: gate clínico estrito,
+      # invariantes de conteúdo, tsc e build. Se passar aqui, publica lá.
+      - name: Build de publicação clínica
+        run: npm run build:release

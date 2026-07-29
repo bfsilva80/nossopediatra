@@ -5,6 +5,7 @@ import {
   socorroMenor1Ano,
   type PassoSocorro,
 } from '@/content/seguranca';
+import { useTelaAcesa } from '@/lib/telaAcesa';
 import { ArrowLeft, ArrowRight, Phone, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'wouter';
@@ -17,6 +18,9 @@ import { Link } from 'wouter';
 export default function Emergencia() {
   const [modo, setModo] = useState<'menor' | 'maior' | 'alergia' | null>(null);
   const [indice, setIndice] = useState(0);
+
+  // A tela não pode apagar com as mãos ocupadas no bebê.
+  useTelaAcesa(true);
 
   const passos: PassoSocorro[] = modo === 'menor' ? socorroMenor1Ano : socorroMaior1Ano;
 

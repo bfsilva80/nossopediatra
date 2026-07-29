@@ -11,15 +11,29 @@ novo vai ao ar sem o aval dele.
 ```bash
 cd guia-introducao-alimentar
 npm install
-npm run dev      # desenvolvimento
-npm run build    # gate de conteúdo + tsc --noEmit + vite build
+npm run dev            # desenvolvimento
+npm run invariantes    # só as invariantes de conteúdo clínico
+npm run check          # gates + tsc, sem gerar bundle
+npm run build          # gates + tsc + vite build
+npm run build:release  # idem, com gate clínico ESTRITO — é o que o Netlify roda
 ```
 
-Não existe suíte de testes automatizada. A verificação padrão antes de entregar é
-`npm run build` + um smoke test com Playwright (`playwright-core` está em devDependencies;
-o Chromium fica em `/opt/pw-browsers/chromium`). Scripts de smoke são temporários: crie
-`smoke.tmp.mjs` **dentro de `guia-introducao-alimentar/`** (a resolução de módulo exige isso),
-rode e apague antes do commit.
+**A cadeia de verificação** (`scripts/`, Node puro, zero dependências):
+1. `checar-conteudo.mjs` — marcas de revisão. Em `STRICT_CLINICAL=1` falha se houver
+   `// VALIDAR:` pendente. **O deploy do Netlify usa `build:release`**, então pendência
+   clínica bloqueia publicação.
+2. `checar-invariantes.mjs` — importa os módulos de `src/content/` de verdade (Node 22,
+   `--experimental-strip-types`) e checa valores que o `tsc` não alcança: listas clínicas
+   vazias, `corretaIdx` fora do intervalo no quiz, opções duplicadas, ilustração apontando
+   para quadro inexistente, telefone de emergência não discável.
+3. `tsc --noEmit` e `vite build`.
+
+`.github/workflows/ci.yml` roda `build:release` em todo push e PR contra `main` — o mesmo
+comando do Netlify, então verde no CI significa que publica.
+
+Não há testes de interação. Para smoke test manual, Playwright (`playwright-core` está em
+devDependencies; Chromium em `/opt/pw-browsers/chromium`): crie `smoke.tmp.mjs` **dentro de
+`guia-introducao-alimentar/`** (a resolução de módulo exige isso), rode e apague antes do commit.
 
 ## Regras de arquitetura
 
