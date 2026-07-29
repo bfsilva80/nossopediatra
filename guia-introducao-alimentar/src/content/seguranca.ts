@@ -49,13 +49,12 @@ export interface PassoSocorro {
 }
 
 /** Desobstrução em MENORES de 1 ano — NÃO usar a manobra de Heimlich clássica. */
-// VALIDAR: compressões torácicas passaram de "2 dedos" para "base de uma das mãos".
-// Fonte: 2025 AHA/AAP Guidelines for CPR and ECC, Part 6 — Pediatric Basic Life Support
-// (Circulation, 22/10/2025). A técnica de 2 dedos foi eliminada por não atingir a
-// profundidade eficaz; para engasgo em lactente a diretriz indica 5 golpes dorsais
-// alternados com 5 compressões torácicas com a base de uma das mãos. Compressões
-// abdominais seguem contraindicadas em menores de 1 ano.
-// Redação alterada por pesquisa em fonte oficial, PENDENTE de aval do pediatra responsável.
+// VALIDADO (pediatra responsável, 29/07/2026) — compressões torácicas em lactente:
+// "2 dedos" substituído por "base de uma das mãos". Fonte: 2025 AHA/AAP Guidelines for
+// CPR and ECC, Part 6 — Pediatric Basic Life Support (Circulation, 22/10/2025), que
+// eliminou a técnica de 2 dedos ao longo do esterno por não atingir profundidade eficaz.
+// Para engasgo em menor de 1 ano: 5 golpes dorsais alternados com 5 compressões torácicas
+// com a base de uma das mãos. Compressões abdominais seguem contraindicadas em lactentes.
 export const socorroMenor1Ano: PassoSocorro[] = [
   {
     passo: 'Confirme que é engasgo real',
