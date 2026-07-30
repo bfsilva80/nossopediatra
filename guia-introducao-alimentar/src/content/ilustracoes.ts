@@ -53,6 +53,17 @@ export interface CartaoManobra {
   /** Trecho canônico ilustrado + hash na data da revisão. */
   ancora: { fonte: FonteAncora; indice?: number; hash: string };
   revisadoEm: string;
+  /**
+   * Marca o cartão que LIDERA aquele passo na tela de Emergência.
+   *
+   * Emergência é texto-primeiro, não texto-único: sob pânico, reconhecer uma
+   * postura numa imagem é mais rápido que ler uma frase. Mas só entra aqui arte
+   * aprovada para essa tela — sem texto embutido, geometria conferida.
+   *
+   * Vários cartões podem ancorar no mesmo passo (a galeria mostra todos); apenas
+   * um pode liderá-lo na Emergência, e `checar-invariantes.mjs` garante isso.
+   */
+  emergencia?: true;
 }
 
 export const cartoesManobra: CartaoManobra[] = [
@@ -63,6 +74,7 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'ambos',
     ancora: { fonte: 'socorroMenor1Ano', indice: 0, hash: '9a35b4830d3d' },
     revisadoEm: '2026-07-29',
+    emergencia: true,
   },
   {
     id: 'posicionar-menor1ano',
@@ -79,6 +91,7 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'menor1ano',
     ancora: { fonte: 'socorroMenor1Ano', indice: 2, hash: '89092e69044b' },
     revisadoEm: '2026-07-29',
+    emergencia: true,
   },
   {
     id: 'compressoes-menor1ano',
@@ -87,6 +100,13 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'menor1ano',
     ancora: { fonte: 'socorroMenor1Ano', indice: 3, hash: '5362fb0e5601' },
     revisadoEm: '2026-07-29',
+    // SEM `emergencia`, de propósito. A arte divergiu do texto canônico em dois
+    // pontos: o bebê está na horizontal em vez de cabeça mais baixa que o corpo, e
+    // o alvo vermelho aparece sobre/acima da linha dos mamilos, não logo abaixo.
+    // Na galeria, a família lê a legenda e o texto ao lado; na tela de pânico ela
+    // copia a imagem sem ler — então aqui o passo fica sem imagem até a arte ser
+    // refeita. Não usar o cartão de posicionamento como substituto: ele mostra o
+    // bebê de bruços, o oposto do que este passo pede.
   },
   {
     id: 'alternar-menor1ano',
@@ -95,6 +115,7 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'menor1ano',
     ancora: { fonte: 'socorroMenor1Ano', indice: 4, hash: '85125c5d2af5' },
     revisadoEm: '2026-07-29',
+    emergencia: true,
   },
   {
     id: 'sinal-maior1ano',
@@ -103,6 +124,7 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'maior1ano',
     ancora: { fonte: 'socorroMaior1Ano', indice: 0, hash: '4e42ce2c344f' },
     revisadoEm: '2026-07-29',
+    emergencia: true,
   },
   {
     id: 'golpes-maior1ano',
@@ -111,6 +133,7 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'maior1ano',
     ancora: { fonte: 'socorroMaior1Ano', indice: 2, hash: 'e251d5fdf17d' },
     revisadoEm: '2026-07-29',
+    emergencia: true,
   },
   {
     id: 'heimlich-maior1ano',
@@ -119,6 +142,7 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'maior1ano',
     ancora: { fonte: 'socorroMaior1Ano', indice: 3, hash: '0bd9039a6830' },
     revisadoEm: '2026-07-29',
+    emergencia: true,
   },
   {
     id: 'alternar-maior1ano',
@@ -127,6 +151,7 @@ export const cartoesManobra: CartaoManobra[] = [
     faixa: 'maior1ano',
     ancora: { fonte: 'socorroMaior1Ano', indice: 4, hash: 'aed073e34b44' },
     revisadoEm: '2026-07-29',
+    emergencia: true,
   },
   {
     id: 'nao-faca',
@@ -146,6 +171,23 @@ export const cartoesManobra: CartaoManobra[] = [
   },
 ];
 
+/**
+ * Cartão que lidera um passo na tela de Emergência, ou `undefined` quando aquele
+ * passo não tem arte aprovada para lá. A ligação vem do próprio manifesto — não
+ * existe segunda tabela de mapeamento para sair de sincronia.
+ */
+export function cartaoDeEmergencia(
+  fonte: FonteAncora,
+  indice: number
+): CartaoManobra | undefined {
+  return cartoesManobra.find(
+    c => c.emergencia && c.ancora.fonte === fonte && c.ancora.indice === indice
+  );
+}
+
 // VALIDADO (pediatra responsável, 29/07/2026) — textos alternativos descrevem a
-// técnica conforme socorroMenor1Ano/socorroMaior1Ano; arte aprovada para uso em
-// Segurança e Treino. A tela de Emergência segue com os quadros SVG.
+// técnica conforme socorroMenor1Ano/socorroMaior1Ano; arte aprovada para Segurança
+// e Treino.
+// Uso na Emergência a partir de 30/07/2026: os cartões marcados `emergencia`
+// lideram o passo correspondente na tela de pânico. `compressoes-menor1ano` está
+// deliberadamente fora até a arte ser refeita (ver comentário no cartão).

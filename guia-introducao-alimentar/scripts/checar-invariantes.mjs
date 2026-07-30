@@ -10,7 +10,8 @@
  *    quebrou porque havia import quebrado. Um array esvaziado passaria batido.
  *  - corretaIdx fora do intervalo: o quiz de emergência ficaria sem resposta
  *    correta possível, e o tsc não vê isso.
- *  - passos sem ilustração declarada apontando para quadro inexistente.
+ *  - arte da Emergência apontando para passo inexistente, ou dois cartões
+ *    disputando o mesmo passo (qual venceria dependeria da ordem do array).
  */
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
@@ -47,29 +48,6 @@ for (const [nome, passos] of [
   });
 }
 
-// --- ilustrações referenciadas precisam existir no componente ------------
-const linhas = readFileSync(new URL('components/IlustracaoManobra.tsx', base), 'utf8').split('\n');
-const inicioQuadros = linhas.findIndex(l => l.includes('const quadros'));
-const fimQuadros = linhas.findIndex((l, i) => i > inicioQuadros && l.trim() === '};');
-checar(inicioQuadros !== -1 && fimQuadros !== -1, 'IlustracaoManobra: bloco "const quadros" não localizado');
-const quadrosDisponiveis = new Set(
-  linhas
-    .slice(inicioQuadros + 1, fimQuadros)
-    .map(l => l.match(/^\s*([a-zA-Z0-9_]+)\s*:/)?.[1])
-    .filter(Boolean),
-);
-for (const [nome, passos] of [
-  ['socorroMenor1Ano', seguranca.socorroMenor1Ano],
-  ['socorroMaior1Ano', seguranca.socorroMaior1Ano],
-]) {
-  passos?.forEach((p, i) => {
-    if (!p.ilustracao) return;
-    checar(
-      quadrosDisponiveis.has(p.ilustracao),
-      `${nome}[${i}]: ilustração "${p.ilustracao}" não existe em IlustracaoManobra`,
-    );
-  });
-}
 
 // --- quiz: toda questão tem resposta correta alcançável ------------------
 seguranca.quizEngasgo?.forEach((q, i) => {
@@ -131,6 +109,38 @@ for (const c of cartoesManobra ?? []) {
         `      Se a arte continua correta, atualize o hash para "${hashAtual}" e a data de revisão.`,
     );
   }
+}
+
+// --- arte da tela de EMERGÊNCIA -------------------------------------------
+// Aqui a família copia a imagem sem ler. Duas coisas não podem acontecer:
+// um cartão liderar um passo que não existe, e dois cartões disputarem o mesmo
+// passo (qual apareceria dependeria da ordem do array — sorte, não decisão).
+const passoPorFonte = {
+  socorroMenor1Ano: seguranca.socorroMenor1Ano,
+  socorroMaior1Ano: seguranca.socorroMaior1Ano,
+};
+const liderPorPasso = new Map();
+for (const c of (cartoesManobra ?? []).filter(c => c.emergencia)) {
+  const passos = passoPorFonte[c.ancora?.fonte];
+  checar(
+    passos !== undefined,
+    `ilustracoes[${c.id}]: marcado como arte de emergência, mas a âncora "${c.ancora?.fonte}" não é uma sequência de passos`,
+  );
+  if (passos === undefined) continue;
+
+  const indice = c.ancora.indice;
+  checar(
+    Number.isInteger(indice) && indice >= 0 && indice < passos.length,
+    `ilustracoes[${c.id}]: arte de emergência aponta para ${c.ancora.fonte}[${indice}], que não existe (${passos.length} passos)`,
+  );
+
+  const chave = `${c.ancora.fonte}[${indice}]`;
+  const jaTem = liderPorPasso.get(chave);
+  checar(
+    jaTem === undefined,
+    `ilustracoes: "${c.id}" e "${jaTem}" disputam o mesmo passo ${chave} na Emergência — só um cartão pode liderar cada passo`,
+  );
+  liderPorPasso.set(chave, c.id);
 }
 
 if (erros.length > 0) {
