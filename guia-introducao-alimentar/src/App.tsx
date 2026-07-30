@@ -17,6 +17,8 @@ import Seguranca from '@/pages/Seguranca';
 import Sobre from '@/pages/Sobre';
 import Transferir from '@/pages/Transferir';
 import Treino from '@/pages/Treino';
+import { aquecerEmergencia } from '@/lib/aquecerEmergencia';
+import { useEffect } from 'react';
 import { Route, Router, Switch } from 'wouter';
 import { useHashLocation } from 'wouter/use-hash-location';
 
@@ -25,6 +27,10 @@ import { useHashLocation } from 'wouter/use-hash-location';
  * estática sem precisar de fallback de SPA no servidor.
  */
 export default function App() {
+  // A arte da Emergência vai para o cache assim que o app fica ocioso: no engasgo
+  // a rede pode estar ruim, e imagem que não carrega não ajuda ninguém.
+  useEffect(aquecerEmergencia, []);
+
   return (
     <Router hook={useHashLocation}>
       <AppRoutes />

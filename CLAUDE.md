@@ -61,9 +61,17 @@ de decisão explícita do Bruno e de fachada de clique.
 
 ## Princípios de produto que já custaram discussão
 
-- **Emergência é texto-primeiro.** Vídeo não se assiste em emergência; imagem com texto embutido
-  compete com o passo a passo. O modo emergência é tela cheia, um passo por vez, operável em
-  pânico e offline.
+- **Emergência é texto-primeiro — o que não é texto-único.** Sob pânico, reconhecer uma postura
+  numa imagem é mais rápido que ler a frase que a descreve, então cada passo com arte aprovada
+  mostra a imagem em destaque e o texto manda no detalhe. Vídeo, sim, está fora: não se assiste
+  a vídeo em emergência. Requisitos para uma arte entrar nessa tela: **sem texto embutido**
+  (o texto vem do app, traduzível, lido por leitor de tela, escalável), leve e já em cache,
+  e geometria conferida especificamente para lá — na galeria a família lê a legenda ao lado, na
+  tela de pânico ela copia a imagem sem ler. Passo sem arte aprovada fica sem imagem e **nunca**
+  empresta a de outro passo. Esta tela é tela cheia, um passo por vez, operável em pânico e offline.
+  Já erramos duas vezes aqui: primeiro com SVG esquemático de bonecos de palito (reprovado em
+  27/07), depois deixando esses mesmos SVGs na tela por três dias porque este documento os
+  descrevia como decisão de projeto.
 - **Modo treino é o oposto visual da emergência** (azul, selo "MODO TREINO"): quem está em
   pânico real não pode confundir as duas telas.
 - **Sem rastreador ansiogênico.** A marcação de ferro é só reforço positivo — sem sequências,
@@ -107,10 +115,24 @@ Trabalhe em branch e abra PR contra `main`. O PR ganha deploy preview automátic
    da arte, já imprimindo o hash novo. Guardamos hash e não o texto para não criar segunda
    cópia do conteúdo clínico.
 
-   **Onde aparece:** Segurança e Treino. **Nunca na Emergência** — lá seguem os SVGs, que são
-   leves, abrem offline instantâneo e têm geometria explícita por coordenada. Sabidamente as
-   artes de compressão saíram com o bebê na horizontal em vez de cabeça rebaixada; o texto
-   canônico corrige, e manter essas imagens fora da tela de pânico é parte da mitigação.
+   **Onde aparece.** A galeria (miniaturas + ampliação) fica em Segurança e Treino. Na
+   **Emergência** entra UM cartão por passo, marcado com `emergencia: true` no manifesto e
+   renderizado direto pela tela — desde 30/07/2026. Os SVGs de palito foram removidos; o
+   componente `IlustracaoManobra` não existe mais.
+   - A ligação passo → arte vive só no manifesto (`ancora.fonte` + `ancora.indice` + `emergencia`),
+     consultada por `cartaoDeEmergencia()`. `PassoSocorro` **não** tem campo de ilustração: uma
+     tabela só, um lugar só para sair de sincronia. `checar-invariantes.mjs` recusa arte de
+     emergência apontando para passo inexistente e dois cartões disputando o mesmo passo.
+   - `lib/aquecerEmergencia.ts` busca os cartões de emergência quando o app fica ocioso, para
+     eles já estarem no cache do service worker antes do engasgo (respeita `save-data` e 2G).
+     Não é lista de pré-cache no `sw.js` porque os nomes só existem com o hash do build.
+   - **Exceção aberta:** `compressoes-menor1ano` está fora da Emergência de propósito. A arte
+     divergiu do texto em dois pontos — bebê na horizontal em vez de cabeça rebaixada, e alvo
+     sobre/acima da linha dos mamilos em vez de logo abaixo. Enquanto não for refeita, o passo
+     das compressões aparece sem imagem (e não empresta a de posicionamento, que mostra o bebê
+     de bruços — o oposto). Ver comentário no cartão em `content/ilustracoes.ts`.
+   - Também vale reconferir a arte dos golpes: a mão aparece espalmada, e o texto diz
+     "base da mão".
 2. **Vídeos das manobras**, produzidos por uma capitã do Corpo de Bombeiros. Usar **embed** do
    YouTube (nunca re-hospedar), com autorização escrita da autora e crédito visível, e com
    fachada de clique + `youtube-nocookie` para não carregar rastreador sem o toque da família.

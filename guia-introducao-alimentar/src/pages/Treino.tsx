@@ -1,5 +1,4 @@
 import GaleriaManobras from '@/components/GaleriaManobras';
-import IlustracaoManobra from '@/components/IlustracaoManobra';
 import {
   quizEngasgo,
   socorroMaior1Ano,
@@ -143,10 +142,6 @@ export default function Treino() {
           <h1 className="text-xl font-bold">Passo 1 de 2: releia as manobras</h1>
           <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 font-bold">Bebês MENORES de 1 ano — sem Heimlich</h2>
-            <div className="mb-4 grid gap-3 sm:grid-cols-2">
-              <IlustracaoManobra quadro="golpes" className="rounded-xl bg-cream p-1" />
-              <IlustracaoManobra quadro="compressoes" className="rounded-xl bg-cream p-1" />
-            </div>
             <ListaPassosTreino passos={socorroMenor1Ano} />
             <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
             <GaleriaManobras faixa="menor1ano" />
@@ -155,10 +150,6 @@ export default function Treino() {
             <h2 className="mb-3 font-bold">
               Crianças MAIORES de 1 ano — golpes nas costas + compressões abdominais
             </h2>
-            <div className="mb-4 grid gap-3 sm:grid-cols-2">
-              <IlustracaoManobra quadro="golpesMaior1Ano" className="rounded-xl bg-cream p-1" />
-              <IlustracaoManobra quadro="heimlich" className="rounded-xl bg-cream p-1" />
-            </div>
             <ListaPassosTreino passos={socorroMaior1Ano} />
             <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
             <GaleriaManobras faixa="maior1ano" />

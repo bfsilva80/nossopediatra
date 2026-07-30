@@ -1,6 +1,5 @@
 import Expansivel from '@/components/Expansivel';
 import GaleriaManobras from '@/components/GaleriaManobras';
-import IlustracaoManobra from '@/components/IlustracaoManobra';
 import {
   alergenicos,
   avisoTreinamento,
@@ -166,20 +165,6 @@ export default function Seguranca() {
               <p className="text-sm font-medium">{gagVsEngasgo.engasgo.conduta}</p>
             </div>
           </div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <figure className="rounded-2xl border border-stone-200 bg-white p-3 shadow-sm">
-              <IlustracaoManobra quadro="decisao" />
-              <figcaption className="px-1 pt-1 text-xs text-ink-soft">
-                A decisão em um olhar: barulho é a via aérea funcionando; silêncio é a hora de agir.
-              </figcaption>
-            </figure>
-            <figure className="rounded-2xl border border-stone-200 bg-white p-3 shadow-sm">
-              <IlustracaoManobra quadro="sinal" />
-              <figcaption className="px-1 pt-1 text-xs text-ink-soft">
-                O sinal universal do engasgo: mãos no pescoço, boca aberta, nenhum som.
-              </figcaption>
-            </figure>
-          </div>
         </div>
 
         <div>
@@ -194,10 +179,6 @@ export default function Seguranca() {
               subtitulo="Golpes nas costas + compressões no peito — NÃO use a manobra de Heimlich"
               abertoInicial
             >
-              <div className="mb-4 grid gap-3 sm:grid-cols-2">
-                <IlustracaoManobra quadro="golpes" className="rounded-xl bg-cream p-1" />
-                <IlustracaoManobra quadro="compressoes" className="rounded-xl bg-cream p-1" />
-              </div>
               <ListaPassos passos={socorroMenor1Ano} />
               <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
               <GaleriaManobras faixa="menor1ano" />
@@ -206,10 +187,6 @@ export default function Seguranca() {
               titulo="Crianças MAIORES de 1 ano"
               subtitulo="Golpes nas costas + compressões abdominais, alternando"
             >
-              <div className="mb-4 grid gap-3 sm:grid-cols-2">
-                <IlustracaoManobra quadro="golpesMaior1Ano" className="rounded-xl bg-cream p-1" />
-                <IlustracaoManobra quadro="heimlich" className="rounded-xl bg-cream p-1" />
-              </div>
               <ListaPassos passos={socorroMaior1Ano} />
               <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
               <GaleriaManobras faixa="maior1ano" />
@@ -235,12 +212,6 @@ export default function Seguranca() {
 
         <div>
           <h2 className="mb-2 text-xl font-bold">Prevenção: o formato importa mais que o alimento</h2>
-          <figure className="mb-4 rounded-2xl border border-stone-200 bg-white p-3 shadow-sm">
-            <IlustracaoManobra quadro="cadeirao" className="mx-auto max-w-80" />
-            <figcaption className="px-1 pt-1 text-center text-xs text-ink-soft">
-              A cena segura de toda refeição: sentado e ereto, com cinto, adulto ao lado, sem telas.
-            </figcaption>
-          </figure>
           <ul className="mb-4 space-y-2 rounded-2xl bg-white p-5 text-sm shadow-sm">
             {regrasDeOuroEngasgo.map((regra, i) => (
               <li key={i} className="flex gap-2">

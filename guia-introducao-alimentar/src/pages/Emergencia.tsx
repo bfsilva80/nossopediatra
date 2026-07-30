@@ -1,4 +1,4 @@
-import IlustracaoManobra from '@/components/IlustracaoManobra';
+import { cartaoDeEmergencia } from '@/content/ilustracoes';
 import {
   sinaisReacaoAlergica,
   socorroMaior1Ano,
@@ -6,6 +6,7 @@ import {
   type PassoSocorro,
 } from '@/content/seguranca';
 import { useTelaAcesa } from '@/lib/telaAcesa';
+import { imagensManobra } from '@/lib/imagensManobra';
 import { ArrowLeft, ArrowRight, Phone, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'wouter';
@@ -14,6 +15,17 @@ import { Link } from 'wouter';
  * Modo emergência: tela cheia, um passo por vez, letras grandes.
  * Pensado para ser operado em pânico, com uma mão, sem rolagem.
  * Cobre as duas emergências alimentares: engasgo e anafilaxia.
+ *
+ * TEXTO-PRIMEIRO NÃO É TEXTO-ÚNICO. Sob pânico, reconhecer uma postura numa imagem
+ * é mais rápido que ler a frase que a descreve — por isso cada passo que tem arte
+ * aprovada mostra a imagem em destaque, com o texto logo abaixo mandando no
+ * detalhe. Quais passos têm arte é decisão de conteúdo, marcada no manifesto
+ * `content/ilustracoes.ts`; um passo sem arte aprovada simplesmente não mostra
+ * imagem, e nunca empresta a imagem de outro passo.
+ *
+ * A imagem não pode empurrar os botões nem o 192 para fora da tela: ela vive num
+ * bloco que encolhe (`min-h-0` + `object-contain`), então em tela baixa perde
+ * altura em vez de rolar.
  */
 export default function Emergencia() {
   const [modo, setModo] = useState<'menor' | 'maior' | 'alergia' | null>(null);
@@ -23,6 +35,11 @@ export default function Emergencia() {
   useTelaAcesa(true);
 
   const passos: PassoSocorro[] = modo === 'menor' ? socorroMenor1Ano : socorroMaior1Ano;
+  // A ligação passo → arte vem do manifesto; a tela não mantém tabela própria.
+  const cartao = cartaoDeEmergencia(
+    modo === 'menor' ? 'socorroMenor1Ano' : 'socorroMaior1Ano',
+    indice
+  );
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-danger text-white">
@@ -101,23 +118,40 @@ export default function Emergencia() {
           </p>
         </div>
       ) : (
-        <div className="flex flex-1 flex-col p-6">
+        // `min-h-0` é obrigatório aqui: sem ele o padrão `min-height:auto` do flex
+        // impede este painel de encolher abaixo do conteúdo, e a imagem leva os
+        // botões para fora da tela mesmo tendo `max-h-full` lá dentro.
+        <div className="flex min-h-0 flex-1 flex-col p-6">
           <p className="mb-2 text-sm font-bold uppercase tracking-wide text-white/70">
             {modo === 'menor' ? 'Menos de 1 ano — sem Heimlich' : 'Mais de 1 ano'} · passo{' '}
             {indice + 1} de {passos.length}
           </p>
-          <div className="flex min-h-0 flex-1 flex-col justify-center">
-            {passos[indice].ilustracao && (
-              <div className="mx-auto mb-4 w-full max-w-72 rounded-2xl bg-white p-2">
-                <IlustracaoManobra quadro={passos[indice].ilustracao} />
+          <div className="flex min-h-0 flex-1 flex-col justify-center gap-4 sm:flex-row sm:items-center sm:gap-6">
+            {cartao && (
+              // A ALTURA manda, não a largura. Sem este contêiner a imagem 9:16 se
+              // dimensiona pela largura disponível (390px viram 613px de altura) e
+              // empurra os botões para fora da tela — em pânico, botão inalcançável.
+              // O contêiner recebe a altura que sobra (`flex-1 min-h-0`) e a imagem
+              // se ajusta dentro dela (`max-h-full` + `object-contain`).
+              <div className="flex min-h-0 flex-1 items-center justify-center">
+                <img
+                  src={imagensManobra[cartao.id]}
+                  alt={cartao.alt}
+                  // Sem lazy: numa emergência a imagem não pode esperar o scroll.
+                  loading="eager"
+                  decoding="sync"
+                  className="max-h-full w-auto max-w-full rounded-2xl bg-white object-contain"
+                />
               </div>
             )}
-            <h2 className="mb-3 text-2xl font-extrabold leading-tight sm:text-3xl">
-              {passos[indice].passo}
-            </h2>
-            <p className="text-lg leading-relaxed text-white/95 sm:text-xl">
-              {passos[indice].detalhe}
-            </p>
+            <div className={cartao ? 'shrink-0 sm:flex-1' : ''}>
+              <h2 className="mb-3 text-2xl font-extrabold leading-tight sm:text-3xl">
+                {passos[indice].passo}
+              </h2>
+              <p className="text-lg leading-relaxed text-white/95 sm:text-xl">
+                {passos[indice].detalhe}
+              </p>
+            </div>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">

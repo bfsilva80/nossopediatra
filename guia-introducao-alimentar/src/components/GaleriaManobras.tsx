@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 /**
  * Galeria das ilustrações das manobras — usada em Segurança e Treino.
  *
- * NÃO entra na tela de Emergência por decisão de produto: lá o passo a passo é
- * texto-primeiro, e os quadros SVG (leves, geometria explícita) abrem instantâneo
- * mesmo offline. Estas imagens são para aprender com calma, não para operar em pânico.
+ * A galeria em si não entra na Emergência: lá a família não navega miniaturas nem
+ * amplia imagem. O que entra é UM cartão por passo, escolhido pelo manifesto
+ * (`emergencia: true`) e renderizado direto pela tela de Emergência. Aqui é para
+ * aprender com calma — lá, para reconhecer a postura em um olhar.
  *
  * O texto clínico vem sempre de `content/`; a imagem ilustra. Por isso o `alt`
  * descreve a técnica, não a cena — é o que o leitor de tela anuncia.
