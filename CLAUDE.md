@@ -123,8 +123,10 @@ Trabalhe em branch e abra PR contra `main`. O PR ganha deploy preview automátic
 
 ## Dívidas técnicas conhecidas
 
-- `gravarStorage` falha em silêncio quando o storage está cheio ou indisponível; a família não
-  recebe sinal nenhum.
+- ~~`gravarStorage` falha em silêncio~~ **Resolvido em 29/07/2026.** `gravarStorage` devolve
+  `boolean` e sinaliza a falha por assinatura (`assinarFalhaStorage` / `useFalhaStorage`);
+  `AvisoStorage` no `Layout` mostra um alerta em todas as telas enquanto durar, apontando
+  para `/transferir`. O app segue funcionando em memória.
 - O Diário ainda é um registro de refeições genérico; o uso real que importa é o episódico
   (reação), hoje coberto pelo fluxo `/reacao`.
 - iOS pode limpar o localStorage após ~7 dias sem uso do site; hoje a única mitigação é a dica

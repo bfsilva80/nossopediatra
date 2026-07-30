@@ -1,4 +1,5 @@
 import logo from '@/assets/logo.svg';
+import AvisoStorage from '@/components/AvisoStorage';
 import AvisoTeste from '@/components/AvisoTeste';
 import { APP_VERSAO, linkFeedback } from '@/lib/feedback';
 import { AlertTriangle, ChefHat, Home, NotebookPen, Search } from 'lucide-react';
@@ -43,7 +44,10 @@ export default function Layout({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl px-4 py-6">{children}</main>
+      <main className="mx-auto max-w-3xl px-4 py-6">
+        <AvisoStorage />
+        {children}
+      </main>
 
       <footer className="mx-auto max-w-3xl px-4 pb-6 pt-10 text-center text-xs text-ink-soft">
         <p className="mb-1 font-medium text-warn">
