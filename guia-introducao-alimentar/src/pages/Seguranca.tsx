@@ -1,4 +1,5 @@
 import Expansivel from '@/components/Expansivel';
+import GaleriaManobras from '@/components/GaleriaManobras';
 import IlustracaoManobra from '@/components/IlustracaoManobra';
 import {
   alergenicos,
@@ -198,6 +199,8 @@ export default function Seguranca() {
                 <IlustracaoManobra quadro="compressoes" className="rounded-xl bg-cream p-1" />
               </div>
               <ListaPassos passos={socorroMenor1Ano} />
+              <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
+              <GaleriaManobras faixa="menor1ano" />
             </Expansivel>
             <Expansivel
               titulo="Crianças MAIORES de 1 ano"
@@ -208,6 +211,8 @@ export default function Seguranca() {
                 <IlustracaoManobra quadro="heimlich" className="rounded-xl bg-cream p-1" />
               </div>
               <ListaPassos passos={socorroMaior1Ano} />
+              <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
+              <GaleriaManobras faixa="maior1ano" />
             </Expansivel>
           </div>
           <Link

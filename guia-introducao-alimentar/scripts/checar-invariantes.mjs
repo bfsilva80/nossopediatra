@@ -12,7 +12,8 @@
  *    correta possível, e o tsc não vê isso.
  *  - passos sem ilustração declarada apontando para quadro inexistente.
  */
-import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
 
 const base = new URL('../src/', import.meta.url);
 const erros = [];
@@ -90,9 +91,54 @@ seguranca.telefonesEmergencia?.forEach((t, i) => {
   checar(/^\d{3}$/.test(t.numero), `telefonesEmergencia[${i}]: "${t.numero}" não é um número de 3 dígitos`);
 });
 
+// --- TRAVA DE DERIVA das ilustrações -------------------------------------
+// Nenhum script lê pixel: não dá para verificar se a arte confere com o texto.
+// O que dá para garantir é que ninguém mude o texto e esqueça a arte. Cada cartão
+// guarda o hash do trecho canônico na data da revisão; se o trecho mudar, falha aqui.
+const { cartoesManobra } = await import(new URL('content/ilustracoes.ts', base).href);
+
+const resolverAncora = ({ fonte, indice }) => {
+  if (fonte === 'gagVsEngasgo.gag.conduta') return seguranca.gagVsEngasgo?.gag?.conduta;
+  if (fonte === 'regrasDeOuroEngasgo') return seguranca.regrasDeOuroEngasgo?.join('|');
+  return seguranca[fonte]?.[indice]?.detalhe;
+};
+
+const idsVistos = new Set();
+for (const c of cartoesManobra ?? []) {
+  checar(!idsVistos.has(c.id), `ilustracoes: id duplicado "${c.id}"`);
+  idsVistos.add(c.id);
+
+  checar(c.alt?.trim().length > 40, `ilustracoes[${c.id}]: alt ausente ou curto demais para descrever a técnica`);
+  checar(c.legenda?.trim(), `ilustracoes[${c.id}]: legenda vazia`);
+  checar(/^\d{4}-\d{2}-\d{2}$/.test(c.revisadoEm ?? ''), `ilustracoes[${c.id}]: revisadoEm inválido`);
+  checar(
+    existsSync(new URL(`assets/manobras/${c.id}.jpg`, base)),
+    `ilustracoes[${c.id}]: arquivo assets/manobras/${c.id}.jpg não existe`,
+  );
+
+  const textoAtual = resolverAncora(c.ancora ?? {});
+  if (textoAtual === undefined) {
+    erros.push(`ilustracoes[${c.id}]: âncora "${c.ancora?.fonte}" não resolve para nenhum texto`);
+    continue;
+  }
+  const hashAtual = createHash('sha256').update(textoAtual).digest('hex').slice(0, 12);
+  if (hashAtual !== c.ancora.hash) {
+    erros.push(
+      `ilustracoes[${c.id}]: o texto de ${c.ancora.fonte}` +
+        (c.ancora.indice !== undefined ? `[${c.ancora.indice}]` : '') +
+        ` MUDOU desde a revisão da arte em ${c.revisadoEm}.\n` +
+        `      A ilustração pode ter ficado desatualizada — reconfira com o pediatra responsável.\n` +
+        `      Se a arte continua correta, atualize o hash para "${hashAtual}" e a data de revisão.`,
+    );
+  }
+}
+
 if (erros.length > 0) {
   console.error('ERRO: invariantes de conteúdo clínico violadas:');
   for (const e of erros) console.error('  ' + e);
   process.exit(1);
 }
-console.log(`checar-invariantes: ok — ${Object.keys(listasObrigatorias).length} listas e ${seguranca.quizEngasgo.length} questões conferidas.`);
+console.log(
+  `checar-invariantes: ok — ${Object.keys(listasObrigatorias).length} listas, ` +
+    `${seguranca.quizEngasgo.length} questões e ${cartoesManobra.length} ilustrações conferidas.`,
+);

@@ -92,15 +92,25 @@ Trabalhe em branch e abra PR contra `main`. O PR ganha deploy preview automátic
 
 ## Pendências no momento desta escrita (27/07/2026)
 
-1. **Ilustrações das manobras.** Atualização 28/07: na `main`, os SVGs esquemáticos foram
-   mantidos e **corrigidos** (novo quadro `golpesMaior1Ano`, geometria do Heimlich revista) —
-   a remoção da v0.11.1 vale só para a branch antiga. Os cartões PNG do Bruno (6 arquivos)
-   existem localmente em `guia-introducao-alimentar/src/assets/ilustracoes-novas/` (fora do
-   git — 11 MB; ver `.gitignore`). Integração continua pendente e o plano original se mantém:
-   galeria tocável em Segurança e Treino, **não** na Emergência; texto alternativo completo;
-   registrar no README o mapeamento cartão↔trecho. Confirmar com o Bruno o mapeamento (a
-   numeração 1–6 não segue a ordem dos passos) e os cartões que faltam (compressões no peito
-   e Heimlich >1 ano).
+1. **Ilustrações das manobras.** ~~Pendente~~ **Concluído em 29/07/2026.** 11 cartões
+   ilustrados em `src/assets/manobras/*.jpg` (JPEG 900px, ~200 KB cada; os PNG originais de
+   5 MB ficam fora do git). Arquitetura em três peças:
+   - `src/content/ilustracoes.ts` — manifesto de dados puros (id, legenda, `alt`, faixa
+     etária, âncora clínica). **Sem import de imagem**, para que o script de invariantes
+     consiga importá-lo no Node.
+   - `src/lib/imagensManobra.ts` — wiring de asset, `Record<IdCartao, string>` exaustivo por
+     tipo: acrescentar id no manifesto sem apontar a imagem quebra o build.
+   - `src/components/GaleriaManobras.tsx` — galeria tocável com ampliação, `loading="lazy"`.
+
+   **Trava de deriva.** Nenhum gate lê pixel, então cada cartão guarda o *hash* do trecho
+   canônico de `seguranca.ts` que ilustra. Mudou o texto, o build falha e cobra reconferência
+   da arte, já imprimindo o hash novo. Guardamos hash e não o texto para não criar segunda
+   cópia do conteúdo clínico.
+
+   **Onde aparece:** Segurança e Treino. **Nunca na Emergência** — lá seguem os SVGs, que são
+   leves, abrem offline instantâneo e têm geometria explícita por coordenada. Sabidamente as
+   artes de compressão saíram com o bebê na horizontal em vez de cabeça rebaixada; o texto
+   canônico corrige, e manter essas imagens fora da tela de pânico é parte da mitigação.
 2. **Vídeos das manobras**, produzidos por uma capitã do Corpo de Bombeiros. Usar **embed** do
    YouTube (nunca re-hospedar), com autorização escrita da autora e crédito visível, e com
    fachada de clique + `youtube-nocookie` para não carregar rastreador sem o toque da família.

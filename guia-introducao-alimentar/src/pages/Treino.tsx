@@ -1,3 +1,4 @@
+import GaleriaManobras from '@/components/GaleriaManobras';
 import IlustracaoManobra from '@/components/IlustracaoManobra';
 import {
   quizEngasgo,
@@ -147,6 +148,8 @@ export default function Treino() {
               <IlustracaoManobra quadro="compressoes" className="rounded-xl bg-cream p-1" />
             </div>
             <ListaPassosTreino passos={socorroMenor1Ano} />
+            <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
+            <GaleriaManobras faixa="menor1ano" />
           </section>
           <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 font-bold">
@@ -157,6 +160,8 @@ export default function Treino() {
               <IlustracaoManobra quadro="heimlich" className="rounded-xl bg-cream p-1" />
             </div>
             <ListaPassosTreino passos={socorroMaior1Ano} />
+            <p className="mb-2 mt-5 text-sm font-semibold">Passo a passo ilustrado</p>
+            <GaleriaManobras faixa="maior1ano" />
           </section>
           <button
             onClick={() => setEtapa('quiz')}
