@@ -99,14 +99,16 @@ export const cartoesManobra: CartaoManobra[] = [
     alt: 'Bebê de barriga para cima sobre o antebraço, com a cabeça mais baixa que o corpo. O adulto faz 5 compressões com a base de uma das mãos no centro do peito, logo abaixo da linha dos mamilos.',
     faixa: 'menor1ano',
     ancora: { fonte: 'socorroMenor1Ano', indice: 3, hash: '5362fb0e5601' },
-    revisadoEm: '2026-07-29',
-    // SEM `emergencia`, de propósito. A arte divergiu do texto canônico em dois
-    // pontos: o bebê está na horizontal em vez de cabeça mais baixa que o corpo, e
-    // o alvo vermelho aparece sobre/acima da linha dos mamilos, não logo abaixo.
-    // Na galeria, a família lê a legenda e o texto ao lado; na tela de pânico ela
-    // copia a imagem sem ler — então aqui o passo fica sem imagem até a arte ser
-    // refeita. Não usar o cartão de posicionamento como substituto: ele mostra o
-    // bebê de bruços, o oposto do que este passo pede.
+    revisadoEm: '2026-07-31',
+    // Entrou na Emergência em 31/07/2026 por decisão do pediatra responsável,
+    // CIENTE de duas divergências desta arte em relação ao texto canônico:
+    // o bebê aparece na horizontal em vez de com a cabeça mais baixa que o corpo,
+    // e o alvo vermelho fica sobre/acima da linha dos mamilos, não logo abaixo.
+    // Ponderou-se contra o custo oposto: um passo sem imagem no meio do fluxo de
+    // pânico quebra o ritmo e sugere que algo falhou. O texto ao lado corrige os
+    // dois pontos, e na Emergência ele aparece junto da arte, não depois dela.
+    // AO REFAZER A ARTE: corrigir a inclinação e o alvo, e atualizar `revisadoEm`.
+    emergencia: true,
   },
   {
     id: 'alternar-menor1ano',
