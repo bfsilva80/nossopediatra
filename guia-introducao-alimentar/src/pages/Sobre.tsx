@@ -72,7 +72,7 @@ export default function Sobre() {
         </p>
         <Link
           href="/transferir"
-          className="mt-3 flex items-center gap-2 rounded-xl border-2 border-primary p-3 text-sm font-bold text-primary hover:bg-primary-soft"
+          className="mt-3 flex items-center gap-2 rounded-xl border-2 border-primary p-3 text-sm font-bold text-primary hover:bg-surf-azul"
         >
           <ArrowLeftRight className="h-5 w-5 shrink-0" aria-hidden />
           Trocou de celular? Levar os dados para outro aparelho

@@ -133,7 +133,7 @@ export default function Receitas() {
                   {receita.tempo}
                 </span>
                 {matches > 0 && (
-                  <span className="rounded-full bg-primary-soft px-2 py-0.5 text-xs font-bold text-primary">
+                  <span className="rounded-full bg-surf-azul px-2 py-0.5 text-xs font-bold text-primary">
                     usa {matches} do que você tem
                   </span>
                 )}
@@ -160,7 +160,7 @@ export default function Receitas() {
                   ))}
                 </ol>
               </div>
-              <p className="rounded-xl bg-primary-soft p-3">
+              <p className="rounded-xl bg-surf-azul p-3">
                 <strong>Dica:</strong> {receita.dica}
               </p>
             </div>
@@ -170,7 +170,7 @@ export default function Receitas() {
 
       <Link
         href="/comida-da-familia"
-        className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4 hover:opacity-90"
+        className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-surf-azul p-4 hover:opacity-90"
       >
         <ChefHat className="h-6 w-6 shrink-0 text-primary" aria-hidden />
         <span>

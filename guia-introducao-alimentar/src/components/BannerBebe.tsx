@@ -26,7 +26,7 @@ export default function BannerBebe() {
         : 'além dos 24 meses deste guia';
 
   return (
-    <div className="mb-6 flex items-center justify-between gap-3 rounded-2xl bg-primary-soft px-4 py-3">
+    <div className="mb-6 flex items-center justify-between gap-3 rounded-2xl bg-surf-azul px-4 py-3">
       <p className="text-sm text-ink">
         <span className="font-semibold">Seu bebê:</span> {descreverIdade(idade)} · {texto}
       </p>

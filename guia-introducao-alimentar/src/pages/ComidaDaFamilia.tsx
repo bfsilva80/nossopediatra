@@ -24,7 +24,7 @@ export default function ComidaDaFamilia() {
         </p>
       </div>
 
-      <p className="rounded-2xl bg-primary-soft p-4 text-sm">
+      <p className="rounded-2xl bg-surf-azul p-4 text-sm">
         <strong>A regra de ouro:</strong> {principioFamilia}
       </p>
 

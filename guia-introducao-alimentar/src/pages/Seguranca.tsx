@@ -146,7 +146,7 @@ export default function Seguranca() {
             Saber a diferença tira o pânico da mesa — e ensina quando (não) intervir.
           </p>
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border-2 border-primary bg-primary-soft p-5">
+            <div className="rounded-2xl border-2 border-primary bg-surf-azul p-5">
               <h3 className="mb-3 font-bold">{gagVsEngasgo.gag.titulo}</h3>
               <ul className="mb-3 space-y-1.5 text-sm">
                 {gagVsEngasgo.gag.sinais.map((s, i) => (
@@ -194,7 +194,7 @@ export default function Seguranca() {
           </div>
           <Link
             href="/treino"
-            className="mt-3 flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4 hover:opacity-90"
+            className="mt-3 flex items-center gap-3 rounded-2xl border-2 border-primary bg-surf-azul p-4 hover:opacity-90"
           >
             <GraduationCap className="h-6 w-6 shrink-0 text-primary" aria-hidden />
             <span className="text-sm">
@@ -321,7 +321,7 @@ export default function Seguranca() {
                       {a.nome}
                     </p>
                     {estado?.status === 'ok' && (
-                      <span className="rounded-full bg-primary-soft px-2.5 py-1 text-xs font-bold text-primary">
+                      <span className="rounded-full bg-surf-azul px-2.5 py-1 text-xs font-bold text-primary">
                         sem reação · {estado.data.split('-').reverse().join('/')}
                       </span>
                     )}
@@ -335,7 +335,7 @@ export default function Seguranca() {
                   <div className="flex flex-wrap gap-2">
                     <button
                       onClick={() => marcar(a.id, 'ok')}
-                      className="rounded-full border-2 border-primary px-3 py-1 text-xs font-semibold text-primary hover:bg-primary-soft"
+                      className="rounded-full border-2 border-primary px-3 py-1 text-xs font-semibold text-primary hover:bg-surf-azul"
                     >
                       Ofereci, sem reação
                     </button>

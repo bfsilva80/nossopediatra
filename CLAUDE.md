@@ -59,6 +59,19 @@ prefixo `guia-ia:`. Nada sai do aparelho — essa promessa está escrita na tela
 de primeira visita; qualquer recurso que contrarie isso (embed de terceiros, analytics) precisa
 de decisão explícita do Bruno e de fachada de clique.
 
+**Sistema visual: duas famílias com papéis distintos, não intercambiáveis.** Definidas em
+`src/index.css`.
+- **Superfícies** (`surf-azul`, `surf-menta`): pastéis que preenchem heróis e blocos.
+  Recebem **sempre** tinta escura (`ink`/`ink-soft`) — nunca texto branco, que é o que
+  reprova contraste. Só duas famílias de propósito: mais que isso vira colcha de retalhos
+  e a hierarquia se perde. `surf-menta` ancora a tela; `surf-azul` é bloco informativo.
+- **Tinta interativa** (`primary` #17506f): ícone, link, aba ativa, e **fundo de botão com
+  texto branco**. Botão pastel não lê como botão — por isso botões não viraram superfície.
+- `danger` é exclusivo da emergência. A tela `/emergencia` e o pill vermelho do cabeçalho
+  ficaram intocados na troca de pele: o caminho de socorro não muda por motivo estético.
+- Toda combinação foi medida contra WCAG AA (mínimo 4,5:1). A pior do sistema é
+  `ink-soft` sobre `surf-menta`, em 4,54:1. Ao criar par novo, meça antes.
+
 ## Princípios de produto que já custaram discussão
 
 - **Emergência é texto-primeiro — o que não é texto-único.** Sob pânico, reconhecer uma postura

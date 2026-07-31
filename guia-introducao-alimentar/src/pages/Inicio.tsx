@@ -180,7 +180,7 @@ export default function Inicio() {
     const diasRestantes = Math.max(0, Math.ceil((alvo.getTime() - Date.now()) / 86_400_000));
     return (
       <div className="space-y-8">
-        <div className="rounded-2xl bg-primary-soft p-5">
+        <div className="rounded-2xl bg-surf-azul p-5">
           <h1 className="mb-1 text-xl font-bold">Seu bebê tem {descreverIdade(idade)}</h1>
           <p className="text-sm">
             Ainda é tempo de leite (materno ou fórmula) em exclusiva. A janela dos 6 meses chega em
@@ -220,7 +220,7 @@ export default function Inicio() {
   if (meses > 24 || !fase) {
     return (
       <div className="space-y-8">
-        <div className="rounded-2xl bg-primary-soft p-5">
+        <div className="rounded-2xl bg-surf-azul p-5">
           <h1 className="mb-1 text-xl font-bold">Missão cumprida <span aria-hidden>🎉</span></h1>
           <p className="text-sm">
             Com {descreverIdade(idade)}, seu bebê já atravessou a introdução alimentar — agora a
@@ -274,23 +274,25 @@ export default function Inicio() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-2xl bg-primary p-5 text-white">
-        <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
+      {/* Herói em superfície pastel com tinta escura — 10,7:1, contra os 2,7:1
+          que texto branco sobre azul claro daria. Mesma leveza, sem perder leitura. */}
+      <section className="rounded-2xl bg-surf-menta p-5 text-ink">
+        <p className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
           Seu bebê tem {descreverIdade(idade)}
         </p>
         <h1 className="mt-1 text-2xl font-bold">
           <span aria-hidden>{fase.icone}</span> {fase.nome}
         </h1>
-        <p className="mt-2 text-sm text-white/90">{fase.resumo}</p>
+        <p className="mt-2 text-sm text-ink-soft">{fase.resumo}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
             href="/fases"
-            className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-primary hover:opacity-90"
+            className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-primary shadow-sm hover:opacity-90"
           >
             Ver minha fase
           </Link>
           {proximaFase && (
-            <span className="rounded-full bg-white/15 px-4 py-1.5 text-sm">
+            <span className="rounded-full bg-white/60 px-4 py-1.5 text-sm text-ink-soft">
               próxima: {proximaFase.faixa}
             </span>
           )}
@@ -300,7 +302,7 @@ export default function Inicio() {
       {meses <= 7 && (
         <Link
           href="/comecando"
-          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4"
+          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-surf-azul p-4"
         >
           <Sprout className="h-8 w-8 shrink-0 text-primary" aria-hidden />
           <span className="flex-1">
@@ -332,11 +334,11 @@ export default function Inicio() {
         {ideiaDoDia && (
           <Link
             href="/alimentos"
-            className="flex items-center gap-3 rounded-xl bg-cream p-4 hover:bg-primary-soft"
+            className="flex items-center gap-3 rounded-xl border border-stone-200 bg-cream p-4 hover:border-primary"
           >
             <span
               aria-hidden
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-2xl"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-2xl"
             >
               {ideiaDoDia.emoji}
             </span>
@@ -352,12 +354,12 @@ export default function Inicio() {
           </Link>
         )}
 
-      <section aria-labelledby="titulo-ferro" className="rounded-xl bg-cream p-4">
+      <section aria-labelledby="titulo-ferro" className="rounded-xl border border-stone-200 bg-cream p-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-start gap-3">
             <span
               aria-hidden
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-primary"
             >
               <Beef className="h-5 w-5" />
             </span>
@@ -382,7 +384,7 @@ export default function Inicio() {
             className={`shrink-0 rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors ${
               ferroHoje
                 ? 'border-primary bg-primary text-white'
-                : 'border-primary text-primary hover:bg-primary-soft'
+                : 'border-primary text-primary hover:bg-surf-azul'
             }`}
           >
             {ferroHoje ? 'Sim ✓' : 'Sim!'}
@@ -408,7 +410,7 @@ export default function Inicio() {
         </h2>
         {/* Ícone acima do numeral: o olho pousa no símbolo e já sabe do que se trata. */}
         <div className="grid grid-cols-2 gap-3">
-          <Link href="/alimentos" className="rounded-xl bg-cream p-4 hover:bg-primary-soft">
+          <Link href="/alimentos" className="rounded-xl border border-stone-200 bg-cream p-4 hover:border-primary">
             <Search className="mb-2 h-6 w-6 text-primary" aria-hidden />
             <p className="text-3xl font-extrabold text-primary">
               {experimentados.length}
@@ -417,7 +419,7 @@ export default function Inicio() {
             <p className="mt-1 text-sm font-semibold">alimentos experimentados</p>
             <p className="text-xs text-ink-soft">toque para marcar mais</p>
           </Link>
-          <Link href="/seguranca/rastreador" className="rounded-xl bg-cream p-4 hover:bg-primary-soft">
+          <Link href="/seguranca/rastreador" className="rounded-xl border border-stone-200 bg-cream p-4 hover:border-primary">
             <AlertTriangle className="mb-2 h-6 w-6 text-primary" aria-hidden />
             <p className="text-3xl font-extrabold text-primary">
               {alergenicosOfertados}
@@ -464,7 +466,7 @@ export default function Inicio() {
 
       <Link
         href="/cuidador"
-        className="flex items-start gap-3 rounded-2xl border border-primary/25 bg-primary-soft p-4 hover:border-primary"
+        className="flex items-start gap-3 rounded-2xl bg-surf-azul p-4"
       >
         <Users className="mt-0.5 h-6 w-6 shrink-0 text-primary" aria-hidden />
         <span className="flex-1">
@@ -513,7 +515,7 @@ export default function Inicio() {
             <li key={href}>
               <Link
                 href={href}
-                className="flex items-center gap-3 p-4 text-sm font-semibold hover:bg-primary-soft"
+                className="flex items-center gap-3 p-4 text-sm font-semibold hover:bg-surf-azul"
               >
                 <Icone className="h-5 w-5 shrink-0 text-primary" aria-hidden />
                 <span className="flex-1">{rotulo}</span>

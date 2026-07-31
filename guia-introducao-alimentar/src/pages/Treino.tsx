@@ -103,7 +103,7 @@ export default function Treino() {
   return (
     <div className="space-y-6">
       {/* Selo permanente: isto NÃO é o modo emergência */}
-      <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4">
+      <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-primary bg-surf-azul p-4">
         <p className="flex items-center gap-2 text-sm font-bold text-primary">
           <GraduationCap className="h-5 w-5" aria-hidden />
           MODO TREINO — sem pressa, sem emergência
@@ -176,7 +176,7 @@ export default function Treino() {
                 respondida === null
                   ? 'border-stone-200 bg-white hover:border-primary'
                   : idx === q.corretaIdx
-                    ? 'border-primary bg-primary-soft'
+                    ? 'border-primary bg-surf-azul'
                     : idx === respondida
                       ? 'border-danger bg-danger-soft'
                       : 'border-stone-200 bg-white opacity-60';
@@ -196,7 +196,7 @@ export default function Treino() {
             <div className="space-y-3">
               <p
                 className={`rounded-xl p-4 text-sm ${
-                  respondida === q.corretaIdx ? 'bg-primary-soft' : 'bg-warn-soft'
+                  respondida === q.corretaIdx ? 'bg-surf-azul' : 'bg-warn-soft'
                 }`}
               >
                 <strong>{respondida === q.corretaIdx ? 'Isso!' : 'Quase —'}</strong> {q.explicacao}
@@ -215,11 +215,11 @@ export default function Treino() {
 
       {etapa === 'fim' && (
         <div className="space-y-5">
-          <div className="rounded-2xl bg-primary p-5 text-white">
+          <div className="rounded-2xl bg-surf-menta p-5 text-ink">
             <h1 className="mb-1 text-xl font-bold">
               Treino concluído — {acertos} de {quizEngasgo.length} cenários
             </h1>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-ink-soft">
               Registrado em {new Date().toLocaleDateString('pt-BR')}. Recomendamos repetir a cada
               3 meses: é o intervalo em que as habilidades começam a se perder.
             </p>
@@ -233,7 +233,7 @@ export default function Treino() {
           <div className="grid gap-3 sm:grid-cols-2">
             <button
               onClick={gerarIcs}
-              className="rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-primary-soft"
+              className="rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-surf-azul"
             >
               Lembrete trimestral no calendário
             </button>

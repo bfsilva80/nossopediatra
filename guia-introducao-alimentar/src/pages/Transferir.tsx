@@ -127,7 +127,7 @@ export default function Transferir() {
               </button>
               <button
                 onClick={copiar}
-                className="flex items-center justify-center gap-2 rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-primary-soft"
+                className="flex items-center justify-center gap-2 rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-surf-azul"
               >
                 <Copy className="h-5 w-5" aria-hidden />
                 {copiado ? 'Copiado ✓' : 'Copiar'}
@@ -155,7 +155,7 @@ export default function Transferir() {
           </p>
         )}
         {resultado ? (
-          <p className="flex items-center gap-2 rounded-xl bg-primary-soft p-3 text-sm font-semibold">
+          <p className="flex items-center gap-2 rounded-xl bg-surf-azul p-3 text-sm font-semibold">
             <Check className="h-5 w-5 text-primary" aria-hidden />
             {resultado}
           </p>
@@ -163,7 +163,7 @@ export default function Transferir() {
           <button
             onClick={() => codigoColado.trim() && setConfirmando(true)}
             disabled={!codigoColado.trim()}
-            className="w-full rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-primary-soft disabled:opacity-40"
+            className="w-full rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-surf-azul disabled:opacity-40"
           >
             Importar
           </button>
