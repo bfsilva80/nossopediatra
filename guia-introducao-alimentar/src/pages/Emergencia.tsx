@@ -128,19 +128,23 @@ export default function Emergencia() {
           </p>
           <div className="flex min-h-0 flex-1 flex-col justify-center gap-4 sm:flex-row sm:items-center sm:gap-6">
             {cartao && (
-              // A ALTURA manda, não a largura. Sem este contêiner a imagem 9:16 se
-              // dimensiona pela largura disponível (390px viram 613px de altura) e
-              // empurra os botões para fora da tela — em pânico, botão inalcançável.
-              // O contêiner recebe a altura que sobra (`flex-1 min-h-0`) e a imagem
-              // se ajusta dentro dela (`max-h-full` + `object-contain`).
-              <div className="flex min-h-0 flex-1 items-center justify-center">
+              // FATIA FIXA, não disputa. Antes imagem e texto competiam pela altura
+              // via `flex-1`, e quem vencia dependia do aparelho: em tela alta a arte
+              // dominava e empurrava o texto; em tela baixa colapsava para uma
+              // miniatura ilegível. Agora a imagem tem teto em `vh` — nunca passa de
+              // 28% da tela — e o texto fica com o resto, sempre inteiro.
+              // No modo paisagem/tablet (`sm:`) volta a dividir a largura, onde sobra.
+              <div className="flex shrink-0 items-center justify-center sm:min-h-0 sm:flex-1">
                 <img
                   src={imagensManobra[cartao.id]}
                   alt={cartao.alt}
                   // Sem lazy: numa emergência a imagem não pode esperar o scroll.
                   loading="eager"
                   decoding="sync"
-                  className="max-h-full w-auto max-w-full rounded-2xl bg-white object-contain"
+                  // Teto em `vh` nos dois eixos, nunca `max-h-full`: percentual não
+                  // resolve contra item flex de altura automática, e a imagem voltava
+                  // ao tamanho natural — em paisagem chegava a 177% da tela, cortada.
+                  className="max-h-[28vh] w-auto max-w-full rounded-2xl bg-white object-contain sm:max-h-[72vh]"
                 />
               </div>
             )}
@@ -179,7 +183,13 @@ export default function Emergencia() {
               </button>
             )}
           </div>
-          <p className="mt-4 text-center text-sm text-white/70">
+          {/*
+            Nota secundária — fala do DEPOIS, não do passo atual. Em tela baixa ela
+            consumia ~100px e era o que empurrava passo, arte e botões para fora.
+            Some abaixo de 700px de altura: numa emergência, o passo que a família
+            está executando vale mais que a orientação de acompanhamento.
+          */}
+          <p className="mt-4 text-center text-sm text-white/70 [@media(max-height:699px)]:hidden">
             Continue alternando as manobras até desobstruir ou o socorro chegar. Desobstruiu? Leve
             o bebê para avaliação médica no mesmo dia, mesmo que pareça bem.
           </p>
