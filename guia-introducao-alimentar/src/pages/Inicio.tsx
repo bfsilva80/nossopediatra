@@ -9,11 +9,12 @@ import { useTreino } from '@/pages/Treino';
 import {
   AlertTriangle,
   Baby,
+  Beef,
   BookOpen,
   ChefHat,
+  ChevronRight,
   GraduationCap,
   HelpCircle,
-  NotebookPen,
   Scale,
   Search,
   Sparkles,
@@ -274,7 +275,9 @@ export default function Inicio() {
   return (
     <div className="space-y-8">
       <section className="rounded-2xl bg-primary p-5 text-white">
-        <p className="text-sm text-white/80">Seu bebê tem {descreverIdade(idade)}</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
+          Seu bebê tem {descreverIdade(idade)}
+        </p>
         <h1 className="mt-1 text-2xl font-bold">
           <span aria-hidden>{fase.icone}</span> {fase.nome}
         </h1>
@@ -309,40 +312,65 @@ export default function Inicio() {
         </Link>
       )}
 
-      {ideiaDoDia && (
-        <Link
-          href="/alimentos"
-          className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-primary bg-primary-soft p-4 hover:border-solid"
-        >
-          <span className="text-3xl" aria-hidden>
-            {ideiaDoDia.emoji}
-          </span>
-          <span className="flex-1">
-            <span className="block text-xs font-bold uppercase tracking-wide text-primary">
-              Ideia para hoje
-            </span>
-            <span className="block text-sm">
-              Que tal oferecer <strong>{ideiaDoDia.nome.toLowerCase()}</strong>? Toque para ver
-              como.
-            </span>
-          </span>
-        </Link>
-      )}
+      {/*
+        CAMADA 2 — "Hoje": as duas ações do dia agrupadas sob um título só.
+        Antes viviam soltas entre blocos de navegação, disputando atenção com
+        atalhos que a barra inferior já oferece.
+      */}
+      {/*
+        Contêiner único para o painel do dia. Cartões brancos soltos sobre fundo
+        creme fragmentavam a leitura; agrupados, "Hoje" e "Progresso" se leem como
+        um bloco só — e os cartões internos ficam em tom suave para não empilhar
+        branco sobre branco.
+      */}
+      <div className="space-y-6 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm">
+      <section aria-labelledby="titulo-hoje" className="space-y-3">
+        <h2 id="titulo-hoje" className="text-lg font-bold">
+          Hoje
+        </h2>
 
-      <section
-        aria-labelledby="titulo-ferro"
-        className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm"
-      >
+        {ideiaDoDia && (
+          <Link
+            href="/alimentos"
+            className="flex items-center gap-3 rounded-xl bg-cream p-4 hover:bg-primary-soft"
+          >
+            <span
+              aria-hidden
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-2xl"
+            >
+              {ideiaDoDia.emoji}
+            </span>
+            <span className="flex-1">
+              <span className="block font-bold">
+                Que tal oferecer {ideiaDoDia.nome.toLowerCase()}?
+              </span>
+              <span className="block text-sm text-ink-soft">
+                Toque para ver como cortar e oferecer com segurança.
+              </span>
+            </span>
+            <ChevronRight className="h-5 w-5 shrink-0 text-ink-soft" aria-hidden />
+          </Link>
+        )}
+
+      <section aria-labelledby="titulo-ferro" className="rounded-xl bg-cream p-4">
         <div className="flex items-center justify-between gap-3">
-          <div>
+          <div className="flex items-start gap-3">
+            <span
+              aria-hidden
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary"
+            >
+              <Beef className="h-5 w-5" />
+            </span>
+            <div>
             <h2 id="titulo-ferro" className="font-bold">
-              Ferro hoje <span aria-hidden>🥩</span>
+              Ferro hoje
             </h2>
             <p className="text-sm text-ink-soft">
               {ferroHoje
                 ? 'Marcado! Uma fruta com vitamina C de sobremesa ajuda a absorver.'
                 : 'O bebê comeu carne, frango, ovo, peixe, feijão ou lentilha hoje?'}
             </p>
+            </div>
           </div>
           <button
             onClick={() =>
@@ -372,13 +400,16 @@ export default function Inicio() {
           A marcação não substitui a suplementação de ferro prescrita pelo pediatra.
         </p>
       </section>
+      </section>
 
       <section aria-labelledby="titulo-progresso">
         <h2 id="titulo-progresso" className="mb-3 text-lg font-bold">
           Progresso da jornada
         </h2>
+        {/* Ícone acima do numeral: o olho pousa no símbolo e já sabe do que se trata. */}
         <div className="grid grid-cols-2 gap-3">
-          <Link href="/alimentos" className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm hover:border-primary">
+          <Link href="/alimentos" className="rounded-xl bg-cream p-4 hover:bg-primary-soft">
+            <Search className="mb-2 h-6 w-6 text-primary" aria-hidden />
             <p className="text-3xl font-extrabold text-primary">
               {experimentados.length}
               <span className="text-base font-semibold text-ink-soft">/{elegiveis}</span>
@@ -386,7 +417,8 @@ export default function Inicio() {
             <p className="mt-1 text-sm font-semibold">alimentos experimentados</p>
             <p className="text-xs text-ink-soft">toque para marcar mais</p>
           </Link>
-          <Link href="/seguranca/rastreador" className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm hover:border-primary">
+          <Link href="/seguranca/rastreador" className="rounded-xl bg-cream p-4 hover:bg-primary-soft">
+            <AlertTriangle className="mb-2 h-6 w-6 text-primary" aria-hidden />
             <p className="text-3xl font-extrabold text-primary">
               {alergenicosOfertados}
               <span className="text-base font-semibold text-ink-soft">/{alergenicos.length}</span>
@@ -396,12 +428,20 @@ export default function Inicio() {
           </Link>
         </div>
       </section>
+      </div>
 
+      {/*
+        Fundo tingido + rótulo em caixa alta: categoriza o cartão sem criar mais
+        um nível de peso visual. Âmbar para o que pede preparo, azul para dica.
+      */}
       {mostrarNudgeTreino && (
-        <div className="flex items-start gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm">
-          <GraduationCap className="mt-0.5 h-6 w-6 shrink-0 text-primary" aria-hidden />
+        <div className="flex items-start gap-3 rounded-2xl border border-warn/30 bg-warn-soft p-4">
+          <GraduationCap className="mt-0.5 h-6 w-6 shrink-0 text-warn" aria-hidden />
           <Link href="/treino" className="flex-1">
-            <span className="block font-bold">
+            <span className="block text-xs font-bold uppercase tracking-wide text-warn">
+              Preparo
+            </span>
+            <span className="mt-0.5 block font-bold">
               {treino.ultimoTreino
                 ? 'Faz mais de 3 meses do seu último treino de engasgo'
                 : 'Você saberia agir num engasgo?'}
@@ -424,11 +464,14 @@ export default function Inicio() {
 
       <Link
         href="/cuidador"
-        className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm hover:border-primary"
+        className="flex items-start gap-3 rounded-2xl border border-primary/25 bg-primary-soft p-4 hover:border-primary"
       >
-        <Users className="h-6 w-6 shrink-0 text-primary" aria-hidden />
+        <Users className="mt-0.5 h-6 w-6 shrink-0 text-primary" aria-hidden />
         <span className="flex-1">
-          <span className="block font-bold">Vai deixar com a avó, babá ou creche?</span>
+          <span className="block text-xs font-bold uppercase tracking-wide text-primary">
+            Dica
+          </span>
+          <span className="mt-0.5 block font-bold">Vai deixar com a avó, babá ou creche?</span>
           <span className="block text-sm text-ink-soft">
             Gere o cartão do cuidador: o essencial da idade atual em 15 linhas, pronto para o
             WhatsApp.
@@ -436,50 +479,58 @@ export default function Inicio() {
         </span>
       </Link>
 
-      <section aria-labelledby="titulo-atalhos">
-        <h2 id="titulo-atalhos" className="mb-3 text-lg font-bold">
-          O que você precisa agora
-        </h2>
-        <GradeAtalhos
-          atalhos={[
-            { href: '/alimentos', titulo: 'Posso dar…?', descricao: 'Busque qualquer alimento', Icone: Search },
-            { href: '/emergencia', titulo: 'Engasgo', descricao: 'Socorro passo a passo', Icone: AlertTriangle, destaque: true },
-            { href: '/receitas', titulo: 'Receitas da fase', descricao: `Para ${fase.faixa}`, Icone: ChefHat },
-            { href: '/diario', titulo: 'Registrar refeição', descricao: 'Diário para a consulta', Icone: NotebookPen },
-          ]}
-        />
-      </section>
+      {/*
+        O bloco "O que você precisa agora" foi removido: seus quatro atalhos
+        (Alimentos, Engasgo, Receitas, Diário) já existem na barra inferior fixa
+        e no botão vermelho do cabeçalho. Eram quatro cartões grandes competindo
+        com o conteúdo do dia sem oferecer nenhum destino novo.
+      */}
 
       <DicaInstalar />
 
-      <section className="grid grid-cols-2 gap-3 text-center text-sm">
-        <Link href="/comida-da-familia" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
-          <ChefHat className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
-          Hoje tem feijoada?
-        </Link>
-        <Link href="/mitos" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
-          <Sparkles className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
-          Mitos
-        </Link>
-        <Link href="/fases" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
-          <BookOpen className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
-          Fases
-        </Link>
-        <Link href="/metodos" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
-          <Scale className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
-          Colher, BLW ou BLISS?
-        </Link>
-        <Link href="/comecando" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
-          <Sprout className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
-          Como começar
-        </Link>
-        <Link href="/duvidas" className="rounded-xl bg-stone-100 p-3 font-semibold hover:bg-primary-soft">
-          <HelpCircle className="mx-auto mb-1 h-5 w-5 text-primary" aria-hidden />
-          Dúvidas
-        </Link>
+      {/*
+        CAMADA 3 — "Explorar": só os destinos que existem exclusivamente aqui.
+        Lista em vez de grade de cartões, de propósito: uma coluna se lê num
+        passe de olho, e o peso visual leve deixa claro que isto é secundário
+        em relação ao painel do dia.
+      */}
+      <section aria-labelledby="titulo-explorar">
+        <h2
+          id="titulo-explorar"
+          className="mb-2 text-xs font-bold uppercase tracking-wide text-ink-soft"
+        >
+          Explorar
+        </h2>
+        <ul className="divide-y divide-stone-200 overflow-hidden rounded-2xl border border-stone-200 bg-white">
+          {[
+            { href: '/fases', rotulo: 'Todas as fases', Icone: BookOpen },
+            { href: '/comecando', rotulo: 'Como começar', Icone: Sprout },
+            { href: '/metodos', rotulo: 'Colher, BLW ou BLISS?', Icone: Scale },
+            { href: '/comida-da-familia', rotulo: 'Hoje tem feijoada?', Icone: ChefHat },
+            { href: '/mitos', rotulo: 'Mitos', Icone: Sparkles },
+            { href: '/duvidas', rotulo: 'Dúvidas frequentes', Icone: HelpCircle },
+          ].map(({ href, rotulo, Icone }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="flex items-center gap-3 p-4 text-sm font-semibold hover:bg-primary-soft"
+              >
+                <Icone className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+                <span className="flex-1">{rotulo}</span>
+                <ChevronRight className="h-4 w-4 shrink-0 text-ink-soft" aria-hidden />
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      {formNascimento}
+      {/* Configuração, não conteúdo: recolhida para não ocupar espaço nobre. */}
+      <details className="rounded-2xl border border-stone-200 bg-white shadow-sm">
+        <summary className="cursor-pointer p-4 text-sm font-semibold">
+          Corrigir a data de nascimento
+        </summary>
+        <div className="border-t border-stone-200 p-4 pt-4">{formNascimento}</div>
+      </details>
     </div>
   );
 }

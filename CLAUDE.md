@@ -80,6 +80,13 @@ de decisão explícita do Bruno e de fachada de clique.
   família cansada não pode receber "nenhum resultado".
 - **Acolher quem repete o mito.** A seção Mitos explica por que a crença pegou (quase sempre foi
   orientação médica de outra época) em vez de ridicularizar a avó.
+- **Conteúdo de ferramenta de design com IA NUNCA entra no projeto.** Layout e tratamento visual
+  podem servir de referência; texto, jamais. Caso concreto (30/07/2026): pediu-se ao Google Stitch
+  variantes da tela Início, com o conteúdo real passado no prompt. Ele reescreveu o cartão de
+  treino como *"Revise a Manobra de Heimlich em bebês agora mesmo"* — a manobra é contraindicada
+  em menores de 1 ano, e é o que este app inteiro existe para desmentir. Numa das variantes o erro
+  ainda ganhou um selo "AVISO DE SEGURANÇA". No mesmo lote, o cartão de ferro virou "Ofereceu água
+  hoje?". Ao usar essas ferramentas: reimplemente à mão, com o texto vindo de `src/content/`.
 
 ## Deploy
 
