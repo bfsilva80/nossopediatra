@@ -47,7 +47,7 @@ export default function Comecando() {
               key={sinal.id}
               className={`flex cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3 transition-colors ${
                 marcados.includes(sinal.id)
-                  ? 'border-primary bg-primary-soft'
+                  ? 'border-primary bg-surf-azul'
                   : 'border-stone-200 bg-white hover:border-stone-300'
               }`}
             >
@@ -63,7 +63,7 @@ export default function Comecando() {
         </div>
 
         {todosMarcados && idade && idade.meses >= 6 && (
-          <div className="mt-4 flex items-start gap-3 rounded-xl border-2 border-primary bg-primary-soft p-4">
+          <div className="mt-4 flex items-start gap-3 rounded-xl border-2 border-primary bg-surf-azul p-4">
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
             <p className="text-sm">
               <strong>Sinais presentes e idade adequada.</strong> Confirme com o pediatra na
@@ -116,7 +116,7 @@ export default function Comecando() {
         </p>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <p className="rounded-xl border-2 border-primary bg-primary-soft p-4 text-sm">
+          <p className="rounded-xl border-2 border-primary bg-surf-azul p-4 text-sm">
             <strong>Vai acontecer e é normal:</strong> careta, ânsia e tosse barulhenta são o
             reflexo de proteção treinando. Não intervenha — deixe o bebê resolver.
           </p>
@@ -138,7 +138,7 @@ export default function Comecando() {
         </h2>
         <Link
           href="/metodos"
-          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-primary-soft p-4"
+          className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-surf-azul p-4"
         >
           <Scale className="h-8 w-8 shrink-0 text-primary" aria-hidden />
           <span className="flex-1">

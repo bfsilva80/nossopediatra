@@ -43,7 +43,7 @@ export default function Mitos() {
         ))}
       </div>
 
-      <p className="rounded-xl bg-primary-soft p-4 text-sm">
+      <p className="rounded-xl bg-surf-azul p-4 text-sm">
         <strong>Vai discutir com a avó?</strong> Melhor que discutir: gere o{' '}
         <Link href="/cuidador" className="font-medium text-primary underline">
           cartão do cuidador

@@ -2,9 +2,21 @@
 
 /*
  * Paleta derivada da marca Nosso Pediatra (logo: coração azul + mão areia).
- * Contrastes verificados: primary sobre branco 8,7:1; branco sobre primary 8,7:1;
- * primary sobre primary-soft ~5:1; accent sobre branco ~4,6:1.
- * danger/warn preservados: semântica clínica de emergência não muda com a marca.
+ *
+ * DUAS FAMÍLIAS, com papéis distintos — não intercambiáveis:
+ *
+ * 1. SUPERFÍCIES (`surf-*`): pastéis que preenchem cartões e blocos. Recebem
+ *    SEMPRE texto escuro (`ink`). Nunca texto branco: é justamente o que reprova
+ *    contraste. Medidos contra `ink` #1a2b33 — todos passam WCAG AA com folga:
+ *      surf-azul  10,9:1   surf-menta 10,7:1
+ *      surf-creme 11,9:1   surf-ambar  8,1:1
+ *
+ * 2. TINTA INTERATIVA (`primary`): o azul fechado. Vive em ícone, link, aba ativa
+ *    e texto que precisa saltar. Sobre branco dá 8,7:1; sobre qualquer superfície
+ *    pastel acima de 4,5:1. É o que sinaliza "isto é tocável".
+ *
+ * `danger` é EXCLUSIVO da emergência — nunca decorativo. O botão vermelho abre o
+ * passo a passo do engasgo; ligar 192 é ação de dentro daquela tela, não da barra.
  */
 @theme {
   --color-primary: #17506f;
@@ -18,6 +30,11 @@
   --color-danger-soft: #fee2e2;
   --color-warn: #b45309;
   --color-warn-soft: #fef3c7;
+
+  /* Superfícies pastel — sempre com texto escuro por cima. DUAS, de propósito:
+     mais famílias viram colcha de retalhos e a hierarquia se perde. */
+  --color-surf-azul: #cfe1f2;
+  --color-surf-menta: #c5e4d6;
 }
 
 @media (prefers-reduced-motion: no-preference) {

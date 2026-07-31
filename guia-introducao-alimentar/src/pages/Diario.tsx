@@ -130,7 +130,7 @@ export default function Diario() {
         </Link>
         <Link
           href="/relatorio"
-          className="flex items-center gap-2 rounded-xl border-2 border-primary px-4 py-3 text-sm font-bold text-primary hover:bg-primary-soft"
+          className="flex items-center gap-2 rounded-xl border-2 border-primary px-4 py-3 text-sm font-bold text-primary hover:bg-surf-azul"
         >
           <FileText className="h-5 w-5 shrink-0" aria-hidden />
           Relatório para a consulta
@@ -149,7 +149,7 @@ export default function Diario() {
           <>
             <button
               onClick={compartilhar}
-              className="flex items-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 font-semibold text-primary hover:bg-primary-soft"
+              className="flex items-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 font-semibold text-primary hover:bg-surf-azul"
             >
               <Share2 className="h-5 w-5" aria-hidden />
               Compartilhar
@@ -252,7 +252,7 @@ export default function Diario() {
           </fieldset>
 
           {form.sintomas.includes('Recusou a refeição') && (
-            <p className="rounded-xl bg-primary-soft p-3 text-sm">
+            <p className="rounded-xl bg-surf-azul p-3 text-sm">
               <strong>Recusa faz parte do treino:</strong> podem ser precisas 8–10 ofertas em dias
               diferentes até um alimento ser aceito. Sem pressão — registre e ofereça de novo
               outro dia.

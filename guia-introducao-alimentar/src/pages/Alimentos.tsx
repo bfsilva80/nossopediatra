@@ -26,8 +26,8 @@ const grupos: Array<GrupoAlimento | 'Todos'> = [
 ];
 
 const corQuando: Record<QuandoPode, string> = {
-  '6m': 'bg-primary-soft text-primary',
-  '9m': 'bg-primary-soft text-primary',
+  '6m': 'bg-surf-azul text-primary',
+  '9m': 'bg-surf-azul text-primary',
   '12m': 'bg-warn-soft text-warn',
   '24m': 'bg-danger-soft text-danger',
   nao: 'bg-danger-soft text-danger',
@@ -181,7 +181,7 @@ export default function Alimentos() {
                 </span>
                 <span className="flex shrink-0 gap-1">
                   {a.ferro && (
-                    <span className="rounded-full bg-primary-soft px-2 py-0.5 text-[10px] font-bold text-primary">
+                    <span className="rounded-full bg-surf-azul px-2 py-0.5 text-[10px] font-bold text-primary">
                       ferro
                     </span>
                   )}
@@ -226,7 +226,7 @@ export default function Alimentos() {
                       className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors ${
                         jaExperimentou
                           ? 'border-primary bg-primary text-white'
-                          : 'border-primary text-primary hover:bg-primary-soft'
+                          : 'border-primary text-primary hover:bg-surf-azul'
                       }`}
                     >
                       {jaExperimentou ? '✓ Já experimentou' : 'Marcar como experimentado'}
@@ -255,7 +255,7 @@ export default function Alimentos() {
             <Link
               key={p.id}
               href="/duvidas"
-              className="block rounded-xl bg-white p-3 text-sm shadow-sm hover:bg-primary-soft"
+              className="block rounded-xl bg-white p-3 text-sm shadow-sm hover:bg-surf-azul"
             >
               ❓ {p.pergunta}
             </Link>
@@ -264,7 +264,7 @@ export default function Alimentos() {
             <Link
               key={r.id}
               href="/receitas"
-              className="block rounded-xl bg-white p-3 text-sm shadow-sm hover:bg-primary-soft"
+              className="block rounded-xl bg-white p-3 text-sm shadow-sm hover:bg-surf-azul"
             >
               {r.icone} Receita: {r.nome}
             </Link>

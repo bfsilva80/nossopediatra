@@ -169,7 +169,7 @@ export default function Cuidador() {
         </button>
         <button
           onClick={copiar}
-          className="flex items-center justify-center gap-2 rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-primary-soft"
+          className="flex items-center justify-center gap-2 rounded-xl border-2 border-primary py-3 font-bold text-primary hover:bg-surf-azul"
         >
           <Copy className="h-5 w-5" aria-hidden />
           {copiado ? 'Copiado ✓' : 'Copiar texto'}

@@ -87,7 +87,7 @@ export default function Reacao() {
 
           <button
             onClick={() => setEtapa('leve')}
-            className="w-full rounded-xl border-2 border-primary py-3.5 font-bold text-primary hover:bg-primary-soft"
+            className="w-full rounded-xl border-2 border-primary py-3.5 font-bold text-primary hover:bg-surf-azul"
           >
             Não — nenhum desses. Registrar a reação leve
           </button>
@@ -102,7 +102,7 @@ export default function Reacao() {
         <div className="space-y-5">
           <div className="rounded-2xl bg-danger p-6 text-white">
             <h1 className="mb-2 text-2xl font-extrabold">Ligue 192 agora</h1>
-            <p className="mb-4 text-white/90">
+            <p className="mb-4 text-ink-soft">
               Sinais de reação grave pedem atendimento imediato — não espere passar.
             </p>
             <a
@@ -148,7 +148,7 @@ export default function Reacao() {
             </p>
           </div>
 
-          <p className="flex items-start gap-2 rounded-xl bg-primary-soft p-4 text-sm">
+          <p className="flex items-start gap-2 rounded-xl bg-surf-azul p-4 text-sm">
             <Camera className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
             <span>
               <strong>Antes de tudo: fotografe a pele agora.</strong> Vermelhidão some em horas —
@@ -226,12 +226,12 @@ export default function Reacao() {
 
       {etapa === 'salvo' && (
         <div className="space-y-5">
-          <div className="rounded-2xl bg-primary p-5 text-white">
+          <div className="rounded-2xl bg-surf-menta p-5 text-ink">
             <h1 className="mb-1 flex items-center gap-2 text-xl font-bold">
               <Check className="h-6 w-6" aria-hidden />
               Registrado no diário
             </h1>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-ink-soft">
               O episódio está salvo com data e hora — vai aparecer no diário e no relatório da
               consulta.
             </p>
@@ -239,7 +239,7 @@ export default function Reacao() {
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
               href="/seguranca/rastreador"
-              className="rounded-xl border-2 border-primary p-4 text-center font-bold text-primary hover:bg-primary-soft"
+              className="rounded-xl border-2 border-primary p-4 text-center font-bold text-primary hover:bg-surf-azul"
             >
               Marcar no rastreador de alergênicos
             </Link>

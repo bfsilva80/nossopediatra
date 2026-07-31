@@ -44,7 +44,7 @@ export default function Fases() {
               {f.id === faseDoBebe?.id && (
                 <span
                   className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${
-                    ativa ? 'bg-white/20' : 'bg-primary-soft text-primary'
+                    ativa ? 'bg-white/20' : 'bg-surf-azul text-primary'
                   }`}
                 >
                   seu bebê
